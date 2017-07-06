@@ -1,6 +1,6 @@
 <?php
 
-namespace GDGALLERY\Controllers\Admin;
+namespace GDGallery\Controllers\Admin;
 
 
 class AdminAssetsController
@@ -17,26 +17,28 @@ class AdminAssetsController
     public static function adminStyles($hook)
     {
 
-        wp_enqueue_style('jqueryUI', \GDGALLERY()->pluginUrl() . '/assets/css/jquery-ui.min.css');
+        wp_enqueue_style('jqueryUI', \GDGallery()->pluginUrl() . '/assets/css/jquery-ui.min.css');
 
-        wp_enqueue_style('fontAwesome', \GDGALLERY()->pluginUrl() . '/assets/css/font-awesome.min.css', false);
+        wp_enqueue_style('fontAwesome', \GDGallery()->pluginUrl() . '/assets/css/font-awesome.min.css', false);
 
-        if ($hook === \GDGALLERY()->Admin->Pages['main_page'] || $hook === \GDGALLERY()->Admin->Pages['settings'] || $hook === \GDGALLERY()->Admin->Pages['submissions']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['settings'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
 
-            wp_enqueue_style('gdfrmSelect2', \GDGALLERY()->pluginUrl() . '/assets/css/select2.min.css', false);
+            wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/assets/css/select2.min.css', false);
 
-            wp_enqueue_style('gdfrmAdminStyles', \GDGALLERY()->pluginUrl() . '/assets/css/admin/main.css');
+            wp_enqueue_style('gdgallery_modal', \GDGallery()->pluginUrl() . '/assets/css/admin/gdgallery-modal.css', false);
+
+            wp_enqueue_style('gdfrmAdminStyles', \GDGallery()->pluginUrl() . '/assets/css/admin/main.css');
 
             wp_enqueue_style('roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic');
 
         }
 
-        if ($hook === \GDGALLERY()->Admin->Pages['settings']) {
-            wp_enqueue_style('gdfrmSettings', \GDGALLERY()->pluginUrl() . '/assets/css/admin/settings.css');
+        if ($hook === \GDGallery()->Admin->Pages['settings']) {
+            wp_enqueue_style('gdfrmSettings', \GDGallery()->pluginUrl() . '/assets/css/admin/settings.css');
         }
 
-        if ($hook === \GDGALLERY()->Admin->Pages['submissions']) {
-            wp_enqueue_style('gdfrmSubmissions', \GDGALLERY()->pluginUrl() . '/assets/css/admin/submissions.css');
+        if ($hook === \GDGallery()->Admin->Pages['submissions']) {
+            wp_enqueue_style('gdfrmSubmissions', \GDGallery()->pluginUrl() . '/assets/css/admin/submissions.css');
         }
 
 
@@ -52,40 +54,42 @@ class AdminAssetsController
      */
     public static function adminScripts($hook)
     {
-        if ($hook === \GDGALLERY()->Admin->Pages['main_page']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
             wp_enqueue_media();
 
             wp_enqueue_script('jquery');
 
-            wp_enqueue_script('jqueryUI', \GDGALLERY()->pluginUrl() . '/assets/js/jquery-ui.min.js');
+            wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/assets/js/jquery-ui.min.js');
 
-            if (isset($_GET['task']) && $_GET['task'] == 'edit_form') {
-                wp_enqueue_script('gdfrmAdminSelect2', \GDGALLERY()->pluginUrl() . '/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
+            if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
+                wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);
 
-                wp_enqueue_script('gdfrmAdminFormSave', \GDGALLERY()->pluginUrl() . '/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
+                wp_enqueue_script('gdfrmAdminSelect2', \GDForm()->pluginUrl() . '/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
+
+                wp_enqueue_script('gdfrmAdminFormSave', \GDGallery()->pluginUrl() . '/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
 
             }
 
 
             if (isset($_GET['task']) && $_GET['task'] == 'edit_form_settings') {
-                wp_enqueue_script('gdfrmFormSettings', \GDGALLERY()->pluginUrl() . '/assets/js/admin/form-settings.js', array('jquery'), false, true);
+                wp_enqueue_script('gdfrmFormSettings', \GDGallery()->pluginUrl() . '/assets/js/admin/form-settings.js', array('jquery'), false, true);
 
             }
 
-            wp_enqueue_script('gdfrmAdminJs', \GDGALLERY()->pluginUrl() . '/assets/js/admin/main.js', array('jquery', 'jqueryUI'), false, true);
+            wp_enqueue_script('gdfrmAdminJs', \GDGallery()->pluginUrl() . '/assets/js/admin/main.js', array('jquery', 'jqueryUI'), false, true);
         }
 
         if (in_array($hook, array('post.php', 'post-new.php'))) {
-            wp_enqueue_script("gdfrmInlinePopup", \GDGALLERY()->pluginUrl() . "/assets/js/admin/inline-popup.js", array('jquery'), false, true);
+            wp_enqueue_script("gdfrmInlinePopup", \GDGallery()->pluginUrl() . "/assets/js/admin/inline-popup.js", array('jquery'), false, true);
         }
 
-        if ($hook === \GDGALLERY()->Admin->Pages['settings']) {
-            wp_enqueue_script('gdfrmSettings', \GDGALLERY()->pluginUrl() . '/assets/js/admin/settings.js', array('jquery'), false, true);
+        if ($hook === \GDGallery()->Admin->Pages['settings']) {
+            wp_enqueue_script('gdfrmSettings', \GDGallery()->pluginUrl() . '/assets/js/admin/settings.js', array('jquery'), false, true);
         }
 
-        if ($hook === \GDGALLERY()->Admin->Pages['submissions']) {
-            wp_enqueue_script('gdfrmSubmissions', \GDGALLERY()->pluginUrl() . '/assets/js/admin/submissions.js', array('jquery'), false, true);
+        if ($hook === \GDGallery()->Admin->Pages['submissions']) {
+            wp_enqueue_script('gdfrmSubmissions', \GDGallery()->pluginUrl() . '/assets/js/admin/submissions.js', array('jquery'), false, true);
         }
 
         self::localizeScripts();
@@ -112,7 +116,7 @@ class AdminAssetsController
             'importOptionsNonce' => wp_create_nonce('gdfrm_import_options'),
         ));
 
-        wp_localize_script('gdfrmFormSettings', 'GDGALLERY', array(
+        wp_localize_script('gdfrmFormSettings', 'GDGallery', array(
             'saveSettingsNonce' => wp_create_nonce('gdfrm_save_form_settings'),
         ));
 

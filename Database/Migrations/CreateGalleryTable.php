@@ -21,6 +21,7 @@ class CreateGalleryTable
                 `description` text,
                 `ordering` int(11) NOT NULL,
                 `display_type` int(1) NOT NULL DEFAULT 0,
+                `view_type` int(1) NOT NULL DEFAULT 0,
                 `position` ENUM('center', 'left','right') DEFAULT 'center',
                 `hover_effect` int(1) NOT NULL DEFAULT 0,
                 `ctime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

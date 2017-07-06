@@ -2,10 +2,12 @@
 
 namespace GDGallery\Controllers\Admin;
 
-use GDForm\Core\Admin\Listener;
-use GDForm\Helpers\View;
-use GDForm\Models\Form;
-use GDForm\Models\Submission;
+use GDGallery\Core\Admin\Listener;
+use GDGallery\Helpers\View;
+use GDGallery\Models\Gallery;
+
+//use GDGALLERY\Models\Form;
+//use GDGALLERY\Models\Submission;
 
 class AdminController
 {
@@ -19,9 +21,9 @@ class AdminController
 
     public function __construct()
     {
-        add_action('admin_footer', array('GDForm\Controllers\Admin\ShortcodeController', 'showInlinePopup'));
+        add_action('admin_footer', array('GDGallery\Controllers\Admin\ShortcodeController', 'showInlinePopup'));
 
-        add_action('media_buttons_context', array('GDForm\Controllers\Admin\ShortcodeController', 'showEditorMediaButton'));
+        add_action('media_buttons_context', array('GDGallery\Controllers\Admin\ShortcodeController', 'showEditorMediaButton'));
 
         add_action('admin_menu', array($this, 'adminMenu'), 1);
 
@@ -29,7 +31,7 @@ class AdminController
 
         add_action('admin_init', array(__CLASS__, 'duplicateForm'), 1);
 
-        add_action('admin_init', array(__CLASS__, 'createForm'), 1);
+        add_action('admin_init', array(__CLASS__, 'createGallery'), 1);
 
     }
 
@@ -39,17 +41,17 @@ class AdminController
      */
     public function adminMenu()
     {
-        $this->Pages['main_page'] = add_menu_page(__('Grand Forms', GDFRM_TEXT_DOMAIN), __('Grand Forms', GDFRM_TEXT_DOMAIN), 'manage_options', 'gdfrm', array(
+        $this->Pages['main_page'] = add_menu_page(__('Grand Gallery', GDGALLERY_TEXT_DOMAIN), __('Grand Gallery', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
             $this,
             'mainPage'
-        ), \GDForm()->pluginUrl() . '/assets/images/forms_logo.png');
+        ), \GDGALLERY()->pluginUrl() . '/assets/images/gallery_logo.png');
 
-        $this->Pages['submissions'] = add_submenu_page('gdfrm', __('Submissions', GDFRM_TEXT_DOMAIN), __('Submissions', GDFRM_TEXT_DOMAIN), 'manage_options', 'gdfrm_submissions', array(
+        $this->Pages['Styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
             $this,
-            'submissionsPage'
+            'stylesPage'
         ));
 
-        $this->Pages['settings'] = add_submenu_page('gdfrm', __('Settings', GDFRM_TEXT_DOMAIN), __('Settings', GDFRM_TEXT_DOMAIN), 'manage_options', 'gdfrm_settings', array(
+        $this->Pages['settings'] = add_submenu_page('gdgallery', __('Settings', GDGALLERY_TEXT_DOMAIN), __('Settings', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_settings', array(
             $this,
             'settingsPage'
         ));
@@ -65,18 +67,19 @@ class AdminController
 
         if (!isset($_GET['task'])) {
 
-            View::render('admin/forms-list.php');
+            View::render('admin/galleries-list.php');
 
         } else {
 
             $task = $_GET['task'];
 
             switch ($task) {
-                case 'edit_form':
+                case 'edit_gallery':
+
 
                     if (!isset($_GET['id'])) {
 
-                        \GDForm()->Admin->printError(__('Missing "id" parameter.', GDFRM_TEXT_DOMAIN));
+                        \GDGallery()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
@@ -84,13 +87,13 @@ class AdminController
 
                     if (!$id) {
 
-                        \GDForm()->Admin->printError(__('"id" parameter must be not negative integer.', GDFRM_TEXT_DOMAIN));
+                        \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
-                    $form = new Form(array('Id' => $id));
+                    $gallery = new Gallery(array('id_gallery' => $id));
 
-                    View::render('admin/edit-form.php', array('form' => $form));
+                    View::render('admin/edit-gallery.php', array('gallery' => $gallery));
 
                     break;
                 case 'edit_form_settings':
@@ -98,7 +101,7 @@ class AdminController
 
                     if (absint($id) != $id) {
 
-                        \GDForm()->Admin->printError(__('Id parameter must be non negative integer.', GDFRM_TEXT_DOMAIN));
+                        \GDGallery()->Admin->printError(__('Id parameter must be non negative integer.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
@@ -155,11 +158,16 @@ class AdminController
 
     }
 
+    public function stylesPage()
+    {
+        View::render('admin/styles.php');
+    }
+
 
     public function printError($error_message, $die = true)
     {
 
-        $str = sprintf('<div class="error"><p>%s&nbsp;<a href="#" onclick="window.history.back()">%s</a></p></div>', $error_message, __('Go back', GDFRM_TEXT_DOMAIN));
+        $str = sprintf('<div class="error"><p>%s&nbsp;<a href="#" onclick="window.history.back()">%s</a></p></div>', $error_message, __('Go back', GDGALLERY_TEXT_DOMAIN));
 
         if ($die) {
 
@@ -212,7 +220,7 @@ class AdminController
 
         if (!isset($_GET['id'])) {
 
-            \GDForm()->Admin->printError(__('Missing "id" parameter.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('Missing "id" parameter.', GDFRM_TEXT_DOMAIN));
 
         }
 
@@ -220,13 +228,13 @@ class AdminController
 
         if (!$id) {
 
-            \GDForm()->Admin->printError(__('"id" parameter must be not negative integer.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDFRM_TEXT_DOMAIN));
 
         }
 
         if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdfrm_duplicate_form_' . $id)) {
 
-            \GDForm()->Admin->printError(__('Security check failed.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('Security check failed.', GDFRM_TEXT_DOMAIN));
 
         }
 
@@ -274,30 +282,30 @@ class AdminController
 
     }
 
-    public static function createForm()
+    public static function createGallery()
     {
-        if (!self::isRequest('gdfrm', 'create_new_form', 'GET')) {
+        if (!self::isRequest('gdgallery', 'create_new_gallery', 'GET')) {
             return;
         }
 
-        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdfrm_create_new_form')) {
+        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_create_new_gallery')) {
 
-            \GDForm()->Admin->printError(__('Security check failed.', GDFRM_TEXT_DOMAIN));
+            \GDGallery()->admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
-        $form = new Form();
+        $gallery = new Gallery();
 
-        $form = $form->setName('New Form')->save();
+        $gallery = $gallery->setName('New Created Gallery')->save();
 
         /**
-         * after the form is created we need to redirect user to the edit page
+         * after the gallery is created we need to redirect user to the edit page
          */
-        if ($form && is_int($form)) {
+        if ($gallery && is_int($gallery)) {
 
-            $location = admin_url('admin.php?page=gdfrm&task=edit_form&id=' . $form);
+            $location = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $gallery);
 
-            $location = wp_nonce_url($location, 'gdfrm_edit_form_' . $form);
+            $location = wp_nonce_url($location, 'gdgallery_edit_gallery_' . $gallery);
 
             $location = html_entity_decode($location);
 
@@ -308,7 +316,7 @@ class AdminController
 
         } else {
 
-            wp_die(__('Problems occured while creating new form.', GDFRM_TEXT_DOMAIN));
+            wp_die(__('Problems occured while creating new gallery.', GDGALLERY_TEXT_DOMAIN));
 
         }
 

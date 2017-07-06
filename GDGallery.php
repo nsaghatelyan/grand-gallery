@@ -97,7 +97,7 @@ if (!class_exists('GDGallery')) :
         {
             $this->checkVersion();
 
-            /*$this->Settings = new Settings();
+            $this->Settings = new Settings();
 
             if (defined('DOING_AJAX')) {
                 AdminAjax::init();
@@ -110,7 +110,7 @@ if (!class_exists('GDGallery')) :
 
             } else {
                 new FrontendController();
-            }*/
+            }
         }
 
 
