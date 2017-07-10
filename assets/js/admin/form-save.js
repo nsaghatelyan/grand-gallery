@@ -1,9 +1,8 @@
-
-jQuery(document).ready(function(){
+jQuery(document).ready(function () {
     var formSubmitting;
 
     /* save form with ajax */
-    jQuery('.gdfrm_edit_form_container').on("click","#save-form-button", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", "#save-form-button", function () {
         var name = jQuery("#form_name").val();
         var id = jQuery("#form_id").val();
         var grandForm = jQuery('#grand-form');
@@ -13,13 +12,13 @@ jQuery(document).ready(function(){
         var formData,
             finalFormData;
 
-        jQuery("#fields-list > div.field-block").each(function() {
-            var id=jQuery(this).attr('data-field-id');
-            jQuery('.settings-block[data-field-id="'+id+'"] .setting-row').find('.setting-order').val(k);
+        jQuery("#fields-list > div.field-block").each(function () {
+            var id = jQuery(this).attr('data-field-id');
+            jQuery('.settings-block[data-field-id="' + id + '"] .setting-row').find('.setting-order').val(k);
             k++;
         });
 
-        jQuery(".settings-block .options").each(function() {
+        jQuery(".settings-block .options").each(function () {
             var l = 0;
             jQuery(this).find('.option').each(function () {
                 jQuery(this).find('.setting-option-order').val(l);
@@ -40,7 +39,7 @@ jQuery(document).ready(function(){
         finalFormData = [];
 
         formData.forEach(function (entry) {
-            if(jQuery.inArray(entry.name,names) != '-1') {
+            if (jQuery.inArray(entry.name, names) != '-1') {
                 entry.value = tinyMCE.editors[entry.name].getContent();
             }
             finalFormData.push(entry);
@@ -64,13 +63,13 @@ jQuery(document).ready(function(){
             }
         }, "json");
 
-        formSubmitting=true;
+        formSubmitting = true;
 
         return false;
     });
 
     /* remove field */
-    jQuery('.gdfrm_edit_form_container').on("click",".left-col .field-block .gdicon-remove", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".left-col .field-block .gdicon-remove", function () {
         var id = jQuery(this).closest('.field-block').attr('data-field-id');
         var general_data = {
             action: "gdfrm_remove_field",
@@ -79,8 +78,8 @@ jQuery(document).ready(function(){
         };
         jQuery.post(ajaxurl, general_data, function (response) {
             if (response.success) {
-                jQuery("#fields-list .field-block[data-field-id="+id+"]").remove();
-                jQuery(".settings-block[data-field-id="+id+"]").remove();
+                jQuery("#fields-list .field-block[data-field-id=" + id + "]").remove();
+                jQuery(".settings-block[data-field-id=" + id + "]").remove();
                 jQuery(".settings-block").hide();
                 jQuery('.field-block').removeClass('gdfrm_active');
                 jQuery('#type-blocks-list').show();
@@ -93,7 +92,7 @@ jQuery(document).ready(function(){
     });
 
     /* duplicate field */
-    jQuery('.gdfrm_edit_form_container').on("click",".left-col .field-block .gdicon-duplicate", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".left-col .field-block .gdicon-duplicate", function () {
         var id = jQuery(this).closest('.field-block').attr('data-field-id');
         var form = jQuery('.gdfrm_edit_form_container').attr('data-form');
         var type = jQuery(this).closest('.field-block').attr('data-field-type');
@@ -120,41 +119,41 @@ jQuery(document).ready(function(){
 
 
     /* open field settings block in the right column */
-    jQuery('.gdfrm_edit_form_container').on("click",".gdicon-setting,span.field_name", function () {
-            var id = jQuery(this).closest('.field-block').attr('data-field-id');
-            var form = jQuery('.gdfrm_edit_form_container').attr('data-form');
-            var field_cont = jQuery(this).closest('.field-block');
-            jQuery('.field-block').removeClass('gdfrm_active');
-            field_cont.addClass('gdfrm_active');
+    jQuery('.gdfrm_edit_form_container').on("click", ".gdicon-setting,span.field_name", function () {
+        var id = jQuery(this).closest('.field-block').attr('data-field-id');
+        var form = jQuery('.gdfrm_edit_form_container').attr('data-form');
+        var field_cont = jQuery(this).closest('.field-block');
+        jQuery('.field-block').removeClass('gdfrm_active');
+        field_cont.addClass('gdfrm_active');
 
 
         jQuery('#type-blocks-list').hide();
 
-            jQuery('.settings-block').hide();
+        jQuery('.settings-block').hide();
 
-            jQuery('.settings-block[data-field-id='+id+']').toggle();
+        jQuery('.settings-block[data-field-id=' + id + ']').toggle();
 
-            jQuery('.left-col').animate({
-                left: '0',
-            } , 200 ,function () {
-                jQuery('.right-col').animate({
-                    right: '0',
-                }, 200 , function () {
-                });
-            } );
+        jQuery('.left-col').animate({
+            left: '0',
+        }, 200, function () {
+            jQuery('.right-col').animate({
+                right: '0',
+            }, 200, function () {
+            });
+        });
     });
 
     /* position add field and hide rightcol buttons */
     var rightcol_width = jQuery('.right-col').outerWidth();
-    jQuery('.hide-rightcol,.add-field-rightcol').css('right',rightcol_width+'px');
+    jQuery('.hide-rightcol,.add-field-rightcol').css('right', rightcol_width + 'px');
 
     jQuery(window).resize(function () {
         var rightcol_width = jQuery('.right-col').outerWidth();
-        jQuery('.hide-rightcol,.add-field-rightcol').css('right',rightcol_width+'px');
+        jQuery('.hide-rightcol,.add-field-rightcol').css('right', rightcol_width + 'px');
     })
 
     /* open add new field container */
-    jQuery('.gdfrm_edit_form_container').on("click","#add-new-field, .add-field-rightcol", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", "#add-new-field, .add-field-rightcol", function () {
 
         jQuery('#type-blocks-list').show();
 
@@ -164,47 +163,47 @@ jQuery(document).ready(function(){
 
         jQuery('.left-col').animate({
             left: '0',
-        } , 200 ,function () {
+        }, 200, function () {
             jQuery('.right-col').animate({
                 right: '0',
-            }, 200 , function () {
+            }, 200, function () {
 
             });
-        } );
+        });
     });
 
     /* close rightcol */
-    jQuery('.gdfrm_edit_form_container').on("click",".hide-rightcol", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".hide-rightcol", function () {
         jQuery('.right-col').animate({
             right: '-765px',
-        } , 200 ,function () {
+        }, 200, function () {
             jQuery('.left-col').animate({
                 left: '25%',
-            }, 200 );
-        } );
+            }, 200);
+        });
     });
 
 
     /* add field with ajax */
-    jQuery('.gdfrm_edit_form_container').on("click",".right-col .type-block", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".right-col .type-block", function () {
         var _this = jQuery(this);
         var type_id = _this.attr('type-id');
         var id = jQuery('#form_id').val();
         var type_name = _this.text();
         var order = jQuery('.gdfrm_content #fields-list .field-block').length;
 
-        if(_this.hasClass('pro-field')){
+        if (_this.hasClass('pro-field')) {
             alert('This is a Pro Field');
             return false;
         }
 
-        var single_fields = ['Recaptcha','Captcha','Buttons'];
-        var reload_fields = ['Html','Address'];
+        var single_fields = ['Recaptcha', 'Captcha', 'Buttons'];
+        var reload_fields = ['Html', 'Address'];
 
-        var number_of_fieldtype = jQuery('.field-block[data-field-type='+type_id+']').length;
+        var number_of_fieldtype = jQuery('.field-block[data-field-type=' + type_id + ']').length;
 
-        if(single_fields.includes(type_name) &&  number_of_fieldtype>=1) {
-            alert('You Can Have Only 1 '+type_name+' Field in a Form');
+        if (single_fields.includes(type_name) && number_of_fieldtype >= 1) {
+            alert('You Can Have Only 1 ' + type_name + ' Field in a Form');
             return false;
         }
 
@@ -213,7 +212,7 @@ jQuery(document).ready(function(){
             nonce: field.saveNonce,
             form: id,
             type: type_id,
-            type_name :type_name,
+            type_name: type_name,
             order: order
         };
 
@@ -222,7 +221,7 @@ jQuery(document).ready(function(){
                 jQuery('.gdfrm_content #fields-list').append(response.fieldBlock);
                 jQuery("#settings-list").append(response.settingsBlock);
 
-                if(reload_fields.includes(type_name)){
+                if (reload_fields.includes(type_name)) {
                     location.reload();
                 }
 
@@ -235,7 +234,7 @@ jQuery(document).ready(function(){
     });
 
     /* add single option to checkbox,radio,select */
-    jQuery('.gdfrm_edit_form_container').on("click",".gdfrm-add-option", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".gdfrm-add-option", function () {
         var container = jQuery(this).closest('.settings-block').find('.options');
 
         var field_id = jQuery(this).closest('.settings-block').attr('data-field-id');
@@ -257,7 +256,7 @@ jQuery(document).ready(function(){
     });
 
     /* remove option */
-    jQuery('.gdfrm_edit_form_container').on("click",".gdfrm-remove-option", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".gdfrm-remove-option", function () {
         var option = jQuery(this).attr('data-option');
         var row = jQuery(this).closest('.option');
 
@@ -278,17 +277,17 @@ jQuery(document).ready(function(){
     });
 
     /* open import options block */
-    jQuery('.gdfrm_edit_form_container').on("click","i.gdfrm-import-options", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", "i.gdfrm-import-options", function () {
         jQuery(this).closest('.settings-block').find('.import-block').show();
     });
 
     /* close import options block */
-    jQuery('.gdfrm_edit_form_container').on("click",".cancel", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", ".cancel", function () {
         jQuery(this).closest('.settings-block').find('.import-block').hide();
     });
 
     /* import options to checkbox,radio and selectbox fields */
-    jQuery('.gdfrm_edit_form_container').on("click","span.import-options", function () {
+    jQuery('.gdfrm_edit_form_container').on("click", "span.import-options", function () {
         var options = jQuery(this).closest('.import-block').find('textarea').val();
 
         var field_id = jQuery(this).closest('.settings-block').attr('data-field-id');
@@ -318,28 +317,28 @@ jQuery(document).ready(function(){
     /* imageselect field */
     var mediaUploader;
 
-    jQuery('.gdfrm_content').on('click','span.add-options',function (e) {
+    jQuery('.gdfrm_content').on('click', 'span.add-options', function (e) {
         e.preventDefault();
 
         var container = jQuery(this).closest('.settings-block').find('.options');
 
         var field_id = jQuery(this).closest('.settings-block').attr('data-field-id');
 
-        if( mediaUploader ){
+        if (mediaUploader) {
             mediaUploader.open();
             return;
         }
 
         mediaUploader = wp.media.frames.file_frame = wp.media({
-            'title'    : 'Choose Image',
-            'button'   :{
-                'text':'Choose Picture'
+            'title': 'Choose Image',
+            'button': {
+                'text': 'Choose Picture'
             },
-            'multiple' : false
+            'multiple': false
         })
 
         // When an image is selected in the media frame...
-        mediaUploader.on( 'select', function() {
+        mediaUploader.on('select', function () {
 
             // Get media attachment details from the frame state
             var attachment = mediaUploader.state().get('selection').first().toJSON();
@@ -347,7 +346,7 @@ jQuery(document).ready(function(){
                 action: "gdfrm_add_field_option",
                 nonce: field.addOptionNonce,
                 field: field_id,
-                attachment : attachment
+                attachment: attachment
             };
             jQuery.post(ajaxurl, data, function (response) {
                 if (response.success) {
@@ -366,7 +365,7 @@ jQuery(document).ready(function(){
     jQuery('select.select2').select2();
 
 
-    window.onload = function() {
+    window.onload = function () {
         window.addEventListener("beforeunload", function (e) {
             if (formSubmitting) {
                 return undefined;

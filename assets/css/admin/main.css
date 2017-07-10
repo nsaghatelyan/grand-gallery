@@ -230,7 +230,7 @@ body {
 }
 
 #form_name {
-    width: 100%;
+    width: 90%;
     color: #676767;
     font-family: Nunito;
     font-size: 35px;
@@ -242,7 +242,7 @@ body {
     background: transparent;
 }
 
-#gdfrm-new-form,
+#gdgallery-new-gallery,
 #gdfrm-templates {
     display: inline-block;
     padding: 10px 15px;
@@ -257,7 +257,7 @@ body {
     float: right;
 }
 
-#gdfrm-new-form:hover,
+#gdgallery-new-gallery:hover,
 #gdfrm-templates:hover {
     background: #5f7df5;
     color: #fff;
@@ -1516,6 +1516,23 @@ label > img {
 label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
     border: 2px solid #2279e0;
     background-color: rgb(216, 223, 255);
+}
+
+.gdgallery-save-buttom {
+    float: right;
+    background: #5191f6;
+    outline: none;
+    box-shadow: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid #3b7ade;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.gdgallery-save-buttom:hover {
+    background: #3b7ade;
 }
 
 @media all and (max-width: 1650px) {

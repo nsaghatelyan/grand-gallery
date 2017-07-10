@@ -174,7 +174,6 @@ jQuery(document).ready(function () {
 
     jQuery('.add_media').on('click', function () {
         _custom_media = false;
-
     });
 
     jQuery(".wp-media-buttons-icon").click(function () {
@@ -190,6 +189,72 @@ jQuery(document).ready(function () {
         gdgalleryModalGallery.show('gdgallery-addvideo-modal');
     });
 
+    function galleryImgSubmitButton(pressbutton) {
+        if (!document.getElementById('name').value) {
+            alert("Name is required.");
+            return;
+        }
+
+        if (!((jQuery('#huge_it_sl_effects').val() == 1) || (jQuery('#huge_it_sl_effects').val() == 3))) if (jQuery('#content_per_page').val() < 1) {
+            alert("Images Per Page must be greater than 0.");
+            return;
+        }
+
+        document.getElementById("adminForm").action = document.getElementById("adminForm").action + "&task=" + pressbutton;
+        document.getElementById("adminForm").submit();
+    }
+
 })
+
+
+jQuery(document).ready(function () {
+    var doingAjax = false;
+    jQuery('#gdgallery_images_form').on('submit', function (e) {
+        e.preventDefault();
+
+        if (doingAjax) return false;
+
+        var form = jQuery('#gdgallery_images_form'),
+            submitBtn = form.find('input[type=submit]'),
+            formData = form.serialize();
+
+        console.log(formData);
+
+        jQuery.ajax({
+            url: ajaxurl,
+            method: 'post',
+            data: formData,
+            dataType: 'text',
+            beforeSend: function () {
+                doingAjax = true;
+                submitBtn.attr("disabled", 'disabled');
+                submitBtn.parent().find(".spinner").css("visibility", "visible");
+            }
+        }).always(function () {
+            doingAjax = false;
+            submitBtn.removeAttr("disabled");
+            submitBtn.parent().find(".spinner").css("visibility", "hidden");
+        }).done(function (response) {
+            if (response === 'ok') {
+                toastr.success('Saved Successfully');
+            } else {
+                toastr.error('Error while saving');
+            }
+        }).fail(function () {
+            toastr.error('Error while saving');
+        });
+
+        return false;
+    });
+
+    jQuery('.settings-section-heading').on('click', function () {
+        var section = jQuery(this).closest('.settings-section-wrap');
+        section.toggleClass('active');
+
+
+    });
+
+});
+
 
 

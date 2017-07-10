@@ -2,8 +2,6 @@
 
 namespace GDGALLERY\Controllers\Admin;
 
-use GDGALLERY\Models\Fields\Field;
-use GDGALLERY\Models\Fields\FieldOption;
 use GDGALLERY\Models\Form;
 use GDGALLERY\Models\Submission;
 
@@ -15,35 +13,35 @@ class AjaxController
 {
     public static function init()
     {
-        add_action('wp_ajax_gdfrm_save_form', array(__CLASS__, 'saveForm'));
+        add_action('wp_ajax_gdgallery_save_gallery', array(__CLASS__, 'saveGallery'));
 
-        add_action('wp_ajax_gdfrm_remove_form', array(__CLASS__, 'removeForm'));
+        add_action('wp_ajax_gdgallery_remove_form', array(__CLASS__, 'removeForm'));
 
-        add_action('wp_ajax_gdfrm_save_form_settings', array(__CLASS__, 'saveFormSettings'));
+        add_action('wp_ajax_gdgallery_save_form_settings', array(__CLASS__, 'saveFormSettings'));
 
-        add_action('wp_ajax_gdfrm_save_field', array(__CLASS__, 'saveField'));
+        add_action('wp_ajax_gdgallery_save_field', array(__CLASS__, 'saveField'));
 
-        add_action('wp_ajax_gdfrm_remove_field', array(__CLASS__, 'removeField'));
+        add_action('wp_ajax_gdgallery_remove_field', array(__CLASS__, 'removeField'));
 
-        add_action('wp_ajax_gdfrm_add_field_option', array(__CLASS__, 'addFieldOption'));
+        add_action('wp_ajax_gdgallery_add_field_option', array(__CLASS__, 'addFieldOption'));
 
-        add_action('wp_ajax_gdfrm_remove_field_option', array(__CLASS__, 'removeFieldOption'));
+        add_action('wp_ajax_gdgallery_remove_field_option', array(__CLASS__, 'removeFieldOption'));
 
-        add_action('wp_ajax_gdfrm_import_options', array(__CLASS__, 'importOptions'));
+        add_action('wp_ajax_gdgallery_import_options', array(__CLASS__, 'importOptions'));
 
-        add_action('wp_ajax_gdfrm_duplicate_field', array(__CLASS__, 'duplicateField'));
+        add_action('wp_ajax_gdgallery_duplicate_field', array(__CLASS__, 'duplicateField'));
 
-        add_action('wp_ajax_gdfrm_save_settings', array(__CLASS__, 'savePluginSettings'));
+        add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'savePluginSettings'));
 
-        add_action('wp_ajax_gdfrm_remove_submission', array(__CLASS__, 'removeSubmission'));
+        add_action('wp_ajax_gdgallery_remove_submission', array(__CLASS__, 'removeSubmission'));
 
-        add_action('wp_ajax_gdfrm_read_submission', array(__CLASS__, 'readSubmission'));
+        add_action('wp_ajax_gdgallery_read_submission', array(__CLASS__, 'readSubmission'));
     }
 
 
-    public static function saveForm()
+    public static function saveGallery()
     {
-        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdfrm_save_form')) {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
             die('security check failed');
         }
 

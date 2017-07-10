@@ -21,7 +21,11 @@ class AdminAssetsController
 
         wp_enqueue_style('fontAwesome', \GDGallery()->pluginUrl() . '/assets/css/font-awesome.min.css', false);
 
+        wp_enqueue_style('toastrjs', \GDGallery()->pluginUrl() . '/assets/css/admin/toastr.css');
+
+
         if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['settings'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
+
 
             wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/assets/css/select2.min.css', false);
 
@@ -61,6 +65,8 @@ class AdminAssetsController
             wp_enqueue_script('jquery');
 
             wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/assets/js/jquery-ui.min.js');
+
+            wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/assets/js/admin/toastr.min.js');
 
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
                 wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);

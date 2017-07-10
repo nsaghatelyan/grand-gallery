@@ -20,7 +20,7 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
 
         <div class="gdfrm-list-header">
             <div>
-                <a href="<?php echo $new_gallery_link; ?>" id="gdfrm-new-form">New Gallery</a>
+                <a href="<?php echo $new_gallery_link; ?>" id="gdgallery-new-gallery">New Gallery</a>
             </div>
 
         </div>

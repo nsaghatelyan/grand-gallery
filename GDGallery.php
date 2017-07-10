@@ -70,7 +70,8 @@ if (!class_exists('GDGallery')) :
             $this->constants();
             $this->migrationClasses = array(
                 'GDGallery\Database\Migrations\CreateGalleryTable',
-                'GDGallery\Database\Migrations\CreateImageTable'
+                'GDGallery\Database\Migrations\CreateImageTable',
+                'GDGallery\Database\Migrations\CreateSettingsTable'
             );
             add_action('init', array($this, 'init'), 0);
         }
@@ -129,6 +130,7 @@ if (!class_exists('GDGallery')) :
             }
 
             foreach ($this->migrationClasses as $className) {
+                debug::trace($className);
                 if (method_exists($className, 'run')) {
                     call_user_func(array($className, 'run'));
                 } else {
