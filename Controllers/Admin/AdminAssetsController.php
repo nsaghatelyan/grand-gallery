@@ -73,7 +73,7 @@ class AdminAssetsController
 
                 wp_enqueue_script('gdfrmAdminSelect2', \GDForm()->pluginUrl() . '/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
 
-                wp_enqueue_script('gdfrmAdminFormSave', \GDGallery()->pluginUrl() . '/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
+                wp_enqueue_script('gdgalleryAdminGallerySave', \GDGallery()->pluginUrl() . '/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
 
             }
 
@@ -105,15 +105,15 @@ class AdminAssetsController
     public static function localizeScripts()
     {
 
-        wp_localize_script('gdfrmAdminFormSave', 'formSave', array(
-            'nonce' => wp_create_nonce('gdfrm_save_form'),
+        wp_localize_script('gdgalleryAdminGallerySave', 'gallerySave', array(
+            'nonce' => wp_create_nonce('gdgallery_save_gallery'),
         ));
 
         wp_localize_script('gdfrmInlinePopup', 'inlinePopup', array(
             'nonce' => wp_create_nonce('gdfrm_save_shortcode_options'),
         ));
 
-        wp_localize_script('gdfrmAdminFormSave', 'field', array(
+        wp_localize_script('gdgalleryAdminGallerySave', 'field', array(
             'removeNonce' => wp_create_nonce('gdfrm_remove_field'),
             'duplicateNonce' => wp_create_nonce('gdfrm_duplicate_field'),
             'saveNonce' => wp_create_nonce('gdfrm_save_field'),

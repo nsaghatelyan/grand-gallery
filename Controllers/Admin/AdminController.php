@@ -31,7 +31,7 @@ class AdminController
 
         add_action('admin_menu', array($this, 'adminMenu'), 1);
 
-        add_action('admin_init', array(__CLASS__, 'deleteForm'), 1);
+        add_action('admin_init', array(__CLASS__, 'deleteGallery'), 1);
 
         add_action('admin_init', array(__CLASS__, 'duplicateForm'), 1);
 
@@ -183,29 +183,29 @@ class AdminController
 
     }
 
-    public static function deleteForm()
+    public static function deleteGallery()
     {
-        if (!self::isRequest('gdfrm', 'remove_form', 'GET')) {
+        if (!self::isRequest('gdgallery', 'remove_gallery', 'GET')) {
             return;
         }
 
         if (!isset($_GET['id'])) {
-            wp_die(__('"id" parameter is required', GDFRM_TEXT_DOMAIN));
+            wp_die(__('"id" parameter is required', GDGALLERY_TEXT_DOMAIN));
         }
 
         $id = $_GET['id'];
 
         if (absint($id) != $id) {
-            wp_die(__('"id" parameter must be non negative integer', GDFRM_TEXT_DOMAIN));
+            wp_die(__('"id" parameter must be non negative integer', GDGALLERY_TEXT_DOMAIN));
         }
 
-        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdfrm_remove_form_' . $id)) {
-            wp_die(__('Security check failed', GDFRM_TEXT_DOMAIN));
+        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_remove_gallery_' . $id)) {
+            wp_die(__('Security check failed', GDGALLERY_TEXT_DOMAIN));
         }
 
-        Form::delete($id);
+        Gallery::delete($id);
 
-        $location = admin_url('admin.php?page=gdfrm');
+        $location = admin_url('admin.php?page=gdgallery');
 
 
         header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
@@ -218,13 +218,13 @@ class AdminController
 
     public static function DuplicateForm()
     {
-        if (!self::isRequest('gdfrm', 'duplicate_form', 'GET')) {
+        if (!self::isRequest('gdgallery', 'duplicate_gallery', 'GET')) {
             return;
         }
 
         if (!isset($_GET['id'])) {
 
-            \GDGALLERY()->Admin->printError(__('Missing "id" parameter.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
@@ -232,30 +232,32 @@ class AdminController
 
         if (!$id) {
 
-            \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
-        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdfrm_duplicate_form_' . $id)) {
+        if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_duplicate_gallery_' . $id)) {
 
-            \GDGALLERY()->Admin->printError(__('Security check failed.', GDFRM_TEXT_DOMAIN));
+            \GDGALLERY()->Admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
-        $form = new Form(array('Id' => $id));
+        ////  continue here
 
-        $fields = $form->getFields();
+        $gallery = new Gallery(array('Id' => $id));
 
-        $form->unsetId();
+        $fields = $gallery->getFields();
 
-        $form->setName('Copy of ' . $form->getName());
+        $gallery->unsetId();
 
-        $form = $form->save();
+        $gallery->setName('Copy of ' . $gallery->getName());
+
+        $gallery = $gallery->save();
 
         /**
          * after the form is created we need to redirect user to the edit page
          */
-        if ($form && is_int($form)) {
+        if ($gallery && is_int($gallery)) {
             /* copy form fields to the new form */
             if (!empty($fields)) {
                 foreach ($fields as $field) {
@@ -267,9 +269,9 @@ class AdminController
                 }
             }
 
-            $location = admin_url('admin.php?page=gdfrm&task=edit_form&id=' . $form);
+            $location = admin_url('admin.php?page=gdfrm&task=edit_form&id=' . $gallery);
 
-            $location = wp_nonce_url($location, 'gdfrm_edit_form_' . $form);
+            $location = wp_nonce_url($location, 'gdfrm_edit_form_' . $gallery);
 
             $location = html_entity_decode($location);
 

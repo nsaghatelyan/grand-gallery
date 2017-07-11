@@ -189,6 +189,11 @@ jQuery(document).ready(function () {
         gdgalleryModalGallery.show('gdgallery-addvideo-modal');
     });
 
+    jQuery(".gdgallery_edit_gallery_images").click(function (e) {
+        e.preventDefault();
+        gdgalleryModalGallery.show('gdgallery-editimages-modal');
+    });
+
     function galleryImgSubmitButton(pressbutton) {
         if (!document.getElementById('name').value) {
             alert("Name is required.");
@@ -216,14 +221,19 @@ jQuery(document).ready(function () {
 
         var form = jQuery('#gdgallery_images_form'),
             submitBtn = form.find('input[type=submit]'),
-            formData = form.serialize();
-
-        console.log(formData);
+            formData = form.serialize(),
+            general_data = {
+                action: "gdgallery_save_gallery",
+                nonce: gallerySave.nonce,
+                gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
+                gallery_name: jQuery("input[name=gdgallery_name]").val(),
+                formdata: formData
+            };
 
         jQuery.ajax({
             url: ajaxurl,
             method: 'post',
-            data: formData,
+            data: general_data,
             dataType: 'text',
             beforeSend: function () {
                 doingAjax = true;
@@ -235,7 +245,7 @@ jQuery(document).ready(function () {
             submitBtn.removeAttr("disabled");
             submitBtn.parent().find(".spinner").css("visibility", "hidden");
         }).done(function (response) {
-            if (response === 'ok') {
+            if (response == 1) {
                 toastr.success('Saved Successfully');
             } else {
                 toastr.error('Error while saving');
@@ -250,8 +260,48 @@ jQuery(document).ready(function () {
     jQuery('.settings-section-heading').on('click', function () {
         var section = jQuery(this).closest('.settings-section-wrap');
         section.toggleClass('active');
+    });
+
+    jQuery('#gdgallery_edited_images_form').on('submit', function (e) {
+        e.preventDefault();
+        var form = jQuery('#gdgallery_edited_images_form'),
+            submitBtn = form.find('input[type=submit]'),
+            formData = form.serialize(),
+            general_data = {
+                action: "gdgallery_save_gallery_images",
+                nonce: gallerySave.nonce,
+                gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
+                formdata: formData
+            };
+
+        console.log(general_data);
 
 
+        jQuery.ajax({
+            url: ajaxurl,
+            method: 'post',
+            data: general_data,
+            dataType: 'text',
+            beforeSend: function () {
+                doingAjax = true;
+                submitBtn.attr("disabled", 'disabled');
+                submitBtn.parent().find(".spinner").css("visibility", "visible");
+            }
+        }).always(function () {
+            doingAjax = false;
+            submitBtn.removeAttr("disabled");
+            submitBtn.parent().find(".spinner").css("visibility", "hidden");
+        }).done(function (response) {
+            if (response == 1) {
+                toastr.success('Saved Successfully');
+            } else {
+                toastr.error('Error while saving');
+            }
+        }).fail(function () {
+            toastr.error('Error while saving');
+        });
+
+        return false;
     });
 
 });

@@ -27,6 +27,11 @@ body {
     background: #f3f4f8;
 }
 
+.gdgallery_clearfix {
+    clear: both;
+    display: block;
+}
+
 #wpcontent {
     padding-left: 0;
 }
@@ -1533,6 +1538,46 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 
 .gdgallery-save-buttom:hover {
     background: #3b7ade;
+}
+
+.quick_edit_table {
+    width: 100%;
+}
+
+.quick_edit_table img {
+    max-width: 150px;
+}
+
+.quick_edit_table td {
+    padding: 5px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.quick_edit_table td label {
+    display: block;
+}
+
+.quick_edit_table td input, .quick_edit_table td textarea, .quick_edit_table td select {
+    width: 100%;
+    padding: 7px;
+    border: 1px solid #b7b4b4;
+    box-shadow: none;
+    border-radius: 3px;
+}
+
+.quick_edit_table td select {
+    padding: 0 7px;
+    height: 35px;
+}
+
+.gdgallery_items_section h3 {
+    max-width: 90%;
+    float: left;
+}
+
+.gdgallery_edit_gallery_images {
+    float: right;
+    margin: 15px;
 }
 
 @media all and (max-width: 1650px) {

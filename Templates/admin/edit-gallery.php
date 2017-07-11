@@ -28,7 +28,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
         <div class="gdfrm_nav">
             <div class="form_title_div">
                 <input type="text" id="form_name" name="gdgallery_name" value="<?php echo $gallery->getName(); ?>">
-                <input type="hidden" id="form_id" name="gdgallery_id" value="<?php echo $id ?>">
+                <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery" value="<?php echo $id ?>">
                 <input type="submit" value="Save"
                        id="gdgallery-save-buttom"
                        class="gdgallery-save-buttom">
@@ -70,18 +70,27 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                             <li>
                                 <h4>Display Type</h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type_<?= $id ?>">
-                                    <option val="0">Show All</option>
-                                    <option val="1">Load more</option>
-                                    <option val="2">Pagination</option>
+                                    <option value="0">Show All</option>
+                                    <option value="1">Load more</option>
+                                    <option value="2">Pagination</option>
                                 </select>
                             </li>
                             <li>
                                 <h4>Hover effect</h4>
-                                <select name="gdgallery_hovver_effect"
-                                        id="gdgallery_hovver_effect_<?= $id ?>">
-                                    <option val="0">effect 1</option>
-                                    <option val="1">effect 2</option>
-                                    <option val="2">effect 3</option>
+                                <select name="gdgallery_hover_effect"
+                                        id="gdgallery_hover_effect_<?= $id ?>">
+                                    <option value="0">effect 1</option>
+                                    <option value="1">effect 2</option>
+                                    <option value="2">effect 3</option>
+                                </select>
+                            </li>
+                            <li>
+                                <h4>Position</h4>
+                                <select name="gdgallery_position"
+                                        id="gdgallery_position_<?= $id ?>">
+                                    <option value="0">left</option>
+                                    <option value="1">center</option>
+                                    <option value="2">right</option>
                                 </select>
                             </li>
                         </ul>
@@ -93,7 +102,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                             <div class="gdgallery_view_item">
                                 <label>
                                     <input type="radio" <?php if ($gallery_data->view_type == $key) echo "checked" ?>
-                                           name="gdgallery_view_style" value="<?= $key ?>"/>
+                                           name="gdgallery_view_type" value="<?= $key ?>"/>
                                     <img src="<?= $view[1] ?>">
                                     <p><?= $view[0] ?></p>
                                 </label>
@@ -103,9 +112,9 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     </div>
                     <div id="gdgallery_custom_css">
                         <h4>For Gallery Container</h4>
-                        <textarea cols="8" name="gallerry_container_css"></textarea>
+                        <textarea cols="8" name="gdgallery_gallery_container_css"></textarea>
                         <h4>For Single Item</h4>
-                        <textarea cols="8" name="single_item_css"></textarea>
+                        <textarea cols="8" name="gdgallery_single_item_css"></textarea>
                     </div>
                     <div id="gdgallery_get_shortcode">
                         <div class="gdgallery_shortcode_types">
@@ -139,6 +148,8 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
             </div>
             <div class="gdgallery_items_section">
                 <h3>Gallery Content</h3>
+                <a href="#" class="gdgallery_edit_gallery_images">quick edit</a>
+                <div class="gdgallery_clearfix"></div>
                 <div class="gdgallery_items_list">
                     <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
                         <div class="gdgallery_add_new_plus"></div>
@@ -171,6 +182,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
     </div>
 </form>
 <?php \GDGallery\Helpers\View::render('admin/add-video.php'); ?>
+<?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

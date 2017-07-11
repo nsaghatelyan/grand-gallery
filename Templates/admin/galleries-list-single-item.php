@@ -17,7 +17,7 @@ $RemoveUrl = wp_nonce_url($RemoveUrl, 'gdgallery_remove_gallery_' . $GalleryId);
 
 $DuplicateUrl = admin_url('admin.php?page=gdgallery&task=duplicate_gallery&id=' . $GalleryId);
 
-$DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdfrm_duplicate_gallery_' . $GalleryId);
+$DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $GalleryId);
 
 
 ?>

@@ -15,10 +15,10 @@
 }
 
 .-gdgallery-modal-content {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     position: relative;
-    top: 15%;
+    top: 5%;
     min-width: 400px;
     background: #fff;
     border-radius: 3px;
@@ -32,6 +32,8 @@
 
 .-gdgallery-modal-content-body {
     padding: 15px 35px;
+    max-height: 700px;
+    overflow-y: auto;
 }
 
 .-gdgallery-modal-content-header {

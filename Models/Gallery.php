@@ -30,7 +30,7 @@ class Gallery extends Model
     private $View_style;
 
     protected static $dbFields = array(
-        'name', 'description', 'ordering', 'display_type', 'position', 'hover_style', 'ctime'
+        'name', 'description', 'display_type', 'position', 'hover_style', 'custom_css'
     );
 
     public function __construct($args = array())
@@ -55,6 +55,7 @@ class Gallery extends Model
         }
 
     }
+
 
     public function setId($id)
     {
@@ -141,6 +142,32 @@ class Gallery extends Model
         $this->Gallery = $galleries;
 
         return $this->Gallery;
+    }
+
+    public function saveGallery($data)
+    {
+        global $wpdb;
+        $result = $wpdb->update(static::getTableName(), $data, array(static::$primaryKey => $data["id_gallery"]));
+
+        if (false !== $result) {
+            return static::$primaryKey;
+        }
+
+        return false;
+    }
+
+    public function saveGalleryImages($data)
+    {
+        global $wpdb;
+
+        foreach ($data as $key => $val) {
+            if ($key != "id_gallery") {
+                foreach ($val as $k => $v) {
+                    $wpdb->update($wpdb->prefix . "gdgalleryimages", array($key => $v), array(static::$primaryKey => $data["id_gallery"], "id_image" => $k));
+                }
+            }
+        }
+        return static::$primaryKey;
     }
 
     public function setViewStyles()

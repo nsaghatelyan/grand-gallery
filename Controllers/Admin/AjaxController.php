@@ -3,6 +3,7 @@
 namespace GDGALLERY\Controllers\Admin;
 
 use GDGALLERY\Models\Form;
+use GDGallery\Models\Gallery;
 use GDGALLERY\Models\Submission;
 
 /**
@@ -14,6 +15,8 @@ class AjaxController
     public static function init()
     {
         add_action('wp_ajax_gdgallery_save_gallery', array(__CLASS__, 'saveGallery'));
+
+        add_action('wp_ajax_gdgallery_save_gallery_images', array(__CLASS__, 'saveGalleryImages'));
 
         add_action('wp_ajax_gdgallery_remove_form', array(__CLASS__, 'removeForm'));
 
@@ -45,50 +48,50 @@ class AjaxController
             die('security check failed');
         }
 
-        $form_name = $_REQUEST['form_name'];
-        $form_id = absint($_REQUEST['form_id']);
+        $gallery_id = absint($_REQUEST['gallery_id']);
 
-        $form_data = $_REQUEST['formData'];
+        $gallery_data = str_replace("gdgallery_", "", $_REQUEST["formdata"]);
 
-        $fields_settings = array();
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+        $gallery_data_arr = array();
+        parse_str($gallery_data, $gallery_data_arr);
 
-        foreach ($form_data as $input) {
-            $name = $input['name'];
-            $value = $input['value'];
+        $gallery_data_arr["custom_css"] = $gallery_data_arr["gallery_container_css"] . " " . $gallery_data_arr["single_item_css"];
+        unset($gallery_data_arr["gallery_container_css"]);
+        unset($gallery_data_arr["single_item_css"]);
 
-            if (isset($fields_settings[$name])) {
-                $fields_settings[$name] .= ',' . $value;
-            } else {
-                $fields_settings[$name] = $value;
-            }
-        }
-
-
-        $form = new Form(array('Id' => $form_id));
-
-        $form_fields = $form->getFields();
-
-        foreach ($form_fields as $field) {
-
-            $field_id = $field->getId();
-
-            $field->setProperties($fields_settings, $field_id);
-
-            $field->save();
-
-        }
-
-        $form->setName($form_name);
-
-        $saved = $form->save();
-
-        if ($saved) {
-            echo json_encode(array("success" => 1));
+        $updated = $gallery->saveGallery($gallery_data_arr);
+        if ($updated) {
+            echo 1;
             die();
         } else {
             die('something went wrong');
         }
+    }
 
+    public static function saveGalleryImages()
+    {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
+            die('security check failed');
+        }
+
+        $gallery_id = absint($_REQUEST['gallery_id']);
+
+        $gallery_data = str_replace("gdgallery_images_", "", $_REQUEST["formdata"]);
+
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+        $gallery_data_arr = array();
+        parse_str($gallery_data, $gallery_data_arr);
+
+
+        $updated = null;
+        $updated = $gallery->saveGalleryImages($gallery_data_arr);
+        if ($updated) {
+            echo 1;
+            die();
+        } else {
+            die('something went wrong');
+        }
     }
 
     public static function removeForm()
