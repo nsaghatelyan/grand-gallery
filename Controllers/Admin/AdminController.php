@@ -49,7 +49,7 @@ class AdminController
         $this->Pages['main_page'] = add_menu_page(__('Grand Gallery', GDGALLERY_TEXT_DOMAIN), __('Grand Gallery', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
             $this,
             'mainPage'
-        ), \GDGALLERY()->pluginUrl() . '/assets/images/gallery_logo.png');
+        ), \GDGALLERY()->pluginUrl() . '/resources/assets/images/gallery_logo.png');
 
         $this->Pages['styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
             $this,

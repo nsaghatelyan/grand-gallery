@@ -5,18 +5,16 @@
  * Date: 7/3/2017
  * Time: 1:21 PM
  */
-namespace debug;
+namespace GDGallery;
 
-define("DEBUG_ENABLE", true);
-define("ACCESS_IP", "127.0.0.1");
 
-class debug
+class Debug
 {
     public static function trace($arr)
     {
         $client_ip = self::get_client_ip();
 
-        if ($client_ip == ACCESS_IP && DEBUG_ENABLE === true) {
+        if ($client_ip == GDGALLERY_ACCESS_IP && GDGALLERY_DEBUG_ENABLE === true) {
             echo "<div><pre style='background-color: #ffff82;padding: 10px;'>";
             print_r($arr);
             echo "</pre></div>";

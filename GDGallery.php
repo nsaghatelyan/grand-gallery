@@ -88,6 +88,8 @@ if (!class_exists('GDGallery')) :
             define('GDGALLERY_TEMPLATES_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR);
             define('GDGALLERY_TEMPLATES_URL', untrailingslashit($this->pluginUrl()) . '/templates/');
             define('GDGALLERY_TEXT_DOMAIN', 'GDGALLERY');
+            define("GDGALLERY_DEBUG_ENABLE", true);
+            define("GDGALLERY_ACCESS_IP", "127.0.0.1");
         }
 
 
@@ -130,7 +132,6 @@ if (!class_exists('GDGallery')) :
             }
 
             foreach ($this->migrationClasses as $className) {
-                debug::trace($className);
                 if (method_exists($className, 'run')) {
                     call_user_func(array($className, 'run'));
                 } else {

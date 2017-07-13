@@ -17,7 +17,7 @@ class View
             $path = \GDGallery()->viewPath();
         }
         if (!$defaultPath) {
-            $defaultPath = \GDGallery()->pluginPath() . '/templates/';
+            $defaultPath = \GDGallery()->pluginPath() . '/resources/views/';
         }
 
         $template = locate_template(

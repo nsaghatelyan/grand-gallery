@@ -12,7 +12,6 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-require 'debug.php';
 
 require 'autoload.php';
 
