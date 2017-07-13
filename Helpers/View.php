@@ -42,6 +42,7 @@ class View
      */
     public static function render($view, $args = array(), $path = '', $defaultPath = '')
     {
+
         if ($args && is_array($args)) {
 
             extract($args);

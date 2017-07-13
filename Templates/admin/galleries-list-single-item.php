@@ -36,7 +36,7 @@ $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $Ga
         <a class="gdfrm_delete_form" href="<?php echo $RemoveUrl; ?>"><i class="gdicon gdicon-remove"
                                                                          aria-hidden="true"></i></a>
         <a class="gdfrm_preview_form" target="_blank"
-           href="<?php echo \GDForm\Controllers\Frontend\FormPreviewController::previewUrl($gallery->getId(), false); ?>"><i
+           href="<?php // echo \GDForm\Controllers\Frontend\FormPreviewController::previewUrl($gallery->getId(), false); ?>"><i
                     class="gdicon gdicon-eye"
                     aria-hidden="true"></i></a>
     </td>

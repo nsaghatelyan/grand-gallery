@@ -1562,12 +1562,10 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
     padding: 7px;
     border: 1px solid #b7b4b4;
     box-shadow: none;
-    border-radius: 3px;
 }
 
 .quick_edit_table td select {
     padding: 0 7px;
-    height: 35px;
 }
 
 .gdgallery_items_section h3 {

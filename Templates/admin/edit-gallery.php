@@ -148,7 +148,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
             </div>
             <div class="gdgallery_items_section">
                 <h3>Gallery Content</h3>
-                <a href="#" class="gdgallery_edit_gallery_images">quick edit</a>
+                <?php if (!empty($items)) { ?><a href="#" class="gdgallery_edit_gallery_images">quick edit</a><?php } ?>
                 <div class="gdgallery_clearfix"></div>
                 <div class="gdgallery_items_list">
                     <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
@@ -185,8 +185,8 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
 <script>
     /* $(function () {

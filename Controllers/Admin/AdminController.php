@@ -21,6 +21,7 @@ class AdminController
 
     public function __construct()
     {
+
         /* if (!empty($_POST)) {
              \debug\debug::trace($_POST);
          }*/
@@ -50,7 +51,7 @@ class AdminController
             'mainPage'
         ), \GDGALLERY()->pluginUrl() . '/assets/images/gallery_logo.png');
 
-        $this->Pages['Styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
+        $this->Pages['styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
             $this,
             'stylesPage'
         ));
@@ -67,7 +68,7 @@ class AdminController
     public function mainPage()
     {
 
-        View::render('admin/header-banner.php');
+        View::render('admin/header-banner.php', ["key"]);
 
         if (!isset($_GET['task'])) {
 
@@ -164,7 +165,11 @@ class AdminController
 
     public function stylesPage()
     {
-        View::render('admin/styles.php');
+        View::render('admin/header-banner.php');
+
+        $builder = new SettingsController();
+
+        // View::render('admin/styles.php', ["settings" => $options]);
     }
 
 
@@ -263,7 +268,7 @@ class AdminController
                 foreach ($fields as $field) {
                     $newfield = clone $field;
 
-                    $newfield->setForm($form);
+                    $newfield->setForm($gallery);
 
                     $newfield->save();
                 }

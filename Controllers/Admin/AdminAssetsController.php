@@ -24,7 +24,7 @@ class AdminAssetsController
         wp_enqueue_style('toastrjs', \GDGallery()->pluginUrl() . '/assets/css/admin/toastr.css');
 
 
-        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['settings'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
 
 
             wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/assets/css/select2.min.css', false);
@@ -39,6 +39,10 @@ class AdminAssetsController
 
         if ($hook === \GDGallery()->Admin->Pages['settings']) {
             wp_enqueue_style('gdfrmSettings', \GDGallery()->pluginUrl() . '/assets/css/admin/settings.css');
+        }
+
+        if ($hook === \GDGallery()->Admin->Pages['styles']) {
+            wp_enqueue_style('gdgalleryStyleSettings', \GDGallery()->pluginUrl() . '/assets/css/admin/style_settings.css');
         }
 
         if ($hook === \GDGallery()->Admin->Pages['submissions']) {
@@ -58,20 +62,20 @@ class AdminAssetsController
      */
     public static function adminScripts($hook)
     {
+        wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/assets/js/jquery-ui.min.js');
         if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
             wp_enqueue_media();
 
             wp_enqueue_script('jquery');
 
-            wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/assets/js/jquery-ui.min.js');
 
             wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/assets/js/admin/toastr.min.js');
 
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
                 wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);
 
-                wp_enqueue_script('gdfrmAdminSelect2', \GDForm()->pluginUrl() . '/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
+                wp_enqueue_script('gdfrmAdminSelect2', \GDGallery()->pluginUrl() . '/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
 
                 wp_enqueue_script('gdgalleryAdminGallerySave', \GDGallery()->pluginUrl() . '/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
 

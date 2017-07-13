@@ -46,7 +46,7 @@ class AjaxController
     {
         if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
             die('security check failed');
-        }
+    }
 
         $gallery_id = absint($_REQUEST['gallery_id']);
 

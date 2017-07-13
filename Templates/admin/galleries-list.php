@@ -66,7 +66,7 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
             ));
             if (!empty($galleries)) {
                 foreach ($galleries as $gallery) {
-                    \GDGallery\Helpers\View::render('admin/galleries-list-single-item.php', array('gallery' => $gallery));
+                        \GDGallery\Helpers\View::render('admin/galleries-list-single-item.php', array('gallery' => $gallery));
                 }
             } else {
                 \GDGallery\Helpers\View::render('admin/galleries-list-no-items.php');
