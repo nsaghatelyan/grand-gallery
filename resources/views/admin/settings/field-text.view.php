@@ -6,14 +6,16 @@
  */
 
 $placeholder = isset($field['placeholder'])
-    ? 'placeholder='.$field['placeholder']
+    ? 'placeholder=' . $field['placeholder']
     : '';
+
+debug::trace($value);
 ?>
 
 <label class="input-wrap">
     <span class="settings-label"><?php
         echo $field['label'];
-        if(isset($field['help'])): ?>
+        if (isset($field['help'])): ?>
             <span class="settings-field-help">
                 <span class="settings-field-help-icon">?</span>
                 <span class="settings-field-help-text-wrap">
@@ -23,5 +25,6 @@ $placeholder = isset($field['placeholder'])
             </span>
         <?php endif;
         ?></span>
-    <input type="text" name="settings[<?php echo $fieldId; ?>]" value="<?php echo $value; ?>" <?php echo $placeholder; ?> />
+    <input type="text" name="settings[<?php echo $fieldId; ?>]"
+           value="<?php echo $value; ?>" <?php echo $placeholder; ?> />
 </label>

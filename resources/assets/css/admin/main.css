@@ -1550,24 +1550,13 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 
 .quick_edit_table td {
     padding: 5px;
-    border-bottom: 1px solid #e6e6e6;
 }
 
 .quick_edit_table td label {
     display: block;
 }
 
-.quick_edit_table td input, .quick_edit_table td textarea, .quick_edit_table td select {
-    width: 100%;
-    padding: 7px;
-    border: 1px solid #b7b4b4;
-    box-shadow: none;
-}
-
-.quick_edit_table td select {
-    padding: 0 7px;
-}
-
+.quick_edit_table td input, .quick_edit_table td textarea, .
 .gdgallery_items_section h3 {
     max-width: 90%;
     float: left;

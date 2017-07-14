@@ -22,7 +22,8 @@ class CreateSettingsTable
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `option_key` VARCHAR(200) NOT NULL,
             `option_value` TEXT,
-             PRIMARY KEY(`id`)
+             PRIMARY KEY(`id`),
+             UNIQUE KEY(`option_key`)
         )");
     }
 }

@@ -27,7 +27,7 @@
         <?php
         foreach ($fields as $fieldId => $field):
             if ($field['section'] == $key):
-                // \GDGallery\Helpers\View::render('admin/settings/field.view.php', compact('fieldId', 'field'));
+                \GDGallery\Helpers\View::render('admin/settings/field.view.php', compact('fieldId', 'field'));
             endif;
         endforeach; ?>
     </div>

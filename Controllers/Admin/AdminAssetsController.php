@@ -23,6 +23,10 @@ class AdminAssetsController
 
         wp_enqueue_style('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/toastr.css');
 
+        if ($hook === \GDGallery()->Admin->Pages['main_page']) {
+            wp_enqueue_style('gdfrmAdminStyles', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/main.css');
+        }
+
 
         if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
 
@@ -31,7 +35,7 @@ class AdminAssetsController
 
             wp_enqueue_style('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/gdgallery-modal.css', false);
 
-            wp_enqueue_style('gdfrmAdminStyles', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/main.css');
+//            wp_enqueue_style('gdgalleryBannerStyle', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/banner.css');
 
             wp_enqueue_style('roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic');
 
@@ -69,7 +73,6 @@ class AdminAssetsController
             wp_enqueue_media();
 
             wp_enqueue_script('jquery');
-
 
             wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
 

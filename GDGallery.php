@@ -38,7 +38,7 @@ if (!class_exists('GDGallery')) :
         /**
          * @var Settings
          */
-        public $Settings;
+        public $settings;
 
         /**
          * The single instance of the class.
@@ -100,7 +100,7 @@ if (!class_exists('GDGallery')) :
         {
             $this->checkVersion();
 
-            $this->Settings = new Settings();
+            $this->settings = new Settings();
 
             if (defined('DOING_AJAX')) {
                 AdminAjax::init();

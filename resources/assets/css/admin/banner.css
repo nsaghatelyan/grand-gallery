@@ -1,0 +1,59 @@
+.gdfrm_list_container .gdfrm_content,
+#gdfrm-settings .gdfrm_content,
+.grand_submissions_list_container .gdfrm_content {
+    padding: 0 30px;
+    border-top: none;
+}
+
+.gdfrm_header {
+    padding: 20px 30px 40px;
+    font-size: 20px;
+    color: #fff;
+    /*background-color: #23c58a;*/
+    /*background-color: #5f7df5;*/
+    background-color: #23282d;
+}
+
+.gdfrm_header span {
+    position: relative;
+    top: 25px;
+    font-size: 40px;
+    left: 120px;
+}
+
+.gdfrm_header ul {
+    float: right;
+    position: relative;
+    top: 20px;
+}
+
+.gdfrm_header li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.gdfrm_header li a {
+    color: #fff;
+    font-family: Nunito;
+    font-size: 19px;
+    text-decoration: none;
+}
+
+.gdfrm_header li:hover:after {
+    content: '';
+    background-color: #fff;
+    display: block;
+    height: 5px;
+    border-radius: 2px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: -20px;
+}
+
+.gdicon.gdicon-logo:before {
+    content: url('../../images/icons/logo.png');
+    position: absolute;
+    z-index: 20;
+    top: -10px;
+}

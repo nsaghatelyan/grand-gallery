@@ -5,86 +5,130 @@ namespace GDGallery\Models;
 
 class Settings
 {
-    private static $TableName = 'GDGallerySettings';
-    private $RecaptchaPublicKey;
-    private $RecaptchaSecretKey;
-    private $GmapApiKey;
-    private $HiddenRecaptchaPublicKey;
-    private $HiddenRecaptchaSecretKey;
-    private $PostsPerPage;
-    private $RemoveTablesUninstall = 'off';
-    /**
-     * @var array
-     */
-    private $cache = array();
 
-    public static function getTableName()
-    {
-        return $GLOBALS['wpdb']->prefix . self::$TableName;
-    }
+    private $tableName;
 
     /**
-     * @param $key string
-     * @param mixed $default
-     * @return mixed
+     * @var []
      */
-    public function get($key, $default = false)
+    private $options = array(
+        'type_of_transition' => 'lg-slide',
+        'speed_transition' => '600',
+        'lightbox_height' => '100%',
+        'lightbox_width' => '100%',
+        'closable' => true,
+        'loop' => true,
+        'escapekey' => true,
+        'keypress' => true,
+        'controls' => true,
+        'slideEndAnimatoin' => true,
+        'mousewheel' => true,
+        'getCaptionFromTitleOrAlt' => true,
+        'nextHtml' => '',
+        'prevHtml' => '',
+        'download' => true,
+        'counter' => true,
+        'enableDrag' => true,
+        'thumbnail' => true,
+        'thumbWidth' => '100',
+        'thumbContHeight' => '100',
+        'thumbMargin' => '5',
+        'enableThumbDrag' => true,
+        'autoplay' => false,
+        'pause' => '8',
+        'progressBar' => true,
+        'autoplayControls' => true,
+        'fullScreen' => true,
+        'zoom' => true,
+        'scale' => '1',
+        'actualSize' => true,
+        'share' => false,
+        'facebook' => true,
+        'twitter' => true,
+        'googlePlus' => true,
+        'pinterest' => true,
+        'gd_lightbox_size_px' => '16',
+        'gd_lightbox_color' => 'EEEEEE',
+        'gd_lightbox_text_align' => 'center',
+        'gd_lightbox_padding_top_and_bottom_px' => '10',
+        'gd_lightbox_image_border_px' => '0',
+        'gd_lightbox_image_border_color' => 'fff',
+        'gd_lightbox_image_border_radius_px' => '0',
+        'gd_lightbox_image_opacity' => '1',
+        'gd_lightbox_arrows_size_px' => '22',
+        'gd_lightbox_arrows_padding_left_right' => '10',
+        'gd_lightbox_thumbnail_border_px' => '2',
+        'gd_lightbox_thumbnail_border_color' => 'fff',
+        'gd_lightbox_thumbnail_border_radius_px' => '4',
+        'gd_lightbox_thumbnail_opacity' => '1',
+        'gd_lightbox_thumbnail_border_color_active' => 'a90707',
+    );
+
+    public function __construct()
     {
-        if (!in_array($key, $this->cache)) {
-            global $wpdb;
-            $value = $wpdb->get_var($wpdb->prepare('select Value from ' . self::getTableName() . ' where Name=%s', $key));
+        global $wpdb;
+        $this->tableName = $wpdb->prefix . 'gdgallerysettings';
 
-            if (empty($value)) {
-                $this->$key = $default;
-            } else {
-                $unserialized_value = @unserialize($value);
+        $dbResults = $wpdb->get_results("SELECT * FROM `" . $this->tableName . "`", ARRAY_A);
 
-                if (false !== $unserialized_value || 'b:0;' === $value) {
-                    $value = $unserialized_value;
+        if (!empty($dbResults)) {
+            foreach ($dbResults as $r) {
+
+                $unserialized_value = @unserialize($r['option_value']);
+
+                if (false !== $unserialized_value || 'b:0;' === $r['option_value']) {
+                    $r['option_value'] = $unserialized_value;
                 }
 
-                $this->$key = $value;
+                $this->options[$r['option_key']] = $r['option_value'];
             }
-
-
-            $this->cache[] = $key;
-
         }
-
-        return $this->$key;
     }
 
     /**
-     * @param $key string
-     * @param $value string
-     * @return bool
+     * @return array
      */
-    public function set($key, $value)
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function getOption($key)
+    {
+        if (!isset($this->options[$key])) {
+            return null;
+        }
+        return $this->options[$key];
+    }
+
+    public function setOption($key, $value)
     {
         global $wpdb;
 
-        $option_exists = $this->get($key);
+        $key = sanitize_text_field($key);
 
-        if ($option_exists) {
-            $saved = $wpdb->update(self::getTableName(),
-                array('Value' => esc_sql($value)),
-                array('Name' => esc_sql($key))
-            );
-        } else {
-            $saved = $wpdb->insert(self::getTableName(), array(
-                    'Value' => esc_sql($value),
-                    'Name' => esc_sql($key)
-                )
-            );
+        if (is_array($value) || is_object($value) || is_bool($value)) {
+            $value = serialize($value);
         }
 
-        $this->$key = $value;
+        if ($value === 'true') {
+            $value = 'b:1;';
+        } elseif ($value === 'false') {
+            $value = 'b:0;';
+        }
 
-        return (bool)$saved;
-    }
+        $saved = $wpdb->query($wpdb->prepare('INSERT INTO ' . $this->tableName . ' (option_key,option_value) VALUES(%s,%s) ON DUPLICATE KEY UPDATE option_value=%s', $key, $value, $value));
 
-    public function all()
-    {
+
+        if (false !== $saved) {
+            $this->options[$key] = $value;
+        }
+
+        return true;
 
     }
 

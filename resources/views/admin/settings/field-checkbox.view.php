@@ -6,14 +6,14 @@
  */
 
 $placeholder = isset($field['placeholder'])
-    ? 'placeholder='.$field['placeholder']
+    ? 'placeholder=' . $field['placeholder']
     : '';
 ?>
 
 <label class="input-wrap">
    <span class="settings-label"><?php
        echo $field['label'];
-       if(isset($field['help'])): ?>
+       if (isset($field['help'])): ?>
            <span class="settings-field-help">
                 <span class="settings-field-help-icon">?</span>
                 <span class="settings-field-help-text-wrap">
@@ -23,10 +23,10 @@ $placeholder = isset($field['placeholder'])
             </span>
        <?php endif;
        ?></span>
-    <input type="hidden" name="settings[<?php echo $fieldId; ?>]" value="false" />
+    <input type="hidden" name="settings[<?php echo $fieldId; ?>]" value="false"/>
 
     <span class="switch">
-        <input type="checkbox" name="settings[<?php echo $fieldId; ?>]" value="true" <?php checked(true,$value); ?> />
+        <input type="checkbox" name="settings[<?php echo $fieldId; ?>]" value="true" <?php checked(true, $value); ?> />
         <span class="slider round"></span>
     </span>
 
