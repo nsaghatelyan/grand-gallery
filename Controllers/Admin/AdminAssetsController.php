@@ -103,9 +103,9 @@ class AdminAssetsController
             wp_enqueue_script('gdfrmSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/settings.js', array('jquery'), false, true);
         }
 
-        if ($hook === \GDGallery()->Admin->Pages['styles']) {
-            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js');
-        }
+        /* if ($hook === \GDGallery()->Admin->Pages['styles']) {
+             wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('toastrjs'));
+         }*/
 
 
         if ($hook === \GDGallery()->Admin->Pages['submissions']) {

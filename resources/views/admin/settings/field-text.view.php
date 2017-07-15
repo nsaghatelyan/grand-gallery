@@ -9,7 +9,6 @@ $placeholder = isset($field['placeholder'])
     ? 'placeholder=' . $field['placeholder']
     : '';
 
-debug::trace($value);
 ?>
 
 <label class="input-wrap">

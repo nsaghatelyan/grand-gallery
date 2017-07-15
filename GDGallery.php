@@ -1,13 +1,13 @@
 <?php
 namespace GDGallery;
 
+use GDGallery\Models\Gallery;
 use GDGallery\Models\Settings;
 use GDGallery\Controllers\Admin\AdminController;
 use GDGallery\Controllers\Frontend\FrontendController;
 use GDGallery\Controllers\Admin\AdminAssetsController;
 use GDGallery\Controllers\Admin\AjaxController as AdminAjax;
 use GDGallery\Controllers\Frontend\AjaxController as FrontAjax;
-use debug\debug;
 
 if (!defined('ABSPATH')) {
     exit();
@@ -39,6 +39,8 @@ if (!class_exists('GDGallery')) :
          * @var Settings
          */
         public $settings;
+
+        public $galleryinfo;
 
         /**
          * The single instance of the class.
@@ -81,12 +83,12 @@ if (!class_exists('GDGallery')) :
             define('GDGALLERY_PLUGIN_FILE', __FILE__);
             define('GDGALLERY_PLUGIN_BASENAME', plugin_basename(__FILE__));
             define('GDGALLERY_VERSION', $this->version);
-            define('GDGALLERY_IMAGES_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR);
-            define('GDGALLERY_IMAGES_URL', untrailingslashit($this->pluginUrl()) . '/assets/images/');
-            define('GDGALLERY_FONTS_URL', untrailingslashit($this->pluginUrl()) . '/assets/fonts/');
-            define('GDGALLERY_FONTS_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR);
-            define('GDGALLERY_TEMPLATES_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR);
-            define('GDGALLERY_TEMPLATES_URL', untrailingslashit($this->pluginUrl()) . '/templates/');
+            define('GDGALLERY_IMAGES_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR);
+            define('GDGALLERY_IMAGES_URL', untrailingslashit($this->pluginUrl()) . '/resources/assets/images/');
+            define('GDGALLERY_FONTS_URL', untrailingslashit($this->pluginUrl()) . '/resources/assets/fonts/');
+            define('GDGALLERY_FONTS_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR);
+            define('GDGALLERY_TEMPLATES_PATH', $this->pluginPath() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+            define('GDGALLERY_TEMPLATES_URL', untrailingslashit($this->pluginUrl()) . '/resources/views');
             define('GDGALLERY_TEXT_DOMAIN', 'GDGALLERY');
             define("GDGALLERY_DEBUG_ENABLE", true);
             define("GDGALLERY_ACCESS_IP", "127.0.0.1");
@@ -98,9 +100,11 @@ if (!class_exists('GDGallery')) :
          */
         public function init()
         {
+
             $this->checkVersion();
 
             $this->settings = new Settings();
+
 
             if (defined('DOING_AJAX')) {
                 AdminAjax::init();
