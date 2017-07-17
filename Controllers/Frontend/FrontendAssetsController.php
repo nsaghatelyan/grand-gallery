@@ -1,17 +1,17 @@
 <?php
 
-namespace GDGALLERY\Controllers\Frontend;
+namespace GDGallery\Controllers\Frontend;
 
-use GDGALLERY\Models\Form;
+use GDGallery\Models\Gallery;
 
 class FrontendAssetsController
 {
 
     public static function init()
     {
-        add_action('gdfrmShortcodeScripts', array(__CLASS__, 'addScripts'));
+        add_action('gdgalleryShortcodeScripts', array(__CLASS__, 'addScripts'));
 
-        add_action('gdfrmShortcodeScripts', array(__CLASS__, 'addStyles'));
+        add_action('gdgalleryShortcodeScripts', array(__CLASS__, 'addStyles'));
 
         add_action('wp_head', array(__CLASS__, 'addAjaxUrlJs'));
 
@@ -23,6 +23,7 @@ class FrontendAssetsController
      */
     public static function addScripts($FormId)
     {
+
 
         wp_enqueue_script("gdgalleryunite", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/unitegallery.min.js", array('jquery'), false, true);
 
@@ -65,7 +66,7 @@ class FrontendAssetsController
     public static function addStyles()
     {
         wp_enqueue_style('gdgalleryunit', \GDGallery()->pluginUrl() . '/resources/assets/css/frontend/unite-gallery.css');
-        
+
         /* wp_enqueue_style('jqueryUI', \GDGALLERY()->pluginUrl() . '/assets/css/jquery-ui.min.css');//todo
          wp_enqueue_style('flavorsFont', \GDGALLERY()->pluginUrl() . '/assets/css/flavorsFont.css');
          wp_enqueue_style('fontAwesome', \GDGALLERY()->pluginUrl() . '/assets/css/font-awesome.min.css');

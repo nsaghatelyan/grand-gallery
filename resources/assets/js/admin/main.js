@@ -165,9 +165,9 @@ jQuery(document).ready(function () {
         custom_uploader.on('select', function () {
             attachments = custom_uploader.state().get('selection').toJSON();
             for (var key in attachments) {
-                jQuery("#" + id).val(attachments[key].url + ';;;' + jQuery("#" + id).val());
+                jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
             }
-            jQuery("#save-buttom").click();
+            jQuery("#gdgallery_images_form").submit();
         });
         custom_uploader.open();
     });
