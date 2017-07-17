@@ -1567,6 +1567,10 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
     margin: 15px;
 }
 
+.quick_edit_table tr td input {
+    width: 100%;
+}
+
 @media all and (max-width: 1650px) {
     .right-col {
         width: 500px;

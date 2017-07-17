@@ -33,6 +33,8 @@ class Gallery extends Model
 
     private $cache = array();
 
+    private $DisplayTitle;
+
     protected static $dbFields = array(
         'name', 'description', 'display_type', 'position', 'hover_style', 'custom_css'
     );
@@ -183,22 +185,44 @@ class Gallery extends Model
     public function setViewStyles()
     {
         $this->View_style = array(
-            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid.png"),
-            array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
-            array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider.png"),
-            array("Glossary", GDGALLERY_IMAGES_URL . "icons/view/glossary.png"),
-            array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
+            array("Jastified", GDGALLERY_IMAGES_URL . "icons/view/glossary.png"),
             array("Pinterest", GDGALLERY_IMAGES_URL . "icons/view/pinterest.png"),
-            array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
-            array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png"),
             array("One and others 1", GDGALLERY_IMAGES_URL . "icons/view/slider_vertical.png"),
-            array("One and others 2", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png")
+            array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider.png"),
+            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid.png"),
+            array("One and others 2", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png"),
+            array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
+            array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
+            array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
+            array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png")
         );
     }
 
     public function getViewStyles()
     {
         return $this->View_style;
+    }
+
+    /**
+     * return string 0|1
+     */
+    public function getDisplayTitle()
+    {
+        return $this->DisplayTitle;
+    }
+
+    /**
+     * @param $value int 0,1
+     * @return $this
+     */
+    public function setDisplayTitle($value)
+    {
+        if (in_array($value, array(0, 1, 'on'))) {
+            if ($value == 'on') $value = 1;
+
+            $this->DisplayTitle = intval($value);
+        }
+        return $this;
     }
 
     /**
@@ -241,7 +265,8 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $option_exists = $this->get($key);
+        $option_exists = $this->getData($key);
+        \debug::trace($option_exists);
 
         if ($option_exists) {
             $saved = $wpdb->update(self::getTableName(),

@@ -68,13 +68,14 @@ class AdminAssetsController
     {
         wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/js/jquery-ui.min.js');
 
+        wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
+        wp_enqueue_script('gsgalleryStylesSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
+
         if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
             wp_enqueue_media();
 
             wp_enqueue_script('jquery');
-
-            wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
 
 
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
@@ -96,7 +97,7 @@ class AdminAssetsController
         }
 
         if (in_array($hook, array('post.php', 'post-new.php'))) {
-            wp_enqueue_script("gdfrmInlinePopup", \GDGallery()->pluginUrl() . "/resources/assets/js/admin/inline-popup.js", array('jquery'), false, true);
+            wp_enqueue_script("gdgalleryInlinePopup", \GDGallery()->pluginUrl() . "/resources/assets/js/admin/inline-popup.js", array('jquery'), false, true);
         }
 
         if ($hook === \GDGallery()->Admin->Pages['settings']) {
@@ -123,8 +124,8 @@ class AdminAssetsController
             'nonce' => wp_create_nonce('gdgallery_save_gallery'),
         ));
 
-        wp_localize_script('gdfrmInlinePopup', 'inlinePopup', array(
-            'nonce' => wp_create_nonce('gdfrm_save_shortcode_options'),
+        wp_localize_script('gdgalleryInlinePopup', 'inlinePopup', array(
+            'nonce' => wp_create_nonce('gdgallery_save_shortcode_options'),
         ));
 
         wp_localize_script('gdgalleryAdminGallerySave', 'field', array(

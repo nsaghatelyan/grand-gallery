@@ -4,6 +4,7 @@ namespace GDGALLERY\Controllers\Admin;
 
 use GDGALLERY\Models\Form;
 use GDGallery\Models\Gallery;
+use GDGallery\Models\Settings;
 use GDGALLERY\Models\Submission;
 
 /**
@@ -17,6 +18,8 @@ class AjaxController
         add_action('wp_ajax_gdgallery_save_gallery', array(__CLASS__, 'saveGallery'));
 
         add_action('wp_ajax_gdgallery_save_gallery_images', array(__CLASS__, 'saveGalleryImages'));
+
+        add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'saveGallerySettings'));
 
         add_action('wp_ajax_gdgallery_remove_form', array(__CLASS__, 'removeForm'));
 
@@ -46,7 +49,7 @@ class AjaxController
     {
         if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
             die('security check failed');
-    }
+        }
 
         $gallery_id = absint($_REQUEST['gallery_id']);
 
@@ -114,6 +117,21 @@ class AjaxController
         } else {
             die('something went wrong');
         }
+    }
+
+
+    public static function saveGallerySettings()
+    {
+
+        $settings_arr = array();
+        parse_str($_REQUEST["formdata"], $settings_arr);
+        $settings = new Settings();
+        foreach ($settings_arr["settings"] as $key => $item) {
+            $settings->setOption($key, $item);
+        }
+
+        echo 'ok';
+        die;
     }
 
     /* update form settings */

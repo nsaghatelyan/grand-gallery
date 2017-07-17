@@ -365,4 +365,26 @@ class SettingsController
         return $this->options;
     }
 
+    /**
+     * Save settings
+     */
+    public static function save()
+    {
+
+        if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], 'gdgallery_settings')) {
+            die(0);
+        }
+
+        if (!isset($_POST['settings']) || empty($_POST['settings']) || !is_array($_POST['settings'])) {
+            die(0);
+        }
+
+        foreach ($_POST['settings'] as $key => $value) {
+            \GDLightbox()->settings->setOption($key, $value);
+        }
+
+        echo 'ok';
+        die;
+    }
+
 }

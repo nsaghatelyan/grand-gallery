@@ -2,7 +2,6 @@
 
 namespace GDGallery\Core;
 
-use \debug\debug;
 
 abstract class Model
 {
