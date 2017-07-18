@@ -12,34 +12,52 @@
             </div>
         </div>
         <div class="-gdgallery-modal-content-body">
-            <div id="huge_it_gallery_add_videos_wrap" data-gallery-id="" data-gallery-add-video-nonce="">
-                <div class="control-panel">
-                    <form method="post"
-                          action="">
-                        <input type="text" id="huge_it_add_video_input" name="huge_it_add_video_input"/>
-                        <button class='save-slider-options button-primary huge-it-insert-video-button'
-                                id='huge-it-insert-video-button'><?php echo __('Insert Video', 'gallery-img'); ?></button>
-                        <div id="add-video-popup-options">
-                            <div>
-                                <div>
-                                    <label for="show_title"><?php echo __('Title:', 'gallery-img'); ?></label>
-                                    <div>
-                                        <input name="show_title" value="" type="text"/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="show_description"><?php echo __('Description:', 'gallery-img'); ?></label>
-                                    <textarea id="show_description" name="show_description"></textarea>
-                                </div>
-                                <div>
-                                    <label for="show_url"><?php echo __('Url:', 'gallery-img'); ?></label>
-                                    <input type="text" name="show_url" value=""/>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <form action="admin.php?page=gdgallery&id=<?php echo $id_gallery; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
+                  method="post" id="gdgallery_add_video_form" name="gdgallery_add_video_form">
+
+                <input type="hidden" name="gdgallery_id_gallery" value="<?= $id_gallery ?>">
+                <table class="quick_edit_table">
+
+
+                    <tr>
+                        <td><label for="gdgallery_video_url"> Video URL (Youtube or Vimeo):</label>
+                            <input type="text" id="gdgallery_video_url"
+                                   name="gdgallery_video_url"
+                                   value="">
+                        </td>
+                        <td><label for="gdgallery_video_name"> Title:</label>
+                            <input type="text" id="gdgallery_video_name"
+                                   name="gdgallery_video_name"
+                                   value="">
+                        </td>
+                        <td><label for="gdgallery_video_description">
+                                Description: </label>
+                            <input type="text" id="gdgallery_video_description"
+                                   name="gdgallery_video_description"
+                                   value=""></td>
+                        <td><label for="gdgallery_video_link"> Link:</label>
+                            <input type="text" name="gdgallery_video_link"
+                                   id="gdgallery_video_link"
+                                   value="">
+                        </td>
+                        <td>
+                            <label for="gdgallery_video_target"> Target:</label>
+                            <select name="gdgallery_video_target"
+                                    id="gdgallery_video_target">
+                                <option value="_blank">New Tab</option>
+                                <option value="_self">Current Tab</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                </table>
+                <span class="spinner"></span>
+                <input type="submit" value="Save"
+                       id="gdgallery-add-video-buttom"
+                       class="gdgallery-save-buttom">
+            </form>
+
+
         </div>
     </div>
 </div>

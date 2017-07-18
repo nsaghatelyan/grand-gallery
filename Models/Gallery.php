@@ -134,12 +134,49 @@ class Gallery extends Model
             return null;
         }
 
+
+        foreach ($items as $item) {
+            if ($item->type == "video") {
+                $item->thumbnail_info = $this->getVideoThumb($item->url);
+            } else {
+                $item->thumbnail_info = array();
+            }
+        }
+
         $this->Items = $items;
 
         return $this->Items;
     }
 
-    public function getGallery()
+    public function getVideoThumb($url)
+    {
+        $default_thumbnail = null;
+        $thumbnails = array();
+        $result = array();
+
+        if (strpos($url, "youtube") !== false) {
+            $video_id = substr($url, -11);
+            $default_thumbnail = "https://img.youtube.com/vi/" . $video_id . "/0.jpg";
+            for ($i = 0; $i < 3; $i++) {
+                $thumbnails[] = "https://img.youtube.com/vi/" . $video_id . "/" . $i . ".jpg";
+            }
+        } elseif (strpos($url, "vimeo") !== false) {
+            $video_id = substr($url, -9);
+            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
+            $default_thumbnail = $hash[0]['thumbnail_medium'];
+        }
+
+        $result = array(
+            "default_thumb" => $default_thumbnail,
+            "thumbnails" => $thumbnails
+        );
+
+        return $result;
+
+    }
+
+    public
+    function getGallery()
     {
         global $wpdb;
 
@@ -156,7 +193,8 @@ class Gallery extends Model
         return $this->Gallery;
     }
 
-    public function saveGallery($data)
+    public
+    function saveGallery($data)
     {
         global $wpdb;
         $result = $wpdb->update(static::getTableName(), $data, array(static::$primaryKey => $data["id_gallery"]));
@@ -168,9 +206,11 @@ class Gallery extends Model
         return false;
     }
 
-    public function saveGalleryImages($data)
+    public
+    function saveGalleryImages($data)
     {
         global $wpdb;
+
 
         foreach ($data as $key => $val) {
             if ($key != "id_gallery") {
@@ -182,7 +222,42 @@ class Gallery extends Model
         return static::$primaryKey;
     }
 
-    public function setViewStyles()
+    public
+    function AddGalleryImage($img, $id_gallery)
+    {
+        global $wpdb;
+
+        $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
+                "id_gallery" => $id_gallery,
+                'url' => esc_sql($img),
+                "ordering" => 0,
+                "target" => "_blank",
+                "type" => "image"
+            )
+        );
+        return static::$primaryKey;
+    }
+
+    public
+    function AddGalleryVideo($data)
+    {
+        global $wpdb;
+
+        $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
+                "id_gallery" => $data["gdgallery_id_gallery"],
+                "name" => $data["gdgallery_video_name"],
+                "description" => $data["gdgallery_video_description"],
+                'url' => esc_url($data["gdgallery_video_url"]),
+                "ordering" => 0,
+                "target" => $data["gdgallery_video_target"],
+                "type" => "video"
+            )
+        );
+        return static::$primaryKey;
+    }
+
+    public
+    function setViewStyles()
     {
         $this->View_style = array(
             array("Jastified", GDGALLERY_IMAGES_URL . "icons/view/glossary.png"),
@@ -198,7 +273,8 @@ class Gallery extends Model
         );
     }
 
-    public function getViewStyles()
+    public
+    function getViewStyles()
     {
         return $this->View_style;
     }
@@ -206,7 +282,8 @@ class Gallery extends Model
     /**
      * return string 0|1
      */
-    public function getDisplayTitle()
+    public
+    function getDisplayTitle()
     {
         return $this->DisplayTitle;
     }
@@ -215,7 +292,8 @@ class Gallery extends Model
      * @param $value int 0,1
      * @return $this
      */
-    public function setDisplayTitle($value)
+    public
+    function setDisplayTitle($value)
     {
         if (in_array($value, array(0, 1, 'on'))) {
             if ($value == 'on') $value = 1;
@@ -230,7 +308,8 @@ class Gallery extends Model
      * @param mixed $default
      * @return mixed
      */
-    public function getData($key, $default = false)
+    public
+    function getData($key, $default = false)
     {
         if (!in_array($key, $this->cache)) {
             global $wpdb;
@@ -261,7 +340,8 @@ class Gallery extends Model
      * @param $value string
      * @return bool
      */
-    public function set($key, $value)
+    public
+    function set($key, $value)
     {
         global $wpdb;
 

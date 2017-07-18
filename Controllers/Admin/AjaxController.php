@@ -19,6 +19,10 @@ class AjaxController
 
         add_action('wp_ajax_gdgallery_save_gallery_images', array(__CLASS__, 'saveGalleryImages'));
 
+        add_action('wp_ajax_gdgallery_add_gallery_image', array(__CLASS__, 'AddGalleryImage'));
+
+        add_action('wp_ajax_gdgallery_add_gallery_video', array(__CLASS__, 'AddGalleryVideo'));
+
         add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'saveGallerySettings'));
 
         add_action('wp_ajax_gdgallery_remove_form', array(__CLASS__, 'removeForm'));
@@ -78,6 +82,7 @@ class AjaxController
             die('security check failed');
         }
 
+
         $gallery_id = absint($_REQUEST['gallery_id']);
 
         $gallery_data = str_replace("gdgallery_images_", "", $_REQUEST["formdata"]);
@@ -89,6 +94,8 @@ class AjaxController
 
         $updated = null;
         $updated = $gallery->saveGalleryImages($gallery_data_arr);
+
+
         if ($updated) {
             echo 1;
             die();
@@ -96,6 +103,67 @@ class AjaxController
             die('something went wrong');
         }
     }
+
+    public static function AddGalleryImage()
+    {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
+            die('security check failed');
+        }
+
+
+        $gallery_id = absint($_REQUEST['gallery_id']);
+
+        $gallery_data = $_REQUEST["img"];
+
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+        $gallery_data_arr = array();
+        parse_str($gallery_data, $gallery_data_arr);
+
+
+        $inserted = null;
+        $inserted = $gallery->addGalleryImage($_REQUEST["formdata"], $_REQUEST["gallery_id"]);
+
+
+        if ($inserted) {
+            echo 1;
+            die();
+        } else {
+            die('something went wrong');
+        }
+    }
+
+    public static function AddGalleryVideo()
+    {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
+            die('security check failed');
+        }
+
+        //<iframe width="560" height="315" src="https://www.youtube.com/embed/5cFQGjicb2E?ecver=1" frameborder="0" allowfullscreen></iframe>
+
+
+        $gallery_id = absint($_REQUEST['gallery_id']);
+
+        $gallery_data = $_REQUEST["formdata"];
+
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+        $gallery_data_arr = array();
+        parse_str($gallery_data, $gallery_data_arr);
+
+        $gallery_data_arr["gdgallery_id_gallery"] = $gallery_id;
+
+
+        $inserted = null;
+        $inserted = $gallery->addGalleryVideo($gallery_data_arr);
+
+
+        if ($inserted) {
+            echo 1;
+            die();
+        } else {
+            die('something went wrong');
+        }
+    }
+
 
     public static function removeForm()
     {

@@ -299,6 +299,7 @@ class AdminController
             return;
         }
 
+
         if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_create_new_gallery')) {
 
             \GDGallery()->admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));

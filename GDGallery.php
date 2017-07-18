@@ -20,7 +20,7 @@ if (!class_exists('GDGallery')) :
          * Version of plugin
          * @var string
          */
-        public $version = "1.0.0";
+        public $version = "1.0.1";
 
         /**
          * Instance of AdminController to manage admin

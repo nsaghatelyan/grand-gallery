@@ -167,10 +167,25 @@ jQuery(document).ready(function () {
             for (var key in attachments) {
                 jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
             }
-            jQuery("#gdgallery_images_form").submit();
+
+
+            addItem(attachments[key].url, "image");
+
         });
         custom_uploader.open();
     });
+
+    jQuery("#gdgallery_add_video_form").submit(function (e) {
+        e.preventDefault();
+
+        var form = jQuery(gdgallery_add_video_form),
+            submitBtn = form.find('input[type=submit]'),
+            general_data = form.serialize();
+
+
+        addItem(general_data, "video");
+
+    })
 
     jQuery('.add_media').on('click', function () {
         _custom_media = false;
@@ -304,7 +319,53 @@ jQuery(document).ready(function () {
         return false;
     });
 
+    jQuery(".gdgallery_item_overlay input[type=checkbox]").change(function () {
+        if (jQuery(this).is(':checked')) {
+            console.log("checked");
+            jQuery(this).parent().find(".gdgallery_item_overlay").css({
+                "visibility": "visible",
+                "opacity": "1",
+                "border": "3px solid red"
+            });
+        }
+        else {
+            console.log("not");
+            jQuery(this).parent().find(".gdgallery_item_overlay").css({"visibility": "hidden", "opacity": "0"});
+        }
+    })
+
 });
+
+function addItem(data, type) {
+    general_data = {
+        action: "gdgallery_add_gallery_" + type,
+        nonce: gallerySave.nonce,
+        gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
+        formdata: data
+    };
+
+
+    jQuery.ajax({
+        url: ajaxurl,
+        method: 'post',
+        data: general_data,
+        dataType: 'text',
+        beforeSend: function () {
+            doingAjax = true;
+        }
+    }).always(function () {
+        doingAjax = false;
+    }).done(function (response) {
+        if (response == 1) {
+            toastr.success(' Added Successfully');
+            window.setTimeout('location.reload()', 1000)
+        } else {
+            toastr.error('Error while saving');
+        }
+    }).fail(function () {
+        toastr.error('Error while saving');
+    });
+}
 
 
 

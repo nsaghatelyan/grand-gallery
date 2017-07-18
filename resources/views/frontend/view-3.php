@@ -22,17 +22,6 @@ wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/ass
 
     <?php endforeach; ?>
 
-
-    <img alt="Preview Image 2"
-         src="http://lorempixel.com/140/227/?1"
-         data-image="http://lorempixel.com/140/227/?1"
-         data-description="Preview Image 2 Description">
-
-    <img alt="Preview Image 3"
-         src="http://lorempixel.com/340/227/?1"
-         data-image="http://lorempixel.com/340/227/?1"
-         data-description="Preview Image 3 Description">
-
 </div>
 
 <script type="text/javascript">

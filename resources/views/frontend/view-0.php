@@ -25,48 +25,6 @@ wp_enqueue_script("gdgallerytiles", \GDGallery()->pluginUrl() . "/resources/asse
         </a>
 
     <?php endforeach; ?>
-    <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/140/227/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a>
-    <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/340/227/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a>
-    <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/227/340/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a>
-    <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/140/227/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a>
-    <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/340/227/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a> <a href="sdasdsa">
-        <img alt="sdadsdsa"
-             src="http://lorempixel.com/140/227/?1"
-             data-image="http://lorempixel.com/140/227/?1"
-             data-description="sadasdsdasda"
-             style="display:none">
-    </a>
-
 
 </div>
 

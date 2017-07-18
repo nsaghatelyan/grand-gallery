@@ -163,8 +163,21 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     if (!empty($items)) {
                         foreach ($items as $item): ?>
                             <div class="gdgallery_item">
-                                <img src="<?= $item->url; ?>"/>
-                                <p class="gdgallery_item_title"><?= $item->name ?></p>
+                                <?php if ($item->type == "image"): ?>
+                                    <img src="<?= $item->url; ?>"/>
+                                    <p class="gdgallery_item_title"><?= $item->name ?>
+                                        <i class="fa fa-picture-o" aria-hidden="true"></i></p>
+                                <?php else: ?>
+                                    <img src="<?= $item->thumbnail_info["default_thumb"]; ?>"/>
+                                    <p class="gdgallery_item_title"><?= $item->name ?>
+                                        <?php if (!empty($item->thumbnail_info["thumbnails"])): ?>
+                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                        <?php else: ?>
+                                            <i class="fa fa-vimeo" aria-hidden="true"></i>
+                                        <?php endif; ?>
+                                    </p>
+                                <?php endif; ?>
+
                                 <div class="gdgallery_item_overlay">
                                     <input type="checkbox" name="item" val="<?= $item->id_image; ?>"/>
                                     <div class="gdgallery_item_edit">

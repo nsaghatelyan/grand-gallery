@@ -1404,6 +1404,11 @@ html .ui-button.ui-state-disabled:active {
     overflow: hidden;
 }
 
+.gdgallery_items_list .gdgallery_item p i {
+    float: right;
+    margin-top: 3px;
+}
+
 .gdgallery_item_overlay {
     background: rgba(0, 0, 0, 0.7);
     position: absolute;
@@ -1556,19 +1561,28 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
     display: block;
 }
 
-.quick_edit_table td input, .quick_edit_table td textarea, .
+.quick_edit_table td input, .quick_edit_table td textarea,
 .gdgallery_items_section h3 {
     max-width: 90%;
     float: left;
 }
 
 .gdgallery_edit_gallery_images {
-    float: right;
+    position: absolute;
+    right: 5px;
     margin: 15px;
 }
 
 .quick_edit_table tr td input {
     width: 100%;
+}
+
+.fa-youtube-play {
+    color: #e62117;
+}
+
+.fa-vimeo {
+    color: #00adef;
 }
 
 @media all and (max-width: 1650px) {

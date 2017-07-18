@@ -105,7 +105,7 @@
     height: 35px;
     width: 32px;
     height: 32px;
-    background-image: url('../../../images/components/components/loader_skype_trans.gif');
+    background-image: url('../../images/components/loader_skype_trans.gif');
     background-repeat: no-repeat;
 }
 
@@ -945,12 +945,12 @@ img.ug-sepia-effect {
 .ug-arrow-right.ug-skin-default {
     width: 15px;
     height: 30px;
-    background-image: url('../skins/default/slider_arrow_left.png');
+    background-image: url('../../images/components/slider_arrow_left.png');
     background-position: 0px 0px;
 }
 
 .ug-arrow-right.ug-skin-default {
-    background-image: url('../skins/default/slider_arrow_right.png');
+    background-image: url('../../images/components/slider_arrow_right.png');
 }
 
 .ug-arrow-left.ug-skin-default.ug-arrow-hover,
@@ -968,7 +968,7 @@ img.ug-sepia-effect {
 .ug-bullets.ug-skin-default .ug-bullet {
     width: 15px;
     height: 15px;
-    background-image: url('../skins/default/slider_bullets.png');
+    background-image: url('../../images/components/slider_bullets.png');
     background-position: top left;
     margin-left: 5px;
 }
@@ -978,23 +978,23 @@ img.ug-sepia-effect {
 }
 
 .ug-bullets.ug-skin-default.ug-bullets-gray .ug-bullet {
-    background-image: url('../skins/default/tile_bullets_gray.png');
+    background-image: url('../../images/components/tile_bullets_gray.png');
 }
 
 .ug-bullets.ug-skin-default.ug-bullets-blue .ug-bullet {
-    background-image: url('../skins/default/tile_bullets_blue.png');
+    background-image: url('../../images/components/tile_bullets_blue.png');
 }
 
 .ug-bullets.ug-skin-default.ug-bullets-brown .ug-bullet {
-    background-image: url('../skins/default/tile_bullets_brown.png');
+    background-image: url('../../images/components/tile_bullets_brown.png');
 }
 
 .ug-bullets.ug-skin-default.ug-bullets-green .ug-bullet {
-    background-image: url('../skins/default/tile_bullets_green.png');
+    background-image: url('../../images/components/tile_bullets_green.png');
 }
 
 .ug-bullets.ug-skin-default.ug-bullets-red .ug-bullet {
-    background-image: url('../skins/default/tile_bullets_red.png');
+    background-image: url('../../images/components/tile_bullets_red.png');
 }
 
 .ug-button-tile-navigation {
@@ -1006,11 +1006,11 @@ img.ug-sepia-effect {
 }
 
 .ug-button-tile-navigation.ug-button-tile-left {
-    background-image: url('../skins/default/tile_button_left.png');
+    background-image: url('../../images/components/tile_button_left.png');
 }
 
 .ug-button-tile-navigation.ug-button-tile-right {
-    background-image: url('../skins/default/tile_button_right.png');
+    background-image: url('../../images/components/tile_button_right.png');
 }
 
 .ug-button-tile-navigation:hover {
@@ -1026,7 +1026,7 @@ img.ug-sepia-effect {
 }
 
 .ug-button-tile-navigation.ug-button-tile-play {
-    background-image: url('../skins/default/tile_button_play_pause.png');
+    background-image: url('../../images/components/tile_button_play_pause.png');
     width: 35px;
 }
 
@@ -1046,7 +1046,7 @@ img.ug-sepia-effect {
 
 .ug-button-play.ug-skin-default {
     position: absolute;
-    background-image: url('../skins/default/button_playpause.png');
+    background-image: url('../../images/components/button_playpause.png');
     width: 14px;
     height: 17px;
     cursor: pointer;
@@ -1069,7 +1069,7 @@ img.ug-sepia-effect {
 
 .ug-button-fullscreen.ug-skin-default {
     position: absolute;
-    background-image: url('../skins/default/button_fullscreen.png');
+    background-image: url('../../images/components/button_fullscreen.png');
     width: 16px;
     height: 16px;
     cursor: pointer;
@@ -1104,15 +1104,15 @@ img.ug-sepia-effect {
 }
 
 .ug-zoompanel.ug-skin-default .ug-zoompanel-plus {
-    background-image: url('../skins/default/icon_zoom_plus.png');
+    background-image: url('../../images/components/icon_zoom_plus.png');
 }
 
 .ug-zoompanel.ug-skin-default .ug-zoompanel-minus {
-    background-image: url('../skins/default/icon_zoom_minus.png');
+    background-image: url('../../images/components/icon_zoom_minus.png');
 }
 
 .ug-zoompanel.ug-skin-default .ug-zoompanel-return {
-    background-image: url('../skins/default/icon_zoom_back.png');
+    background-image: url('../../images/components/icon_zoom_back.png');
 }
 
 .ug-zoompanel.ug-skin-default .ug-zoompanel-button.ug-button-hover {
@@ -1133,7 +1133,7 @@ img.ug-sepia-effect {
     width: 30px;
     height: 15px;
     background-position: 0px 0px;
-    background-image: url('../skins/default/arrow_grid_down.png');
+    background-image: url('../../images/components/arrow_grid_down.png');
 }
 
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-down.ug-skin-default.ug-button-hover {
@@ -1151,7 +1151,7 @@ img.ug-sepia-effect {
     width: 30px;
     height: 15px;
     background-position: 0px 0px;
-    background-image: url('../skins/default/arrow_grid_up.png');
+    background-image: url('../../images/components/arrow_grid_up.png');
 }
 
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-up.ug-skin-default.ug-button-hover {
@@ -1169,7 +1169,7 @@ img.ug-sepia-effect {
     width: 40px;
     height: 40px;
     background-position: 0px -40px;
-    background-image: url('../skins/default/grid_arrow_left.png');
+    background-image: url('../../images/components/grid_arrow_left.png');
 }
 
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-left.ug-skin-default.ug-button-hover {
@@ -1187,7 +1187,7 @@ img.ug-sepia-effect {
     width: 40px;
     height: 40px;
     background-position: 0px -40px;
-    background-image: url('../skins/default/grid_arrow_right.png');
+    background-image: url('../../images/components/grid_arrow_right.png');
 }
 
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-right.ug-skin-default.ug-button-hover {
@@ -1204,7 +1204,7 @@ img.ug-sepia-effect {
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-left-hortype.ug-skin-default {
     width: 15px;
     height: 30px;
-    background-image: url('../skins/default/slider_arrow_left.png');
+    background-image: url('../../images/components/slider_arrow_left.png');
     background-position: 0px 0px;
 }
 
@@ -1222,7 +1222,7 @@ img.ug-sepia-effect {
 .ug-gallery-wrapper .ug-grid-panel .grid-arrow-right-hortype.ug-skin-default {
     width: 15px;
     height: 30px;
-    background-image: url('../skins/default/slider_arrow_right.png');
+    background-image: url('../../images/components/slider_arrow_right.png');
     background-position: 0px 0px;
 }
 
@@ -1254,11 +1254,11 @@ img.ug-sepia-effect {
 }
 
 .ug-strip-panel .ug-strip-arrow-left.ug-skin-default .ug-strip-arrow-tip {
-    background-image: url('../skins/default/arrows_strip_left.png');
+    background-image: url('../../images/components/arrows_strip_left.png');
 }
 
 .ug-strip-panel .ug-strip-arrow-right.ug-skin-default .ug-strip-arrow-tip {
-    background-image: url('../skins/default/arrows_strip_right.png');
+    background-image: url('../../images/components/arrows_strip_right.png');
 }
 
 .ug-strip-panel .ug-strip-arrow-left.ug-skin-default.ug-button-hover .ug-strip-arrow-tip,
@@ -1283,11 +1283,11 @@ img.ug-sepia-effect {
 }
 
 .ug-strip-panel .ug-strip-arrow-up.ug-skin-default .ug-strip-arrow-tip {
-    background-image: url('../skins/default/arrows_strip_up.png');
+    background-image: url('../../images/components/arrows_strip_up.png');
 }
 
 .ug-strip-panel .ug-strip-arrow-down.ug-skin-default .ug-strip-arrow-tip {
-    background-image: url('../skins/default/arrows_strip_down.png');
+    background-image: url('../../images/components/arrows_strip_down.png');
 }
 
 .ug-strip-panel .ug-strip-arrow-up.ug-skin-default.ug-button-hover .ug-strip-arrow-tip,
@@ -1308,13 +1308,13 @@ img.ug-sepia-effect {
 .ug-gallery-wrapper .ug-handle-tip-right.ug-skin-default {
     width: 22px;
     height: 36px;
-    background-image: url('../skins/default/grid_handle_black_left.png');
+    background-image: url('../../images/components/grid_handle_black_left.png');
     background-repeat: no-repeat;
     background-position: 0px -36px;
 }
 
 .ug-gallery-wrapper .ug-handle-tip-right.ug-skin-default {
-    background-image: url('../skins/default/grid_handle_black_right.png');
+    background-image: url('../../images/components/grid_handle_black_right.png');
     background-position: 0px -36px;
 }
 
@@ -1339,13 +1339,13 @@ img.ug-sepia-effect {
 .ug-gallery-wrapper .ug-handle-tip-bottom.ug-skin-default {
     width: 36px;
     height: 22px;
-    background-image: url('../skins/default/grid_handle_black_top.png');
+    background-image: url('../../images/components/grid_handle_black_top.png');
     background-repeat: no-repeat;
     background-position: -36px 0px;
 }
 
 .ug-gallery-wrapper .ug-handle-tip-bottom.ug-skin-default {
-    background-image: url('../skins/default/grid_handle_black_bottom.png');
+    background-image: url('../../images/components/grid_handle_black_bottom.png');
     background-position: -36px 0px;
 }
 

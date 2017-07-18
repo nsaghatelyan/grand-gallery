@@ -22,7 +22,13 @@
                     if (!empty($items)) {
                         foreach ($items as $item): ?>
                             <tr>
-                                <td><img src="<?= $item->url ?>"></td>
+                                <td>
+                                    <?php if ($item->type == "image"): ?>
+                                        <img src="<?= $item->url ?>">
+                                    <?php else: ?>
+                                        <img src="<?= $item->thumbnail_info["default_thumb"]; ?>"/>
+                                    <?php endif; ?>
+                                </td>
                                 <td><label for="gdgallery_images_name[<?= $item->id_image ?>]"> Name:</label>
                                     <input type="text" id="gdgallery_images_name[<?= $item->id_image ?>]"
                                            name="gdgallery_images_name[<?= $item->id_image ?>]"
@@ -51,10 +57,12 @@
                         <?php endforeach;
                     } ?>
                 </table>
+
                 <span class="spinner"></span>
                 <input type="submit" value="Save"
                        id="gdgallery-save-buttom"
                        class="gdgallery-save-buttom">
+                
             </form>
         </div>
     </div>
