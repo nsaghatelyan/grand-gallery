@@ -56,7 +56,6 @@ class FrontendAssetsController
 
         <script
                 type="text/javascript">var ajaxurl = '<?php echo admin_url('admin-ajax.php', is_ssl() ? 'admin' : 'http'); ?>';</script>
-
         <?php
     }
 

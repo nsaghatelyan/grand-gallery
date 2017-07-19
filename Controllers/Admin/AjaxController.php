@@ -19,6 +19,8 @@ class AjaxController
 
         add_action('wp_ajax_gdgallery_save_gallery_images', array(__CLASS__, 'saveGalleryImages'));
 
+        add_action('wp_ajax_gdgallery_remove_gallery_items', array(__CLASS__, 'removeGalleryItems'));
+
         add_action('wp_ajax_gdgallery_add_gallery_image', array(__CLASS__, 'AddGalleryImage'));
 
         add_action('wp_ajax_gdgallery_add_gallery_video', array(__CLASS__, 'AddGalleryVideo'));
@@ -103,6 +105,30 @@ class AjaxController
             die('something went wrong');
         }
     }
+
+    public static function removeGalleryItems()
+    {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
+            die('security check failed');
+        }
+
+        $gallery_id = absint($_REQUEST['gallery_id']);
+
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+
+        $updated = null;
+        if (!empty($_REQUEST["formdata"])) {
+            $updated = $gallery->removeGalleryItems($_REQUEST["formdata"]);
+        }
+
+        if ($updated) {
+            echo 1;
+            die();
+        } else {
+            die('something went wrong');
+        }
+    }
+
 
     public static function AddGalleryImage()
     {

@@ -122,7 +122,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                 <h3>Shortcode</h3>
                                 <p>Copy and paste this shortcode into your posts or pages.</p>
                                 <div class="gdgallery_highlighted">
-                                    [gdgallery_gallery id=<?= $id ?>]
+                                    [gdgallery_gallery id_gallery=<?= $id ?>]
                                 </div>
                             </div>
                             <div class="gdgallery_example">
@@ -137,7 +137,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                 <p>Paste the PHP code into your template file</p>
                                 <div class="gdgallery_highlighted">
                                     &lt;?php <br>
-                                    echo do_shortcode('[gdgallery_gallery id=<?= $id ?>]'); <br>
+                                    echo do_shortcode('[gdgallery_gallery id_gallery=<?= $id ?>]'); <br>
                                     ?&gt;
                                 </div>
                             </div>
@@ -148,7 +148,19 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
             </div>
             <div class="gdgallery_items_section">
                 <h3>Gallery Content</h3>
-                <?php if (!empty($items)) { ?><a href="#" class="gdgallery_edit_gallery_images">quick edit</a><?php } ?>
+
+                <?php if (!empty($items)) { ?>
+                    <p class="gdgallery_select_all_items">
+                        <label for="gdgallery_select_all_items">Select All</label> <input type="checkbox"
+                                                                                          id="gdgallery_select_all_items"
+                                                                                          name="select_all_items"/>
+                    </p>
+                    <a href="#" class="gdgallery_remove_selected_images gdfrm_delete_form">Remove selected items <i
+                                class="fa fa-times"
+                                aria-hidden="true"></i></a>
+                    <a href="#" class="gdgallery_edit_gallery_images">Quick edit <i class="fa fa-pencil"
+                                                                                    aria-hidden="true"></i></a>
+                <?php } ?>
                 <div class="gdgallery_clearfix"></div>
                 <div class="gdgallery_items_list">
                     <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
@@ -161,25 +173,18 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     </div>
                     <?php
                     if (!empty($items)) {
-                        foreach ($items as $item): ?>
-                            <div class="gdgallery_item">
-                                <?php if ($item->type == "image"): ?>
-                                    <img src="<?= $item->url; ?>"/>
-                                    <p class="gdgallery_item_title"><?= $item->name ?>
-                                        <i class="fa fa-picture-o" aria-hidden="true"></i></p>
-                                <?php else: ?>
-                                    <img src="<?= $item->thumbnail_info["default_thumb"]; ?>"/>
-                                    <p class="gdgallery_item_title"><?= $item->name ?>
-                                        <?php if (!empty($item->thumbnail_info["thumbnails"])): ?>
-                                            <i class="fa fa-youtube-play" aria-hidden="true"></i>
-                                        <?php else: ?>
-                                            <i class="fa fa-vimeo" aria-hidden="true"></i>
-                                        <?php endif; ?>
-                                    </p>
-                                <?php endif; ?>
+                        foreach ($items as $item):
+                            $icon = ($item->type == "youtube") ? "fa-youtube-play" : (($item->type == "vimeo") ? "fa-vimeo" : "fa-picture-o");
+                            ?>
 
+                            <div class="gdgallery_item">
+
+                                <img src="<?= $item->url; ?>"/>
+                                <p class="gdgallery_item_title"><?= $item->name ?>
+                                    <i class="fa <?= $icon ?>" aria-hidden="true"></i></p>
                                 <div class="gdgallery_item_overlay">
-                                    <input type="checkbox" name="item" val="<?= $item->id_image; ?>"/>
+                                    <input type="checkbox" name="items[]"
+                                           value="<?= $item->id_image; ?>" class="items_checkbox"/>
                                     <div class="gdgallery_item_edit">
                                         <a href="#">EDIT</a>
                                     </div>

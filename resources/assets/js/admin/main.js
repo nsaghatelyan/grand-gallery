@@ -321,18 +321,82 @@ jQuery(document).ready(function () {
 
     jQuery(".gdgallery_item_overlay input[type=checkbox]").change(function () {
         if (jQuery(this).is(':checked')) {
-            jQuery(this).parent().parent().css({
-                "border": "2pgix solid #2279e0"
-            });
+            /* jQuery(this).parent().parent().css({
+             "border": "2px solid #2279e0"
+             });*/
+            jQuery(this).parent().addClass("active_item");
         }
         else {
-            jQuery(this).parent().parent().css({
-                "border": "0px"
-            });
+            /*jQuery(this).parent().parent().css({
+             "border": "0px"
+             });*/
+            jQuery(this).parent().removeClass("active_item");
 
         }
     })
 
+
+    jQuery(".gdgallery_remove_selected_images").click(function (e) {
+        e.preventDefault();
+        var checked_items = [];
+        jQuery(".gdgallery_item input:checked").each(function (key, item) {
+            checked_items.push(jQuery(this).val());
+        })
+        console.log(checked_items);
+
+        general_data = {
+            action: "gdgallery_remove_gallery_items",
+            nonce: gallerySave.nonce,
+            gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
+            formdata: checked_items
+        };
+
+        jQuery.ajax({
+            url: ajaxurl,
+            method: 'post',
+            data: general_data,
+            dataType: 'text',
+            beforeSend: function () {
+                doingAjax = true;
+            }
+        }).always(function () {
+            doingAjax = false;
+        }).done(function (response) {
+            if (response == 1) {
+                toastr.success('Selected Items Removed Successfully');
+                window.setTimeout('location.reload()', 1000)
+            } else {
+                toastr.error('Error while removing items');
+            }
+        }).fail(function () {
+            toastr.error('Error while removing items');
+        });
+
+
+    });
+
+    jQuery(".items_checkbox").change(function () {
+        var count = jQuery(".gdgallery_item input:checked").length;
+        if (count > 0) {
+            jQuery(".gdgallery_remove_selected_images").show();
+        }
+        else {
+            jQuery(".gdgallery_remove_selected_images").hide();
+        }
+    });
+
+    jQuery("#gdgallery_select_all_items").change(function () {
+        if (jQuery(this).attr("checked") == 'checked') {
+            jQuery(".gdgallery_item input[type='checkbox']").attr("checked", "checked");
+            jQuery(".gdgallery_item_overlay").addClass("active_item");
+            jQuery(".gdgallery_remove_selected_images").show();
+        }
+        else {
+            jQuery(".gdgallery_item input[type='checkbox']").removeAttr("checked");
+            jQuery(".gdgallery_item_overlay").removeClass("active_item");
+            jQuery(".gdgallery_remove_selected_images").hide();
+        }
+    })
 });
 
 function addItem(data, type) {

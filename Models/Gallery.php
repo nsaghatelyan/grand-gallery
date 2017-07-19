@@ -134,13 +134,51 @@ class Gallery extends Model
             return null;
         }
 
+        $this->Items = $items;
 
-        foreach ($items as $item) {
-            if ($item->type == "video") {
-                $item->thumbnail_info = $this->getVideoThumb($item->url);
+        return $this->Items;
+    }
+
+    /**
+     * @return Field[]
+     */
+    public function getItemsPerPage()
+    {
+        global $wpdb;
+
+        /***pagination**/
+
+            if ($portfolio[0]->content_per_page) {
+                $num = $portfolio[0]->content_per_page;
             } else {
-                $item->thumbnail_info = array();
+                $num = 999;
             }
+            $total = intval(((count($images_list) - 1) / $num) + 1);
+
+            if (isset($_GET['portfolio-page' . $portfolioID . $pID])) {
+                $page = absint($_GET['portfolio-page' . $portfolioID . $pID]);
+            } else {
+                $page = '';
+            }
+            if (empty($page) or $page < 0) {
+                $page = 1;
+            }
+            if ($page > $total) {
+                $page = $total;
+            }
+            $start = $page * $num - $num;
+            $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "huge_itportfolio_images where portfolio_id = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $portfolioID);
+            $images = $wpdb->get_results($query);
+
+
+        /**** end pagination ***/
+
+
+        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering", $this->Id);
+        $items = $wpdb->get_results($query);
+
+        if (empty($items)) {
+            return null;
         }
 
         $this->Items = $items;
@@ -148,9 +186,11 @@ class Gallery extends Model
         return $this->Items;
     }
 
-    public function getVideoThumb($url)
+
+
+    public function getVideoThumb($video_id, $type)
     {
-        $default_thumbnail = null;
+        /*$default_thumbnail = null;
         $thumbnails = array();
         $result = array();
 
@@ -169,9 +209,18 @@ class Gallery extends Model
         $result = array(
             "default_thumb" => $default_thumbnail,
             "thumbnails" => $thumbnails
-        );
+        );*/
 
-        return $result;
+        $thumbnail = null;
+
+        if ($type == "youtube") {
+            $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/0.jpg";
+        } elseif ($type == "vimeo") {
+            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
+            $thumbnail = $hash[0]['thumbnail_medium'];
+        }
+
+        return $thumbnail;
 
     }
 
@@ -222,6 +271,16 @@ class Gallery extends Model
         return static::$primaryKey;
     }
 
+    public function removeGalleryItems($data)
+    {
+        global $wpdb;
+
+        foreach ($data as $key => $val) {
+            $wpdb->delete($wpdb->prefix . "gdgalleryimages", array('id_image' => $val));
+        }
+        return static::$primaryKey;
+    }
+
     public
     function AddGalleryImage($img, $id_gallery)
     {
@@ -243,14 +302,23 @@ class Gallery extends Model
     {
         global $wpdb;
 
+        $type = parent::getVideoType($data["gdgallery_video_url"]);
+        $video_id = parent::getVideoId($data["gdgallery_video_url"], $type);
+        $url = $this->getVideoThumb($video_id, $type);
+
+        if ($type === false) {
+            $type = "image";
+        }
+
         $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
                 "id_gallery" => $data["gdgallery_id_gallery"],
                 "name" => $data["gdgallery_video_name"],
                 "description" => $data["gdgallery_video_description"],
-                'url' => esc_url($data["gdgallery_video_url"]),
+                'url' => esc_url($url),
                 "ordering" => 0,
                 "target" => $data["gdgallery_video_target"],
-                "type" => "video"
+                "type" => $type,
+                "video_id" => $video_id
             )
         );
         return static::$primaryKey;

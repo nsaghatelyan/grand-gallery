@@ -23,9 +23,10 @@ class CreateImageTable
                 `ordering` int(11) NOT NULL,
                 `link` varchar(255) NULL,
                 `url` varchar(255) NOT NULL,
-                `target` ENUM('_blank', '_self','_top','_parent') DEFAULT '_blank',
-                `type` ENUM('image', 'video') DEFAULT 'image',
+                `target` ENUM('_blank','_self','_top','_parent') DEFAULT '_blank',
+                `type` ENUM('image', 'youtube', 'vimeo') DEFAULT 'image',
                 `ctime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `video_id` varchar(50) NULL,
                 PRIMARY KEY (id_image),
 				FOREIGN KEY (id_gallery) REFERENCES " . $wpdb->prefix . "GDGalleryGalleries (id_gallery) ON DELETE CASCADE
             ) ENGINE=InnoDB "

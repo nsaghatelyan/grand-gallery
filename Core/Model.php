@@ -270,4 +270,27 @@ abstract class Model
 
         return static::$AllItemsCount;
     }
+
+    public static function getVideoType($url)
+    {
+        if (strpos($url, "youtube") !== false) {
+            return "youtube";
+        } elseif (strpos($url, "vimeo") !== false) {
+            return "vimeo";
+        }
+
+        return false;
+    }
+
+    public static function getVideoId($url, $type)
+    {
+        $video_id = null;
+        if ($type == "youtube") {
+            $video_id = substr($url, -11);
+        } elseif ($type == "vimeo") {
+            $video_id = substr($url, -9);
+        }
+
+        return $video_id;
+    }
 }

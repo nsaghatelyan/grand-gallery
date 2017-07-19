@@ -11,17 +11,19 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
 
 <h3>Carousel Gallery</h3>
 
-<div id="gallery" style="display:none;">
+<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;">
 
-    <?php foreach ($images as $key => $val): ?>
+    <?php foreach ($images as $key => $val):
+        $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";
+        ?>
 
-        <a href="<?= $val->link ?>">
-            <img alt="<?= $val->name ?>"
-                 src="<?= $val->url ?>"
-                 data-image="<?= $val->url ?>"
-                 data-description="<?= $val->description ?>"
-                 style="display:block">
-        </a>
+        <img alt="<?= $val->name ?>"
+             data-type="<?= $val->type ?>"
+             src="<?= $val->url ?>"
+             data-image="<?= $val->url ?>"
+             data-description="<?= $val->description ?>"
+            <?= $video_id ?>
+             style="display:block">
 
     <?php endforeach; ?>
 
@@ -31,7 +33,9 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
 
     jQuery(document).ready(function () {
 
-        jQuery("#gallery").unitegallery();
+        var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
+
+        container.unitegallery();
 
     });
 

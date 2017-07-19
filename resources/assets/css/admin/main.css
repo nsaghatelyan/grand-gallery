@@ -1568,9 +1568,42 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 }
 
 .gdgallery_edit_gallery_images {
-    position: absolute;
-    right: 5px;
-    margin: 15px;
+    float: right;
+    right: 0px;
+    padding: 10px;
+    margin: 8px 0 0px 15px;
+    background: #fff;
+    color: #545454;
+    text-decoration: none;
+    box-shadow: 0px 0px 4px #b7b7b7;
+}
+
+.gdgallery_remove_selected_images {
+    float: left;
+    padding: 10px;
+    margin: 8px 0 0px 15px;
+    background: #d84444;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0px 0px 4px #4a4a4a;
+    display: none;
+}
+
+.gdgallery_remove_selected_images:hover,
+.gdgallery_remove_selected_images:active,
+.gdgallery_remove_selected_images:focus {
+    background: #b72e2e;
+    color: #fff;
+}
+
+.gdgallery_select_all_items {
+    float: left;
+    padding: 6px 8px 7px 8px;
+    margin: 8px 0 0px 15px;
+    background: #5191f6;
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0px 0px 4px #4a4a4a;
 }
 
 .quick_edit_table tr td input {
@@ -1583,6 +1616,11 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 
 .fa-vimeo {
     color: #00adef;
+}
+
+.active_item {
+    visibility: visible;
+    opacity: 1;
 }
 
 @media all and (max-width: 1650px) {
