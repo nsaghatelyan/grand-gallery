@@ -321,16 +321,15 @@ jQuery(document).ready(function () {
 
     jQuery(".gdgallery_item_overlay input[type=checkbox]").change(function () {
         if (jQuery(this).is(':checked')) {
-            console.log("checked");
-            jQuery(this).parent().find(".gdgallery_item_overlay").css({
-                "visibility": "visible",
-                "opacity": "1",
-                "border": "3px solid red"
+            jQuery(this).parent().parent().css({
+                "border": "2pgix solid #2279e0"
             });
         }
         else {
-            console.log("not");
-            jQuery(this).parent().find(".gdgallery_item_overlay").css({"visibility": "hidden", "opacity": "0"});
+            jQuery(this).parent().parent().css({
+                "border": "0px"
+            });
+
         }
     })
 
