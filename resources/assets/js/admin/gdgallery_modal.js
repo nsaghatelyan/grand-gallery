@@ -2,7 +2,6 @@ var gdgalleryModalGallery = {
 
     show: function (elementId, args) {
         var el = jQuery('#' + elementId);
-        console.log(el);
         if (el.length) {
             el.css('display', 'block');
         }
