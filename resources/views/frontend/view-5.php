@@ -11,7 +11,7 @@ wp_enqueue_script("gdgalleryoneandothers", \GDGallery()->pluginUrl() . "/resourc
 
 <h3>One and Others Gallery</h3>
 
-<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;">
+<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="one_and_other">
 
     <?php foreach ($images as $key => $val):
         $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";

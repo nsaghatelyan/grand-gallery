@@ -10,7 +10,7 @@ wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/ass
 
 <h3>Slider Gallery</h3>
 
-<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;">
+<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="slider">
 
     <?php foreach ($images as $key => $val):
         $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";

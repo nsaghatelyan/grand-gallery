@@ -5,7 +5,7 @@
 
             </div>
             <div class="-gdgallery-modal-header-info">
-                <h2>Quick Edit - Images</h2>
+                <h3>Quick Edit - Images</h3>
             </div>
             <div class="-gdgallery-modal-close">
                 <i class="fa fa-close"></i>

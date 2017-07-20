@@ -139,42 +139,45 @@ class Gallery extends Model
         return $this->Items;
     }
 
-    /**
-     * @return Field[]
-     */
-    public function getItemsPerPage()
+    public function getItemsCount()
     {
         global $wpdb;
 
-        /***pagination**/
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering", $this->Id);
+        return $wpdb->get_var($query);
+    }
 
-            if ($portfolio[0]->content_per_page) {
-                $num = $portfolio[0]->content_per_page;
-            } else {
-                $num = 999;
-            }
-            $total = intval(((count($images_list) - 1) / $num) + 1);
+    /**
+     * @return Field[]
+     */
+    public function getItemsPerPage($data)
+    {
+        global $wpdb;
 
-            if (isset($_GET['portfolio-page' . $portfolioID . $pID])) {
-                $page = absint($_GET['portfolio-page' . $portfolioID . $pID]);
-            } else {
-                $page = '';
-            }
-            if (empty($page) or $page < 0) {
-                $page = 1;
-            }
-            if ($page > $total) {
-                $page = $total;
-            }
-            $start = $page * $num - $num;
-            $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "huge_itportfolio_images where portfolio_id = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $portfolioID);
-            $images = $wpdb->get_results($query);
+        if ($data->items_per_page) {
+            $num = $data->items_per_page;
+        } else {
+            $num = 999;
+        }
 
+        $items_count = $this->getItemsCount();
 
-        /**** end pagination ***/
+        $total = intval((($items_count - 1) / $num) + 1);
 
+        if (isset($_GET["gdgallery-page"])) {
+            $page = absint($_GET["gdgallery-page"]);
+        } else {
+            $page = '';
+        }
+        if (empty($page) or $page < 0) {
+            $page = 1;
+        }
+        if ($page > $total) {
+            $page = $total;
+        }
+        $start = $page * $num - $num;
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering", $this->Id);
+        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->Id);
         $items = $wpdb->get_results($query);
 
         if (empty($items)) {
@@ -185,7 +188,6 @@ class Gallery extends Model
 
         return $this->Items;
     }
-
 
 
     public function getVideoThumb($video_id, $type)
@@ -232,6 +234,14 @@ class Gallery extends Model
         $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgallerygalleries` where id_gallery=%d order by ordering", $this->Id);
         $galleries = $wpdb->get_row($query);
 
+
+        $total = 0;
+        if ($galleries->display_type == 2) {
+            $items_count = $this->getItemsCount();
+            $total = intval((($items_count - 1) / $galleries->items_per_page) + 1);
+        }
+
+        $galleries->total = $total;
 
         if (empty($galleries)) {
             return null;
@@ -282,18 +292,20 @@ class Gallery extends Model
     }
 
     public
-    function AddGalleryImage($img, $id_gallery)
+    function AddGalleryImage($images, $id_gallery)
     {
         global $wpdb;
 
-        $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
-                "id_gallery" => $id_gallery,
-                'url' => esc_sql($img),
-                "ordering" => 0,
-                "target" => "_blank",
-                "type" => "image"
-            )
-        );
+        foreach ($images as $img) {
+            $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
+                    "id_gallery" => $id_gallery,
+                    'url' => esc_sql($img),
+                    "ordering" => 0,
+                    "target" => "_blank",
+                    "type" => "image"
+                )
+            );
+        }
         return static::$primaryKey;
     }
 
@@ -329,15 +341,15 @@ class Gallery extends Model
     {
         $this->View_style = array(
             array("Jastified", GDGALLERY_IMAGES_URL . "icons/view/glossary.png"),
-            array("Pinterest", GDGALLERY_IMAGES_URL . "icons/view/pinterest.png"),
-            array("One and others 1", GDGALLERY_IMAGES_URL . "icons/view/slider_vertical.png"),
+            array("Tiles", GDGALLERY_IMAGES_URL . "icons/view/pinterest.png"),
+            array("Carousel", GDGALLERY_IMAGES_URL . "icons/view/slider_vertical.png"),
             array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider.png"),
             array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid.png"),
-            array("One and others 2", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png"),
-            array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
-            array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
-            array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
-            array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png")
+            array("One and others", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png")
+            /* array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
+             array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
+             array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
+             array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png")*/
         );
     }
 

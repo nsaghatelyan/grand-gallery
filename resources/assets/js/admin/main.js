@@ -80,7 +80,7 @@ jQuery(document).ready(function () {
         }
     });
 
-    jQuery("#settings_container_switcher").click(function (e) {
+    jQuery("#gdgallery_settings_section").click(function (e) {
         e.preventDefault();
 
         jQuery('.settings-toogled-container').animate({height: 'toggle'}, 200);
@@ -162,14 +162,16 @@ jQuery(document).ready(function () {
             multiple: true
         });
         //When a file is selected, grab the URL and set it as the text field's value
+        var selected_images = [];
         custom_uploader.on('select', function () {
             attachments = custom_uploader.state().get('selection').toJSON();
             for (var key in attachments) {
                 jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
+                selected_images.push(attachments[key].url);
             }
 
 
-            addItem(attachments[key].url, "image");
+            addItem(selected_images, "image");
 
         });
         custom_uploader.open();
@@ -289,8 +291,6 @@ jQuery(document).ready(function () {
                 formdata: formData
             };
 
-        console.log(general_data);
-
 
         jQuery.ajax({
             url: ajaxurl,
@@ -342,7 +342,6 @@ jQuery(document).ready(function () {
         jQuery(".gdgallery_item input:checked").each(function (key, item) {
             checked_items.push(jQuery(this).val());
         })
-        console.log(checked_items);
 
         general_data = {
             action: "gdgallery_remove_gallery_items",
@@ -358,13 +357,15 @@ jQuery(document).ready(function () {
             dataType: 'text',
             beforeSend: function () {
                 doingAjax = true;
+                jQuery(".gdgallery_remove_selected_images").addClass("disabled_remove_link");
             }
         }).always(function () {
             doingAjax = false;
         }).done(function (response) {
             if (response == 1) {
                 toastr.success('Selected Items Removed Successfully');
-                window.setTimeout('location.reload()', 1000)
+                jQuery(".gdgallery_remove_selected_images").removeClass("disabled_remove_link");
+                window.setTimeout('location.reload()', 500)
             } else {
                 toastr.error('Error while removing items');
             }
@@ -379,9 +380,11 @@ jQuery(document).ready(function () {
         var count = jQuery(".gdgallery_item input:checked").length;
         if (count > 0) {
             jQuery(".gdgallery_remove_selected_images").show();
+            jQuery("input[name=select_all_items]").prop("checked", true);
         }
         else {
             jQuery(".gdgallery_remove_selected_images").hide();
+            jQuery("input[name=select_all_items]").prop("checked", false);
         }
     });
 
@@ -400,7 +403,12 @@ jQuery(document).ready(function () {
 });
 
 function addItem(data, type) {
-    general_data = {
+    var form, submitBtn;
+    if (type == "video") {
+        form = jQuery('#gdgallery_add_video_form');
+        submitBtn = form.find('input[type=submit]');
+    }
+    var general_data = {
         action: "gdgallery_add_gallery_" + type,
         nonce: gallerySave.nonce,
         gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
@@ -415,13 +423,21 @@ function addItem(data, type) {
         dataType: 'text',
         beforeSend: function () {
             doingAjax = true;
+            if (type == "video") {
+                submitBtn.attr("disabled", 'disabled');
+                submitBtn.parent().find(".spinner").css("visibility", "visible");
+            }
         }
     }).always(function () {
         doingAjax = false;
+        if (type == "video") {
+            submitBtn.removeAttr("disabled");
+            submitBtn.parent().find(".spinner").css("visibility", "hidden");
+        }
     }).done(function (response) {
         if (response == 1) {
             toastr.success(' Added Successfully');
-            window.setTimeout('location.reload()', 1000)
+            window.setTimeout('location.reload()', 500)
         } else {
             toastr.error('Error while saving');
         }

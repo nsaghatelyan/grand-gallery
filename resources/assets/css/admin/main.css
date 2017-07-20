@@ -180,11 +180,6 @@ body {
     /*background: #fff;*/
 }
 
-.gdfrm_nav ul {
-    border-bottom: 6px solid #e9ebf3;
-    margin: 0;
-}
-
 .gdfrm_nav li {
     display: inline-block;
     padding: 0 20px;
@@ -1279,6 +1274,13 @@ html .ui-button.ui-state-disabled:active {
     margin-bottom: 20px;
 }
 
+#gdgallery_settings_section {
+    width: 100%;
+    box-sizing: border-box;
+    height: 51px;
+    cursor: pointer;
+}
+
 #settings_container_switcher {
     float: right;
     padding: 15px;
@@ -1293,8 +1295,8 @@ html .ui-button.ui-state-disabled:active {
     box-shadow: none !important;
 }
 
-.gdfrm_edit_form_container h4 {
-    margin: 0px;
+.gdgallery_general_settings h4 {
+    margin: 0px 0px 10px 0px;
 }
 
 /* this CS forms the triangles */
@@ -1315,10 +1317,6 @@ html .ui-button.ui-state-disabled:active {
 #gdgallery_general_settings ul li {
     display: block;
     margin-bottom: 15px;
-}
-
-#gdgallery_general_settings li:first-child h4 {
-    position: absolute;
 }
 
 #gdgallery_custom_css textarea {
@@ -1376,6 +1374,7 @@ html .ui-button.ui-state-disabled:active {
     margin: 0 15px 15px 0;
     border-radius: 3px;
     max-height: 113px;
+    min-width: 168px;
     text-align: center;
 }
 
@@ -1411,7 +1410,7 @@ html .ui-button.ui-state-disabled:active {
 
 .gdgallery_item_overlay {
     background: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    position: absolute !important;
     top: 0;
     width: 100%;
     height: 100%;
@@ -1596,6 +1595,12 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
     color: #fff;
 }
 
+.disabled_remove_link {
+    background-color: #ad9494 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+}
+
 .gdgallery_select_all_items {
     float: left;
     padding: 6px 8px 7px 8px;
@@ -1621,6 +1626,11 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 .active_item {
     visibility: visible;
     opacity: 1;
+}
+
+ul.gdgallery_general_settings {
+    display: flex !important;
+    flex-wrap: wrap !important;
 }
 
 @media all and (max-width: 1650px) {

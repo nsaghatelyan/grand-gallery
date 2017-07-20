@@ -57,6 +57,8 @@ class AjaxController
             die('security check failed');
         }
 
+        $positions = array("left", "center", "right");
+
         $gallery_id = absint($_REQUEST['gallery_id']);
 
         $gallery_data = str_replace("gdgallery_", "", $_REQUEST["formdata"]);
@@ -64,6 +66,8 @@ class AjaxController
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
         $gallery_data_arr = array();
         parse_str($gallery_data, $gallery_data_arr);
+
+        $gallery_data_arr["position"] = $positions[$gallery_data_arr["position"]];
 
         $gallery_data_arr["custom_css"] = $gallery_data_arr["gallery_container_css"] . " " . $gallery_data_arr["single_item_css"];
         unset($gallery_data_arr["gallery_container_css"]);

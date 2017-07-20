@@ -36,9 +36,11 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
             </div>
 
             <div id="tabs">
-                <h3>Gallery settings</h3>
-                <a href="#" id="settings_container_switcher" data-status="show"><img
-                            src="<?= GDGALLERY_IMAGES_URL ?>icons/triangle.png"></a>
+                <div id="gdgallery_settings_section">
+                    <h3>Gallery settings</h3>
+                    <a href="#" id="settings_container_switcher" data-status="show"><img
+                                src="<?= GDGALLERY_IMAGES_URL ?>icons/triangle.png"></a>
+                </div>
                 <div style="clear: both"></div>
                 <div class="settings-toogled-container">
                     <ul>
@@ -56,41 +58,49 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                         </li>
                     </ul>
                     <div id="gdgallery_general_settings">
-                        <ul cass="gdgallery_general_settings">
-                            <li>
-                                <h4>Description</h4>
-                                <?php
-                                wp_editor($gallery_data->description, "gdgallery_description", array(
-                                    'media_buttons' => false,
-                                    'textarea_rows' => 5,
-                                    'tabindex' => 4
-                                ));
-                                ?>
-                            </li>
+                        <ul class="gdgallery_general_settings">
                             <li>
                                 <h4>Display Type</h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type_<?= $id ?>">
-                                    <option value="0">Show All</option>
-                                    <option value="1">Load more</option>
-                                    <option value="2">Pagination</option>
+                                    <option value="0" <?php if ($gallery_data->display_type == 0) echo "selected" ?>>
+                                        Show All
+                                    </option>
+                                    <option value="1" <?php if ($gallery_data->display_type == 1) echo "selected" ?>>
+                                        Load more
+                                    </option>
+                                    <option value="2" <?php if ($gallery_data->display_type == 2) echo "selected" ?>>
+                                        Pagination
+                                    </option>
                                 </select>
                             </li>
                             <li>
                                 <h4>Hover effect</h4>
                                 <select name="gdgallery_hover_effect"
                                         id="gdgallery_hover_effect_<?= $id ?>">
-                                    <option value="0">effect 1</option>
-                                    <option value="1">effect 2</option>
-                                    <option value="2">effect 3</option>
+                                    <option value="0" <?php if ($gallery_data->hover_effect == 0) echo "selected" ?>>
+                                        effect 1
+                                    </option>
+                                    <option value="1" <?php if ($gallery_data->hover_effect == 1) echo "selected" ?>>
+                                        effect 2
+                                    </option>
+                                    <option value="2" <?php if ($gallery_data->hover_effect == 2) echo "selected" ?>>
+                                        effect 3
+                                    </option>
                                 </select>
                             </li>
                             <li>
                                 <h4>Position</h4>
                                 <select name="gdgallery_position"
                                         id="gdgallery_position_<?= $id ?>">
-                                    <option value="0">left</option>
-                                    <option value="1">center</option>
-                                    <option value="2">right</option>
+                                    <option value="0" <?php if ($gallery_data->position == "left") echo "selected" ?>>
+                                        left
+                                    </option>
+                                    <option value="1" <?php if ($gallery_data->position == "center") echo "selected" ?>>
+                                        center
+                                    </option>
+                                    <option value="2" <?php if ($gallery_data->position == "right") echo "selected" ?>>
+                                        right
+                                    </option>
                                 </select>
                             </li>
                         </ul>
@@ -197,7 +207,6 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                 </div>
             </div>
         </div>
-    </div>
 </form>
 <?php \GDGallery\Helpers\View::render('admin/add-video.php'); ?>
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>

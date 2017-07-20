@@ -3,18 +3,41 @@
  * @var $gallery \GDGallery\Models\Gallery
  */
 
-
-$id_gallery = $gallery->getId();
 $gallery_data = $gallery->getGallery();
-$images = $gallery->getItems();
 $view = intval($gallery_data->view_type);
+$id_gallery = $gallery->getId();
+$images = array();
 
-//debug::trace($gallery_data);
-//debug::trace($images);
+if (in_array($view, array(0, 1, 4))) {
+    switch ($gallery_data->display_type) {
+        case 0:
+            $images = $gallery->getItems();
+            break;
+        case 1:
+            $images = $gallery->getItemsPerPage($gallery_data);
+            break;
+        case 2:
+            $images = $gallery->getItemsPerPage($gallery_data);
+            break;
+    }
+} else {
+    $images = $gallery->getItems();
+}
 
 ?>
-<div class="gdgallery-gallery-container" id="gdgallery-container-<?= $id_gallery ?>">
+<div class="gdgallery-gallery-container" id="gdgallery-container-<?= $id_gallery ?>" data-id="<?= $id_gallery ?>">
     <?php \GDGallery\Helpers\View::render('frontend/view-' . $view . '.php', compact('gallery_data', 'images')); ?>
+    <?php if (in_array($view, array(0, 1, 4))) {
+
+        if ($gallery_data->display_type == 2) {
+            \GDGallery\Helpers\View::render('frontend/pagination.php', compact('gallery_data', 'images'));
+        } elseif ($gallery_data->display_type == 1) {
+            ?>
+            <button data-id="<?= $id_gallery ?>" data-count="<?= $gallery_data->items_per_page ?>"
+                    id="gdgallery_load_more">Load more
+            </button>
+        <?php }
+    } ?>
 </div>
 
 

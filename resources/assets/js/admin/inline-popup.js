@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
 
     jQuery('#grand_form_insert').on('click', function () {
         var id = jQuery('#grand_form_select option:selected').val();
-        window.send_to_editor('[gdgallery_gallery id="' + id + '"]');
+        window.send_to_editor('[gdgallery_gallery id_gallery="' + id + '"]');
         tb_remove();
         var name = jQuery("#map_name").val();
         id = jQuery('#grand_form_select option:selected').val();

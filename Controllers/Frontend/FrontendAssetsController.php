@@ -21,11 +21,12 @@ class FrontendAssetsController
      * Add Scripts
      *
      */
-    public static function addScripts($FormId)
+    public static function addScripts($GalleryId)
     {
-
+        $gallery = new Gallery(array('Id' => $GalleryId));
 
         wp_enqueue_script("gdgalleryunite", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/unitegallery.min.js", array('jquery'), false, true);
+        wp_enqueue_script('gdgalleryFrontJs', \GDGallery()->pluginUrl() . '/resources/assets/js/frontend/main.js', array('jquery'), false, true);
 
 
         /* $Form = new Form(array('Id' => $FormId));

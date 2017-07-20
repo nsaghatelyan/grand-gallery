@@ -5,7 +5,7 @@
 
             </div>
             <div class="-gdgallery-modal-header-info">
-                <h2>Add Video URL From Youtube or Vimeo</h2>
+                <h3>Add Video URL From Youtube or Vimeo</h3>
             </div>
             <div class="-gdgallery-modal-close">
                 <i class="fa fa-close"></i>
@@ -23,7 +23,7 @@
                         <td><label for="gdgallery_video_url"> Video URL (Youtube or Vimeo):</label>
                             <input type="text" id="gdgallery_video_url"
                                    name="gdgallery_video_url"
-                                   value="">
+                                   value="" required>
                         </td>
                         <td><label for="gdgallery_video_name"> Title:</label>
                             <input type="text" id="gdgallery_video_name"

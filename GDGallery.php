@@ -107,6 +107,7 @@ if (!class_exists('GDGallery')) :
 
 
             if (defined('DOING_AJAX')) {
+               
                 AdminAjax::init();
                 FrontAjax::init();
             }

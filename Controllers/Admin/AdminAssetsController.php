@@ -35,7 +35,7 @@ class AdminAssetsController
 
             wp_enqueue_style('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/gdgallery-modal.css', false);
 
-//            wp_enqueue_style('gdgalleryBannerStyle', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/banner.css');
+            wp_enqueue_style('gdgalleryBannerStyle', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/banner.css');
 
             wp_enqueue_style('roboto', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic');
 

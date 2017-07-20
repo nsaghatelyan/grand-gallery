@@ -11,7 +11,7 @@ wp_enqueue_script("gdgallerytiles", \GDGallery()->pluginUrl() . "/resources/asse
 
 <h3>Tiles Gallery</h3>
 
-<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;">
+<div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="tiles">
 
     <?php foreach ($images as $key => $val):
         $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";
