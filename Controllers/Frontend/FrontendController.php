@@ -8,7 +8,7 @@ class FrontendController
     public function __construct()
     {
         add_shortcode('gdgallery_gallery', array('GDGallery\Controllers\Frontend\ShortcodeController', 'run'));
-        new FormPreviewController();
+        new GalleryPreviewController();
         FrontendAssetsController::init();
     }
 }

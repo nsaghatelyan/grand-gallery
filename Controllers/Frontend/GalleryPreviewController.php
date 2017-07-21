@@ -1,16 +1,16 @@
 <?php
 namespace GDGallery\Controllers\Frontend;
 
-use GDGALLERY\Models\Form;
+use GDGallery\Models\Gallery;
 
-class FormPreviewController
+class GalleryPreviewController
 {
     /**
-     * Form ID
+     * Gallery ID
      *
      * @var int
      */
-    private $Form;
+    private $gallery;
 
     /***
      * @param
@@ -18,9 +18,9 @@ class FormPreviewController
      */
     public function __construct()
     {
-        if (!isset($_GET['gdfrm_preview'])) return;
+        if (!isset($_GET['gdgallery_preview'])) return;
 
-        $this->Form = intval($_GET['gdfrm_preview']);
+        $this->gallery = intval($_GET['gdgallery_preview']);
 
         add_filter('the_title', array($this, 'theTitle'));
         add_filter('the_content', array($this, 'theContent'), 9001);
@@ -35,10 +35,10 @@ class FormPreviewController
     {
         if (!in_the_loop()) return $title;
 
-        $form = new Form(array('Id' => $this->Form));
-        $title = $form->getName();
+        $gallery = new Gallery(array('id_gallery' => $this->gallery));
+        $title = $gallery->getName();
 
-        return $title . " " . __('Form Preview', GDFRM_TEXT_DOMAIN);
+        return $title . " " . __('Gallery Preview', GDGALLERY_TEXT_DOMAIN);
     }
 
     /**
@@ -46,21 +46,21 @@ class FormPreviewController
      */
     public function theContent()
     {
-        if (!is_user_logged_in()) return __('Log In first in order to preview the form.', GDFRM_TEXT_DOMAIN);
+        if (!is_user_logged_in()) return __('Log In first in order to preview the Gallery.', GDGALLERY_TEXT_DOMAIN);
 
-        return do_shortcode("[gdfrm_form id='{$this->Form}']");
+        return do_shortcode("[gdgallery_gallery id_gallery='{$this->gallery}']");
     }
 
 
-    public static function previewUrl($form, $return_html = true)
+    public static function previewUrl($gallery, $return_html = true)
     {
 
         if ($return_html) {
-            $html = '<a target="_blank" class="gdfrm-preview" href="' . home_url() . '/?gdfrm_preview=' . $form . '">' . __('Preview Form', GDFRM_TEXT_DOMAIN) . '</a>';
+            $html = '<a target="_blank" class="gdgallery-preview" href="' . home_url() . '/?gdgallery_preview=' . $gallery . '">' . __('Preview Gallery', GDGALLERY_TEXT_DOMAIN) . '</a>';
 
             return $html;
         } else {
-            return home_url() . '/?gdfrm_preview=' . $form;
+            return home_url() . '/?gdgallery_preview=' . $gallery;
 
         }
 

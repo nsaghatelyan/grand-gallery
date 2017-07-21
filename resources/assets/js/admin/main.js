@@ -167,10 +167,10 @@ jQuery(document).ready(function () {
             attachments = custom_uploader.state().get('selection').toJSON();
             for (var key in attachments) {
                 jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
-                selected_images.push(attachments[key].url);
+                selected_images.push({url: attachments[key].url, name: attachments[key].title});
             }
 
-
+            console.log(selected_images);
             addItem(selected_images, "image");
 
         });
@@ -401,6 +401,30 @@ jQuery(document).ready(function () {
         }
     })
 });
+
+jQuery(document).ready(function ($) {
+    var fixHelperModified = function (e, tr) {
+            tr.css("background", "#f5f1f1");
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                $(this).width($originals.eq(index).width())
+            });
+            tr.css("background", "#fff");
+            return $helper;
+        },
+        updateIndex = function (e, ui) {
+
+            $('td.index', ui.item.parent()).each(function (i) {
+                $(this).find("input").val(i + 1);
+            });
+        };
+
+    $("#sort tbody").sortable({
+        helper: fixHelperModified,
+        stop: updateIndex
+    }).disableSelection();
+})
 
 function addItem(data, type) {
     var form, submitBtn;

@@ -36,7 +36,7 @@ wp_enqueue_script("gdgalleryoneandothers", \GDGallery()->pluginUrl() . "/resourc
         var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
 
         container.unitegallery({
-            theme_panel_position: "right"
+            theme_panel_position: "bottom"
         });
 
     });

@@ -6,8 +6,9 @@
  */
 
 $placeholder = isset($field['placeholder'])
-    ? 'placeholder='.$field['placeholder']
+    ? 'placeholder=' . $field['placeholder']
     : '';
+
 
 $class = "";
 if (isset($field['html_class']) && !empty($field['html_class'])) {
@@ -17,12 +18,14 @@ if (isset($field['html_class']) && !empty($field['html_class'])) {
     }
     $class = "class = '" . $class_name . "'";
 }
+
+
 ?>
 
 <label class="input-wrap">
     <span class="settings-label"><?php
         echo $field['label'];
-        if(isset($field['help'])): ?>
+        if (isset($field['help'])): ?>
             <span class="settings-field-help">
                 <span class="settings-field-help-icon">?</span>
                 <span class="settings-field-help-text-wrap">
@@ -32,5 +35,6 @@ if (isset($field['html_class']) && !empty($field['html_class'])) {
             </span>
         <?php endif;
         ?></span>
-    <input type="number" name="settings[<?php echo $fieldId; ?>]" value="<?php echo $value; ?>" <?php echo $placeholder; ?> />
+    <input type="text" name="settings[<?php echo $fieldId; ?>]"
+           value="<?php echo $value; ?>" <?php echo $placeholder . " " . $class; ?> />
 </label>

@@ -16,6 +16,13 @@ abstract class Model
     protected static $tableName;
 
     /**
+     * Database items table name(without prefix)
+     *
+     * @var string
+     */
+    protected static $itemsTableName;
+
+    /**
      * Primary Key for current model
      *
      * @var string
@@ -78,6 +85,17 @@ abstract class Model
     {
         global $wpdb;
         return $wpdb->prefix . static::$tableName;
+    }
+
+    /**
+     * Returns items table name for current model
+     *
+     * @return string
+     */
+    public static function getItemsTableName()
+    {
+        global $wpdb;
+        return $wpdb->prefix . static::$itemsTableName;
     }
 
     /**
@@ -152,6 +170,7 @@ abstract class Model
         return false;
     }
 
+
     /**
      * @param $PrimaryKeyValue mixed
      * @return false|int
@@ -171,6 +190,9 @@ abstract class Model
 
             }
         }
+
+
+        $wpdb->query("DELETE FROM " . static::getItemsTableName() . " WHERE " . static::$primaryKey . " ='" . $PrimaryKeyValue . "'");
 
         return $wpdb->query("DELETE FROM " . static::getTableName() . " WHERE " . static::$primaryKey . " ='" . $PrimaryKeyValue . "'");
     }

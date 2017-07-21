@@ -83,11 +83,11 @@ switch ($page_nav_type) {
 
 
 <style>
-    .gdgallery-pagination-<?php echo $portfolioID; ?> {
+    .gdgallery-pagination-<?= $gallery_data->id_gallery ?> {
         margin-top: 15px !important;
     }
 
-    .gdgallery-pagination-<?php echo $portfolioID; ?> .gdgallery-pagination-icon {
+    .gdgallery-pagination-<?= $gallery_data->id_gallery ?> .gdgallery-pagination-icon {
         box-shadow: none !important;
     }
 </style>

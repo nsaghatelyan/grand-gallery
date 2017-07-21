@@ -34,7 +34,8 @@ class SettingsController
             "tiles" => array('title' => __('Tiles', 'gdgallery')),
             "carousel" => array('title' => __('Carousel', 'gdgallery')),
             "slider" => array('title' => __('Slider', 'gdgallery')),
-            "grid" => array('title' => __('Grid', 'gdgallery'))
+            "grid" => array('title' => __('Grid', 'gdgallery')),
+            "one_and_others" => array('title' => __('One and Others', 'gdgallery'))
         ));
 
         $builder->addSections(array(
@@ -103,6 +104,16 @@ class SettingsController
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
                 "tab" => "grid"
             ),
+            'element_style_one_and_others' => array(
+                'title' => __('Element Styles', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "one_and_others"
+            ),
+            'components_one_and_others' => array(
+                'title' => __('Components Styles', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "one_and_others"
+            ),
 
 
         ));
@@ -114,6 +125,13 @@ class SettingsController
                 'label' => __('Show Title', 'gdgallery'),
                 'section' => 'element_style_justified',
                 'help' => __('Show / Hide Title')
+            ),
+            'title_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Title color', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Choose Title Color'),
+                'html_class' => array('jscolor', 'testclass', 'ddd')
             ),
             'margin_justified' => array(
                 'type' => 'number',
@@ -347,6 +365,25 @@ class SettingsController
                 'label' => __('Font size', 'gdgallery'),
                 'section' => 'pagination_grid',
                 'help' => __('Font size')
+            ),
+
+            /********* One_and_others options ************/
+            'show_title_one_and_others' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Title', 'gdgallery'),
+                'section' => 'element_style_one_and_others',
+                'help' => __('Show / Hide Title')
+            ),
+            'icons_one_and_others' => array(
+                'type' => 'select',
+                'label' => __('Icons style', 'gdgallery'),
+                'options' => array(
+                    '0' => __('style 1', 'gdgallery'),
+                    '1' => __('style 2', 'gdgallery'),
+                    '2' => __('style 3', 'gdgallery'),
+                ),
+                'section' => 'components_one_and_others',
+                'help' => __('Icons style')
             ),
         ));
 

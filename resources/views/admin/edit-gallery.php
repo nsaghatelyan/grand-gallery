@@ -4,7 +4,7 @@
  * @var $gallery \GDGallery\Models\Gallery
  */
 
-use GDGallery\Controllers\Frontend\FormPreviewController as Preview;
+use GDGallery\Controllers\Frontend\GalleryPreviewController as Preview;
 
 global $wpdb;
 
@@ -210,18 +210,6 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 </form>
 <?php \GDGallery\Helpers\View::render('admin/add-video.php'); ?>
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
-
-
-<!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-
-<script>
-    /* $(function () {
-     $(".gdgallery_items_list").sortable();
-     $(".gdgallery_items_list").disableSelection()
-     }*/
-
-</script>
 
 
 <script>

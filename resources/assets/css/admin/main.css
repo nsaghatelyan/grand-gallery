@@ -1076,6 +1076,8 @@ span.add-field-rightcol {
 .form-actions a,
 .theme-actions a {
     font-size: 20px;
+    box-shadow: none;
+    outline: none;
 }
 
 .form-actions a i,
@@ -1550,14 +1552,20 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 
 .quick_edit_table img {
     max-width: 150px;
+    max-height: 115px;
 }
 
 .quick_edit_table td {
     padding: 5px;
+    border-bottom: 1px solid #ececec;
 }
 
 .quick_edit_table td label {
     display: block;
+}
+
+.gdgallery_items_section, .gdgallery_items_list {
+    margin-top: 5px;
 }
 
 .quick_edit_table td input, .quick_edit_table td textarea,
@@ -1631,6 +1639,16 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 ul.gdgallery_general_settings {
     display: flex !important;
     flex-wrap: wrap !important;
+}
+
+.quick_edit_table tr {
+    cursor: all-scroll;
+    background-color: #fff;
+}
+
+.img_td {
+    width: 175px;
+    text-align: center;
 }
 
 @media all and (max-width: 1650px) {

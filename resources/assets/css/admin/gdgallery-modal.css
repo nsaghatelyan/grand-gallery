@@ -34,6 +34,7 @@
     padding: 15px 35px;
     max-height: 700px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .-gdgallery-modal-content-header {

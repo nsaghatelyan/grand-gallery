@@ -20,7 +20,7 @@ if (!class_exists('GDGallery')) :
          * Version of plugin
          * @var string
          */
-        public $version = "1.0.1";
+        public $version = "1.0.0";
 
         /**
          * Instance of AdminController to manage admin
@@ -69,6 +69,7 @@ if (!class_exists('GDGallery')) :
 
         private function __construct()
         {
+
             $this->constants();
             $this->migrationClasses = array(
                 'GDGallery\Database\Migrations\CreateGalleryTable',
@@ -107,7 +108,7 @@ if (!class_exists('GDGallery')) :
 
 
             if (defined('DOING_AJAX')) {
-               
+
                 AdminAjax::init();
                 FrontAjax::init();
             }
@@ -126,6 +127,7 @@ if (!class_exists('GDGallery')) :
         {
             if (get_option('gdgallery_version') !== $this->version) {
                 $this->runMigrations();
+                $this->setDefaultGallerySettings();
                 update_option('gdgallery_version', $this->version);
             }
         }
@@ -141,6 +143,19 @@ if (!class_exists('GDGallery')) :
                     call_user_func(array($className, 'run'));
                 } else {
                     throw new \Exception('Specified migration class ' . $className . ' does not have "run" method');
+                }
+            }
+        }
+
+        public function setDefaultGallerySettings()
+        {
+            $settings = new Settings();
+            $options = $settings->getOptions();
+
+            if (empty($options)) {
+                $default_settings = $settings->getDefaultOptions();
+                foreach ($default_settings as $key => $value) {
+                    $settings->setOption($key, $value);
                 }
             }
         }

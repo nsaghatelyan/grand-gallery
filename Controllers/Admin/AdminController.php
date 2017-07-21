@@ -34,7 +34,7 @@ class AdminController
 
         add_action('admin_init', array(__CLASS__, 'deleteGallery'), 1);
 
-        add_action('admin_init', array(__CLASS__, 'duplicateForm'), 1);
+        add_action('admin_init', array(__CLASS__, 'duplicateGallery'), 1);
 
         add_action('admin_init', array(__CLASS__, 'createGallery'), 1);
 
@@ -49,7 +49,12 @@ class AdminController
         $this->Pages['main_page'] = add_menu_page(__('Grand Gallery', GDGALLERY_TEXT_DOMAIN), __('Grand Gallery', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
             $this,
             'mainPage'
-        ), \GDGALLERY()->pluginUrl() . '/resources/assets/images/gallery_logo.png');
+        ), \GDGallery()->pluginUrl() . '/resources/assets/images/gallery_logo.png');
+
+        $this->Pages['main_page'] = add_submenu_page('gdgallery', __('Galleries', GDGALLERY_TEXT_DOMAIN), __('Galleries', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
+            $this,
+            'mainPage'
+        ));
 
         $this->Pages['styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
             $this,
@@ -221,15 +226,17 @@ class AdminController
     }
 
 
-    public static function DuplicateForm()
+    public static function duplicateGallery()
     {
+
+
         if (!self::isRequest('gdgallery', 'duplicate_gallery', 'GET')) {
             return;
         }
 
         if (!isset($_GET['id'])) {
 
-            \GDGALLERY()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
@@ -237,46 +244,37 @@ class AdminController
 
         if (!$id) {
 
-            \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
         if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_duplicate_gallery_' . $id)) {
 
-            \GDGALLERY()->Admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->Admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
         ////  continue here
 
-        $gallery = new Gallery(array('Id' => $id));
+        $gallery = new Gallery(array('id_gallery' => $id));
 
-        $fields = $gallery->getFields();
+        //$fields = $gallery->getFields();
 
-        $gallery->unsetId();
+        //$gallery->unsetId();
 
         $gallery->setName('Copy of ' . $gallery->getName());
 
-        $gallery = $gallery->save();
+        $gallery = $gallery->duplicateGallery();
 
         /**
          * after the form is created we need to redirect user to the edit page
          */
+
         if ($gallery && is_int($gallery)) {
-            /* copy form fields to the new form */
-            if (!empty($fields)) {
-                foreach ($fields as $field) {
-                    $newfield = clone $field;
 
-                    $newfield->setForm($gallery);
+            $location = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $gallery);
 
-                    $newfield->save();
-                }
-            }
-
-            $location = admin_url('admin.php?page=gdfrm&task=edit_form&id=' . $gallery);
-
-            $location = wp_nonce_url($location, 'gdfrm_edit_form_' . $gallery);
+            $location = wp_nonce_url($location, 'gdgallery_edit_gallery_' . $gallery);
 
             $location = html_entity_decode($location);
 
@@ -287,7 +285,7 @@ class AdminController
 
         } else {
 
-            wp_die(__('Problems occured while creating new form.', GDFRM_TEXT_DOMAIN));
+            wp_die(__('Problems occured while creating new Gallery.', GDGALLERY_TEXT_DOMAIN));
 
         }
 

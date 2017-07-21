@@ -16,13 +16,16 @@
                   method="post" id="gdgallery_edited_images_form" name="gdgallery_edited_images_form">
 
                 <input type="hidden" name="gdgallery_images_id_gallery" value="<?= $id_gallery ?>">
-                <table class="quick_edit_table">
-
+                <table class="quick_edit_table grid" id="sort">
+                    <tbody>
                     <?php
                     if (!empty($items)) {
-                        foreach ($items as $item): ?>
+                        foreach ($items as $key => $item): ?>
                             <tr>
-                                <td>
+                                <td class="index"><input type="hidden"
+                                                         name="gdgallery_images_ordering[<?= $item->id_image ?>]"
+                                                         value="<?= $item->ordering ?>"></td>
+                                <td class="img_td">
                                     <img src="<?= $item->url ?>">
                                 </td>
                                 <td><label for="gdgallery_images_name[<?= $item->id_image ?>]"> Name:</label>
@@ -52,6 +55,7 @@
                             </tr>
                         <?php endforeach;
                     } ?>
+                    </tbody>
                 </table>
 
                 <span class="spinner"></span>

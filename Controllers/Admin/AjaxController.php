@@ -99,6 +99,8 @@ class AjaxController
 
 
         $updated = null;
+
+//        \debug::trace($gallery_data_arr);
         $updated = $gallery->saveGalleryImages($gallery_data_arr);
 
 
@@ -140,19 +142,14 @@ class AjaxController
             die('security check failed');
         }
 
-
         $gallery_id = absint($_REQUEST['gallery_id']);
 
-        $gallery_data = $_REQUEST["img"];
+        $gallery_data = $_REQUEST["formdata"];
 
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
-        $gallery_data_arr = array();
-        parse_str($gallery_data, $gallery_data_arr);
-
 
         $inserted = null;
-        $inserted = $gallery->addGalleryImage($_REQUEST["formdata"], $_REQUEST["gallery_id"]);
-
+        $inserted = $gallery->addGalleryImage($gallery_data, $gallery_id);
 
         if ($inserted) {
             echo 1;

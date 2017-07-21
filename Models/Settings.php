@@ -11,57 +11,56 @@ class Settings
     /**
      * @var []
      */
-    private $options = array(
-        'type_of_transition' => 'lg-slide',
-        'speed_transition' => '600',
-        'lightbox_height' => '100%',
-        'lightbox_width' => '100%',
-        'closable' => true,
-        'loop' => true,
-        'escapekey' => true,
-        'keypress' => true,
-        'controls' => true,
-        'slideEndAnimatoin' => true,
-        'mousewheel' => true,
-        'getCaptionFromTitleOrAlt' => true,
-        'nextHtml' => '',
-        'prevHtml' => '',
-        'download' => true,
-        'counter' => true,
-        'enableDrag' => true,
-        'thumbnail' => true,
-        'thumbWidth' => '100',
-        'thumbContHeight' => '100',
-        'thumbMargin' => '5',
-        'enableThumbDrag' => true,
-        'autoplay' => false,
-        'pause' => '8',
-        'progressBar' => true,
-        'autoplayControls' => true,
-        'fullScreen' => true,
-        'zoom' => true,
-        'scale' => '1',
-        'actualSize' => true,
-        'share' => false,
-        'facebook' => true,
-        'twitter' => true,
-        'googlePlus' => true,
-        'pinterest' => true,
-        'gd_lightbox_size_px' => '16',
-        'gd_lightbox_color' => 'EEEEEE',
-        'gd_lightbox_text_align' => 'center',
-        'gd_lightbox_padding_top_and_bottom_px' => '10',
-        'gd_lightbox_image_border_px' => '0',
-        'gd_lightbox_image_border_color' => 'fff',
-        'gd_lightbox_image_border_radius_px' => '0',
-        'gd_lightbox_image_opacity' => '1',
-        'gd_lightbox_arrows_size_px' => '22',
-        'gd_lightbox_arrows_padding_left_right' => '10',
-        'gd_lightbox_thumbnail_border_px' => '2',
-        'gd_lightbox_thumbnail_border_color' => 'fff',
-        'gd_lightbox_thumbnail_border_radius_px' => '4',
-        'gd_lightbox_thumbnail_opacity' => '1',
-        'gd_lightbox_thumbnail_border_color_active' => 'a90707',
+    private $options = array();
+
+    private $defaultOptions = array(
+        /************* Justified ***********/
+        'show_title_justified' => 'b:0',
+        'title_color_justified' => 'FFFFFF',
+        'margin_justified' => '0',
+        'row_height_justified' => '150',
+        'load_more_text_justified' => 'Load More',
+        'load_more_position_justified' => 'center',
+        'load_more_font_size_justified' => '15',
+        'pagination_position_justified' => 'center',
+        'pagination_font_size_justified' => '15',
+
+        /************* Tiles ***********/
+        'show_title_tiles' => 'b:0',
+        'margin_tiles' => '0',
+        'width_tiles' => '100',
+        'load_more_text_tiles' => 'Load More',
+        'load_more_position_tiles' => 'center',
+        'load_more_font_size_tiles' => '15',
+        'pagination_position_tiles' => 'center',
+        'pagination_font_size_tiles' => '15',
+
+        /************* Carousel ***********/
+        'show_title_carousel' => 'b:0',
+        'margin_carousel' => '0',
+        'width_carousel' => '100',
+        'height_carousel' => '100',
+        'icons_carousel' => '0',
+
+        /************* Slider ***********/
+        'show_title_slider' => 'b:0',
+        'icons_slider' => '0',
+
+        /************* Grid ***********/
+        'show_title_grid' => 'b:0',
+        'margin_grid' => '0',
+        'height_grid' => '100',
+        'width_grid' => '100',
+        'load_more_text_grid' => 'Load More',
+        'load_more_position_grid' => 'center',
+        'load_more_font_size_grid' => '15',
+        'pagination_position_grid' => 'center',
+        'pagination_font_size_grid' => '15',
+
+        /************* One and Others ***********/
+        'show_title_one_and_others' => 'b:0',
+        'icons_one_and_others' => '0',
+
     );
 
     public function __construct()
@@ -91,6 +90,11 @@ class Settings
     public function getOptions()
     {
         return $this->options;
+    }
+
+    public function getDefaultOptions()
+    {
+        return $this->defaultOptions;
     }
 
     /**

@@ -25,19 +25,7 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
 
         </div>
 
-        <div class="tablenav top ">
-            <div class="alignleft actions bulkactions">
-                <select name="action" id="bulk-action-selector-top">
-                    <option value="-1">Bulk Actions</option>
-                    <option value="trash">Move to Trash</option>
-                </select>
-                <input type="submit" id="doaction" name="doaction" class="button action" value="Apply">
-            </div>
-
-            <div class="alignright actions">
-                <?php echo \GDGallery\Helpers\View::pagination(\GDGallery\Models\Gallery::getAllItemsCount()); ?>
-            </div>
-        </div>
+        
         <table class="widefat striped fixed forms_table">
             <thead>
             <tr>
@@ -56,12 +44,9 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
             <tbody>
             <?php
 
-            $paged = isset($_GET['paged']) ? $_GET['paged'] : 1;
+            //            $paged = isset($_GET['paged']) ? $_GET['paged'] : 1;
 
-            $galleries = \GDGallery\Models\Gallery::get(array(
-                'per_page' => $perpage,
-                'paged' => $paged,
-            ));
+            $galleries = \GDGallery\Models\Gallery::get();
             if (!empty($galleries)) {
                 foreach ($galleries as $gallery) {
                     \GDGallery\Helpers\View::render('admin/galleries-list-single-item.php', array('gallery' => $gallery));

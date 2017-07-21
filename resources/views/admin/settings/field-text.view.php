@@ -9,6 +9,15 @@ $placeholder = isset($field['placeholder'])
     ? 'placeholder=' . $field['placeholder']
     : '';
 
+$class = "";
+if (isset($field['html_class']) && !empty($field['html_class'])) {
+    $class_name = "";
+    foreach ($field['html_class'] as $val) {
+        $class_name .= $val . " ";
+    }
+    $class = "class = '" . $class_name . "'";
+}
+
 ?>
 
 <label class="input-wrap">
@@ -25,5 +34,5 @@ $placeholder = isset($field['placeholder'])
         <?php endif;
         ?></span>
     <input type="text" name="settings[<?php echo $fieldId; ?>]"
-           value="<?php echo $value; ?>" <?php echo $placeholder; ?> />
+           value="<?php echo $value; ?>" <?php echo $placeholder . " " . $class; ?> />
 </label>

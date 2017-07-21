@@ -69,7 +69,7 @@ class AdminAssetsController
         wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/js/jquery-ui.min.js');
 
         wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
-        wp_enqueue_script('gsgalleryStylesSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
+        //wp_enqueue_script('gsgalleryStylesSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
 
         if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
@@ -104,9 +104,10 @@ class AdminAssetsController
             wp_enqueue_script('gdfrmSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/settings.js', array('jquery'), false, true);
         }
 
-        /* if ($hook === \GDGallery()->Admin->Pages['styles']) {
-             wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('toastrjs'));
-         }*/
+        if ($hook === \GDGallery()->Admin->Pages['styles']) {
+            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
+            wp_enqueue_script('gdgallery_jscolor', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/jscolor.js', array(), false, true);
+        }
 
 
         if ($hook === \GDGallery()->Admin->Pages['submissions']) {

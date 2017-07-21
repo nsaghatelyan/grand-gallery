@@ -14,6 +14,8 @@ class Gallery extends Model
 {
     protected static $tableName = 'GDGalleryGalleries';
 
+    protected static $itemsTableName = 'gdgalleryimages';
+
     /**
      * Form Name
      *
@@ -36,7 +38,7 @@ class Gallery extends Model
     private $DisplayTitle;
 
     protected static $dbFields = array(
-        'name', 'description', 'display_type', 'position', 'hover_style', 'custom_css'
+        'name', 'description', 'display_type', 'ordering', 'display_type', 'view_type', 'position', 'hover_effect', 'items_per_page', 'custom_css'
     );
 
     public function __construct($args = array())
@@ -66,6 +68,11 @@ class Gallery extends Model
     public static function getTableName()
     {
         return $GLOBALS['wpdb']->prefix . self::$tableName;
+    }
+
+    public static function getItemsTableName()
+    {
+        return $GLOBALS['wpdb']->prefix . self::$itemsTableName;
     }
 
 
@@ -127,7 +134,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering", $this->Id);
+        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
         $items = $wpdb->get_results($query);
 
         if (empty($items)) {
@@ -143,7 +150,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering", $this->Id);
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
         return $wpdb->get_var($query);
     }
 
@@ -189,6 +196,39 @@ class Gallery extends Model
         return $this->Items;
     }
 
+    public function duplicateGallery()
+    {
+        $gallery_data = (array)$this->getGallery(true);
+        $gallery_items = (array)$this->getItems();
+        unset($gallery_data["id_gallery"]);
+        $gallery_data["name"] = $this->getName();
+        array_walk($gallery_items, function ($item) {
+            unset($item->id_image);
+        });
+
+        $id_gallery = $this->AddDuplicatedData($gallery_data, $gallery_items);
+
+        return $id_gallery;
+    }
+
+    public function AddDuplicatedData($gallery, $items)
+    {
+        global $wpdb;
+
+        $wpdb->insert($wpdb->prefix . "gdgallerygalleries", $gallery);
+        $id_gallery = $wpdb->insert_id;
+
+//        $id_gallery = 12;
+        array_walk($items, function ($item) use ($id_gallery) {
+            $item->id_gallery = $id_gallery;
+        });
+        foreach ($items as $item) {
+            $wpdb->insert($wpdb->prefix . "gdgalleryimages", (array)$item);
+        }
+
+        return $id_gallery;
+    }
+
 
     public function getVideoThumb($video_id, $type)
     {
@@ -227,7 +267,7 @@ class Gallery extends Model
     }
 
     public
-    function getGallery()
+    function getGallery($duplicate = false)
     {
         global $wpdb;
 
@@ -235,13 +275,15 @@ class Gallery extends Model
         $galleries = $wpdb->get_row($query);
 
 
-        $total = 0;
-        if ($galleries->display_type == 2) {
-            $items_count = $this->getItemsCount();
-            $total = intval((($items_count - 1) / $galleries->items_per_page) + 1);
+        if ($duplicate == false) {
+            $total = 0;
+            if ($galleries->display_type == 2) {
+                $items_count = $this->getItemsCount();
+                $total = intval((($items_count - 1) / $galleries->items_per_page) + 1);
+            }
+            $galleries->total = $total;
         }
 
-        $galleries->total = $total;
 
         if (empty($galleries)) {
             return null;
@@ -299,7 +341,8 @@ class Gallery extends Model
         foreach ($images as $img) {
             $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
                     "id_gallery" => $id_gallery,
-                    'url' => esc_sql($img),
+                    "name" => esc_html($img["name"]),
+                    'url' => esc_sql($img["url"]),
                     "ordering" => 0,
                     "target" => "_blank",
                     "type" => "image"
@@ -308,6 +351,7 @@ class Gallery extends Model
         }
         return static::$primaryKey;
     }
+
 
     public
     function AddGalleryVideo($data)

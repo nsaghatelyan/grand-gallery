@@ -7,12 +7,21 @@
 $multiple = isset($field['multiple'])
     ? 'multiple=multiple'
     : '';
+
+$class = "";
+if (isset($field['html_class']) && !empty($field['html_class'])) {
+    $class_name = "";
+    foreach ($field['html_class'] as $val) {
+        $class_name .= $val . " ";
+    }
+    $class = "class = '" . $class_name . "'";
+}
 ?>
 
 <label class="input-wrap">
     <span class="settings-label"><?php
         echo $field['label'];
-        if(isset($field['help'])): ?>
+        if (isset($field['help'])): ?>
             <span class="settings-field-help">
                 <span class="settings-field-help-icon">?</span>
                 <span class="settings-field-help-text-wrap">
@@ -23,8 +32,8 @@ $multiple = isset($field['multiple'])
         <?php endif;
         ?></span>
     <select name="settings[<?php echo $fieldId ?>]" <?php echo $multiple ?>>
-        <?php foreach ($field['options'] as $optionKey=>$optionName): ?>
-            <option value="<?php echo $optionKey ?>" <?php selected($value,$optionKey); ?>><?php echo $optionName; ?></option>
+        <?php foreach ($field['options'] as $optionKey => $optionName): ?>
+            <option value="<?php echo $optionKey ?>" <?php selected($value, $optionKey); ?>><?php echo $optionName; ?></option>
         <?php endforeach; ?>
     </select>
 </label>
