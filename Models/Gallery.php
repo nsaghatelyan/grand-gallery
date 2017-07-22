@@ -9,6 +9,7 @@
 namespace GDGallery\Models;
 
 use GDGallery\Core\Model;
+use GDGallery\GDGallery;
 
 class Gallery extends Model
 {
@@ -134,8 +135,19 @@ class Gallery extends Model
     {
         global $wpdb;
 
+
         $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
         $items = $wpdb->get_results($query);
+
+
+        foreach ($items as $key => $val) {
+            if ($val->id_post != 0) {
+                $post = get_post($val->id_post);
+                $post_meta = get_post_meta($post->ID);
+                $items[$key]->url = "/wp-content/uploads/" . $post_meta["_wp_attached_file"][0];
+                $items[$key]->name = $post->post_title;
+            }
+        }
 
         if (empty($items)) {
             return null;
@@ -187,9 +199,19 @@ class Gallery extends Model
         $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->Id);
         $items = $wpdb->get_results($query);
 
+        foreach ($items as $key => $val) {
+            if ($val->id_post != 0) {
+                $post = get_post($val->id_post);
+                $post_meta = get_post_meta($post->ID);
+                $items[$key]->url = "/wp-content/uploads/" . $post_meta["_wp_attached_file"][0];
+                $items[$key]->name = $post->post_title;
+            }
+        }
+
         if (empty($items)) {
             return null;
         }
+
 
         $this->Items = $items;
 
@@ -341,6 +363,7 @@ class Gallery extends Model
         foreach ($images as $img) {
             $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
                     "id_gallery" => $id_gallery,
+                    "id_post" => intval($img["id"]),
                     "name" => esc_html($img["name"]),
                     'url' => esc_sql($img["url"]),
                     "ordering" => 0,

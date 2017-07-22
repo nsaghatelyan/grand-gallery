@@ -14,7 +14,7 @@ if (preg_match($pattern, $actual_link) || preg_match($pattern_2, $actual_link)) 
 } else {
     $checkREQ = '?gdgallery-page';
 }
-$page = ($_GET["gdgallery-page"]) ? intval($_GET["gdgallery-page"]) : 0;
+$page = ($_GET["gdgallery-page"]) ? intval($_GET["gdgallery-page"]) : 1;
 
 //$page_nav_type = $portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nav_type'];
 $page_nav_type = 0;

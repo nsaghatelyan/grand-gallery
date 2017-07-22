@@ -59,9 +59,9 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     </ul>
                     <div id="gdgallery_general_settings">
                         <ul class="gdgallery_general_settings">
-                            <li>
+                            <li class="gdgallery_display_type_section">
                                 <h4>Display Type</h4>
-                                <select name="gdgallery_display_type" id="gdgallery_display_type_<?= $id ?>">
+                                <select name="gdgallery_display_type" id="gdgallery_display_type">
                                     <option value="0" <?php if ($gallery_data->display_type == 0) echo "selected" ?>>
                                         Show All
                                     </option>
@@ -73,7 +73,13 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                     </option>
                                 </select>
                             </li>
-                            <li>
+                            <li class="gdgallery_items_per_page_section <?php if ($gallery_data->display_type == 0) echo "gdgallery_hidden" ?>">
+                                <h4>Items Per Page</h4>
+                                <input type="number" min="0" max="100" name="gdgallery_items_per_page"
+                                       id="gdgallery_items_per_page" class="gdgallery_items_per_page"
+                                       value="<?= $gallery_data->items_per_page ?>">
+                            </li>
+                            <li class="gdgallery_hover_effect_section">
                                 <h4>Hover effect</h4>
                                 <select name="gdgallery_hover_effect"
                                         id="gdgallery_hover_effect_<?= $id ?>">
@@ -196,7 +202,8 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                     <input type="checkbox" name="items[]"
                                            value="<?= $item->id_image; ?>" class="items_checkbox"/>
                                     <div class="gdgallery_item_edit">
-                                        <a href="#">EDIT</a>
+                                        <a href="<?php echo ($item->id_post != 0) ? "/wp-admin/post.php?post=" . $item->id_post . "&action=edit&image-editor" : "#"; ?>"
+                                           target="_blank">EDIT</a>
                                     </div>
                                 </div>
                             </div>

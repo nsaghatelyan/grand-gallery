@@ -27,6 +27,10 @@ body {
     background: #f3f4f8;
 }
 
+.gdgallery_hidden {
+    display: none !important;
+}
+
 .gdgallery_clearfix {
     clear: both;
     display: block;

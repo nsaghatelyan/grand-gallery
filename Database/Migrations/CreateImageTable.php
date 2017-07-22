@@ -18,6 +18,7 @@ class CreateImageTable
             "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "GDGalleryImages(
                 `id_image` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `id_gallery` int(11) UNSIGNED NOT NULL,
+                `id_post` int(11) UNSIGNED  NULL DEFAULT 0,
                 `name` varchar(255) NULL,
                 `description` text,
                 `ordering` int(11) NOT NULL,

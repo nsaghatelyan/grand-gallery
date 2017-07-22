@@ -85,16 +85,16 @@ jQuery(document).ready(function () {
 
         jQuery('.settings-toogled-container').animate({height: 'toggle'}, 200);
         if (jQuery(this).data("status") == "show") {
-            AnimateRotate(0, 180);
+            gdgalleryAnimateRotate(180, 0);
             jQuery(this).data("status", "hide");
         }
         else {
-            AnimateRotate(180, 0);
+            gdgalleryAnimateRotate(0, 180);
             jQuery(this).data("status", "show");
         }
     });
 
-    function AnimateRotate(d1, d2) {
+    function gdgalleryAnimateRotate(d1, d2) {
         var elem = jQuery("#settings_container_switcher img");
 
         jQuery({deg: d1}).animate({deg: d2}, {
@@ -167,11 +167,11 @@ jQuery(document).ready(function () {
             attachments = custom_uploader.state().get('selection').toJSON();
             for (var key in attachments) {
                 jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
-                selected_images.push({url: attachments[key].url, name: attachments[key].title});
+                selected_images.push({id:attachments[key].id ,url: attachments[key].url, name: attachments[key].title});
             }
 
             console.log(selected_images);
-            addItem(selected_images, "image");
+            gdgalleryAddItem(selected_images, "image");
 
         });
         custom_uploader.open();
@@ -185,7 +185,7 @@ jQuery(document).ready(function () {
             general_data = form.serialize();
 
 
-        addItem(general_data, "video");
+        gdgalleryAddItem(general_data, "video");
 
     })
 
@@ -424,9 +424,32 @@ jQuery(document).ready(function ($) {
         helper: fixHelperModified,
         stop: updateIndex
     }).disableSelection();
+
+    jQuery("#gdgallery_display_type").change(function () {
+        if (jQuery(this).val() == 0) {
+            jQuery(".gdgallery_items_per_page_section").addClass("gdgallery_hidden");
+        }
+        else {
+            jQuery(".gdgallery_items_per_page_section").removeClass("gdgallery_hidden");
+        }
+    });
+
+    jQuery("input[name=gdgallery_view_type]").change(function () {
+        var grid_arr = ['0', '1', '4'];
+        if (jQuery.inArray(jQuery(this).val(), grid_arr) !== -1) {
+            jQuery(".gdgallery_display_type_section").removeClass("gdgallery_hidden");
+            jQuery(".gdgallery_items_per_page_section").removeClass("gdgallery_hidden");
+            jQuery(".gdgallery_hover_effect_section").removeClass("gdgallery_hidden");
+        }
+        else {
+            jQuery(".gdgallery_display_type_section").addClass("gdgallery_hidden");
+            jQuery(".gdgallery_items_per_page_section").addClass("gdgallery_hidden");
+            jQuery(".gdgallery_hover_effect_section").addClass("gdgallery_hidden");
+        }
+    })
 })
 
-function addItem(data, type) {
+function gdgalleryAddItem(data, type) {
     var form, submitBtn;
     if (type == "video") {
         form = jQuery('#gdgallery_add_video_form');

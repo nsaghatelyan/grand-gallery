@@ -30,7 +30,7 @@ if (in_array($view, array(0, 1, 4))) {
 ?>
 <div class="gdgallery-gallery-container" id="gdgallery-container-<?= $id_gallery ?>" data-id="<?= $id_gallery ?>">
     <?php \GDGallery\Helpers\View::render('frontend/view-' . $view . '.php', compact('gallery_data', 'images'));
-    \GDGallery\Helpers\View::render('frontend/view-' . $view . '.css.php', compact('id_gallery'));
+    \GDGallery\Helpers\View::render('frontend/view-' . $view . '.css.php', compact('id_gallery', 'gallery_data'));
     ?>
     <?php if (in_array($view, array(0, 1, 4))) {
 
@@ -38,9 +38,11 @@ if (in_array($view, array(0, 1, 4))) {
             \GDGallery\Helpers\View::render('frontend/pagination.php', compact('gallery_data', 'images'));
         } elseif ($gallery_data->display_type == 1) {
             ?>
-            <button data-id="<?= $id_gallery ?>" data-count="<?= $gallery_data->items_per_page ?>"
-                    id="gdgallery_load_more">Load more
-            </button>
+            <div class="gdgallery_load_more_space">
+                <button data-id="<?= $id_gallery ?>" data-count="<?= $gallery_data->items_per_page ?>"
+                        class="gdgallery_load_more">Load more
+                </button>
+            </div>
         <?php }
     } ?>
 </div>

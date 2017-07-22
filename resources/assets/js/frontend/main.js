@@ -153,10 +153,10 @@ jQuery(document).ready(function () {
         }
     })
 
-    var items_per_page = jQuery("#gdgallery_load_more").data("count");
+    var items_per_page = jQuery(".gdgallery_load_more").data("count");
     var loaded_items_count = parseInt(items_per_page) * 2;
 
-    jQuery("#gdgallery_load_more").click(function (e) {
+    jQuery(".gdgallery_load_more").click(function (e) {
         e.preventDefault();
 
         var g_id = jQuery(this).data("id"),

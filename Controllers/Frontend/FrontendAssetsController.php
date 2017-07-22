@@ -65,6 +65,7 @@ class FrontendAssetsController
      */
     public static function addStyles()
     {
+        wp_enqueue_style('fontAwesome', \GDGallery()->pluginUrl() . '/resources/assets/css/font-awesome.min.css', false);
         wp_enqueue_style('gdgalleryunit', \GDGallery()->pluginUrl() . '/resources/assets/css/frontend/unite-gallery.css');
 
         /* wp_enqueue_style('jqueryUI', \GDGALLERY()->pluginUrl() . '/assets/css/jquery-ui.min.css');//todo
