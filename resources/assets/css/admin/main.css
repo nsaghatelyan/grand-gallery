@@ -230,7 +230,7 @@ body {
 }
 
 .form_title_div {
-    padding: 35px 0 10px 0;
+    padding: 5px 0 10px 0;
 }
 
 #form_name {
@@ -1653,6 +1653,28 @@ ul.gdgallery_general_settings {
 .img_td {
     width: 175px;
     text-align: center;
+}
+
+.switch_gallery {
+    display: flex;
+    margin-top: 40px;
+}
+
+.switch_gallery li {
+    padding: 10px;
+    margin: 0 5px;
+    background: #fff;
+    box-shadow: 0px 0px 5px #9c9c9c;
+}
+
+.switch_gallery li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.switch_gallery li:hover {
+    box-shadow: 0px 0px 5px #1b1b1b;
 }
 
 @media all and (max-width: 1650px) {

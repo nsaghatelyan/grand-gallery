@@ -13,7 +13,14 @@ $items = $gallery->getItems();
 
 $gallery_data = $gallery->getGallery();
 
+$list = $gallery->getGalleriesUrl();
+
+$new_gallery_link = admin_url('admin.php?page=gdgallery&task=create_new_gallery');
+
+$new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_gallery');
+
 $id = $gallery->getId();
+
 
 $gallery_settings_link = admin_url('admin.php?page=gdfrm&task=edit_form_settings&id=' . $gallery->getId());
 
@@ -22,10 +29,21 @@ $gallery_settings_link = wp_nonce_url($gallery_settings_link, 'gdfrm_edit_form_s
 $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 
 ?>
+
 <form action="admin.php?page=gdgallery&id=<?php echo $row->id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
       method="post" name="gdgallery_images_form" id="gdgallery_images_form">
     <div class="wrap gdfrm_edit_form_container">
         <div class="gdfrm_nav">
+            <ul class="switch_gallery">
+                <?php foreach ($list as $val): ?>
+                    <li>
+                        <a href="<?= $val["url"] ?>"><?= $val["name"] ?></a>
+                    </li>
+                <?php endforeach; ?>
+                <li>
+                    <a href="<?= $new_gallery_link ?>">New Gallery</a>
+                </li>
+            </ul>
             <div class="form_title_div">
                 <input type="text" id="form_name" name="gdgallery_name" value="<?php echo $gallery->getName(); ?>">
                 <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery" value="<?php echo $id ?>">

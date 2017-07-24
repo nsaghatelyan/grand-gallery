@@ -25,7 +25,7 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
 
         </div>
 
-        
+
         <table class="widefat striped fixed forms_table">
             <thead>
             <tr>
