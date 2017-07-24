@@ -45,40 +45,6 @@ class AjaxController
             "show_button" => $show_button
         ));
         die();
-
-        /*if ($data->items_per_page) {
-            $num = $data->items_per_page;
-        } else {
-            $num = 999;
-        }
-
-        $items_count = $this->getItemsCount();
-
-        $total = intval((($items_count - 1) / $num) + 1);
-
-        if (isset($_GET["gdgallery-page"])) {
-            $page = absint($_GET["gdgallery-page"]);
-        } else {
-            $page = '';
-        }
-        if (empty($page) or $page < 0) {
-            $page = 1;
-        }
-        if ($page > $total) {
-            $page = $total;
-        }
-        $start = $page * $num - $num;
-
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->Id);
-        $items = $wpdb->get_results($query);
-
-        if (empty($items)) {
-            return null;
-        }
-
-        $this->Items = $items;
-
-        return $this->Items;*/
     }
 
 }

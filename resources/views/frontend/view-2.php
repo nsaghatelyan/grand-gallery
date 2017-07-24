@@ -17,13 +17,15 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
         $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";
         ?>
 
-        <img alt="<?= $val->name ?>"
-             data-type="<?= $val->type ?>"
-             src="<?= $val->url ?>"
-             data-image="<?= $val->url ?>"
-             data-description="<?= $val->description ?>"
-            <?= $video_id ?>
-             style="display:block">
+        <a href="<?= $val->url ?>">
+            <img alt="<?= $val->name ?>"
+                 data-type="<?= $val->type ?>"
+                 src="<?= $val->url ?>"
+                 data-image="<?= $val->url ?>"
+                 data-description="<?= $val->description ?>"
+                <?= $video_id ?>
+                 style="display:block">
+        </a>
 
     <?php endforeach; ?>
 
@@ -35,7 +37,18 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
 
         var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
 
-        container.unitegallery();
+        container.unitegallery({
+            tile_width: 250,
+            tile_height: 250,
+            carousel_space_between_tiles: 10,
+            carousel_autoplay_direction: "left",
+            tile_as_link: false,
+            tile_show_link_icon: true,
+            tile_enable_image_effect: true,
+            tile_image_effect_reverse: true,
+            tile_overlay_color: "#509B39",
+            tile_overlay_opacity: 0.4,
+        });
 
     });
 

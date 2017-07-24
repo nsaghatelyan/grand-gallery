@@ -139,12 +139,10 @@ class Gallery extends Model
         $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
         $items = $wpdb->get_results($query);
 
-
         foreach ($items as $key => $val) {
             if ($val->id_post != 0) {
                 $post = get_post($val->id_post);
-                $post_meta = get_post_meta($post->ID);
-                $items[$key]->url = "/wp-content/uploads/" . $post_meta["_wp_attached_file"][0];
+                $items[$key]->url = wp_get_attachment_url($post->ID);
                 $items[$key]->name = $post->post_title;
             }
         }
@@ -202,8 +200,7 @@ class Gallery extends Model
         foreach ($items as $key => $val) {
             if ($val->id_post != 0) {
                 $post = get_post($val->id_post);
-                $post_meta = get_post_meta($post->ID);
-                $items[$key]->url = "/wp-content/uploads/" . $post_meta["_wp_attached_file"][0];
+                $items[$key]->url = wp_get_attachment_url($post->ID);
                 $items[$key]->name = $post->post_title;
             }
         }
@@ -211,7 +208,6 @@ class Gallery extends Model
         if (empty($items)) {
             return null;
         }
-
 
         $this->Items = $items;
 

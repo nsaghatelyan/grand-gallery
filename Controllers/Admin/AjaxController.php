@@ -27,8 +27,6 @@ class AjaxController
 
         add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'saveGallerySettings'));
 
-        add_action('wp_ajax_gdgallery_remove_form', array(__CLASS__, 'removeForm'));
-
         add_action('wp_ajax_gdgallery_save_form_settings', array(__CLASS__, 'saveFormSettings'));
 
         add_action('wp_ajax_gdgallery_save_field', array(__CLASS__, 'saveField'));
@@ -185,29 +183,6 @@ class AjaxController
 
         if ($inserted) {
             echo 1;
-            die();
-        } else {
-            die('something went wrong');
-        }
-    }
-
-
-    public static function removeForm()
-    {
-        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdfrm_remove_form')) {
-            die('security check failed');
-        }
-
-        $id = $_REQUEST['id'];
-
-        if (absint($id) != $id) {
-            die('Trying to delete  a wrong form');
-        }
-
-        $form_removed = Form::delete($id);
-
-        if ($form_removed) {
-            echo json_encode(array("success" => 1));
             die();
         } else {
             die('something went wrong');

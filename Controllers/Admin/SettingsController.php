@@ -6,7 +6,7 @@
  * Time: 10:00 AM
  */
 
-namespace GDGALLERY\Controllers\Admin;
+namespace GDGallery\Controllers\Admin;
 
 use GDGallery\Helpers\SettingsPageBuilder;
 use GDGallery\Helpers\View;
@@ -124,32 +124,31 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Show Title', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Show / Hide Title')
+                'help' => __('Show / Hide Title', 'gdgallery')
             ),
             'title_color_justified' => array(
                 'type' => 'color',
                 'label' => __('Title color', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Choose Title Color'),
-                'html_class' => array('jscolor', 'testclass', 'ddd')
+                'help' => __('Choose Title Color', 'gdgallery')
             ),
             'margin_justified' => array(
                 'type' => 'number',
                 'label' => __('Margin', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Element Margin')
+                'help' => __('Element Margin', 'gdgallery')
             ),
             'row_height_justified' => array(
                 'type' => 'number',
                 'label' => __('Row height', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Row height')
+                'help' => __('Row height', 'gdgallery')
             ),
             'load_more_text_justified' => array(
                 'type' => 'text',
                 'label' => __('Load more text', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Load more text')
+                'help' => __('Load more text', 'gdgallery')
             ),
             'load_more_position_justified' => array(
                 'type' => 'select',
@@ -160,13 +159,13 @@ class SettingsController
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'load_more_justified',
-                'help' => __('Load more position')
+                'help' => __('Load more position', 'gdgallery')
             ),
             'load_more_font_size_justified' => array(
                 'type' => 'number',
                 'label' => __('Font size', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Font size')
+                'help' => __('Font size', 'gdgallery')
             ),
 
             'pagination_position_justified' => array(
@@ -178,14 +177,126 @@ class SettingsController
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'pagination_justified',
-                'help' => __('Pagination position')
+                'help' => __('Pagination position', 'gdgallery')
             ),
             'pagination_font_size_justified' => array(
                 'type' => 'number',
                 'label' => __('Font size', 'gdgallery'),
                 'section' => 'pagination_justified',
-                'help' => __('Font size')
+                'help' => __('Font size', 'gdgallery')
             ),
+            'pagination_vertical_padding_justified' => array(
+                'type' => 'number',
+                'label' => __('Vertical Padding', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Vertical Padding', 'gdgallery')
+            ),
+            'pagination_horisontal_padding_justified' => array(
+                'type' => 'number',
+                'label' => __('Horisontal Padding', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Horisontal Padding', 'gdgallery')
+            ),
+            'pagination_margin_justified' => array(
+                'type' => 'number',
+                'label' => __('Margin', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Margin', 'gdgallery')
+            ),
+            'pagination_border_width_justified' => array(
+                'type' => 'number',
+                'label' => __('Border Width', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Border Width', 'gdgallery')
+            ),
+            'pagination_border_radius_justified' => array(
+                'type' => 'number',
+                'label' => __('Roundness of corners', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Roundness of corners', 'gdgallery')
+            ),
+            'pagination_border_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Border Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Border Color', 'gdgallery')
+            ),
+            'pagination_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Color', 'gdgallery')
+            ),
+            'pagination_background_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Background Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Background Color', 'gdgallery')
+            ),
+            'pagination_font_family_justified' => array(
+                'type' => 'select',
+                'label' => __('Font Type', 'gdgallery'),
+                'options' => array(
+                    'monospace' => __('monospace', 'gdgallery'),
+                    'cursive' => __('cursive', 'gdgallery'),
+                    'fantasy' => __('fantasy', 'gdgallery'),
+                    'sans-serif' => __('sans-serif', 'gdgallery'),
+                    'serif' => __('serif', 'gdgallery'),
+                ),
+                'section' => 'pagination_justified',
+                'help' => __('Font Type', 'gdgallery')
+            ),
+            'pagination_hover_border_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Border Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Border Color', 'gdgallery')
+            ),
+            'pagination_hover_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Color', 'gdgallery')
+            ),
+            'pagination_hover_background_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Background Color', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Background Color', 'gdgallery')
+            ),
+            'pagination_nav_type_justified' => array(
+                'type' => 'select',
+                'label' => __('Navigation Type', 'gdgallery'),
+                'options' => array(
+                    '0' => __('Arrows', 'gdgallery'),
+                    '1' => __('Text', 'gdgallery'),
+                    '2' => __('Only Numbers', 'gdgallery')
+                ),
+                'section' => 'pagination_justified',
+                'help' => __('Navigation Type', 'gdgallery')
+            ),
+            'pagination_nav_text_justified' => array(
+                'type' => 'text',
+                'label' => __('Navigation Text', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Navigation Text (with comma separetion)', 'gdgallery')
+            ),
+            'pagination_nearby_pages_justified' => array(
+                'type' => 'select',
+                'label' => __('Nearby Pages', 'gdgallery'),
+                'options' => array(
+                    'All' => __('All', 'gdgallery'),
+                    '1' => "1",
+                    '2' => "2",
+                    '3' => "3",
+                    '4' => "4",
+                    '5' => "5",
+                ),
+                'section' => 'pagination_justified',
+                'help' => __('Nearby Pages', 'gdgallery')
+            ),
+
+
             /****************** tiles options *******************/
             'show_title_tiles' => array(
                 'type' => 'checkbox',
@@ -417,7 +528,7 @@ class SettingsController
         }
 
         foreach ($_POST['settings'] as $key => $value) {
-            \GDLightbox()->settings->setOption($key, $value);
+            \GDGallery()->settings->setOption($key, $value);
         }
 
         echo 'ok';

@@ -1,5 +1,4 @@
 <?php
-
 $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'https://' : 'http://';
 $actual_link = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "";
 $checkREQ = '';
@@ -16,15 +15,15 @@ if (preg_match($pattern, $actual_link) || preg_match($pattern_2, $actual_link)) 
 }
 $page = ($_GET["gdgallery-page"]) ? intval($_GET["gdgallery-page"]) : 1;
 
-//$page_nav_type = $portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nav_type'];
-$page_nav_type = 0;
+$page_nav_type = $page_options["nav_type"];
+//$page_nav_type = 0;
 switch ($page_nav_type) {
     case 0:
         $navigation = array('<i class="fa fa-angle-double-left"></i>', "<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>", "<i class='fa fa-angle-double-right'></i>");
         break;
     case 1:
-        //$navigation = explode(",", $portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nav_text']);
-        $navigation = array("first", "prev", "next", "last");
+        $navigation = explode(",", $page_options["nav_text"]);
+        // $navigation = array("first", "prev", "next", "last");
         break;
     case 2:
         $navigation = array("disable" => true);
@@ -55,10 +54,8 @@ switch ($page_nav_type) {
         $cur_page = 1;
     }
     $page_numbers = '';
-    //        $nearby = (isset($portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nearby_pages']) && $portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nearby_pages'] != "") ? $portfolio_gallery_get_options['portfolio_gallery_ht_view' . $view . '_pagination_nearby_pages'] : $total;
-    //        if ($nearby == "all") $nearby = $total;
-    $nearby = $gallery_data->total;
-
+    $nearby = (isset($page_options["nearby"]) && $page_options["nearby"] != "") ? $page_options["nearby"] : $gallery_data->total;
+    if ($nearby == "All") $nearby = $gallery_data->total;
 
     for ($i = 1; $i <= $gallery_data->total; $i++) {
         if ($i >= $cur_page - $nearby && $i <= $cur_page + $nearby && $i != $cur_page) {
@@ -69,12 +66,12 @@ switch ($page_nav_type) {
     }
 
     $nextpage = '';
-    if ($page != $total && $page_nav_type != 2) {
+    if ($page != $gallery_data->total && $page_nav_type != 2) {
         if (isset($navigation[2]) && $navigation[2] != "") {
             $nextpage .= ' <a href= ' . $checkREQ . '=' . ($page + 1) . ' class="gdgallery-pagination-icon gdgallery-pagination-icon-next">' . $navigation[2] . '</a>';
         }
         if (isset($navigation[3]) && $navigation[3] != "") {
-            $nextpage .= '<a href= ' . $checkREQ . '=' . $total . ' class="gdgallery-pagination-icon gdgallery-pagination-icon-last">' . $navigation[3] . '</a>';
+            $nextpage .= '<a href= ' . $checkREQ . '=' . $gallery_data->total . ' class="gdgallery-pagination-icon gdgallery-pagination-icon-last">' . $navigation[3] . '</a>';
         }
     }
     echo $pervpage . $page_numbers . $nextpage;

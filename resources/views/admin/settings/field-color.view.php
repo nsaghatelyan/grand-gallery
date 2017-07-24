@@ -10,13 +10,13 @@ $placeholder = isset($field['placeholder'])
     : '';
 
 
-$class = "";
+$class = "class='jscolor'";
 if (isset($field['html_class']) && !empty($field['html_class'])) {
     $class_name = "";
     foreach ($field['html_class'] as $val) {
         $class_name .= $val . " ";
     }
-    $class = "class = '" . $class_name . "'";
+    $class = "class = 'jscolor " . $class_name . "'";
 }
 
 

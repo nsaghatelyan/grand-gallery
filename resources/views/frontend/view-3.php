@@ -15,7 +15,6 @@ wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/ass
     <?php foreach ($images as $key => $val):
         $video_id = ($val->type == "image") ? "" : "data-videoid = '" . $val->video_id . "'";
         ?>
-
         <img alt="<?= $val->name ?>"
              data-type="<?= $val->type ?>"
              src="<?= $val->url ?>"
@@ -34,7 +33,12 @@ wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/ass
 
         var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
 
-        container.unitegallery();
+        container.unitegallery({
+            gallery_autoplay: true,						//true / false - begin slideshow autoplay on start
+            gallery_play_interval: 10000,				//play interval of the slideshow
+            gallery_pause_on_mouseover: true,
+            gallery_skin: "default",
+        });
 
     });
 

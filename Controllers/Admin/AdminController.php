@@ -6,8 +6,7 @@ use GDGallery\Core\Admin\Listener;
 use GDGallery\Helpers\View;
 use GDGallery\Models\Gallery;
 
-//use GDGALLERY\Models\Form;
-//use GDGALLERY\Models\Submission;
+//use GDGALLERY\Models\Gallery;
 
 class AdminController
 {
@@ -97,7 +96,7 @@ class AdminController
 
                     if (!$id) {
 
-                        \GDGALLERY()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
+                        \GDGallery()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
@@ -106,60 +105,11 @@ class AdminController
                     View::render('admin/edit-gallery.php', array('gallery' => $gallery));
 
                     break;
-                case 'edit_form_settings':
-                    $id = $_GET['id'];
-
-                    if (absint($id) != $id) {
-
-                        \GDGallery()->Admin->printError(__('Id parameter must be non negative integer.', GDGALLERY_TEXT_DOMAIN));
-
-                    }
-
-                    $form = new Form(array('Id' => $id));
-
-                    View::render('admin/form-settings.php', array('form' => $form));
-
-                    break;
-
             }
 
         }
 
     }
-
-
-    public function submissionsPage()
-    {
-        if (self::isRequest('gdfrm_submissions', 'view_submission', 'GET')) {
-            if (!isset($_GET['id'])) {
-                wp_die(__('"id" parameter is required', GDFRM_TEXT_DOMAIN));
-            }
-
-            $id = $_GET['id'];
-
-            if (absint($id) != $id) {
-                wp_die(__('"id" parameter must be non negative integer', GDFRM_TEXT_DOMAIN));
-            }
-
-            if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdfrm_view_submission_' . $id)) {
-                wp_die(__('Security check failed', GDFRM_TEXT_DOMAIN));
-            }
-
-
-            $submission = new Submission(array('Id' => $id));
-
-            $submission->setViewed(1);
-
-            $submission->save();
-
-            View::render('admin/view-submission.php', compact('submission'));
-
-            return;
-        } else {
-            View::render('admin/submissions.php');
-        }
-    }
-
 
     public function settingsPage()
     {
@@ -297,11 +247,8 @@ class AdminController
             return;
         }
 
-
         if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_create_new_gallery')) {
-
             \GDGallery()->admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
-
         }
 
         $gallery = new Gallery();

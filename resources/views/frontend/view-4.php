@@ -34,7 +34,15 @@ wp_enqueue_script("gdgallerygrid", \GDGallery()->pluginUrl() . "/resources/asset
 
         var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
 
-        container.unitegallery();
+        container.unitegallery({
+            grid_space_between_cols: 0,
+            grid_space_between_rows: 0,
+            tile_enable_border: false,
+            tile_enable_shadow: false,
+            grid_padding: 0,
+            tile_width: 250,
+            tile_show_link_icon: true,
+        });
 
     });
 

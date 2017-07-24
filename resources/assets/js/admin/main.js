@@ -35,38 +35,9 @@ jQuery('input#select-all').on('change', function () {
 });
 
 jQuery(document).ready(function () {
+
+
     /* remove,read checked forms */
-    jQuery('#doaction').on('click tap', function (e) {
-        e.preventDefault();
-
-        var action = jQuery('#bulk-action-selector-top').val();
-
-        var items = jQuery('input.item-checkbox:checked');
-
-        items.each(function () {
-            var id = jQuery(this).val();
-            var row = jQuery(this).closest('tr');
-            var _this = jQuery(this);
-
-            if (action == 'trash') {
-                var data = {
-                    action: "gdfrm_remove_form",
-                    nonce: form.removeNonce,
-                    id: id
-                };
-                jQuery.post(ajaxurl, data, function (response) {
-                    if (response.success) {
-                        row.remove();
-                    } else {
-                        alert('not done');
-                    }
-                }, "json");
-            }
-        })
-
-        return false;
-    })
-
 
     jQuery(document).on('change', '.switch-checkbox.mask-switch', function () {
         if (this.checked) {
@@ -161,13 +132,19 @@ jQuery(document).ready(function () {
             },
             multiple: true
         });
+
+
         //When a file is selected, grab the URL and set it as the text field's value
         var selected_images = [];
         custom_uploader.on('select', function () {
             attachments = custom_uploader.state().get('selection').toJSON();
             for (var key in attachments) {
                 jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
-                selected_images.push({id:attachments[key].id ,url: attachments[key].url, name: attachments[key].title});
+                selected_images.push({
+                    id: attachments[key].id,
+                    url: attachments[key].url,
+                    name: attachments[key].title
+                });
             }
 
             console.log(selected_images);
@@ -446,6 +423,13 @@ jQuery(document).ready(function ($) {
             jQuery(".gdgallery_items_per_page_section").addClass("gdgallery_hidden");
             jQuery(".gdgallery_hover_effect_section").addClass("gdgallery_hidden");
         }
+    });
+
+    jQuery(".gdgallery_item_edit").click(function (e) {
+        e.preventDefault();
+
+        var post_id = jQuery(this).data("post-id");
+        wp.media.editor.open(post_id);
     })
 })
 

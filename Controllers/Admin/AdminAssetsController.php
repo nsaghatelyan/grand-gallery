@@ -28,10 +28,10 @@ class AdminAssetsController
         }
 
 
-        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['submissions']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles']) {
 
 
-            wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/resources/assets/css/select2.min.css', false);
+//            wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/resources/assets/css/select2.min.css', false);
 
             wp_enqueue_style('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/gdgallery-modal.css', false);
 
@@ -49,16 +49,6 @@ class AdminAssetsController
             wp_enqueue_style('gdgalleryStyleSettings', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/style_settings.css');
         }
 
-        if ($hook === \GDGallery()->Admin->Pages['submissions']) {
-            wp_enqueue_style('gdfrmSubmissions', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/submissions.css');
-        }
-
-
-        if (isset($_GET['task']) && $_GET['task'] == 'edit_form_settings') {
-
-
-        }
-
     }
 
     /**
@@ -69,7 +59,6 @@ class AdminAssetsController
         wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/js/jquery-ui.min.js');
 
         wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
-        //wp_enqueue_script('gsgalleryStylesSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
 
         if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
@@ -77,19 +66,12 @@ class AdminAssetsController
 
             wp_enqueue_script('jquery');
 
-
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
                 wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);
 
                 wp_enqueue_script('gdfrmAdminSelect2', \GDGallery()->pluginUrl() . '/resources/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
 
                 wp_enqueue_script('gdgalleryAdminGallerySave', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
-
-            }
-
-
-            if (isset($_GET['task']) && $_GET['task'] == 'edit_form_settings') {
-                wp_enqueue_script('gdfrmFormSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/form-settings.js', array('jquery'), false, true);
 
             }
 
@@ -109,10 +91,6 @@ class AdminAssetsController
             wp_enqueue_script('gdgallery_jscolor', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/jscolor.js', array(), false, true);
         }
 
-
-        if ($hook === \GDGallery()->Admin->Pages['submissions']) {
-            wp_enqueue_script('gdfrmSubmissions', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/submissions.js', array('jquery'), false, true);
-        }
 
         self::localizeScripts();
 
@@ -137,24 +115,6 @@ class AdminAssetsController
             'removeOptionNonce' => wp_create_nonce('gdfrm_remove_field_option'),
             'importOptionsNonce' => wp_create_nonce('gdfrm_import_options'),
         ));
-
-        wp_localize_script('gdfrmFormSettings', 'GDGallery', array(
-            'saveSettingsNonce' => wp_create_nonce('gdfrm_save_form_settings'),
-        ));
-
-        wp_localize_script('gdfrmSettings', 'settingsSave', array(
-            'nonce' => wp_create_nonce('gdfrm_save_settings'),
-        ));
-
-        wp_localize_script('gdfrmSubmissions', 'submission', array(
-            'removeNonce' => wp_create_nonce('gdfrm_remove_submission'),
-            'readNonce' => wp_create_nonce('gdfrm_read_submission'),
-        ));
-
-        wp_localize_script('gdfrmAdminJs', 'form', array(
-            'removeNonce' => wp_create_nonce('gdfrm_remove_form'),
-        ));
-
 
     }
 }

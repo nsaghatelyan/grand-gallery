@@ -220,8 +220,8 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                     <input type="checkbox" name="items[]"
                                            value="<?= $item->id_image; ?>" class="items_checkbox"/>
                                     <div class="gdgallery_item_edit">
-                                        <a href="<?php echo ($item->id_post != 0) ? "/wp-admin/post.php?post=" . $item->id_post . "&action=edit&image-editor" : "#"; ?>"
-                                           target="_blank">EDIT</a>
+                                        <a href="<?php echo ($item->id_post != 0) ? admin_url() . "post.php?post=" . $item->id_post . "&action=edit&image-editor" : "#"; ?>"
+                                           target="_blank" data-post-id="<?= $item->id_post ?>">EDIT</a>
                                     </div>
                                 </div>
                             </div>
@@ -241,5 +241,14 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
     jQuery('#tabs')
         .tabs()
         .addClass('ui-tabs-vertical ui-helper-clearfix');
+
+    jQuery(document).ready(function () {
+
+        jQuery(function () {
+            jQuery(".gdgallery_items_list").sortable();
+            jQuery(".gdgallery_items_list").disableSelection();
+
+        });
+    });
 </script>
 

@@ -23,5 +23,6 @@ class Uninstall
         global $wpdb;
         $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGalleryGalleries`");
         $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGalleryImages`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGallerySettings`");
     }
 }

@@ -858,6 +858,7 @@ img.ug-sepia-effect {
     font-size: 14px;
     font-weight: normal;
     color: #e5e5e5;
+    text-align: center !important;
 }
 
 .ug-lightbox-compact .ug-textpanel-title,
