@@ -41,7 +41,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     </li>
                 <?php endforeach; ?>
                 <li>
-                    <a href="<?= $new_gallery_link ?>">New Gallery</a>
+                    <a href="<?= $new_gallery_link ?>"><i class="fa fa-plus" aria-hidden="true"></i> New Gallery</a>
                 </li>
             </ul>
             <div class="form_title_div">
@@ -56,8 +56,9 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
             <div id="tabs">
                 <div id="gdgallery_settings_section">
                     <h3>Gallery settings</h3>
-                    <a href="#" id="settings_container_switcher" data-status="show"><img
-                                src="<?= GDGALLERY_IMAGES_URL ?>icons/triangle.png"></a>
+                    <a href="#" id="settings_container_switcher" data-status="show">
+                        <i class="fa fa-chevron-down"
+                           aria-hidden="true"></i></a>
                 </div>
                 <div style="clear: both"></div>
                 <div class="settings-toogled-container">
@@ -97,36 +98,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                        id="gdgallery_items_per_page" class="gdgallery_items_per_page"
                                        value="<?= $gallery_data->items_per_page ?>">
                             </li>
-                            <li class="gdgallery_hover_effect_section">
-                                <h4>Hover effect</h4>
-                                <select name="gdgallery_hover_effect"
-                                        id="gdgallery_hover_effect_<?= $id ?>">
-                                    <option value="0" <?php if ($gallery_data->hover_effect == 0) echo "selected" ?>>
-                                        effect 1
-                                    </option>
-                                    <option value="1" <?php if ($gallery_data->hover_effect == 1) echo "selected" ?>>
-                                        effect 2
-                                    </option>
-                                    <option value="2" <?php if ($gallery_data->hover_effect == 2) echo "selected" ?>>
-                                        effect 3
-                                    </option>
-                                </select>
-                            </li>
-                            <li>
-                                <h4>Position</h4>
-                                <select name="gdgallery_position"
-                                        id="gdgallery_position_<?= $id ?>">
-                                    <option value="0" <?php if ($gallery_data->position == "left") echo "selected" ?>>
-                                        left
-                                    </option>
-                                    <option value="1" <?php if ($gallery_data->position == "center") echo "selected" ?>>
-                                        center
-                                    </option>
-                                    <option value="2" <?php if ($gallery_data->position == "right") echo "selected" ?>>
-                                        right
-                                    </option>
-                                </select>
-                            </li>
+                           
                         </ul>
 
 

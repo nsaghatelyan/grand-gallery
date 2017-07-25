@@ -56,20 +56,20 @@ jQuery(document).ready(function () {
 
         jQuery('.settings-toogled-container').animate({height: 'toggle'}, 200);
         if (jQuery(this).data("status") == "show") {
-            gdgalleryAnimateRotate(180, 0);
+            gdgalleryAnimateRotate(540, 0);
             jQuery(this).data("status", "hide");
         }
         else {
-            gdgalleryAnimateRotate(0, 180);
+            gdgalleryAnimateRotate(0, 540);
             jQuery(this).data("status", "show");
         }
     });
 
     function gdgalleryAnimateRotate(d1, d2) {
-        var elem = jQuery("#settings_container_switcher img");
+        var elem = jQuery("#settings_container_switcher .fa-chevron-down");
 
         jQuery({deg: d1}).animate({deg: d2}, {
-            duration: 200,
+            duration: 300,
             step: function (now) {
                 elem.css({
                     transform: "rotate(" + now + "deg)"

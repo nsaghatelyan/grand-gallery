@@ -292,6 +292,9 @@ class Gallery extends Model
         $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgallerygalleries` where id_gallery=%d order by ordering", $this->Id);
         $galleries = $wpdb->get_row($query);
 
+        if (empty($galleries)) {
+            return;
+        }
 
         if ($duplicate == false) {
             $total = 0;

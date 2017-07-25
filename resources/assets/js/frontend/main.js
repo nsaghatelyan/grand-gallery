@@ -188,7 +188,6 @@ jQuery(document).ready(function () {
                         "data-description='" + item.description + "' data-videoid='" + item.video_id + "' style='display:block;'>")
                 });
                 var g_view = jQuery("#gdgallery_container_" + g_id).data("view");
-                console.log(g_view);
 
 
                 jQuery("#gdgallery_container_" + g_id).hide();

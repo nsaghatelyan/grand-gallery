@@ -44,6 +44,11 @@ class SettingsController
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
                 "tab" => "justified"
             ),
+            'lightbox_justified' => array(
+                'title' => __('Lightbox Styles', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "justified"
+            ),
             'load_more_justified' => array(
                 'title' => __('Load More Styles', 'gdgallery'),
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
@@ -120,11 +125,48 @@ class SettingsController
 
         $builder->addFields(array(
             /*********** Justify options  ****************/
+
             'show_title_justified' => array(
-                'type' => 'checkbox',
+                'type' => 'select',
                 'label' => __('Show Title', 'gdgallery'),
+                'options' => array(
+                    '0' => __('Always on', 'gdgallery'),
+                    '1' => __('On hover', 'gdgallery'),
+                    '2' => __('Disable', 'gdgallery')
+                ),
                 'section' => 'element_style_justified',
                 'help' => __('Show / Hide Title', 'gdgallery')
+            ),
+            'title_position_justified' => array(
+                'type' => 'select',
+                'label' => __('Title Horisontal Position', 'gdgallery'),
+                'options' => array(
+                    'left' => __('Left', 'gdgallery'),
+                    'center' => __('Center', 'gdgallery'),
+                    'right' => __('Right', 'gdgallery')
+                ),
+                'section' => 'element_style_justified',
+                'help' => __('Title Horisontal Position', 'gdgallery')
+            ),
+            'title_vertical_position_justified' => array(
+                'type' => 'select',
+                'label' => __('Title Vertical Position', 'gdgallery'),
+                'options' => array(
+                    'inside_top' => __('Top', 'gdgallery'),
+                    'inside_bottom' => __('Bottom', 'gdgallery'),
+                ),
+                'section' => 'element_style_justified',
+                'help' => __('Title Vertical Position', 'gdgallery')
+            ),
+            'title_appear_type_justified' => array(
+                'type' => 'select',
+                'label' => __('Title On Hover Appear Type', 'gdgallery'),
+                'options' => array(
+                    'slide' => __('Slide', 'gdgallery'),
+                    'fade' => __('Fade', 'gdgallery'),
+                ),
+                'section' => 'element_style_justified',
+                'help' => __('Title On Hover Appear Type', 'gdgallery')
             ),
             'title_color_justified' => array(
                 'type' => 'color',
@@ -132,17 +174,106 @@ class SettingsController
                 'section' => 'element_style_justified',
                 'help' => __('Choose Title Color', 'gdgallery')
             ),
+            'title_background_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Title Background color', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Choose  Title Background Color', 'gdgallery')
+            ),
+            'title_background_opacity_justified' => array(
+                'type' => 'number',
+                'label' => __('Title Background opacity (%)', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Choose Title Background Opacity', 'gdgallery')
+            ),
             'margin_justified' => array(
                 'type' => 'number',
                 'label' => __('Margin', 'gdgallery'),
                 'section' => 'element_style_justified',
                 'help' => __('Element Margin', 'gdgallery')
             ),
-            'row_height_justified' => array(
+            'border_width_justified' => array(
                 'type' => 'number',
-                'label' => __('Row height', 'gdgallery'),
+                'label' => __('Border Width', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Row height', 'gdgallery')
+                'help' => __('Border Width', 'gdgallery')
+            ),
+            'border_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Border Color', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Border Color', 'gdgallery')
+            ),
+            'border_radius_justified' => array(
+                'type' => 'number',
+                'label' => __('Roundness of corners', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Roundness of corners', 'gdgallery')
+            ),
+            'on_hover_overlay_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('On hover overlay', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('On hover overlay', 'gdgallery')
+            ),
+            'show_icons_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Icons', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Show Icons', 'gdgallery')
+            ),
+            'show_link_icon_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Link Icon', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Show Link Icon', 'gdgallery')
+            ),
+            'item_as_link_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Image as Link', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Image as Link (disable Lightbox)', 'gdgallery')
+            ),
+            'link_new_tab_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Open link in new Tab', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Open link in new Tab', 'gdgallery')
+            ),
+            'image_hover_effect_justified' => array(
+                'type' => 'select',
+                'label' => __('Hover effect for Image', 'gdgallery'),
+                'options' => array(
+                    'blur' => __('none', 'gdgallery'),
+                    'bw' => __('Black and White', 'gdgallery'),
+                    'sepia' => __('Sepia', 'gdgallery')
+                ),
+                'section' => 'element_style_justified',
+                'help' => __('Hover effect for Image', 'gdgallery')
+            ),
+            'image_hover_effect_reverse_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('On Hover Reversed effect for Image', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('On Hover Reversed effect for Image', 'gdgallery')
+            ),
+            'shadow_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Shadow', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Shadow', 'gdgallery')
+            ),
+
+
+            'lightbox_type_justified' => array(
+                'type' => 'select',
+                'label' => __('Lightbox Type', 'gdgallery'),
+                'options' => array(
+                    'wide' => __('Wide', 'gdgallery'),
+                    'compact' => __('Compact', 'gdgallery')
+                ),
+                'section' => 'lightbox_justified',
+                'help' => __('Lightbox Type', 'gdgallery')
             ),
             'load_more_text_justified' => array(
                 'type' => 'text',
@@ -167,6 +298,80 @@ class SettingsController
                 'section' => 'load_more_justified',
                 'help' => __('Font size', 'gdgallery')
             ),
+            'load_more_vertical_padding_justified' => array(
+                'type' => 'number',
+                'label' => __('Vertical Padding', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Vertical Padding', 'gdgallery')
+            ),
+            'load_more_horisontal_padding_justified' => array(
+                'type' => 'number',
+                'label' => __('Horisontal Padding', 'gdgallery'),
+                'section' => 'pagination_justified',
+                'help' => __('Horisontal Padding', 'gdgallery')
+            ),
+            'load_more_border_width_justified' => array(
+                'type' => 'number',
+                'label' => __('Border Width', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Border Width', 'gdgallery')
+            ),
+            'load_more_border_radius_justified' => array(
+                'type' => 'number',
+                'label' => __('Roundness of corners', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Roundness of corners', 'gdgallery')
+            ),
+            'load_more_border_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Border Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Border Color', 'gdgallery')
+            ),
+            'load_more_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Color', 'gdgallery')
+            ),
+            'load_more_background_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Background Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Background Color', 'gdgallery')
+            ),
+            'load_more_font_family_justified' => array(
+                'type' => 'select',
+                'label' => __('Font Type', 'gdgallery'),
+                'options' => array(
+                    'monospace' => __('monospace', 'gdgallery'),
+                    'cursive' => __('cursive', 'gdgallery'),
+                    'fantasy' => __('fantasy', 'gdgallery'),
+                    'sans-serif' => __('sans-serif', 'gdgallery'),
+                    'serif' => __('serif', 'gdgallery'),
+                ),
+                'section' => 'load_more_justified',
+                'help' => __('Font Type', 'gdgallery')
+            ),
+            'load_more_hover_border_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Border Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Border Color', 'gdgallery')
+            ),
+            'load_more_hover_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Color', 'gdgallery')
+            ),
+            'load_more_hover_background_color_justified' => array(
+                'type' => 'color',
+                'label' => __('On Hover Background Color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Background Color', 'gdgallery')
+            ),
+
 
             'pagination_position_justified' => array(
                 'type' => 'select',

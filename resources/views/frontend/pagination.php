@@ -81,7 +81,7 @@ switch ($page_nav_type) {
 
 <style>
     .gdgallery-pagination-<?= $gallery_data->id_gallery ?> {
-        margin-top: 15px !important;
+        margin-top: 25px !important;
     }
 
     .gdgallery-pagination-<?= $gallery_data->id_gallery ?> .gdgallery-pagination-icon {

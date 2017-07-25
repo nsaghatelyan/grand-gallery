@@ -40,18 +40,23 @@ text-align: <?= $options["pagination_position_justified"]; ?> !important;
 }
 
 <?= $container ?> .gdgallery_load_more_space{
-    margin-top: 10px;
+    margin-top: 20px !important;
     text-align: <?= $options["load_more_position_justified"]; ?> !important;
 }
 
 <?= $container ?> .gdgallery_load_more_space button{
-    font-size: <?= $options["load_more_font_size_justified"]; ?>px;
-    background-color: #333 ;
-    border:1px solid #333;
+                      padding: <?= $options["load_more_vertical_padding_justified"]; ?>px <?= $options["load_more_horisontal_padding_justified"]; ?>px !important;
+    font-size: <?= $options["load_more_font_size_justified"]; ?>px !important;
+    background-color: #<?=$options["load_more_background_color_justified"]; ?> !important;
+    color: #<?=$options["load_more_color_justified"]; ?> !important;
+    border:<?=$options["load_more_border_width_justified"]; ?>px solid #<?=$options["load_more_border_color_justified"]; ?> !important;
+                      border-radius: <?= $options["load_more_border_radius_justified"]; ?>px !important;
+                      font-family: <?= $options["load_more_font_family_justified"]; ?> !important;
                   }
 <?= $container ?> .gdgallery_load_more_space button:hover{
-    background-color: #fff;
-    color: #333;
+                      background-color: #<?=$options["load_more_hover_background_color_justified"]; ?> !important;
+                      color: #<?=$options["load_more_hover_color_justified"]; ?> !important;
+                      border-color: #<?= $options["load_more_hover_border_color_justified"]; ?> !important;
                   }
 
 <?= "</style>" ?>

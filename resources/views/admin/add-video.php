@@ -40,7 +40,7 @@
                                    id="gdgallery_video_link"
                                    value="">
                         </td>
-                        <td>
+                        <!--<td>
                             <label for="gdgallery_video_target"> Target:</label>
                             <select name="gdgallery_video_target"
                                     id="gdgallery_video_target">
@@ -48,7 +48,7 @@
                                 <option value="_self">Current Tab</option>
                             </select>
 
-                        </td>
+                        </td>-->
                     </tr>
                 </table>
                 <span class="spinner"></span>
