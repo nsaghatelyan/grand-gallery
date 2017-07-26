@@ -10,7 +10,6 @@ $page_options = array(
     "nearby" => $options["pagination_nearby_pages_justified"]
 );
 
-
 $gallery_options = array();
 
 $gallery_options["tiles_type"] = 'justified';
