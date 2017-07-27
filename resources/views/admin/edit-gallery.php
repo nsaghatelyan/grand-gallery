@@ -98,7 +98,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                        id="gdgallery_items_per_page" class="gdgallery_items_per_page"
                                        value="<?= $gallery_data->items_per_page ?>">
                             </li>
-                           
+
                         </ul>
 
 
@@ -183,9 +183,8 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                             $icon = ($item->type == "youtube") ? "fa-youtube-play" : (($item->type == "vimeo") ? "fa-vimeo" : "fa-picture-o");
                             ?>
 
-                            <div class="gdgallery_item">
+                            <div class="gdgallery_item" style="background-image: url('<?= $item->url ?>');">
 
-                                <img src="<?= $item->url; ?>"/>
                                 <p class="gdgallery_item_title"><?= $item->name ?>
                                     <i class="fa <?= $icon ?>" aria-hidden="true"></i></p>
                                 <div class="gdgallery_item_overlay">

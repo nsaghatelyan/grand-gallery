@@ -78,7 +78,6 @@ jQuery(document).ready(function () {
         });
     }
 
-
     var custom_uploader;
     jQuery('#watermark_image_btn_new').click(function (e) {
         e.preventDefault();

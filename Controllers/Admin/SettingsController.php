@@ -1259,7 +1259,7 @@ class SettingsController
             'bullets_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Enable Bullets', 'gdgallery'),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Enable Bullets')
             ),
             'bullets_horisontal_position_slider' => array(
@@ -1270,7 +1270,7 @@ class SettingsController
                     'center' => __('Center', 'gdgallery'),
                     'right' => __('Right', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Bullets Horisontal Position', 'gdgallery')
             ),
             'bullets_vertical_position_slider' => array(
@@ -1280,19 +1280,19 @@ class SettingsController
                     'top' => __('Top', 'gdgallery'),
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Bullets Vertical Position', 'gdgallery')
             ),
             'arrows_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Enable Arrows', 'gdgallery'),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Enable Arrows', 'gdgallery')
             ),
             'progress_indicator_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Enable Progress Indicator', 'gdgallery'),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Enable Progress Indicator')
             ),
             'progress_indicator_type_slider' => array(
@@ -1302,10 +1302,10 @@ class SettingsController
                     'pie' => __('Pie', 'gdgallery'),
                     'bar' => __('Bar', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Progress Indicator Type', 'gdgallery')
             ),
-            'bullets_horisontal_position_slider' => array(
+            'progress_indicator_horisontal_position_slider' => array(
                 'type' => 'select',
                 'label' => __('Progress Indicator Horisontal Position', 'gdgallery'),
                 'options' => array(
@@ -1313,23 +1313,23 @@ class SettingsController
                     'center' => __('Center', 'gdgallery'),
                     'right' => __('Right', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Progress Indicator Horisontal Position', 'gdgallery')
             ),
-            'bullets_vertical_position_slider' => array(
+            'progress_indicator_vertical_position_slider' => array(
                 'type' => 'select',
                 'label' => __('Progress Indicator Vertical Position', 'gdgallery'),
                 'options' => array(
                     'top' => __('Top', 'gdgallery'),
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Progress Indicator Vertical Position', 'gdgallery')
             ),
             'play_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Enable Play Button', 'gdgallery'),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Enable Play Button', 'gdgallery')
             ),
             'play_horizontal_position_slider' => array(
@@ -1340,7 +1340,7 @@ class SettingsController
                     'center' => __('Center', 'gdgallery'),
                     'right' => __('Right', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Play Button Horisontal Position', 'gdgallery')
             ),
             'play_vertical_position_slider' => array(
@@ -1350,7 +1350,7 @@ class SettingsController
                     'top' => __('Top', 'gdgallery'),
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Play Button Vertical Position', 'gdgallery')
             ),
             'fullscreen_slider' => array(
@@ -1410,7 +1410,7 @@ class SettingsController
             'controls_always_on_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Controls Always On', 'gdgallery'),
-                'section' => 'element_style_slider',
+                'section' => 'components_slider',
                 'help' => __('Controls Always On', 'gdgallery')
             ),
             'video_play_type_slider' => array(
