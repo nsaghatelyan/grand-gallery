@@ -202,6 +202,43 @@ class Settings
         'icon_space_carousel' => '20',
 
 
+        /************* Grid ***********/
+        'width_grid' => '200',
+        'height_grid' => '200',
+        'space_cols_grid' => '20',
+        'space_rows_grid' => '20',
+        'gallery_width_grid' => '100',
+        'gallery_bg_grid' => 'b:1',
+        'gallery_bg_color_grid' => 'FFFFFF',
+        'num_rows_grid' => '3',
+        'show_title_grid' => '1',
+        'title_position_grid' => 'left',
+        'title_vertical_position_grid' => 'bottom',
+        'title_appear_type_grid' => 'slide',
+        'title_color_grid' => 'FFFFFF',
+        'title_background_color_grid' => '333333',
+        'title_background_opacity_grid' => '70',
+        'border_width_grid' => '1',
+        'border_color_grid' => '333333',
+        'border_radius_grid' => '3',
+        'on_hover_overlay_grid' => 'b:1',
+        'show_icons_grid' => 'b:1',
+        'show_link_icon_grid' => 'b:1',
+        'item_as_link_grid' => 'b:0',
+        'link_new_tab_grid' => 'b:1',
+        'image_hover_effect_grid' => 'blur',
+        'image_hover_effect_reverse_grid' => 'b:0',
+        'shadow_grid' => 'b:1',
+        'nav_type_grid' => 'bullets',
+        'bullets_margin_grid' => '50',
+        'bullets_color_grid' => 'gray',
+        'bullets_space_between_grid' => '15',
+        'arrows_margin_grid' => '50',
+        'arrows_space_between_grid' => '20',
+        'nav_position_grid' => 'center',
+        'nav_offset_greed' => '0',
+
+
         /************* Slider ***********/
         'width_slider' => '900',
         'height_slider' => '500',
@@ -244,21 +281,8 @@ class Settings
         'text_panel_title_color_slider' => 'FFFFFF',
         'text_panel_desc_color_slider' => 'FFFFFF',
 
-
-        /************* Grid ***********/
-        'show_title_grid' => 'b:0',
-        'margin_grid' => '0',
-        'height_grid' => '100',
-        'width_grid' => '100',
-        'load_more_text_grid' => 'Load More',
-        'load_more_position_grid' => 'center',
-        'load_more_font_size_grid' => '15',
-        'pagination_position_grid' => 'center',
-        'pagination_font_size_grid' => '15',
-
         /************* One and Others ***********/
         'show_title_one_and_others' => 'b:0',
-        'icons_one_and_others' => '0',
 
     );
 

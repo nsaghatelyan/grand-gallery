@@ -11,7 +11,7 @@ $id_gallery = $gallery->getId();
 $images = array();
 
 
-if (in_array($view, array(0, 1, 4))) {
+if (in_array($view, array(0, 1))) {
     switch ($gallery_data->display_type) {
         case 0:
             $images = $gallery->getItems();

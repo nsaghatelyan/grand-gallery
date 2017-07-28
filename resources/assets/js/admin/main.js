@@ -411,7 +411,7 @@ jQuery(document).ready(function ($) {
     });
 
     jQuery("input[name=gdgallery_view_type]").change(function () {
-        var grid_arr = ['0', '1', '4'];
+        var grid_arr = ['0', '1'];
         if (jQuery.inArray(jQuery(this).val(), grid_arr) !== -1) {
             jQuery(".gdgallery_display_type_section").removeClass("gdgallery_hidden");
             jQuery(".gdgallery_items_per_page_section").removeClass("gdgallery_hidden");

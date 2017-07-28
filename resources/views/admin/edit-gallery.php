@@ -28,6 +28,12 @@ $gallery_settings_link = wp_nonce_url($gallery_settings_link, 'gdfrm_edit_form_s
 
 $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 
+if (in_array($gallery_data->view_type, array(0, 1))) {
+
+}
+
+$display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgallery_hidden";
+
 ?>
 
 <form action="admin.php?page=gdgallery&id=<?php echo $row->id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
@@ -78,7 +84,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                     </ul>
                     <div id="gdgallery_general_settings">
                         <ul class="gdgallery_general_settings">
-                            <li class="gdgallery_display_type_section">
+                            <li class="gdgallery_display_type_section <?= $display_opt ?>">
                                 <h4>Display Type</h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type">
                                     <option value="0" <?php if ($gallery_data->display_type == 0) echo "selected" ?>>
@@ -92,7 +98,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
                                     </option>
                                 </select>
                             </li>
-                            <li class="gdgallery_items_per_page_section <?php if ($gallery_data->display_type == 0) echo "gdgallery_hidden" ?>">
+                            <li class="gdgallery_items_per_page_section <?php if ($gallery_data->display_type == 0) echo "gdgallery_hidden" ?>  <?= $display_opt ?>">
                                 <h4>Items Per Page</h4>
                                 <input type="number" min="0" max="100" name="gdgallery_items_per_page"
                                        id="gdgallery_items_per_page" class="gdgallery_items_per_page"
