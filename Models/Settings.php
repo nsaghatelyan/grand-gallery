@@ -280,6 +280,11 @@ class Settings
         'text_panel_bg_opacity_slider' => '70',
         'text_panel_title_color_slider' => 'FFFFFF',
         'text_panel_desc_color_slider' => 'FFFFFF',
+        'playlist_slider' => 'b:0',
+        'thumb_width_slider' => '88',
+        'thumb_height_slider' => '50',
+        'playlist_bg_slider' => '000000',
+
 
         /************* One and Others ***********/
         'show_title_one_and_others' => 'b:0',

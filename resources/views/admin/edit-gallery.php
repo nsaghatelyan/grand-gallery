@@ -35,21 +35,21 @@ if (in_array($gallery_data->view_type, array(0, 1))) {
 $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgallery_hidden";
 
 ?>
-
+<ul class="switch_gallery">
+    <?php foreach ($list as $val): ?>
+        <li <?php if ($val["id_gallery"] == $id) echo "class='active_gallery'" ?>>
+            <a href="<?= $val["url"] ?>"><?= $val["name"] ?></a>
+        </li>
+    <?php endforeach; ?>
+    <li class="add_gallery_li">
+        <a href="<?= $new_gallery_link ?>">ADD GALLERY <i class="fa fa-plus" aria-hidden="true"></i></a>
+    </li>
+</ul>
 <form action="admin.php?page=gdgallery&id=<?php echo $row->id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
       method="post" name="gdgallery_images_form" id="gdgallery_images_form">
     <div class="wrap gdfrm_edit_form_container">
         <div class="gdfrm_nav">
-            <ul class="switch_gallery">
-                <?php foreach ($list as $val): ?>
-                    <li>
-                        <a href="<?= $val["url"] ?>"><?= $val["name"] ?></a>
-                    </li>
-                <?php endforeach; ?>
-                <li>
-                    <a href="<?= $new_gallery_link ?>"><i class="fa fa-plus" aria-hidden="true"></i> New Gallery</a>
-                </li>
-            </ul>
+
             <div class="form_title_div">
                 <input type="text" id="form_name" name="gdgallery_name" value="<?php echo $gallery->getName(); ?>">
                 <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery" value="<?php echo $id ?>">
@@ -60,20 +60,15 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
             </div>
 
             <div id="tabs">
-                <div id="gdgallery_settings_section">
-                    <h3>Gallery settings</h3>
-                    <a href="#" id="settings_container_switcher" data-status="show">
-                        <i class="fa fa-chevron-down"
-                           aria-hidden="true"></i></a>
-                </div>
                 <div style="clear: both"></div>
                 <div class="settings-toogled-container">
+
                     <ul>
                         <li>
-                            <a href="#gdgallery_general_settings"><?php _e('General Settings'); ?></a>
+                            <a href="#gdgallery_gallery_style"><?php _e('Gallery Style'); ?></a>
                         </li>
                         <li>
-                            <a href="#gdgallery_gallery_style"><?php _e('Gallery Style'); ?></a>
+                            <a href="#gdgallery_general_settings"><?php _e('General Settings'); ?></a>
                         </li>
                         <li>
                             <a href="#gdgallery_custom_css"><?php _e('Custom CSS'); ?></a>
@@ -81,7 +76,23 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                         <li>
                             <a href="#gdgallery_get_shortcode"><?php _e('Get shortcode'); ?></a>
                         </li>
+                        <a href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"
+                           class="single_gallery_preview"><?php _e('Preview Changes'); ?></a>
+
                     </ul>
+                    <div id="gdgallery_gallery_style">
+                        <?php foreach ($gallery->getViewStyles() as $key => $view): ?>
+                            <div class="gdgallery_view_item">
+                                <label>
+                                    <input type="radio" <?php if ($gallery_data->view_type == $key) echo "checked" ?>
+                                           name="gdgallery_view_type" value="<?= $key ?>"/>
+                                    <img src="<?= $view[1] ?>">
+                                    <p><?= $view[0] ?></p>
+                                </label>
+                            </div>
+                        <?php endforeach; ?>
+
+                    </div>
                     <div id="gdgallery_general_settings">
                         <ul class="gdgallery_general_settings">
                             <li class="gdgallery_display_type_section <?= $display_opt ?>">
@@ -109,24 +120,16 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
 
                     </div>
-                    <div id="gdgallery_gallery_style">
-                        <?php foreach ($gallery->getViewStyles() as $key => $view): ?>
-                            <div class="gdgallery_view_item">
-                                <label>
-                                    <input type="radio" <?php if ($gallery_data->view_type == $key) echo "checked" ?>
-                                           name="gdgallery_view_type" value="<?= $key ?>"/>
-                                    <img src="<?= $view[1] ?>">
-                                    <p><?= $view[0] ?></p>
-                                </label>
-                            </div>
-                        <?php endforeach; ?>
 
-                    </div>
                     <div id="gdgallery_custom_css">
-                        <h4>For Gallery Container</h4>
-                        <textarea cols="8" name="gdgallery_gallery_container_css"></textarea>
-                        <h4>For Single Item</h4>
-                        <textarea cols="8" name="gdgallery_single_item_css"></textarea>
+                        <div class="custom_css_col">
+                            <h4>For Gallery Container</h4>
+                            <textarea cols="8" name="gdgallery_gallery_container_css"></textarea>
+                        </div>
+                        <div class="custom_css_col">
+                            <h4>For Single Item</h4>
+                            <textarea cols="8" name="gdgallery_single_item_css"></textarea>
+                        </div>
                     </div>
                     <div id="gdgallery_get_shortcode">
                         <div class="gdgallery_shortcode_types">

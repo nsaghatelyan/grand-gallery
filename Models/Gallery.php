@@ -323,15 +323,13 @@ class Gallery extends Model
         $query = $wpdb->prepare("select `id_gallery`,`name` from `" . $wpdb->prefix . "gdgallerygalleries` order by ordering", array());
         $galleries = $wpdb->get_results($query);
         foreach ($galleries as $val) {
-            if ($val->id_gallery != $this->Id) {
-                $EditUrl = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $val->id_gallery);
-                $EditUrl = wp_nonce_url($EditUrl, 'gdgallery_edit_gallery_' . $val->id_gallery);
-                $list[] = array(
-                    "id_gallery" => $val->id_gallery,
-                    "name" => $val->name,
-                    "url" => $EditUrl
-                );
-            }
+            $EditUrl = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $val->id_gallery);
+            $EditUrl = wp_nonce_url($EditUrl, 'gdgallery_edit_gallery_' . $val->id_gallery);
+            $list[] = array(
+                "id_gallery" => $val->id_gallery,
+                "name" => $val->name,
+                "url" => $EditUrl
+            );
         }
 
         return $list;

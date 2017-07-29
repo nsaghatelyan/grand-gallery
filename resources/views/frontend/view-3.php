@@ -51,13 +51,21 @@ $gallery_options["slider_textpanel_bg_opacity"] = $options["text_panel_bg_opacit
 $gallery_options["slider_textpanel_title_color"] = "#" . $options["text_panel_title_color_slider"];
 $gallery_options["slider_textpanel_desc_color"] = "#" . $options["text_panel_desc_color_slider"];
 
-$gallery_options["theme_panel_position"] = "right";
-$gallery_options["gallery_theme"] = "grid";
 
+if ($options["playlist_slider"] == 1) {
+    $gallery_options["theme_panel_position"] = $options["playlist_pos_slider"];
+    $gallery_options["gallery_theme"] = "grid";
+    $gallery_options["thumb_width"] = $options["thumb_width_slider"];
+    $gallery_options["thumb_height"] = $options["thumb_height_slider"];
+    $gallery_options["gridpanel_background_color"] = "#" . $options["playlist_bg_slider"];
+    wp_enqueue_script("gdgalleryoneandothers", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-grid.js", array('jquery'), false, true);
+} else {
+    wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-slider.js", array('jquery'), false, true);
+}
 
 $json = json_encode($gallery_options);
 
-wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-slider.js", array('jquery'), false, true);
+//wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-slider.js", array('jquery'), false, true);
 //wp_enqueue_script("gdgalleryoneandothers", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-grid.js", array('jquery'), false, true);
 
 ?>

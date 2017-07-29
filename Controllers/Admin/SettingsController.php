@@ -1479,6 +1479,48 @@ class SettingsController
                 'section' => 'element_style_slider',
                 'help' => __('Text Panel Description Color', 'gdgallery')
             ),
+            'carousel_slider' => array(
+                'type' => 'checkbox',
+                'label' => __('Gallery Carousel', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('next button on last image goes to first image.', 'gdgallery')
+            ),
+            'playlist_slider' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Play list', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Show Play list', 'gdgallery')
+            ),
+            'playlist_pos_slider' => array(
+                'type' => 'select',
+                'label' => __('Playlist Position', 'gdgallery'),
+                'options' => array(
+                    'right' => __('Right', 'gdgallery'),
+                    'left' => __('Left', 'gdgallery'),
+                    'bottom' => __('Bottom', 'gdgallery'),
+                    'top' => __('Top', 'gdgallery'),
+                ),
+                'section' => 'element_style_slider',
+                'help' => __('Playlist Position', 'gdgallery')
+            ),
+            'thumb_width_slider' => array(
+                'type' => 'number',
+                'label' => __('Thumbnail width', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Thumbnail width', 'gdgallery')
+            ),
+            'thumb_height_slider' => array(
+                'type' => 'number',
+                'label' => __('Thumbnail Height', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Thumbnail Height', 'gdgallery')
+            ),
+            'playlist_bg_slider' => array(
+                'type' => 'color',
+                'label' => __('Playlist panel background color', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Playlist panel background color', 'gdgallery')
+            ),
 
 
             /********************  Grid options  ***********************/
@@ -1736,7 +1778,7 @@ class SettingsController
                 'section' => 'element_style_one_and_others',
                 'help' => __('Show / Hide Title')
             ),
-            
+
         ));
 
         $builder->render();
