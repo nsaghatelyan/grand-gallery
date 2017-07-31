@@ -71,8 +71,6 @@ $json = json_encode($gallery_options);
 ?>
 
 
-<h3>Slider Gallery</h3>
-
 <div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="slider">
 
     <?php foreach ($images as $key => $val):

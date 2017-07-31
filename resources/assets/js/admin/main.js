@@ -429,7 +429,44 @@ jQuery(document).ready(function ($) {
 
         var post_id = jQuery(this).data("post-id");
         wp.media.editor.open(post_id);
+    });
+
+    jQuery("#form_name").bind("keypress keyup", function () {
+
+        jQuery("#gallery_active_name").html(jQuery(this).val());
+        jQuery("#edit_name_input").val(jQuery(this).val());
+    });
+
+    jQuery("#gdgallery_edit_name").click(function (e) {
+        e.preventDefault();
+        var cur_name = jQuery(this).parent().find("#gallery_active_name").text();
+        jQuery(this).parent().find("#gallery_active_name").hide();
+        jQuery(this).parent().find("#edit_name_input").removeClass("gdgallery_hidden");
+        jQuery(this).hide();
+        var strLength = jQuery("#edit_name_input").val().length * 2;
+        jQuery("#edit_name_input").focus();
+        jQuery("#edit_name_input")[0].setSelectionRange(strLength, strLength);
+    });
+    $(window).click(function () {
+//Hide the menus if visible
+        jQuery("#gdgallery_edit_name").parent().find("#edit_name_input").addClass("gdgallery_hidden");
+        jQuery("#gdgallery_edit_name").parent().find("#gallery_active_name").show();
+        jQuery("#gdgallery_edit_name").show();
+    });
+    $('#gdgallery_edit_name').click(function (event) {
+        event.stopPropagation();
+    });
+
+
+    jQuery("#edit_name_input").bind("keyup keypress", function () {
+        jQuery("#form_name").val(jQuery(this).val());
+        jQuery("#gallery_active_name").text(jQuery(this).val());
     })
+    /*jQuery(document).click(function () {
+     jQuery("#edit_name_input").hide();
+     jQuery("#gallery_active_name").show();
+
+     })*/
 })
 
 function gdgalleryAddItem(data, type) {

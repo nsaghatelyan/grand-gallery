@@ -23,12 +23,12 @@ class AdminAssetsController
 
         wp_enqueue_style('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/toastr.css');
 
-        if ($hook === \GDGallery()->Admin->Pages['main_page']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['settings']) {
             wp_enqueue_style('gdfrmAdminStyles', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/main.css');
         }
 
 
-        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles']) {
+        if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['settings']) {
 
 
 //            wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/resources/assets/css/select2.min.css', false);
@@ -42,7 +42,7 @@ class AdminAssetsController
         }
 
         if ($hook === \GDGallery()->Admin->Pages['settings']) {
-            wp_enqueue_style('gdfrmSettings', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/settings.css');
+            wp_enqueue_style('gdgallerySettings', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/settings.css');
         }
 
         if ($hook === \GDGallery()->Admin->Pages['styles']) {
@@ -83,7 +83,7 @@ class AdminAssetsController
         }
 
         if ($hook === \GDGallery()->Admin->Pages['settings']) {
-            wp_enqueue_script('gdfrmSettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/settings.js', array('jquery'), false, true);
+            wp_enqueue_script('gdgallerySettings', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/settings.js', array('jquery'), false, true);
         }
 
         if ($hook === \GDGallery()->Admin->Pages['styles']) {
@@ -105,6 +105,10 @@ class AdminAssetsController
 
         wp_localize_script('gdgalleryInlinePopup', 'inlinePopup', array(
             'nonce' => wp_create_nonce('gdgallery_save_shortcode_options'),
+        ));
+
+        wp_localize_script('gdgallerySettings', 'settingsSave', array(
+            'nonce' => wp_create_nonce('gdgallery_save_plugin_settings'),
         ));
 
         wp_localize_script('gdgalleryAdminGallerySave', 'field', array(

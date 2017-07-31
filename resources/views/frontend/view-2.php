@@ -62,8 +62,6 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
 ?>
 
 
-<h3>Carousel Gallery</h3>
-
 <div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="carousel">
 
     <?php foreach ($images as $key => $val):

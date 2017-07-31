@@ -20,6 +20,7 @@ if ($options["show_title_justified"] == 0) {
     $gallery_options["tile_enable_textpanel"] = true;
 }
 
+
 $gallery_options["lightbox_type"] = $options["lightbox_type_justified"];
 $gallery_options["tile_textpanel_title_text_align"] = $options["title_position_justified"];
 $gallery_options["tile_textpanel_title_color"] = "#" . $options["title_color_justified"];
@@ -47,8 +48,6 @@ $json = json_encode($gallery_options);
 
 wp_enqueue_script("gdgalleryjustified", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-tiles.js", array('jquery'), false, true);
 ?>
-
-<h3>Justified Gallery</h3>
 
 <div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="justified">
 

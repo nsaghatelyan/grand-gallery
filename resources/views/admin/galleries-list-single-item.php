@@ -15,7 +15,7 @@ $RemoveUrl = admin_url('admin.php?page=gdgallery&task=remove_gallery&id=' . $Gal
 
 $RemoveUrl = wp_nonce_url($RemoveUrl, 'gdgallery_remove_gallery_' . $GalleryId);
 
-$DuplicateUrl = admin_url('admin.php?page=gdgallery&task=dup    licate_gallery&id=' . $GalleryId);
+$DuplicateUrl = admin_url('admin.php?page=gdgallery&task=duplicate_gallery&id=' . $GalleryId);
 
 $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $GalleryId);
 
@@ -35,7 +35,7 @@ $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $Ga
                                                                                aria-hidden="true"></i></a>
         <a class="gdfrm_delete_form" href="<?php echo $RemoveUrl; ?>"><i class="gdicon gdicon-remove"
                                                                          aria-hidden="true"></i></a>
-        <a  class="gdfrm_preview_form" target="_blank"
+        <a class="gdfrm_preview_form" target="_blank"
            href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"><i
                     class="gdicon gdicon-eye"
                     aria-hidden="true"></i></a>

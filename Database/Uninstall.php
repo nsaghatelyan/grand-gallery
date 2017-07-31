@@ -13,7 +13,8 @@ class Uninstall
 {
     public static function init()
     {
-        if (\GDGallery()->Settings->get('RemoveTablesUninstall')) {
+
+        if (\GDGallery()->settings->getOption('RemoveTablesUninstall') == "on") {
             self::run();
         }
     }

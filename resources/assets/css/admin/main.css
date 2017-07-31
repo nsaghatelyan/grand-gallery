@@ -230,14 +230,16 @@ body {
 }
 
 .form_title_div {
-    padding: 5px 0 10px 0;
+    padding: 5px 0 5px 15px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
 }
 
 #form_name {
     width: 90%;
     color: #676767;
     font-family: Nunito;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 300;
     border: none;
     box-shadow: none;
@@ -1215,6 +1217,7 @@ html .ui-button.ui-state-disabled:active {
     border: none;
     background: none;
     border-bottom: 4px solid #e9ebf3;
+    margin-bottom: 20px;
 }
 
 .ui-tabs .ui-tabs-nav {
@@ -1255,11 +1258,12 @@ html .ui-button.ui-state-disabled:active {
     font-size: 16px;
     text-decoration: none;
     font-weight: normal;
-    padding: 12px 20px;
+    padding: 12px 20px 14px 20px;
     margin: 0px !important;
     position: relative;
     line-height: 17px;
-    top: 18px;
+    top: 15px;
+    color: #454545 !important;
 }
 
 .single_gallery_preview:hover {
@@ -1280,6 +1284,14 @@ html .ui-button.ui-state-disabled:active {
     text-align: center;
     margin-bottom: 20px;
 }
+
+.ui-tabs.ui-tabs-vertical .ui-tabs-panel .gdgallery_view_item input[type=radio] {
+    position: absolute;
+}
+
+/*.checked_view p {
+    color: #5f7df5;
+}*/
 
 .add_gallery_li {
     position: absolute;
@@ -1333,7 +1345,13 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .gdgallery_general_settings h4 {
-    margin: 0px 0px 10px 0px;
+    margin: 14px 0px;
+    display: inline-block;
+}
+
+.gdgallery_general_settings input, .gdgallery_general_settings select {
+    float: right;
+    margin-top: 6px;
 }
 
 /* this CS forms the triangles */
@@ -1341,6 +1359,34 @@ html .ui-button.ui-state-disabled:active {
 #gdgallery_general_settings ul li {
     display: block;
     margin-bottom: 15px;
+    flex-basis: 49%;
+    width: 96%;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+
+}
+
+#gdgallery_edit_name {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#edit_name_input {
+    background: none;
+    border: 0px;
+    outline: none;
+    box-shadow: none;
+    position: relative;
+    bottom: 8px;
+}
+
+#gdgallery_general_settings ul li:nth-child(even) {
+    margin-left: 1%;
+}
+
+#gdgallery_general_settings ul li:nth-child(odd) {
+    margin-right: 1%;
 }
 
 #gdgallery_custom_css textarea {
@@ -1510,6 +1556,35 @@ html .ui-button.ui-state-disabled:active {
     background-color: #4158ce;
 }
 
+#gdgallery-addvideo-modal .-gdgallery-modal-content {
+    width: 80%;
+    max-width: 700px !important;
+}
+
+.video_fields li input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.video_save {
+    width: 100%;
+    text-align: center;
+}
+
+.video_save .spinner, .video_save input {
+    float: none !important;
+}
+
+.images-save {
+    background-color: #fff !important;
+    color: #6199f3 !important;
+}
+
+.images-save:hover {
+    background-color: #fff !important;
+    color: #427ad6 !important;
+}
+
 .gdgallery_add_new_plus {
     background-image: url(../../images/icons/plus.png);
     padding: 22px;
@@ -1542,10 +1617,9 @@ label > input + img { /* IMAGE STYLES */
 }
 
 label > p {
-    padding-left: 20px;
     font-size: 18px;
-    color: #f95252;
-    margin-top: 0px;
+    color: #777777;
+    margin: 0px;
 }
 
 label > img {
@@ -1553,25 +1627,31 @@ label > img {
 }
 
 label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
-    border: 2px solid #2279e0;
+    border: 2px solid #5f7df5;
     background-color: rgb(216, 223, 255);
+
 }
 
 .gdgallery-save-buttom {
     float: right;
-    background: #5191f6;
+    background: #5f7df5;
     outline: none;
     box-shadow: none;
     color: #fff;
-    padding: 10px 20px;
+    padding: 6px 20px;
     border-radius: 6px;
-    border: 1px solid #3b7ade;
-    font-size: 17px;
+    border: 0px;
+    font-size: 16px !important;
     cursor: pointer;
+    font-weight: normal;
+}
+
+.gdgallery-save-all {
+    margin-top: 10px;
 }
 
 .gdgallery-save-buttom:hover {
-    background: #3b7ade;
+    background: #486bf7;
 }
 
 .quick_edit_table {
@@ -1640,7 +1720,7 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 .gdgallery_select_all_items {
     float: left;
     padding: 1px 8px 4px 8px;
-    margin: 13px 0 0px 15px;
+    margin: 13px 0 8px 0px;
     background: #5191f6;
     color: #ffffff;
     text-decoration: none;
@@ -1689,6 +1769,7 @@ ul.gdgallery_general_settings {
     padding: 80px 10px 0 30px;
     background-color: #FFF;
     border-bottom: 2px solid #e9ebf3;
+    margin-bottom: 40px;
 }
 
 .switch_gallery li {
@@ -1720,6 +1801,11 @@ ul.gdgallery_general_settings {
 
 .ui-widget-content {
     background-color: #f3f4f8;
+}
+
+.single_gallery_preview img {
+    width: 15px;
+    margin-left: 5px;
 }
 
 @media all and (max-width: 785px) {

@@ -59,6 +59,9 @@ text-align: <?= $options["pagination_position_justified"]; ?> !important;
                       border-color: #<?= $options["load_more_hover_border_color_justified"]; ?> !important;
                   }
 
+
+                  <?=  $gallery_data->custom_css; ?>
+
 <?= "</style>" ?>
 
 

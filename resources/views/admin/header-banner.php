@@ -5,7 +5,7 @@
 
         <ul>
             <li>
-                <a href=""><?php _e('Settings', GDGALLERY_TEXT_DOMAIN); ?></a>
+                <a href="?page=gdgallery_settings"><?php _e('Settings', GDGALLERY_TEXT_DOMAIN); ?></a>
             </li>
             <li>
                 <a href=""><?php _e('Go Pro', GDGALLERY_TEXT_DOMAIN); ?></a>

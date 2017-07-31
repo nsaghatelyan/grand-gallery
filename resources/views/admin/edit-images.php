@@ -1,19 +1,24 @@
 <div id="gdgallery-editimages-modal" class="-gdgallery-modal">
     <div class="-gdgallery-modal-content">
-        <div class="-gdgallery-modal-content-header">
-            <div class="-gdgallery-modal-header-icon">
+        <form action="admin.php?page=gdgallery&id=<?php echo $id_gallery; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
+              method="post" id="gdgallery_edited_images_form" name="gdgallery_edited_images_form">
+            <div class="-gdgallery-modal-content-header">
+                <div class="-gdgallery-modal-header-icon">
 
+                </div>
+                <div class="-gdgallery-modal-header-info">
+                    <h3>Quick Edit - Images</h3>
+                </div>
+                <span class="spinner"></span>
+                <input type="submit" value="Save"
+                       id="gdgallery-save-buttom"
+                       class="gdgallery-save-buttom images-save">
+                <div class="-gdgallery-modal-close">
+                    <i class="fa fa-close"></i>
+                </div>
             </div>
-            <div class="-gdgallery-modal-header-info">
-                <h3>Quick Edit - Images</h3>
-            </div>
-            <div class="-gdgallery-modal-close">
-                <i class="fa fa-close"></i>
-            </div>
-        </div>
-        <div class="-gdgallery-modal-content-body">
-            <form action="admin.php?page=gdgallery&id=<?php echo $id_gallery; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
-                  method="post" id="gdgallery_edited_images_form" name="gdgallery_edited_images_form">
+            <div class="-gdgallery-modal-content-body">
+
 
                 <input type="hidden" name="gdgallery_images_id_gallery" value="<?= $id_gallery ?>">
                 <table class="quick_edit_table grid" id="sort">
@@ -62,12 +67,8 @@
                     </tbody>
                 </table>
 
-                <span class="spinner"></span>
-                <input type="submit" value="Save"
-                       id="gdgallery-save-buttom"
-                       class="gdgallery-save-buttom">
 
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 </div>

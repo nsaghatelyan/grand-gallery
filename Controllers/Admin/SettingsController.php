@@ -35,7 +35,6 @@ class SettingsController
             "carousel" => array('title' => __('Carousel', 'gdgallery')),
             "slider" => array('title' => __('Slider', 'gdgallery')),
             "grid" => array('title' => __('Grid', 'gdgallery')),
-            "one_and_others" => array('title' => __('One and Others', 'gdgallery'))
         ));
 
         $builder->addSections(array(
@@ -113,17 +112,6 @@ class SettingsController
                 'title' => __('Navigation Styles', 'gdgallery'),
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
                 "tab" => "grid"
-            ),
-
-            'element_style_one_and_others' => array(
-                'title' => __('Element Styles', 'gdgallery'),
-                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
-                "tab" => "one_and_others"
-            ),
-            'components_one_and_others' => array(
-                'title' => __('Components Styles', 'gdgallery'),
-                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
-                "tab" => "one_and_others"
             ),
 
 
@@ -1770,14 +1758,6 @@ class SettingsController
                 'help' => __('Navigation Offset', 'gdgallery')
             ),
 
-
-            /********* One_and_others options ************/
-            'show_title_one_and_others' => array(
-                'type' => 'checkbox',
-                'label' => __('Show Title', 'gdgallery'),
-                'section' => 'element_style_one_and_others',
-                'help' => __('Show / Hide Title')
-            ),
 
         ));
 

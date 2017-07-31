@@ -143,7 +143,7 @@ class Gallery extends Model
             if ($val->id_post != 0) {
                 $post = get_post($val->id_post);
                 $items[$key]->url = wp_get_attachment_url($post->ID);
-                $items[$key]->name = $post->post_title;
+                $items[$key]->name = $val->name;
             }
         }
 
@@ -201,7 +201,8 @@ class Gallery extends Model
             if ($val->id_post != 0) {
                 $post = get_post($val->id_post);
                 $items[$key]->url = wp_get_attachment_url($post->ID);
-                $items[$key]->name = $post->post_title;
+//                $items[$key]->name = $post->post_title;
+                $items[$key]->name = $val->name;
             }
         }
 
@@ -312,6 +313,7 @@ class Gallery extends Model
 
         $this->Gallery = $galleries;
 
+
         return $this->Gallery;
     }
 
@@ -414,6 +416,7 @@ class Gallery extends Model
                 "description" => $data["gdgallery_video_description"],
                 'url' => esc_url($url),
                 "ordering" => 0,
+                "link" => $data["gdgallery_video_link"],
                 "target" => $data["gdgallery_video_target"],
                 "type" => $type,
                 "video_id" => $video_id
@@ -426,13 +429,13 @@ class Gallery extends Model
     function setViewStyles()
     {
         $this->View_style = array(
-            array("Jastified", GDGALLERY_IMAGES_URL . "icons/view/glossary.png"),
-            array("Tiles", GDGALLERY_IMAGES_URL . "icons/view/pinterest.png"),
-            array("Carousel", GDGALLERY_IMAGES_URL . "icons/view/slider_vertical.png"),
-            array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider.png"),
-            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid.png"),
-            array("One and others", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png")
-            /* array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
+            array("Jastified", GDGALLERY_IMAGES_URL . "icons/view/jastified_gray.png"),
+            array("Tiles", GDGALLERY_IMAGES_URL . "icons/view/tiles_gray.png"),
+            array("Carousel", GDGALLERY_IMAGES_URL . "icons/view/carousel_gray.png"),
+            array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider_gray.png"),
+            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid_gray.png"),
+            /*array("One and others", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png")
+             array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
              array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
              array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
              array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png")*/
@@ -512,7 +515,6 @@ class Gallery extends Model
         global $wpdb;
 
         $option_exists = $this->getData($key);
-        \debug::trace($option_exists);
 
         if ($option_exists) {
             $saved = $wpdb->update(self::getTableName(),

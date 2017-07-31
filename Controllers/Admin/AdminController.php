@@ -48,7 +48,7 @@ class AdminController
         $this->Pages['main_page'] = add_menu_page(__('Grand Gallery', GDGALLERY_TEXT_DOMAIN), __('Grand Gallery', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
             $this,
             'mainPage'
-        ), \GDGallery()->pluginUrl() . '/resources/assets/images/gallery_logo.png');
+        ), \GDGallery()->pluginUrl() . '/resources/assets/images/icons/logo_small.png');
 
         $this->Pages['main_page'] = add_submenu_page('gdgallery', __('Galleries', GDGALLERY_TEXT_DOMAIN), __('Galleries', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery', array(
             $this,
@@ -113,6 +113,7 @@ class AdminController
 
     public function settingsPage()
     {
+        View::render('admin/header-banner.php');
 
         View::render('admin/settings.php');
 

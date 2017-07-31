@@ -16,45 +16,47 @@
                   method="post" id="gdgallery_add_video_form" name="gdgallery_add_video_form">
 
                 <input type="hidden" name="gdgallery_id_gallery" value="<?= $id_gallery ?>">
-                <table class="quick_edit_table">
+                <ul class="video_fields">
 
+                    <li><label for="gdgallery_video_url"> Video URL (Youtube or Vimeo):</label><br>
+                        <input type="text" id="gdgallery_video_url"
+                               name="gdgallery_video_url"
+                               value="" required>
+                    </li>
 
-                    <tr>
-                        <td><label for="gdgallery_video_url"> Video URL (Youtube or Vimeo):</label>
-                            <input type="text" id="gdgallery_video_url"
-                                   name="gdgallery_video_url"
-                                   value="" required>
-                        </td>
-                        <td><label for="gdgallery_video_name"> Title:</label>
-                            <input type="text" id="gdgallery_video_name"
-                                   name="gdgallery_video_name"
-                                   value="">
-                        </td>
-                        <td><label for="gdgallery_video_description">
-                                Description: </label>
-                            <input type="text" id="gdgallery_video_description"
-                                   name="gdgallery_video_description"
-                                   value=""></td>
-                        <td><label for="gdgallery_video_link"> Link:</label>
-                            <input type="text" name="gdgallery_video_link"
-                                   id="gdgallery_video_link"
-                                   value="">
-                        </td>
-                        <!--<td>
-                            <label for="gdgallery_video_target"> Target:</label>
-                            <select name="gdgallery_video_target"
-                                    id="gdgallery_video_target">
-                                <option value="_blank">New Tab</option>
-                                <option value="_self">Current Tab</option>
-                            </select>
+                    <li><label for="gdgallery_video_name"> Title:</label><br>
+                        <input type="text" id="gdgallery_video_name"
+                               name="gdgallery_video_name"
+                               value="">
+                    </li>
+                    <li>
+                        <label for="gdgallery_video_description">
+                            Description: </label><br>
+                        <input type="text" id="gdgallery_video_description"
+                               name="gdgallery_video_description"
+                               value=""></li>
+                    <li>
+                        <label for="gdgallery_video_link"> Link:</label><br>
+                        <input type="text" name="gdgallery_video_link"
+                               id="gdgallery_video_link"
+                               value=""></li>
+                </ul>
 
-                        </td>-->
-                    </tr>
-                </table>
-                <span class="spinner"></span>
-                <input type="submit" value="Save"
-                       id="gdgallery-add-video-buttom"
-                       class="gdgallery-save-buttom">
+                <!--<td>
+                    <label for="gdgallery_video_target"> Target:</label>
+                    <select name="gdgallery_video_target"
+                            id="gdgallery_video_target">
+                        <option value="_blank">New Tab</option>
+                        <option value="_self">Current Tab</option>
+                    </select>
+
+                </td>-->
+                <div class="video_save">
+                    <input type="submit" value="Save"
+                           id="gdgallery-add-video-buttom"
+                           class="gdgallery-save-buttom">
+                    <span class="spinner"></span>
+                </div>
             </form>
 
 

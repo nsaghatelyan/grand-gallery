@@ -59,6 +59,8 @@ echo "<style>";
                       border-color: #<?= $options["load_more_hover_border_color_tiles"]; ?> !important;
                   }
 
+<?=  $gallery_data->custom_css; ?>
+
 <?= "</style>" ?>
 
 

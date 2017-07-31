@@ -24,7 +24,7 @@ class CreateGalleryTable
                 `view_type` int(1) NOT NULL DEFAULT 0,
                 `position` ENUM('center','left','right') DEFAULT 'center',
                 `hover_effect` int(1) NOT NULL DEFAULT 0,
-                `items_per_page` int(3) NOT NULL DEFAULT 0,
+                `items_per_page` int(3) NOT NULL DEFAULT 5,
                 `custom_css` TEXT,
                 `ctime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
                 PRIMARY KEY (id_gallery)

@@ -8,7 +8,6 @@ use GDGallery\Controllers\Frontend\GalleryPreviewController as Preview;
 
 global $wpdb;
 
-
 $items = $gallery->getItems();
 
 $gallery_data = $gallery->getGallery();
@@ -37,9 +36,19 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 ?>
 <ul class="switch_gallery">
     <?php foreach ($list as $val): ?>
-        <li <?php if ($val["id_gallery"] == $id) echo "class='active_gallery'" ?>>
-            <a href="<?= $val["url"] ?>"><?= $val["name"] ?></a>
-        </li>
+        <?php if ($val["id_gallery"] == $id): ?>
+            <li class='active_gallery' id='gdgallery_active'>
+                <a href="#" id="gdgallery_edit_name"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+                <a href="<?= $val["url"] ?>" id="gallery_active_name"><?= $val["name"] ?></a>
+                <input type='text' name='edit_name' id='edit_name_input' value='<?= $val["name"] ?>'
+                       class="gdgallery_hidden">
+            </li>
+        <?php else: ?>
+            <li>
+                <a href="<?= $val["url"] ?>"><?= $val["name"] ?></a>
+            </li>
+        <?php endif; ?>
     <?php endforeach; ?>
     <li class="add_gallery_li">
         <a href="<?= $new_gallery_link ?>">ADD GALLERY <i class="fa fa-plus" aria-hidden="true"></i></a>
@@ -50,14 +59,6 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
     <div class="wrap gdfrm_edit_form_container">
         <div class="gdfrm_nav">
 
-            <div class="form_title_div">
-                <input type="text" id="form_name" name="gdgallery_name" value="<?php echo $gallery->getName(); ?>">
-                <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery" value="<?php echo $id ?>">
-                <input type="submit" value="Save"
-                       id="gdgallery-save-buttom"
-                       class="gdgallery-save-buttom">
-                <span class="spinner"></span>
-            </div>
 
             <div id="tabs">
                 <div style="clear: both"></div>
@@ -77,23 +78,36 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                             <a href="#gdgallery_get_shortcode"><?php _e('Get shortcode'); ?></a>
                         </li>
                         <a href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"
-                           class="single_gallery_preview"><?php _e('Preview Changes'); ?></a>
+                           class="single_gallery_preview" target="_blank"><?php _e('Preview Changes'); ?> <img
+                                    src="<?= GDGALLERY_IMAGES_URL ?>icons/preview.png"></a>
+                        <input type="submit" value="Save"
+                               id="gdgallery-save-buttom"
+                               class="gdgallery-save-buttom gdgallery-save-all">
+                        <span class="spinner"></span>
 
                     </ul>
                     <div id="gdgallery_gallery_style">
                         <?php foreach ($gallery->getViewStyles() as $key => $view): ?>
-                            <div class="gdgallery_view_item">
+                            <div class="gdgallery_view_item <?php if ($gallery_data->view_type == $key) echo "checked_view" ?>">
                                 <label>
+                                    <p><?= $view[0] ?></p>
                                     <input type="radio" <?php if ($gallery_data->view_type == $key) echo "checked" ?>
                                            name="gdgallery_view_type" value="<?= $key ?>"/>
                                     <img src="<?= $view[1] ?>">
-                                    <p><?= $view[0] ?></p>
+
                                 </label>
                             </div>
                         <?php endforeach; ?>
 
                     </div>
                     <div id="gdgallery_general_settings">
+                        <div class="form_title_div">
+                            <input type="text" id="form_name" name="gdgallery_name"
+                                   value="<?php echo $gallery->getName(); ?>">
+                            <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery"
+                                   value="<?php echo $id ?>">
+
+                        </div>
                         <ul class="gdgallery_general_settings">
                             <li class="gdgallery_display_type_section <?= $display_opt ?>">
                                 <h4>Display Type</h4>
@@ -123,12 +137,13 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
                     <div id="gdgallery_custom_css">
                         <div class="custom_css_col">
-                            <h4>For Gallery Container</h4>
-                            <textarea cols="8" name="gdgallery_gallery_container_css"></textarea>
-                        </div>
-                        <div class="custom_css_col">
-                            <h4>For Single Item</h4>
-                            <textarea cols="8" name="gdgallery_single_item_css"></textarea>
+                            <textarea cols="8" name="custom_css"><?php
+                                if ($gallery_data->custom_css != "") {
+                                    echo stripslashes($gallery_data->custom_css);
+                                } else {
+                                    echo "#gdgallery_container_" . $id . "{}";
+                                }
+                                ?></textarea>
                         </div>
                     </div>
                     <div id="gdgallery_get_shortcode">
@@ -143,9 +158,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                             <div class="gdgallery_example">
                                 <h3>Page or Post</h3>
                                 <p>Insert it into an existing post with the icon</p>
-                                <div class="gdgallery_highlighted">
-                                    image here
-                                </div>
+                                <img src="<?= GDGALLERY_IMAGES_URL ?>page_editor.png">
                             </div>
                             <div class="gdgallery_example">
                                 <h3>PHP Code</h3>
@@ -162,8 +175,6 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                 </div>
             </div>
             <div class="gdgallery_items_section">
-                <h3>Gallery Content</h3>
-
                 <?php if (!empty($items)) { ?>
                     <p class="gdgallery_select_all_items">
                         <label for="gdgallery_select_all_items">Select All</label> <input type="checkbox"

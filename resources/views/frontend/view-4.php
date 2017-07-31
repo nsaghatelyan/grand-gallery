@@ -58,8 +58,6 @@ wp_enqueue_script("gdgallerygrid", \GDGallery()->pluginUrl() . "/resources/asset
 
 ?>
 
-<h3>Grid Gallery</h3>
-
 <div id="gdgallery_container_<?= $gallery_data->id_gallery ?>" style="display:none;" data-view="grid">
 
     <?php foreach ($images as $key => $val):

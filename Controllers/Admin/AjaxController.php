@@ -41,7 +41,7 @@ class AjaxController
 
         add_action('wp_ajax_gdgallery_duplicate_field', array(__CLASS__, 'duplicateField'));
 
-        add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'savePluginSettings'));
+        add_action('wp_ajax_gdgallery_save_plugin_settings', array(__CLASS__, 'savePluginSettings'));
 
         add_action('wp_ajax_gdgallery_remove_submission', array(__CLASS__, 'removeSubmission'));
 
@@ -59,6 +59,7 @@ class AjaxController
 
         $gallery_id = absint($_REQUEST['gallery_id']);
 
+
         $gallery_data = str_replace("gdgallery_", "", $_REQUEST["formdata"]);
 
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
@@ -67,9 +68,12 @@ class AjaxController
 
         //$gallery_data_arr["position"] = $positions[$gallery_data_arr["position"]];
 
-        $gallery_data_arr["custom_css"] = $gallery_data_arr["gallery_container_css"] . " " . $gallery_data_arr["single_item_css"];
+        /*$gallery_data_arr["custom_css"] = $gallery_data_arr["gallery_container_css"] . " " . $gallery_data_arr["single_item_css"];
         unset($gallery_data_arr["gallery_container_css"]);
-        unset($gallery_data_arr["single_item_css"]);
+        unset($gallery_data_arr["single_item_css"]);*/
+
+        $gallery_data_arr["custom_css"] = str_replace("#container", "#gdgallery_container", $gallery_data_arr["custom_css"]);
+        $gallery_data_arr["custom_css"] = sanitize_text_field($gallery_data_arr["custom_css"]);
 
         $updated = $gallery->saveGallery($gallery_data_arr);
         if ($updated) {
@@ -519,20 +523,18 @@ class AjaxController
 
     public static function savePluginSettings()
     {
-        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdfrm_save_settings')) {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_plugin_settings')) {
             die('security check failed');
         }
+
 
         $settings_data = $_REQUEST['formData'];
 
         foreach ($settings_data as $input) {
-            $saved[] = \GDGALLERY()->Settings->set($input['name'], $input['value']);
+            $saved[] = \GDGallery()->settings->setOption($input['name'], $input['value']);
         }
-        $saved = array();
 
-        $filteredSaved = array_filter($saved);
-
-        if (!empty($filteredSaved)) {
+        if (!empty($saved)) {
             echo json_encode(array("success" => 1));
             die();
         } else {

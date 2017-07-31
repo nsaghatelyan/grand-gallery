@@ -14,4 +14,6 @@ echo "<style>";
     box-shadow: none !important;
 }
 
+
+<?=  $gallery_data->custom_css; ?>
 <?= "</style>" ?>

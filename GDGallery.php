@@ -77,6 +77,7 @@ if (!class_exists('GDGallery')) :
                 'GDGallery\Database\Migrations\CreateSettingsTable'
             );
             add_action('init', array($this, 'init'), 0);
+            register_uninstall_hook(__FILE__, array('GDGallery\Database\Uninstall', 'init'));
         }
 
         public function constants()
