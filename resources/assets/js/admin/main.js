@@ -13,7 +13,7 @@ jQuery(function () {
 });
 
 
-jQuery('.gdfrm_delete_form').on('click', function () {
+jQuery('.gdgallery_delete_form').on('click', function () {
     if (!confirm("Are you sure you want to delete this item?")) {
         return false;
     }
@@ -111,8 +111,7 @@ jQuery(document).ready(function () {
         galleryImgSubmitButton('apply');
     });
 
-    var _custom_media = true,
-        _orig_send_attachment = wp.media.editor.send.attachment;
+    var _custom_media = true;
 
     jQuery('.gdgallery_add_new_image').click(function (e) {
         e.preventDefault();
@@ -257,8 +256,15 @@ jQuery(document).ready(function () {
 
     jQuery('#gdgallery_edited_images_form').on('submit', function (e) {
         e.preventDefault();
-        var form = jQuery('#gdgallery_edited_images_form'),
-            submitBtn = form.find('input[type=submit]'),
+        var form = jQuery('#gdgallery_edited_images_form');
+
+        form.find("[id^=gdgallery_images_name]").each(function () {
+            if (jQuery(this).val().length > 255) {
+                toastr.error('Name field should be less Than 256 character');
+                return;
+            }
+        });
+        var submitBtn = form.find('input[type=submit]'),
             formData = form.serialize(),
             general_data = {
                 action: "gdgallery_save_gallery_images",
@@ -314,6 +320,11 @@ jQuery(document).ready(function () {
 
     jQuery(".gdgallery_remove_selected_images").click(function (e) {
         e.preventDefault();
+
+        if (!confirm("Are you sure you want to delete this item?")) {
+            return false;
+        }
+
         var checked_items = [];
         jQuery(".gdgallery_item input:checked").each(function (key, item) {
             checked_items.push(jQuery(this).val());
@@ -356,11 +367,11 @@ jQuery(document).ready(function () {
         var count = jQuery(".gdgallery_item input:checked").length;
         if (count > 0) {
             jQuery(".gdgallery_remove_selected_images").show();
-            jQuery("input[name=select_all_items]").prop("checked", true);
+            // jQuery("input[name=select_all_items]").prop("checked", true);
         }
         else {
             jQuery(".gdgallery_remove_selected_images").hide();
-            jQuery("input[name=select_all_items]").prop("checked", false);
+            // jQuery("input[name=select_all_items]").prop("checked", false);
         }
     });
 

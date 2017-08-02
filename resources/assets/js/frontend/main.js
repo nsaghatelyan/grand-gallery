@@ -175,17 +175,19 @@ jQuery(document).ready(function () {
                 t.html("Loading...");
             },
             success: function (response) {
+
                 t.html("Load more");
                 loaded_items_count = loaded_items_count + items_per_page;
                 t.attr("data-count", loaded_items_count);
 
                 response = JSON.parse(response);
 
+
                 jQuery("#gdgallery_container_" + g_id).empty();
                 jQuery(response.data).each(function (key, item) {
                     jQuery("#gdgallery_container_" + g_id).append("" +
-                        "<img alt='" + item.name + "' data-type='" + item.type + "' src='" + item.url + "' data-image='" + item.url + "' " +
-                        "data-description='" + item.description + "' data-videoid='" + item.video_id + "' style='display:block;'>")
+                        "<a href='" + item.link + "'><img alt='" + item.name + "' data-type='" + item.type + "' src='" + item.url + "' data-image='" + item.url + "' " +
+                        "data-description='" + item.description + "' data-videoid='" + item.video_id + "' style='display:block;'></a>")
                 });
                 var g_view = jQuery("#gdgallery_container_" + g_id).data("view");
 
@@ -193,10 +195,14 @@ jQuery(document).ready(function () {
                 jQuery("#gdgallery_container_" + g_id).hide();
                 setTimeout(function () {
                     if (g_view == "justified") {
-                        jQuery("#gdgallery_container_" + g_id).unitegallery({tiles_type: "justified"});
+
+                        jQuery("#gdgallery_container_" + g_id).unitegallery({
+                            tiles_type: "justified",
+                            tile_enable_image_effect: false
+                        });
                     }
                     else {
-                        jQuery("#gdgallery_container_" + g_id).unitegallery();
+                        jQuery("#gdgallery_container_" + g_id).unitegallery({tile_enable_image_effect: false});
                     }
                     jQuery("#gdgallery_container_" + g_id).show();
                 }, 0);

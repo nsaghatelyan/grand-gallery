@@ -15,7 +15,7 @@ class CreateImageTable
         global $wpdb;
 
         $wpdb->query(
-            "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "GDGalleryImages(
+            "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "gdgalleryimages(
                 `id_image` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `id_gallery` int(11) UNSIGNED NOT NULL,
                 `id_post` int(11) UNSIGNED  NULL DEFAULT 0,
@@ -29,8 +29,8 @@ class CreateImageTable
                 `ctime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 `video_id` varchar(50) NULL,
                 PRIMARY KEY (id_image),
-				FOREIGN KEY (id_gallery) REFERENCES " . $wpdb->prefix . "GDGalleryGalleries (id_gallery) ON DELETE CASCADE
-            ) ENGINE=InnoDB "
+				FOREIGN KEY (id_gallery) REFERENCES " . $wpdb->prefix . "gdgallerygalleries (id_gallery) ON DELETE CASCADE
+            ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci "
         );
     }
 }

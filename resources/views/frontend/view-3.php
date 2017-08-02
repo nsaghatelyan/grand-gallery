@@ -48,7 +48,9 @@ $gallery_options["slider_textpanel_enable_bg"] = $options["text_panel_bg_slider"
 $gallery_options["gallery_carousel"] = $options["carousel_slider"];
 $gallery_options["slider_textpanel_bg_color"] = "#" . $options["text_panel_bg_color_slider"];
 $gallery_options["slider_textpanel_bg_opacity"] = $options["text_panel_bg_opacity_slider"] / 100;
+$gallery_options["slider_textpanel_title_font_size"] = $options["text_panel_title_size_slider"];
 $gallery_options["slider_textpanel_title_color"] = "#" . $options["text_panel_title_color_slider"];
+$gallery_options["slider_textpanel_desc_font_size"] = $options["text_panel_desc_size_slider"];
 $gallery_options["slider_textpanel_desc_color"] = "#" . $options["text_panel_desc_color_slider"];
 
 

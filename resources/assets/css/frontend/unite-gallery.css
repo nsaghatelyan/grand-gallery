@@ -441,6 +441,7 @@ img.ug-sepia-effect {
     left: 0px;
     margin: 0px;
     padding: 0px;
+    z-index: 999;
 }
 
 .ug-gallery-wrapper .ug-bullets .ug-bullet {
@@ -691,6 +692,7 @@ img.ug-sepia-effect {
 
 .ug-thumb-wrapper.ug-tile .ug-tile-icon.ug-icon-link {
     background-image: url('../../images/components/icon-link32.png');
+    box-shadow: none !important;
 }
 
 .ug-thumb-wrapper.ug-tile .ug-tile-icon.ug-icon-zoom {

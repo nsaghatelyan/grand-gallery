@@ -21,17 +21,17 @@ class AdminAssetsController
 
         wp_enqueue_style('fontAwesome', \GDGallery()->pluginUrl() . '/resources/assets/css/font-awesome.min.css', false);
 
-        wp_enqueue_style('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/toastr.css');
+        wp_enqueue_style('gdgallerytoastrjs', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/toastr.css');
 
         if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['settings']) {
-            wp_enqueue_style('gdfrmAdminStyles', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/main.css');
+            wp_enqueue_style('gdgalleryAdminStyles', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/main.css');
         }
 
 
         if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['settings']) {
 
 
-//            wp_enqueue_style('gdfrmSelect2', \GDGallery()->pluginUrl() . '/resources/assets/css/select2.min.css', false);
+//            wp_enqueue_style('gdgallerySelect2', \GDGallery()->pluginUrl() . '/resources/assets/css/select2.min.css', false);
 
             wp_enqueue_style('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/css/admin/gdgallery-modal.css', false);
 
@@ -58,7 +58,7 @@ class AdminAssetsController
     {
         wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/js/jquery-ui.min.js');
 
-        wp_enqueue_script('toastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
+        wp_enqueue_script('gdgallerytoastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
 
         if ($hook === \GDGallery()->Admin->Pages['main_page']) {
 
@@ -69,13 +69,13 @@ class AdminAssetsController
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
                 wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);
 
-                wp_enqueue_script('gdfrmAdminSelect2', \GDGallery()->pluginUrl() . '/resources/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
+                wp_enqueue_script('gdgalleryAdminSelect2', \GDGallery()->pluginUrl() . '/resources/assets/js/select2.min.js', array('jquery', 'jqueryUI'), false, true);
 
                 wp_enqueue_script('gdgalleryAdminGallerySave', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/form-save.js', array('jquery', 'jqueryUI'), false, true);
 
             }
 
-            wp_enqueue_script('gdfrmAdminJs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/main.js', array('jquery', 'jqueryUI'), false, true);
+            wp_enqueue_script('gdgalleryAdminJs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/main.js', array('jquery', 'jqueryUI'), false, true);
         }
 
         if (in_array($hook, array('post.php', 'post-new.php'))) {
@@ -87,7 +87,7 @@ class AdminAssetsController
         }
 
         if ($hook === \GDGallery()->Admin->Pages['styles']) {
-            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'toastrjs'), false, true);
+            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'gdgallerytoastrjs'), false, true);
             wp_enqueue_script('gdgallery_jscolor', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/jscolor.js', array(), false, true);
         }
 
@@ -112,12 +112,12 @@ class AdminAssetsController
         ));
 
         wp_localize_script('gdgalleryAdminGallerySave', 'field', array(
-            'removeNonce' => wp_create_nonce('gdfrm_remove_field'),
-            'duplicateNonce' => wp_create_nonce('gdfrm_duplicate_field'),
-            'saveNonce' => wp_create_nonce('gdfrm_save_field'),
-            'addOptionNonce' => wp_create_nonce('gdfrm_add_field_option'),
-            'removeOptionNonce' => wp_create_nonce('gdfrm_remove_field_option'),
-            'importOptionsNonce' => wp_create_nonce('gdfrm_import_options'),
+            'removeNonce' => wp_create_nonce('gdgallery_remove_field'),
+            'duplicateNonce' => wp_create_nonce('gdgallery_duplicate_field'),
+            'saveNonce' => wp_create_nonce('gdgallery_save_field'),
+            'addOptionNonce' => wp_create_nonce('gdgallery_add_field_option'),
+            'removeOptionNonce' => wp_create_nonce('gdgallery_remove_field_option'),
+            'importOptionsNonce' => wp_create_nonce('gdgallery_import_options'),
         ));
 
     }

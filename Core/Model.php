@@ -6,7 +6,7 @@ namespace GDGallery\Core;
 abstract class Model
 {
 
-    protected $Id;
+    protected $id_gallery;
 
     /**
      * Database table name(without prefix)

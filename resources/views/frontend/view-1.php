@@ -21,6 +21,7 @@ if ($options["show_title_tiles"] == 0) {
 
 $gallery_options["lightbox_type"] = $options["lightbox_type_tiles"];
 $gallery_options["tile_textpanel_title_text_align"] = $options["title_position_tiles"];
+$gallery_options["tile_textpanel_title_font_size"] = $options["title_size_tiles"];
 $gallery_options["tile_textpanel_title_color"] = "#" . $options["title_color_tiles"];
 $gallery_options["tile_textpanel_bg_color"] = "#" . $options["title_background_color_tiles"];
 $gallery_options["tile_textpanel_bg_opacity"] = $options["title_background_opacity_tiles"] / 100;
@@ -33,7 +34,7 @@ $gallery_options["tile_border_color"] = "#" . $options["border_color_tiles"];
 $gallery_options["tile_border_radius"] = $options["border_radius_tiles"];
 $gallery_options["tile_enable_overlay"] = $options["on_hover_overlay_tiles"];
 $gallery_options["tile_enable_icons"] = $options["show_icons_tiles"];
-$gallery_options["tile_enable_image_effect"] = true;
+$gallery_options["tile_enable_image_effect"] = ($gallery_data->display_type != 1) ? true : false;
 $gallery_options["tile_image_effect_type"] = $options["image_hover_effect_tiles"];
 $gallery_options["tile_image_effect_reverse"] = $options["image_hover_effect_reverse_tiles"];
 $gallery_options["tile_enable_shadow"] = $options["shadow_tiles"];

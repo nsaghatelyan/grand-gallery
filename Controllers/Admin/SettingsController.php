@@ -162,6 +162,12 @@ class SettingsController
                 'section' => 'element_style_justified',
                 'help' => __('Title On Hover Appear Type', 'gdgallery')
             ),
+            'title_size_justified' => array(
+                'type' => 'number',
+                'label' => __('Title Font size', 'gdgallery'),
+                'section' => 'element_style_justified',
+                'help' => __('Title Font size', 'gdgallery')
+            ),
             'title_color_justified' => array(
                 'type' => 'color',
                 'label' => __('Title color', 'gdgallery'),
@@ -538,6 +544,12 @@ class SettingsController
                 ),
                 'section' => 'element_style_tiles',
                 'help' => __('Title On Hover Appear Type', 'gdgallery')
+            ),
+            'title_size_tiles' => array(
+                'type' => 'number',
+                'label' => __('Title Font size', 'gdgallery'),
+                'section' => 'element_style_tiles',
+                'help' => __('Title Font size', 'gdgallery')
             ),
             'title_color_tiles' => array(
                 'type' => 'color',
@@ -926,6 +938,12 @@ class SettingsController
                 ),
                 'section' => 'element_style_carousel',
                 'help' => __('Title On Hover Appear Type', 'gdgallery')
+            ),
+            'title_size_carousel' => array(
+                'type' => 'number',
+                'label' => __('Title Font size', 'gdgallery'),
+                'section' => 'element_style_carousel',
+                'help' => __('Title Font size', 'gdgallery')
             ),
             'title_color_carousel' => array(
                 'type' => 'color',
@@ -1455,11 +1473,23 @@ class SettingsController
                 'section' => 'element_style_slider',
                 'help' => __('Text Panel background Opacity (%)', 'gdgallery')
             ),
+            'text_panel_title_size_slider' => array(
+                'type' => 'number',
+                'label' => __('Text Panel Title Font Size', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Text Panel Title Font Size', 'gdgallery')
+            ),
             'text_panel_title_color_slider' => array(
                 'type' => 'color',
                 'label' => __('Text Panel Title Color', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Text Panel Title Color', 'gdgallery')
+            ),
+            'text_panel_desc_size_slider' => array(
+                'type' => 'number',
+                'label' => __('Text Panel Description Font Size', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Text Panel Description Font Size', 'gdgallery')
             ),
             'text_panel_desc_color_slider' => array(
                 'type' => 'color',
@@ -1601,6 +1631,12 @@ class SettingsController
                 ),
                 'section' => 'element_style_grid',
                 'help' => __('Title On Hover Appear Type', 'gdgallery')
+            ),
+            'title_size_grid' => array(
+                'type' => 'number',
+                'label' => __('Title Font size', 'gdgallery'),
+                'section' => 'element_style_grid',
+                'help' => __('Title Font size', 'gdgallery')
             ),
             'title_color_grid' => array(
                 'type' => 'color',

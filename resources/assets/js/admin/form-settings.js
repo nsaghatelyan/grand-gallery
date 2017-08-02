@@ -1,12 +1,12 @@
 jQuery(document).ready(function () {
 
     tinyMCE.init({
-        mode : "specific_textareas",
-        editor_selector : "setting-row"
+        mode: "specific_textareas",
+        editor_selector: "setting-row"
     });
 
     /* save form settings with ajax */
-    jQuery('.gdfrm_edit_form_settings_container').on("click","#save-form-button", function () {
+    jQuery('.gdfrm_edit_form_settings_container').on("click", "#save-form-button", function () {
         var name = jQuery("#form_name").val();
         var id = jQuery("#form_id").val();
         var grandFormSettings = jQuery('#grand-form-settings');
@@ -24,7 +24,7 @@ jQuery(document).ready(function () {
         finalFormSettingsData = [];
 
         formSettingsData.forEach(function (entry) {
-            if(jQuery.inArray(entry.name,names) != '-1') {
+            if (jQuery.inArray(entry.name, names) != '-1') {
                 entry.value = tinyMCE.editors[entry.name].getContent();
             }
             finalFormSettingsData.push(entry);
@@ -35,7 +35,7 @@ jQuery(document).ready(function () {
             nonce: gdform.saveSettingsNonce,
             form_id: id,
             form_name: name,
-            formSettingsData:finalFormSettingsData
+            formSettingsData: finalFormSettingsData
         };
 
         jQuery(this).prepend('<i class="fa fa-spinner" aria-hidden="true"></i>');
@@ -52,35 +52,35 @@ jQuery(document).ready(function () {
     });
 
     /* open right col */
-    jQuery('.gdfrm_edit_form_settings_container').on("click",".gdicon-setting", function () {
-         var settingDivID = jQuery(this).attr('rel');
-             jQuery('.right-col>div').hide();
-             jQuery('#'+settingDivID).toggle();
+    jQuery('.gdfrm_edit_form_settings_container').on("click", ".gdicon-setting", function () {
+        var settingDivID = jQuery(this).attr('rel');
+        jQuery('.right-col>div').hide();
+        jQuery('#' + settingDivID).toggle();
 
         jQuery('.left-col').animate({
             left: '0',
-            } , 200 ,function () {
-                jQuery('.right-col').animate({
-                    right: '0',
-                }, 200 );
-        } );
+        }, 200, function () {
+            jQuery('.right-col').animate({
+                right: '0',
+            }, 200);
+        });
     });
 
     /* close rightcol */
-    jQuery('.gdfrm_edit_form_settings_container').on("click",".hide-rightcol", function () {
+    jQuery('.gdfrm_edit_form_settings_container').on("click", ".hide-rightcol", function () {
         jQuery('.right-col').animate({
             right: '-765px',
-        } , 200 ,function () {
+        }, 200, function () {
             jQuery('.left-col').animate({
                 left: '25%',
-            }, 200 );
-        } );
+            }, 200);
+        });
     });
 
 
-    jQuery('select[name=action-onsubmit]').on('change',function () {
+    jQuery('select[name=action-onsubmit]').on('change', function () {
         jQuery('#action-onsubmit-settings .action-onsubmit').hide();
-        jQuery('#action-onsubmit-settings div[rel=action-'+this.value+']').show();
+        jQuery('#action-onsubmit-settings div[rel=action-' + this.value + ']').show();
     })
 
 

@@ -18,6 +18,7 @@ if ($options["show_background_carousel"] == 1) {
 
 $gallery_options["lightbox_type"] = $options["lightbox_type_carousel"];
 $gallery_options["tile_textpanel_title_text_align"] = $options["title_position_carousel"];
+$gallery_options["tile_textpanel_title_font_size"] = $options["title_size_carousel"];
 $gallery_options["tile_textpanel_title_color"] = "#" . $options["title_color_carousel"];
 $gallery_options["tile_textpanel_bg_color"] = "#" . $options["title_background_color_carousel"];
 $gallery_options["tile_textpanel_bg_opacity"] = $options["title_background_opacity_carousel"] / 100;

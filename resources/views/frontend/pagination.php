@@ -13,7 +13,7 @@ if (preg_match($pattern, $actual_link) || preg_match($pattern_2, $actual_link)) 
 } else {
     $checkREQ = '?gdgallery-page';
 }
-$page = ($_GET["gdgallery-page"]) ? intval($_GET["gdgallery-page"]) : 1;
+$page = (isset($_GET["gdgallery-page"])) ? intval($_GET["gdgallery-page"]) : 1;
 
 $page_nav_type = $page_options["nav_type"];
 //$page_nav_type = 0;

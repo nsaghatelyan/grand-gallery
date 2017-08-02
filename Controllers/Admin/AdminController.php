@@ -21,9 +21,6 @@ class AdminController
     public function __construct()
     {
 
-        /* if (!empty($_POST)) {
-             \debug\debug::trace($_POST);
-         }*/
 
         add_action('admin_footer', array('GDGallery\Controllers\Admin\ShortcodeController', 'showInlinePopup'));
 

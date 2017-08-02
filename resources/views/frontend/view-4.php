@@ -25,6 +25,7 @@ $gallery_options["grid_num_rows"] = (int)$options["num_rows_grid"];
 $gallery_options["tile_textpanel_title_text_align"] = $options["title_position_grid"];
 $gallery_options["tile_textpanel_position"] = $options["title_vertical_position_grid"];
 $gallery_options["tile_textpanel_appear_type"] = $options["title_appear_type_grid"];
+$gallery_options["tile_textpanel_title_font_size"] = $options["title_size_grid"];
 $gallery_options["tile_textpanel_title_color"] = $options["title_color_grid"];
 $gallery_options["tile_textpanel_bg_color"] = "#" . $options["title_background_color_grid"];
 $gallery_options["tile_textpanel_bg_opacity"] = $options["title_background_opacity_grid"] / 100;

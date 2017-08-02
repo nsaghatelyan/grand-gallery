@@ -54,7 +54,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
         <a href="<?= $new_gallery_link ?>">ADD GALLERY <i class="fa fa-plus" aria-hidden="true"></i></a>
     </li>
 </ul>
-<form action="admin.php?page=gdgallery&id=<?php echo $row->id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
+<form action="admin.php?page=gdgallery&id=<?php echo $id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
       method="post" name="gdgallery_images_form" id="gdgallery_images_form">
     <div class="wrap gdfrm_edit_form_container">
         <div class="gdfrm_nav">
@@ -181,7 +181,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                                                                           id="gdgallery_select_all_items"
                                                                                           name="select_all_items"/>
                     </p>
-                    <a href="#" class="gdgallery_remove_selected_images gdfrm_delete_form">Remove selected items <i
+                    <a href="#" class="gdgallery_remove_selected_images">Remove selected items <i
                                 class="fa fa-times"
                                 aria-hidden="true"></i></a>
                     <a href="#" class="gdgallery_edit_gallery_images">Quick edit <i class="fa fa-pencil"
@@ -224,7 +224,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
             </div>
         </div>
 </form>
-<?php \GDGallery\Helpers\View::render('admin/add-video.php'); ?>
+<?php \GDGallery\Helpers\View::render('admin/add-video.php', array('id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 
 

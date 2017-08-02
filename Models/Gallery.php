@@ -13,7 +13,7 @@ use GDGallery\GDGallery;
 
 class Gallery extends Model
 {
-    protected static $tableName = 'GDGalleryGalleries';
+    protected static $tableName = 'gdgallerygalleries';
 
     protected static $itemsTableName = 'gdgalleryimages';
 
@@ -51,11 +51,15 @@ class Gallery extends Model
         parent::__construct($args);
 
 
-        if (null !== $this->Id) {
+        if (null !== $this->id_gallery) {
 
             $this->Gallery = $this->getGallery();
 
+            if (!isset($this->Gallery)) {
+                die("Undefined Gallery ID");
+            }
             $this->Name = $this->Gallery->name;
+
 
         } else {
             $this->Name = __('New Gallery', GDGALLERY_TEXT_DOMAIN);
@@ -79,17 +83,17 @@ class Gallery extends Model
 
     public function setId($id)
     {
-        $this->Id = $id;
+        $this->id_gallery = $id;
     }
 
     public function getId()
     {
-        return $this->Id;
+        return $this->id_gallery;
     }
 
     public function unsetId()
     {
-        $this->Id = null;
+        $this->id_gallery = null;
 
         return $this;
     }
@@ -120,11 +124,11 @@ class Gallery extends Model
     public function getEditLink()
     {
 
-        if (is_null($this->Id)) {
+        if (is_null($this->id_gallery)) {
             return false;
         }
 
-        return admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $this->Id);
+        return admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $this->id_gallery);
 
     }
 
@@ -136,7 +140,7 @@ class Gallery extends Model
         global $wpdb;
 
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
+        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->id_gallery);
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -160,7 +164,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->Id);
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->id_gallery);
         return $wpdb->get_var($query);
     }
 
@@ -194,7 +198,7 @@ class Gallery extends Model
         }
         $start = $page * $num - $num;
 
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->Id);
+        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->id_gallery);
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -290,7 +294,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgallerygalleries` where id_gallery=%d order by ordering", $this->Id);
+        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgallerygalleries` where id_gallery=%d order by ordering", $this->id_gallery);
         $galleries = $wpdb->get_row($query);
 
         if (empty($galleries)) {
@@ -322,7 +326,7 @@ class Gallery extends Model
         global $wpdb;
         $list = array();
 
-        $query = $wpdb->prepare("select `id_gallery`,`name` from `" . $wpdb->prefix . "gdgallerygalleries` order by ordering", array());
+        $query = "select `id_gallery`,`name` from `" . $wpdb->prefix . "gdgallerygalleries` order by ordering";
         $galleries = $wpdb->get_results($query);
         foreach ($galleries as $val) {
             $EditUrl = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $val->id_gallery);

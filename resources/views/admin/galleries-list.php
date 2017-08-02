@@ -31,14 +31,15 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
             <tr>
                 <th scope="col" id="header-id" style="width:10px"><span><input type="checkbox"
                                                                                id="select-all"></span></span></th>
-                <th scope="col" id="header-name" style="width:85px"><span><?php _e('Name', GDFRM_TEXT_DOMAIN); ?></span>
+                <th scope="col" id="header-name" style="width:85px">
+                    <span><?php _e('Name', GDGALLERY_TEXT_DOMAIN); ?></span>
                 </th>
                 <th scope="col" id="header-fields" style="width:85px">
-                    <span><?php _e('Items', GDFRM_TEXT_DOMAIN); ?></span></th>
+                    <span><?php _e('Items', GDGALLERY_TEXT_DOMAIN); ?></span></th>
 
                 <th scope="col" id="header-shortcode" style="width:85px">
-                    <span><?php _e('Shortcode', GDFRM_TEXT_DOMAIN); ?></span></th>
-                <th style="width:60px"><?php _e('Actions', GDFRM_TEXT_DOMAIN); ?></th>
+                    <span><?php _e('Shortcode', GDGALLERY_TEXT_DOMAIN); ?></span></th>
+                <th style="width:60px"><?php _e('Actions', GDGALLERY_TEXT_DOMAIN); ?></th>
             </tr>
             </thead>
             <tbody>
@@ -61,12 +62,12 @@ $form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_tem
             <tr>
                 <th scope="col" class="footer-id" style="width:30px"></th>
                 <th scope="col" class="footer-name" style="width:85px">
-                    <span><?php _e('Name', GDFRM_TEXT_DOMAIN); ?></span></th>
+                    <span><?php _e('Name', GDGALLERY_TEXT_DOMAIN); ?></span></th>
                 <th scope="col" class="footer-fields" style="width:85px">
-                    <span><?php _e('Items', GDFRM_TEXT_DOMAIN); ?></span></th>
+                    <span><?php _e('Items', GDGALLERY_TEXT_DOMAIN); ?></span></th>
                 <th scope="col" class="footer-shortcode" style="width:85px">
-                    <span><?php _e('Shortcode', GDFRM_TEXT_DOMAIN); ?></span></th>
-                <th style="width:60px"><?php _e('Actions', GDFRM_TEXT_DOMAIN); ?></th>
+                    <span><?php _e('Shortcode', GDGALLERY_TEXT_DOMAIN); ?></span></th>
+                <th style="width:60px"><?php _e('Actions', GDGALLERY_TEXT_DOMAIN); ?></th>
             </tr>
             </tfoot>
         </table>

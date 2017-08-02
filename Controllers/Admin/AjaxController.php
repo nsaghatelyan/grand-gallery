@@ -102,7 +102,6 @@ class AjaxController
 
         $updated = null;
 
-//        \debug::trace($gallery_data_arr);
         $updated = $gallery->saveGalleryImages($gallery_data_arr);
 
 
@@ -166,8 +165,6 @@ class AjaxController
         if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
             die('security check failed');
         }
-
-        //<iframe width="560" height="315" src="https://www.youtube.com/embed/5cFQGjicb2E?ecver=1" frameborder="0" allowfullscreen></iframe>
 
 
         $gallery_id = absint($_REQUEST['gallery_id']);

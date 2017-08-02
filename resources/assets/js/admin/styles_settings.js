@@ -1,4 +1,18 @@
 jQuery(document).ready(function () {
+
+    jQuery(window).scroll(function () {
+        if (jQuery(this).scrollTop() >= 100) {
+            if (jQuery(".settings-save-head").hasClass("settings-save-fixed") === false) {
+                jQuery(".settings-save-head").addClass("settings-save-fixed");
+            }
+        }
+        else {
+            if (jQuery(".settings-save-head ").hasClass("settings-save-fixed")) {
+                jQuery(".settings-save-head").removeClass("settings-save-fixed");
+            }
+        }
+    });
+
     var doingAjax = false;
     jQuery('#settings_form').on('submit', function (e) {
         e.preventDefault();

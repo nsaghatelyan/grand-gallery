@@ -4,7 +4,6 @@
  * @var $section array
  * @var $fields array
  */
-//debug::trace($section);
 \GDGallery()->Admin->Pages['styles']
 ?>
 

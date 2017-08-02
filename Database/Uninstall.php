@@ -14,7 +14,7 @@ class Uninstall
     public static function init()
     {
 
-        if (\GDGallery()->settings->getOption('RemoveTablesUninstall') == "on") {
+        if (\GDGallery()->settings->getOption('RemoveTablesUninstall') == "off") {
             self::run();
         }
     }
@@ -22,8 +22,8 @@ class Uninstall
     private function run()
     {
         global $wpdb;
-        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGalleryGalleries`");
-        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGalleryImages`");
-        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "GDGallerySettings`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgallerygalleries`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgalleryimages`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgallerysettings`");
     }
 }

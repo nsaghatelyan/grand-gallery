@@ -15,7 +15,7 @@ class CreateGalleryTable
         global $wpdb;
 
         $wpdb->query(
-            "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "GDGalleryGalleries(
+            "CREATE TABLE IF NOT EXISTS " . $wpdb->prefix . "gdgallerygalleries(
                 `id_gallery` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `name` varchar(255) NULL,
                 `description` text,
@@ -28,7 +28,7 @@ class CreateGalleryTable
                 `custom_css` TEXT,
                 `ctime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
                 PRIMARY KEY (id_gallery)
-            ) ENGINE=InnoDB "
+            ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci "
         );
     }
 }
