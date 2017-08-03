@@ -156,7 +156,6 @@ class Gallery extends Model
         }
 
         $this->Items = $items;
-
         return $this->Items;
     }
 
@@ -370,6 +369,15 @@ class Gallery extends Model
         return static::$primaryKey;
     }
 
+    public function updateImageOrdering($arr)
+    {
+        global $wpdb;
+
+        foreach ($arr as $key => $val) {
+            $wpdb->update($wpdb->prefix . "gdgalleryimages", array("ordering" => $val), array("id_image" => $key));
+        }
+    }
+
     public function removeGalleryItems($data)
     {
         global $wpdb;
@@ -398,6 +406,22 @@ class Gallery extends Model
             );
         }
         return static::$primaryKey;
+    }
+
+    public function EditGalleryThumbnail($data, $id_gallery, $id_image)
+    {
+        global $wpdb;
+
+        $image = end($data);
+
+        $result = $wpdb->update(
+            $wpdb->prefix . "gdgalleryimages",
+            array("id_post" => $image["id"]),
+            array("id_image" => $id_image)
+        );
+
+        return $result;
+
     }
 
 

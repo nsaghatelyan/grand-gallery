@@ -78,30 +78,8 @@ jQuery(document).ready(function () {
         });
     }
 
+
     var custom_uploader;
-    jQuery('#watermark_image_btn_new').click(function (e) {
-        e.preventDefault();
-        //If the uploader object has already been created, reopen the dialog
-        if (custom_uploader) {
-            custom_uploader.open();
-            return;
-        }
-        //Extend the wp.media object
-        custom_uploader = wp.media.frames.file_frame = wp.media({
-            title: 'Choose file',
-            button: {
-                text: 'Choose file'
-            },
-            multiple: false
-        });
-        //When a file is selected, grab the URL and set it as the text field's value
-        custom_uploader.on('select', function () {
-            var attachment = custom_uploader.state().get('selection').first().toJSON();
-            jQuery("#watermark_image_new").attr("src", attachment.url);
-            jQuery('#img_watermark_hidden_new').attr('value', attachment.url);
-        });
-        custom_uploader.open();
-    });
 
     jQuery('.remove-image-container a').on('click', function () {
         var galleryId = jQuery(this).data('gallery-id');
@@ -115,29 +93,25 @@ jQuery(document).ready(function () {
 
     jQuery('.gdgallery_add_new_image').click(function (e) {
         e.preventDefault();
-        var button = jQuery(this);
-        var id = button.attr('id').replace('_button', '');
-        //If the uploader object has already been created, reopen the dialog
-        if (custom_uploader) {
-            custom_uploader.open();
-            return;
-        }
-        //Extend the wp.media object
-        custom_uploader = wp.media.frames.file_frame = wp.media({
-            title: 'Insert Into Gallery',
-            button: {
-                text: 'Insert Into Gallery'
-            },
-            multiple: true
-        });
+        custom_uploader = gdgalleryUploader("insert");
+        mediaGrabber(custom_uploader, "add", false);
+    });
 
+    jQuery(".gdgallery_item_edit a").click(function (e) {
+        e.preventDefault();
 
+        custom_uploader = gdgalleryUploader("edit");
+        var image_id = jQuery(this).data("image-id");
+        mediaGrabber(custom_uploader, "edit", image_id);
+    });
+
+    function mediaGrabber(uploader, action, image_id) {
         //When a file is selected, grab the URL and set it as the text field's value
         var selected_images = [];
-        custom_uploader.on('select', function () {
-            attachments = custom_uploader.state().get('selection').toJSON();
+        uploader.on('select', function () {
+            attachments = uploader.state().get('selection').toJSON();
             for (var key in attachments) {
-                jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
+                //jQuery("#gdgallery_images_name[" + id + "]").val(attachments[key].url + ';;;' + jQuery("#" + id).val());
                 selected_images.push({
                     id: attachments[key].id,
                     url: attachments[key].url,
@@ -145,12 +119,50 @@ jQuery(document).ready(function () {
                 });
             }
 
-            console.log(selected_images);
-            gdgalleryAddItem(selected_images, "image");
-
+            if (action == "add") {
+                gdgalleryAddItem(selected_images, "image");
+            }
+            else if (action == "edit") {
+                if (image_id !== false) {
+                    gdgalleryEditThumbnail(selected_images, image_id);
+                }
+            }
         });
         custom_uploader.open();
-    });
+    }
+
+    function gdgalleryUploader(action) {
+        var custom_uploader;
+        //  var button = jQuery(id);
+        //  var id = button.attr('id').replace('_button', '');
+        //If the uploader object has already been created, reopen the dialog
+        if (custom_uploader) {
+            custom_uploader.open();
+            return;
+        }
+        //Extend the wp.media object
+
+        var title, button;
+        if (action == "insert") {
+            title = "Select images to Insert Into Gallery";
+            button = "Insert Into Gallery";
+        }
+        else if (action == "edit") {
+            title = "Choose new Image";
+            button = "Change Image";
+        }
+
+
+        custom_uploader = wp.media.frames.file_frame = wp.media({
+            title: title,
+            button: {
+                text: button
+            },
+            multiple: true
+        });
+
+        return custom_uploader;
+    }
 
     jQuery("#gdgallery_add_video_form").submit(function (e) {
         e.preventDefault();
@@ -222,6 +234,7 @@ jQuery(document).ready(function () {
                 formdata: formData
             };
 
+
         jQuery.ajax({
             url: ajaxurl,
             method: 'post',
@@ -256,11 +269,13 @@ jQuery(document).ready(function () {
 
     jQuery('#gdgallery_edited_images_form').on('submit', function (e) {
         e.preventDefault();
-        var form = jQuery('#gdgallery_edited_images_form');
 
+        var form = jQuery('#gdgallery_edited_images_form');
+        var ready = true;
         form.find("[id^=gdgallery_images_name]").each(function () {
             if (jQuery(this).val().length > 255) {
                 toastr.error('Name field should be less Than 256 character');
+                ready = false;
                 return;
             }
         });
@@ -273,30 +288,31 @@ jQuery(document).ready(function () {
                 formdata: formData
             };
 
-
-        jQuery.ajax({
-            url: ajaxurl,
-            method: 'post',
-            data: general_data,
-            dataType: 'text',
-            beforeSend: function () {
-                doingAjax = true;
-                submitBtn.attr("disabled", 'disabled');
-                submitBtn.parent().find(".spinner").css("visibility", "visible");
-            }
-        }).always(function () {
-            doingAjax = false;
-            submitBtn.removeAttr("disabled");
-            submitBtn.parent().find(".spinner").css("visibility", "hidden");
-        }).done(function (response) {
-            if (response == 1) {
-                toastr.success('Saved Successfully');
-            } else {
+        if (ready == true) {
+            jQuery.ajax({
+                url: ajaxurl,
+                method: 'post',
+                data: general_data,
+                dataType: 'text',
+                beforeSend: function () {
+                    doingAjax = true;
+                    submitBtn.attr("disabled", 'disabled');
+                    submitBtn.parent().find(".spinner").css("visibility", "visible");
+                }
+            }).always(function () {
+                doingAjax = false;
+                submitBtn.removeAttr("disabled");
+                submitBtn.parent().find(".spinner").css("visibility", "hidden");
+            }).done(function (response) {
+                if (response == 1) {
+                    toastr.success('Saved Successfully');
+                } else {
+                    toastr.error('Error while saving');
+                }
+            }).fail(function () {
                 toastr.error('Error while saving');
-            }
-        }).fail(function () {
-            toastr.error('Error while saving');
-        });
+            });
+        }
 
         return false;
     });
@@ -435,12 +451,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    jQuery(".gdgallery_item_edit").click(function (e) {
-        e.preventDefault();
-
-        var post_id = jQuery(this).data("post-id");
-        wp.media.editor.open(post_id);
-    });
 
     jQuery("#form_name").bind("keypress keyup", function () {
 
@@ -479,6 +489,40 @@ jQuery(document).ready(function ($) {
 
      })*/
 })
+
+function gdgalleryEditThumbnail(data, id) {
+    var form, submitBtn;
+
+    var general_data = {
+        action: "gdgallery_edit_thumbnail",
+        nonce: gallerySave.nonce,
+        gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
+        image_id: id,
+        formdata: data
+    };
+
+    jQuery.ajax({
+        url: ajaxurl,
+        method: 'post',
+        data: general_data,
+        dataType: 'text',
+        beforeSend: function () {
+            doingAjax = true;
+        }
+    }).always(function () {
+        doingAjax = false;
+    }).done(function (response) {
+        if (response == 1) {
+            toastr.success('Thumbnail Changed Successfully');
+            window.setTimeout('location.reload()', 500)
+        } else {
+            toastr.error('Error while editing');
+        }
+    }).fail(function () {
+        toastr.error('Error while editing');
+    });
+
+}
 
 function gdgalleryAddItem(data, type) {
     var form, submitBtn;

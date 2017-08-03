@@ -23,6 +23,8 @@ class AjaxController
 
         add_action('wp_ajax_gdgallery_add_gallery_image', array(__CLASS__, 'AddGalleryImage'));
 
+        add_action('wp_ajax_gdgallery_edit_thumbnail', array(__CLASS__, 'EditGalleryThumbnail'));
+
         add_action('wp_ajax_gdgallery_add_gallery_video', array(__CLASS__, 'AddGalleryVideo'));
 
         add_action('wp_ajax_gdgallery_save_settings', array(__CLASS__, 'saveGallerySettings'));
@@ -58,7 +60,7 @@ class AjaxController
         //$positions = array("left", "center", "right");
 
         $gallery_id = absint($_REQUEST['gallery_id']);
-
+        $ordering = array();
 
         $gallery_data = str_replace("gdgallery_", "", $_REQUEST["formdata"]);
 
@@ -74,6 +76,13 @@ class AjaxController
 
         $gallery_data_arr["custom_css"] = str_replace("#container", "#gdgallery_container", $gallery_data_arr["custom_css"]);
         $gallery_data_arr["custom_css"] = sanitize_text_field($gallery_data_arr["custom_css"]);
+
+        $ordering = $gallery_data_arr["ordering"];
+        unset($gallery_data_arr["ordering"]);
+
+        if (!empty($ordering)) {
+            $gallery->updateImageOrdering($ordering);
+        }
 
         $updated = $gallery->saveGallery($gallery_data_arr);
         if ($updated) {
@@ -158,6 +167,29 @@ class AjaxController
         } else {
             die('something went wrong');
         }
+    }
+
+    public static function EditGalleryThumbnail()
+    {
+        if (!isset($_REQUEST['nonce']) || !wp_verify_nonce($_REQUEST['nonce'], 'gdgallery_save_gallery')) {
+            die('security check failed');
+        }
+
+        $gallery_id = absint($_REQUEST['gallery_id']);
+        $image_id = absint($_REQUEST['image_id']);
+        $gallery_data = $_REQUEST["formdata"];
+        $gallery = new Gallery(array('id_gallery' => $gallery_id));
+
+        $edited = null;
+        $edited = $gallery->EditGalleryThumbnail($gallery_data, $gallery_id, $image_id);
+
+        if ($edited == 1) {
+            echo $edited;
+            die();
+        } else {
+            die('something went wrong');
+        }
+
     }
 
     public static function AddGalleryVideo()

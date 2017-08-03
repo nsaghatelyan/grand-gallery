@@ -188,6 +188,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                                                                     aria-hidden="true"></i></a>
                 <?php } ?>
                 <div class="gdgallery_clearfix"></div>
+
                 <div class="gdgallery_items_list">
                     <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
                         <div class="gdgallery_add_new_plus"></div>
@@ -204,6 +205,9 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                             ?>
 
                             <div class="gdgallery_item" style="background-image: url('<?= $item->url ?>');">
+                                <input type="hidden"
+                                       name="gdgallery_ordering[<?= $item->id_image ?>]"
+                                       value="<?= $item->ordering ?>">
 
                                 <p class="gdgallery_item_title"><?= $item->name ?>
                                     <i class="fa <?= $icon ?>" aria-hidden="true"></i></p>
@@ -212,7 +216,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                            value="<?= $item->id_image; ?>" class="items_checkbox"/>
                                     <div class="gdgallery_item_edit">
                                         <a href="<?php echo ($item->id_post != 0) ? admin_url() . "post.php?post=" . $item->id_post . "&action=edit&image-editor" : "#"; ?>"
-                                           target="_blank" data-post-id="<?= $item->id_post ?>">EDIT</a>
+                                           target="_blank" data-post-id="<?= $item->id_post ?>"
+                                           data-image-id="<?= $item->id_image ?>">EDIT</a>
                                     </div>
                                 </div>
                             </div>
@@ -235,11 +240,33 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
     jQuery(document).ready(function () {
 
-        jQuery(function () {
-            jQuery(".gdgallery_items_list").sortable();
-            jQuery(".gdgallery_items_list").disableSelection();
+        /* jQuery(function () {
+         jQuery(".gdgallery_items_list").sortable();
+         jQuery(".gdgallery_items_list").disableSelection();
 
-        });
+         });*/
+
+
+        var fixHelperModified2 = function (e, tr) {
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function (index) {
+                    jQuery(this).width($originals.eq(index).width())
+                });
+                return $helper;
+            },
+            updateIndex2 = function (e, ui) {
+                jQuery('.gdgallery_item').each(function (i) {
+                    jQuery(this).find("input[type=hidden]").val(i + 1);
+                });
+
+            };
+
+        jQuery(".gdgallery_items_list").sortable({
+            helper: fixHelperModified2,
+            stop: updateIndex2
+        }).disableSelection();
+
     });
 </script>
 
