@@ -21,10 +21,6 @@ $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_galler
 $id = $gallery->getId();
 
 
-$gallery_settings_link = admin_url('admin.php?page=gdfrm&task=edit_form_settings&id=' . $gallery->getId());
-
-$gallery_settings_link = wp_nonce_url($gallery_settings_link, 'gdfrm_edit_form_settings_' . $gallery->getId());
-
 $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 
 if (in_array($gallery_data->view_type, array(0, 1))) {
@@ -56,11 +52,11 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 </ul>
 <form action="admin.php?page=gdgallery&id=<?php echo $id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
       method="post" name="gdgallery_images_form" id="gdgallery_images_form">
-    <div class="wrap gdfrm_edit_form_container">
-        <div class="gdfrm_nav">
+    <div class="wrap gdgallery_edit_gallery_container">
+        <div class="gdgallery_nav">
 
 
-            <div id="tabs">
+            <div id="gdgallery_tabs">
                 <div style="clear: both"></div>
                 <div class="settings-toogled-container">
 
@@ -101,8 +97,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
                     </div>
                     <div id="gdgallery_general_settings">
-                        <div class="form_title_div">
-                            <input type="text" id="form_name" name="gdgallery_name"
+                        <div class="gallery_title_div">
+                            <input type="text" id="gallery_name" name="gdgallery_name"
                                    value="<?php echo $gallery->getName(); ?>">
                             <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery"
                                    value="<?php echo $id ?>">
@@ -234,18 +230,11 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
 
 <script>
-    jQuery('#tabs')
+    jQuery('#gdgallery_tabs')
         .tabs()
         .addClass('ui-tabs-vertical ui-helper-clearfix');
 
     jQuery(document).ready(function () {
-
-        /* jQuery(function () {
-         jQuery(".gdgallery_items_list").sortable();
-         jQuery(".gdgallery_items_list").disableSelection();
-
-         });*/
-
 
         var fixHelperModified2 = function (e, tr) {
                 var $originals = tr.children();
@@ -264,7 +253,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
         jQuery(".gdgallery_items_list").sortable({
             helper: fixHelperModified2,
-            stop: updateIndex2
+            stop: updateIndex2,
+            placeholder: 'gdgallery_item'
         }).disableSelection();
 
     });

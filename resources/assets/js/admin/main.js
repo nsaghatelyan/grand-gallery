@@ -452,7 +452,7 @@ jQuery(document).ready(function ($) {
     });
 
 
-    jQuery("#form_name").bind("keypress keyup", function () {
+    jQuery("#gallery_name").bind("keypress keyup", function () {
 
         jQuery("#gallery_active_name").html(jQuery(this).val());
         jQuery("#edit_name_input").val(jQuery(this).val());
@@ -480,7 +480,7 @@ jQuery(document).ready(function ($) {
 
 
     jQuery("#edit_name_input").bind("keyup keypress", function () {
-        jQuery("#form_name").val(jQuery(this).val());
+        jQuery("#gallery_name").val(jQuery(this).val());
         jQuery("#gallery_active_name").text(jQuery(this).val());
     })
     /*jQuery(document).click(function () {

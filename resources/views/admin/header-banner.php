@@ -1,5 +1,5 @@
-<div class="wrap gdfrm_list_container ">
-    <div class="gdfrm_header">
+<div class="wrap gdgallery_list_container ">
+    <div class="gdgallery_header">
         <i class="gdicon gdicon-logo"></i>
         <span><?php _e('Grand Gallery', GDGALLERY_TEXT_DOMAIN); ?></span>
 

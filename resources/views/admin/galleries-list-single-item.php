@@ -29,13 +29,13 @@ $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $Ga
     <td class="form-fields"><?php echo count($gallery->getItems());; ?></td>
     <td class="form-shortcode">[gdgallery_gallery id_gallery="<?php echo $GalleryId; ?>"]</td>
     <td class="form-actions">
-        <a class="gdfrm_edit_form" href="<?php echo $EditUrl; ?>"><i class="gdicon gdicon-setting"
-                                                                     aria-hidden="true"></i></a>
-        <a class="gdfrm_duplicate_form" href="<?php echo $DuplicateUrl; ?>"><i class="gdicon gdicon-duplicate"
-                                                                               aria-hidden="true"></i></a>
+        <a class="gdgallery_edit_form" href="<?php echo $EditUrl; ?>"><i class="gdicon gdicon-setting"
+                                                                         aria-hidden="true"></i></a>
+        <a class="gdgallery_duplicate_form" href="<?php echo $DuplicateUrl; ?>"><i class="gdicon gdicon-duplicate"
+                                                                                   aria-hidden="true"></i></a>
         <a class="gdgallery_delete_form" href="<?php echo $RemoveUrl; ?>"><i class="gdicon gdicon-remove"
                                                                              aria-hidden="true"></i></a>
-        <a class="gdfrm_preview_form" target="_blank"
+        <a class="gdgallery_preview_form" target="_blank"
            href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"><i
                     class="gdicon gdicon-eye"
                     aria-hidden="true"></i></a>

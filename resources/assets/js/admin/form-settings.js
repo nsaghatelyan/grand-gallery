@@ -6,8 +6,8 @@ jQuery(document).ready(function () {
     });
 
     /* save form settings with ajax */
-    jQuery('.gdfrm_edit_form_settings_container').on("click", "#save-form-button", function () {
-        var name = jQuery("#form_name").val();
+    jQuery('.gdgallery_edit_form_settings_container').on("click", "#save-form-button", function () {
+        var name = jQuery("#gallery_name").val();
         var id = jQuery("#form_id").val();
         var grandFormSettings = jQuery('#grand-form-settings');
 
@@ -31,7 +31,7 @@ jQuery(document).ready(function () {
         })
 
         var general_data = {
-            action: "gdfrm_save_form_settings",
+            action: "gdgallery_save_form_settings",
             nonce: gdform.saveSettingsNonce,
             form_id: id,
             form_name: name,
@@ -52,7 +52,7 @@ jQuery(document).ready(function () {
     });
 
     /* open right col */
-    jQuery('.gdfrm_edit_form_settings_container').on("click", ".gdicon-setting", function () {
+    jQuery('.gdgallery_edit_form_settings_container').on("click", ".gdicon-setting", function () {
         var settingDivID = jQuery(this).attr('rel');
         jQuery('.right-col>div').hide();
         jQuery('#' + settingDivID).toggle();
@@ -67,7 +67,7 @@ jQuery(document).ready(function () {
     });
 
     /* close rightcol */
-    jQuery('.gdfrm_edit_form_settings_container').on("click", ".hide-rightcol", function () {
+    jQuery('.gdgallery_edit_form_settings_container').on("click", ".hide-rightcol", function () {
         jQuery('.right-col').animate({
             right: '-765px',
         }, 200, function () {

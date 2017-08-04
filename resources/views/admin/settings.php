@@ -5,11 +5,11 @@
 global $wpdb;
 ?>
 
-    <div class="wrap" id="gdgallery-settings">
+    <div class="wrap gdgallery_list_container " id="gdgallery-settings">
 
-        <div class="gdgallery_content">
+        <div class="gdgallery_content" style="padding:0px;">
 
-            <div class="gdfrm-list-header">
+            <div class="gdgallery-list-header">
                 <button id="save-form-button"><?php _e('Save'); ?></button>
 
             </div>

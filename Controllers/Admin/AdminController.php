@@ -68,8 +68,7 @@ class AdminController
      */
     public function mainPage()
     {
-
-        View::render('admin/header-banner.php', ["key"]);
+        View::render('admin/header-banner.php');
 
         if (!isset($_GET['task'])) {
 
@@ -111,9 +110,7 @@ class AdminController
     public function settingsPage()
     {
         View::render('admin/header-banner.php');
-
         View::render('admin/settings.php');
-
     }
 
     public function stylesPage()
@@ -122,7 +119,6 @@ class AdminController
 
         $builder = new SettingsController();
 
-        // View::render('admin/styles.php', ["settings" => $options]);
     }
 
 
@@ -165,7 +161,6 @@ class AdminController
 
         $location = admin_url('admin.php?page=gdgallery');
 
-
         header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');
         header("Location: $location");
 
@@ -206,16 +201,12 @@ class AdminController
 
         $gallery = new Gallery(array('id_gallery' => $id));
 
-        //$fields = $gallery->getFields();
-
-        //$gallery->unsetId();
-
         $gallery->setName('Copy of ' . $gallery->getName());
 
         $gallery = $gallery->duplicateGallery();
 
         /**
-         * after the form is created we need to redirect user to the edit page
+         * after the gallery is created we need to redirect user to the edit page
          */
 
         if ($gallery && is_int($gallery)) {

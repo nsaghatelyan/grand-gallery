@@ -9,12 +9,12 @@ jQuery(document).ready(function(){
 
 
     /* remove single submission */
-    jQuery('.gdfrm-delete-submission').on('click tap',function () {
+    jQuery('.gdgallery-delete-submission').on('click tap',function () {
         var id = jQuery(this).attr('data-id');
         var row = jQuery(this).closest('tr');
 
         var data = {
-            action: "gdfrm_remove_submission",
+            action: "gdgallery_remove_submission",
             nonce: submission.removeNonce,
             id: id
         };
@@ -45,7 +45,7 @@ jQuery(document).ready(function(){
 
             if(action == 'trash'){
                 var data = {
-                    action: "gdfrm_remove_submission",
+                    action: "gdgallery_remove_submission",
                     nonce: submission.removeNonce,
                     id: id
                 };
@@ -58,13 +58,13 @@ jQuery(document).ready(function(){
                 }, "json");
             } else if( action == 'mark_read' ){
                 var data = {
-                    action: "gdfrm_read_submission",
+                    action: "gdgallery_read_submission",
                     nonce: submission.readNonce,
                     id: id
                 };
                 jQuery.post(ajaxurl, data, function (response) {
                     if (response.success) {
-                        row.removeClass('gdfrm-new-sub');
+                        row.removeClass('gdgallery-new-sub');
                         _this.prop('checked',false);
                         jQuery('input#select-all').prop('checked',false);
                     } else {

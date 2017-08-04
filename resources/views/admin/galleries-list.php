@@ -8,17 +8,13 @@ $new_gallery_link = admin_url('admin.php?page=gdgallery&task=create_new_gallery'
 
 $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_gallery');
 
-$form_templates_link = admin_url('admin.php?page=gdfrm&task=choose_form_template');
-
-$form_templates_link = wp_nonce_url($form_templates_link, 'gdfrm_choose_form_template');
-
 ?>
 
-<div class="wrap gdfrm_list_container ">
+<div class="wrap gdgallery_list_container ">
 
-    <div class="gdfrm_content">
+    <div class="gdgallery_content">
 
-        <div class="gdfrm-list-header">
+        <div class="gdgallery-list-header">
             <div>
                 <a href="<?php echo $new_gallery_link; ?>" id="gdgallery-new-gallery">New Gallery</a>
             </div>

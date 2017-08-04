@@ -1,3 +1,28 @@
+@font-face {
+    font-family: Nunito;
+    src: url(../../fonts/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: Nunito Light;
+    src: url(../../fonts/Nunito-Light.ttf);
+}
+
+@font-face {
+    font-family: Nunito Semibold;
+    src: url(../../fonts/Nunito-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Nunito Italic;
+    src: url(../../fonts/Nunito-Italic.ttf);
+}
+
+@font-face {
+    font-family: Nunito Bold;
+    src: url(../../fonts/Nunito-Bold.ttf);
+}
+
 #wpcontent {
     padding-left: 0;
 }
@@ -8,7 +33,7 @@
     margin: 0;
 }
 
-.wrap .gdfrm_header * {
+.wrap .gdgallery_header * {
     box-sizing: border-box;
     position: relative;
 }
@@ -20,7 +45,7 @@
     clear: both;
 }
 
-.gdfrm_header {
+.gdgallery_header {
     padding: 20px 30px 40px;
     font-size: 20px;
     color: #fff;
@@ -29,32 +54,32 @@
     background-color: #23282d;
 }
 
-.gdfrm_header span {
+.gdgallery_header span {
     position: relative;
     top: 25px;
     font-size: 40px;
     left: 120px;
 }
 
-.gdfrm_header ul {
+.gdgallery_header ul {
     float: right;
     position: relative;
     top: 20px;
 }
 
-.gdfrm_header li {
+.gdgallery_header li {
     display: inline-block;
     padding: 0 20px;
 }
 
-.gdfrm_header li a {
+.gdgallery_header li a {
     color: #fff;
     font-family: Nunito;
     font-size: 19px;
     text-decoration: none;
 }
 
-.gdfrm_header li:hover:after {
+.gdgallery_header li:hover:after {
     content: '';
     background-color: #fff;
     display: block;
@@ -66,19 +91,19 @@
     bottom: -20px;
 }
 
-.gdfrm_content {
+.gdgallery_content {
     padding: 0 0 0 60px;
     /*border-top: 6px solid #e9ebf3;*/
 }
 
-.gdfrm_list_container .gdfrm_content,
-#gdfrm-settings .gdfrm_content,
-.grand_submissions_list_container .gdfrm_content {
+.gdgallery_list_container .gdgallery_content,
+#gdgallery-settings .gdgallery_content,
+.grand_submissions_list_container .gdgallery_content {
     padding: 0 30px;
     border-top: none;
 }
 
-.gdfrm_header {
+.gdgallery_header {
     padding: 20px 30px 40px;
     font-size: 20px;
     color: #fff;
@@ -87,32 +112,32 @@
     background-color: #23282d;
 }
 
-.gdfrm_header span {
+.gdgallery_header span {
     position: relative;
     top: 25px;
     font-size: 40px;
     left: 120px;
 }
 
-.gdfrm_header ul {
+.gdgallery_header ul {
     float: right;
     position: relative;
     top: 20px;
 }
 
-.gdfrm_header li {
+.gdgallery_header li {
     display: inline-block;
     padding: 0 20px;
 }
 
-.gdfrm_header li a {
+.gdgallery_header li a {
     color: #fff;
     font-family: Nunito;
     font-size: 19px;
     text-decoration: none;
 }
 
-.gdfrm_header li:hover:after {
+.gdgallery_header li:hover:after {
     content: '';
     background-color: #fff;
     display: block;
