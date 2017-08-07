@@ -109,6 +109,11 @@ class SettingsController
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
                 "tab" => "grid"
             ),
+            'lightbox_grid' => array(
+                'title' => __('Lightbox Styles', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "grid"
+            ),
             'components_grid' => array(
                 'title' => __('Navigation Styles', 'gdgallery'),
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
@@ -1739,6 +1744,17 @@ class SettingsController
                 'help' => __('Shadow', 'gdgallery')
             ),
 
+
+            'lightbox_type_grid' => array(
+                'type' => 'select',
+                'label' => __('Lightbox Type', 'gdgallery'),
+                'options' => array(
+                    'wide' => __('Wide', 'gdgallery'),
+                    'compact' => __('Compact', 'gdgallery')
+                ),
+                'section' => 'lightbox_grid',
+                'help' => __('Lightbox Type', 'gdgallery')
+            ),
 
             'nav_type_grid' => array(
                 'type' => 'select',

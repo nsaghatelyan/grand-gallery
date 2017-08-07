@@ -209,6 +209,7 @@ class Settings
 
 
         /************* Grid ***********/
+        'lightbox_type_grid' => 'wide',
         'width_grid' => '200',
         'height_grid' => '200',
         'space_cols_grid' => '20',

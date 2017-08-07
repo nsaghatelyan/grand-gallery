@@ -44,6 +44,8 @@ $gallery_options["tile_textpanel_position"] = $options["title_vertical_position_
 $gallery_options["tile_link_newpage"] = $options["link_new_tab_justified"];
 
 $lt = $options["lightbox_type_justified"];
+
+
 $gallery_options["lightbox_type"] = $lt;
 $gallery_options["lightbox_arrows_offset"] = (int)$options["arrows_offset_" . $lt];
 $gallery_options["lightbox_overlay_color"] = "#" . $options["overlay_color_" . $lt];
