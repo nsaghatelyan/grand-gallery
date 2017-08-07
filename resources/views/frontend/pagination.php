@@ -1,11 +1,12 @@
 <?php
 $protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'https://' : 'http://';
 $actual_link = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "";
+
 $checkREQ = '';
-$pattern = "/\?p=/";
-$pattern_2 = "/\?page_id=/";
+$pattern = "/\?/";
+//$pattern_2 = "/\?page_id=/";
 $pattern2 = "/&gdgallery-page=[0-9]+/";
-if (preg_match($pattern, $actual_link) || preg_match($pattern_2, $actual_link)) {
+if (preg_match($pattern, $actual_link)) {
     if (preg_match($pattern2, $actual_link)) {
         $actual_link = preg_replace($pattern2, '', $actual_link);
     }
@@ -23,7 +24,6 @@ switch ($page_nav_type) {
         break;
     case 1:
         $navigation = explode(",", $page_options["nav_text"]);
-        // $navigation = array("first", "prev", "next", "last");
         break;
     case 2:
         $navigation = array("disable" => true);

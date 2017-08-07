@@ -35,6 +35,7 @@ class SettingsController
             "carousel" => array('title' => __('Carousel', 'gdgallery')),
             "slider" => array('title' => __('Slider', 'gdgallery')),
             "grid" => array('title' => __('Grid', 'gdgallery')),
+            "lightbox" => array('title' => __('Lightbox settings', 'gdgallery')),
         ));
 
         $builder->addSections(array(
@@ -112,6 +113,16 @@ class SettingsController
                 'title' => __('Navigation Styles', 'gdgallery'),
                 'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
                 "tab" => "grid"
+            ),
+            'wide_lightbox' => array(
+                'title' => __('Wide Type', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "lightbox"
+            ),
+            'compact_lightbox' => array(
+                'title' => __('Compact Type', 'gdgallery'),
+                'description' => __('Choose whether to show thumbnails. Change thumbnails sizes and their positioning. ', 'gdgallery'),
+                "tab" => "lightbox"
             ),
 
 
@@ -1794,6 +1805,302 @@ class SettingsController
                 'help' => __('Navigation Offset', 'gdgallery')
             ),
 
+
+            /*****  Lightbox ****/
+            /*****  wide ****/
+            'arrows_offset_wide' => array(
+                'type' => 'number',
+                'label' => __('Arrows Offset', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Arrows Offset', 'gdgallery')
+            ),
+            'overlay_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Overlay Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Overlay Color', 'gdgallery')
+            ),
+            'overlay_opacity_wide' => array(
+                'type' => 'number',
+                'label' => __('Overlay Opacity', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Overlay Opacity', 'gdgallery')
+            ),
+            'top_panel_opacity_wide' => array(
+                'type' => 'number',
+                'label' => __('Top Panel Opacity', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Top Panel Opacity', 'gdgallery')
+            ),
+            'show_numbers_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Numbers', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Show Numbers', 'gdgallery')
+            ),
+            'number_size_wide' => array(
+                'type' => 'number',
+                'label' => __('Number Size', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Number Size', 'gdgallery')
+            ),
+            'number_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Number Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Number Color', 'gdgallery')
+            ),
+            'image_border_width_wide' => array(
+                'type' => 'number',
+                'label' => __('Image Border Width', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Border Width', 'gdgallery')
+            ),
+            'image_border_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Image Border Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Border Color', 'gdgallery')
+            ),
+            'image_border_radius_wide' => array(
+                'type' => 'number',
+                'label' => __('Image Border radius', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Border Radius', 'gdgallery')
+            ),
+            'image_shadow_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Shadow', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Shadow', 'gdgallery')
+            ),
+            'swipe_control_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Swipe Control', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Swipe Control', 'gdgallery')
+            ),
+            'zoom_control_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Zoom Control', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Image Zoom Control', 'gdgallery')
+            ),
+
+            'show_text_panel_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Text panel', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Show Text Panel', 'gdgallery')
+            ),
+            'enable_title_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Enable Ttle', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Enable Title', 'gdgallery')
+            ),
+            'enable_desc_wide' => array(
+                'type' => 'checkbox',
+                'label' => __('Enable Description', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Enable Description', 'gdgallery')
+            ),
+            'texpanel_paddind_vert_wide' => array(
+                'type' => 'number',
+                'label' => __('Textpanel Vertical Padding', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Textpanel Vertical Padding', 'gdgallery')
+            ),
+            'texpanel_paddind_hor_wide' => array(
+                'type' => 'number',
+                'label' => __('Textpanel Horisontal Padding', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Textpanel Horisontal Padding', 'gdgallery')
+            ),
+            'text_position_wide' => array(
+                'type' => 'select',
+                'options' => array(
+                    'left' => __('Left', 'gdgallery'),
+                    'center' => __('Center', 'gdgallery'),
+                    'right' => __('Right', 'gdgallery')
+                ),
+                'label' => __('Text Position', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Text Position', 'gdgallery')
+            ),
+            'title_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Title Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Title Color', 'gdgallery')
+            ),
+            'title_font_size_wide' => array(
+                'type' => 'number',
+                'label' => __('Title Font Size', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Title Font Size', 'gdgallery')
+            ),
+            'desc_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Description Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Description Color', 'gdgallery')
+            ),
+
+            'desc_font_size_wide' => array(
+                'type' => 'number',
+                'label' => __('Description Font Size', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Description Font Size', 'gdgallery')
+            ),
+
+
+            /*****  compact ****/
+            'arrows_offset_compact' => array(
+                'type' => 'number',
+                'label' => __('Arrows Offset', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Arrows Offset', 'gdgallery')
+            ),
+            'overlay_color_compact' => array(
+                'type' => 'color',
+                'label' => __('Overlay Color', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Overlay Color', 'gdgallery')
+            ),
+            'overlay_opacity_compact' => array(
+                'type' => 'number',
+                'label' => __('Overlay Opacity', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Overlay Opacity', 'gdgallery')
+            ),
+            'top_panel_opacity_compact' => array(
+                'type' => 'number',
+                'label' => __('Top Panel Opacity', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Top Panel Opacity', 'gdgallery')
+            ),
+            'show_numbers_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Numbers', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Show Numbers', 'gdgallery')
+            ),
+            'number_size_compact' => array(
+                'type' => 'number',
+                'label' => __('Number Size', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Number Size', 'gdgallery')
+            ),
+            'number_color_compact' => array(
+                'type' => 'color',
+                'label' => __('Number Color', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Number Color', 'gdgallery')
+            ),
+            'image_border_width_compact' => array(
+                'type' => 'number',
+                'label' => __('Image Border Width', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Border Width', 'gdgallery')
+            ),
+            'image_border_color_compact' => array(
+                'type' => 'color',
+                'label' => __('Image Border Color', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Border Color', 'gdgallery')
+            ),
+            'image_border_radius_compact' => array(
+                'type' => 'number',
+                'label' => __('Image Border radius', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Border Radius', 'gdgallery')
+            ),
+            'image_shadow_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Shadow', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Shadow', 'gdgallery')
+            ),
+            'swipe_control_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Swipe Control', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Swipe Control', 'gdgallery')
+            ),
+            'zoom_control_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Image Zoom Control', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Image Zoom Control', 'gdgallery')
+            ),
+
+            'show_text_panel_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Text panel', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Show Text Panel', 'gdgallery')
+            ),
+            'enable_title_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Enable Ttle', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Enable Title', 'gdgallery')
+            ),
+            'enable_desc_compact' => array(
+                'type' => 'checkbox',
+                'label' => __('Enable Description', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Enable Description', 'gdgallery')
+            ),
+            'texpanel_paddind_vert_compact' => array(
+                'type' => 'number',
+                'label' => __('Textpanel Vertical Padding', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Textpanel Vertical Padding', 'gdgallery')
+            ),
+            'texpanel_paddind_hor_compact' => array(
+                'type' => 'number',
+                'label' => __('Textpanel Horisontal Padding', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Textpanel Horisontal Padding', 'gdgallery')
+            ),
+            'text_position_compact' => array(
+                'type' => 'select',
+                'options' => array(
+                    'left' => __('Left', 'gdgallery'),
+                    'center' => __('Center', 'gdgallery'),
+                    'right' => __('Right', 'gdgallery')
+                ),
+                'label' => __('Text Position', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Text Position', 'gdgallery')
+            ),
+            'title_color_compact' => array(
+                'type' => 'color',
+                'label' => __('Title Color', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Title Color', 'gdgallery')
+            ),
+            'title_font_size_compact' => array(
+                'type' => 'number',
+                'label' => __('Title Font Size', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Title Font Size', 'gdgallery')
+            ),
+            'desc_color_compact' => array(
+                'type' => 'color',
+                'label' => __('Description Color', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Description Color', 'gdgallery')
+            ),
+
+            'desc_font_size_compact' => array(
+                'type' => 'number',
+                'label' => __('Description Font Size', 'gdgallery'),
+                'section' => 'compact_lightbox',
+                'help' => __('Description Font Size', 'gdgallery')
+            ),
 
         ));
 

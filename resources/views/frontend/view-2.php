@@ -89,19 +89,7 @@ wp_enqueue_script("gdgallerycarousel", \GDGallery()->pluginUrl() . "/resources/a
 
         var container = jQuery("#gdgallery_container_<?= $gallery_data->id_gallery ?>");
 
-        container.unitegallery(/*{
-         carousel_navigation_numtiles: 1,
-         carousel_scroll_duration: 500,			//duration of scrolling to tile
-         carousel_autoplay: true,				//true,false - autoplay of the carousel on start
-         carousel_autoplay_timeout: 3000,		//autoplay timeout
-         carousel_autoplay_direction: "right",	//left,right - autoplay direction
-         carousel_autoplay_pause_onhover: true,	//pause the autoplay on mouse over
-         theme_enable_navigation: true,
-         theme_navigation_position: "top",	//top,bottom: the vertical position of the navigation reative to the carousel
-         theme_navigation_align: "left",		//the align of the navigation
-         theme_navigation_enable_play: true,		//enable / disable the play button of the navigation
-         theme_space_between_arrows: 35			//the space between arrows in the navigation
-         }*/ <?= $json ?>);
+        container.unitegallery(<?= $json ?>);
 
     });
 

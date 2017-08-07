@@ -292,7 +292,62 @@ class Settings
         'playlist_slider' => 'b:0;',
         'thumb_width_slider' => '88',
         'thumb_height_slider' => '50',
-        'playlist_bg_slider' => '000000'
+        'playlist_bg_slider' => '000000',
+
+        /********  Lightbox *****/
+        /********  wide *****/
+
+        'arrows_offset_wide' => '0',
+        'overlay_color_wide' => '000000',
+        'overlay_opacity_wide' => '0',
+        'top_panel_opacity_wide' => '0',
+        'show_numbers_wide' => 'b:1;',
+        'number_size_wide' => '15',
+        'number_color_wide' => 'FFFFFF',
+        'image_border_width_wide' => '0',
+        'image_border_color_wide' => 'FFFFFF',
+        'image_border_radius_wide' => '0',
+        'image_shadow_wide' => 'b:1;',
+        'swipe_control_wide' => 'b:1;',
+        'zoom_control_wide' => 'b:1;',
+
+        'show_text_panel_wide' => 'b:1;',
+        'enable_title_wide' => 'b:1;',
+        'enable_desc_wide' => 'b:0;',
+        'texpanel_paddind_vert_wide' => '5',
+        'texpanel_paddind_hor_wide' => '5',
+        'text_position_wide' => 'center',
+        'title_color_wide' => 'FFFFFF',
+        'title_font_size_wide' => '16',
+        'desc_color_wide' => 'FFFFFF',
+        'desc_font_size_wide' => '14',
+
+        /********  compact *****/
+        'arrows_offset_compact' => '0',
+        'overlay_color_compact' => '000000',
+        'overlay_opacity_compact' => '50',
+        'top_panel_opacity_compact' => '0',
+        'show_numbers_compact' => 'b:1;',
+        'number_size_compact' => '15',
+        'number_color_compact' => 'FFFFFF',
+        'image_border_width_compact' => '0',
+        'image_border_color_compact' => 'FFFFFF',
+        'image_border_radius_compact' => '0',
+        'image_shadow_compact' => 'b:1;',
+        'swipe_control_compact' => 'b:1;',
+        'zoom_control_compact' => 'b:1;',
+
+        'show_text_panel_compact' => 'b:1;',
+        'enable_title_compact' => 'b:1;',
+        'enable_desc_compact' => 'b:0;',
+        'texpanel_paddind_vert_compact' => '5',
+        'texpanel_paddind_hor_compact' => '5',
+        'text_position_compact' => 'left',
+        'title_color_compact' => '333333',
+        'title_font_size_compact' => '16',
+        'desc_color_compact' => '333333',
+        'desc_font_size_compact' => '14',
+
 
     );
 
