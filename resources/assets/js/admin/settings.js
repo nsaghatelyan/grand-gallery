@@ -1,5 +1,5 @@
 jQuery(document).ready(function () {
-   
+
     /* save plugin settings */
     jQuery('.gdgallery_content').on("click", "#save-form-button", function () {
 

@@ -199,7 +199,7 @@ class Settings
         'scroll_duration_carousel' => '500',
         'autoplay_carousel' => 'b:1;',
         'autoplay_timeout_carousel' => '3000',
-        'autoplay_direction_carousel' => 'left',
+        'autoplay_direction_carousel' => 'right',
         'autoplay_pause_hover_carousel' => 'b:1;',
         'enable_nav_carousel' => 'b:1;',
         'nav_vertical_position_carousel' => 'bottom',
@@ -300,8 +300,8 @@ class Settings
 
         'arrows_offset_wide' => '0',
         'overlay_color_wide' => '000000',
-        'overlay_opacity_wide' => '0',
-        'top_panel_opacity_wide' => '0',
+        'overlay_opacity_wide' => '100',
+        'top_panel_opacity_wide' => '100',
         'show_numbers_wide' => 'b:1;',
         'number_size_wide' => '15',
         'number_color_wide' => 'FFFFFF',
@@ -389,6 +389,40 @@ class Settings
 
         return true;
 
+    }
+
+    public function getLightboxOptions($lt)
+    {
+        $gallery_options["lightbox_arrows_offset"] = (int)$this->options["arrows_offset_" . $lt];
+        $gallery_options["lightbox_overlay_color"] = "#" . $this->options["overlay_color_" . $lt];
+        $gallery_options["lightbox_overlay_opacity"] = $this->options["overlay_opacity_" . $lt] / 100;
+        $gallery_options["lightbox_top_panel_opacity"] = $this->options["top_panel_opacity_" . $lt] / 100;
+        $gallery_options["lightbox_show_numbers"] = $this->options["show_numbers_" . $lt];
+        $gallery_options["lightbox_numbers_size"] = $this->options["number_size_" . $lt];
+        $gallery_options["lightbox_numbers_color"] = "#" . $this->options["number_color_" . $lt];
+        $gallery_options["lightbox_slider_image_border_width"] = $this->options["image_border_width_" . $lt];
+        $gallery_options["lightbox_slider_image_border_color"] = "#" . $this->options["image_border_color_" . $lt];
+        $gallery_options["lightbox_slider_image_border_radius"] = (int)$this->options["image_border_radius_" . $lt];
+        $gallery_options["lightbox_slider_image_shadow"] = $this->options["image_shadow_" . $lt];
+        $gallery_options["lightbox_slider_control_swipe"] = $this->options["swipe_control_" . $lt];
+        $gallery_options["lightbox_slider_control_zoom"] = $this->options["zoom_control_" . $lt];
+        $gallery_options["lightbox_slider_image_border"] = true;
+
+        $gallery_options["lightbox_show_textpanel"] = $this->options["show_text_panel_" . $lt];
+        $gallery_options["lightbox_textpanel_enable_title"] = $this->options["enable_title_" . $lt];
+        $gallery_options["lightbox_textpanel_enable_description"] = $this->options["enable_desc_" . $lt];
+        $gallery_options["lightbox_textpanel_padding_top"] = (int)$this->options["texpanel_paddind_vert_" . $lt];
+        $gallery_options["lightbox_textpanel_padding_bottom"] = (int)$this->options["texpanel_paddind_vert_" . $lt];
+        $gallery_options["lightbox_textpanel_padding_right"] = (int)$this->options["texpanel_paddind_hor_" . $lt];
+        $gallery_options["lightbox_textpanel_padding_left"] = (int)$this->options["texpanel_paddind_hor_" . $lt];
+        $gallery_options["lightbox_textpanel_title_color"] = "#" . $this->options["title_color_" . $lt];
+        $gallery_options["lightbox_textpanel_title_text_align"] = $this->options["text_position_" . $lt];
+        $gallery_options["lightbox_textpanel_title_font_size"] = $this->options["title_font_size_" . $lt];
+        $gallery_options["lightbox_textpanel_desc_color"] = "#" . $this->options["desc_color_" . $lt];
+        $gallery_options["lightbox_textpanel_desc_text_align"] = $this->options["text_position_" . $lt];
+        $gallery_options["lightbox_textpanel_desc_font_size"] = $this->options["desc_font_size_" . $lt];
+
+        return $gallery_options;
     }
 
 }

@@ -21,7 +21,7 @@
 
 
                 <input type="hidden" name="gdgallery_images_id_gallery" value="<?= $id_gallery ?>">
-                <table class="quick_edit_table grid" id="sort">
+                <table class="quick_edit_table grid" id="gdgallery_sort">
                     <tbody>
                     <?php
                     if (!empty($items)) {

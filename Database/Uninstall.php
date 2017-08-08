@@ -9,21 +9,26 @@
 
 namespace GDGallery\Database;
 
+//use GDGallery;
+
 class Uninstall
 {
     public static function init()
     {
-
-        if (\GDGallery()->settings->getOption('RemoveTablesUninstall') == "off") {
+        if (GDGallery()->settings->getOption('RemoveTablesUninstall') == "on") {
             self::run();
         }
     }
 
-    private function run()
+    public static function run()
     {
         global $wpdb;
-        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgallerygalleries`");
-        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgalleryimages`");
+
+        delete_option("gdgallery_version");
+
         $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgallerysettings`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgalleryimages`");
+        $wpdb->query("DROP TABLE IF EXISTS `" . $wpdb->prefix . "gdgallerygalleries`");
+
     }
 }

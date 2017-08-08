@@ -36,6 +36,10 @@ jQuery('input#select-all').on('change', function () {
 
 jQuery(document).ready(function () {
 
+    setTimeout(function () {
+        jQuery("#gdgallery_gallery_style").show();
+    }, 0);
+
 
     /* remove,read checked forms */
 
@@ -423,7 +427,7 @@ jQuery(document).ready(function ($) {
             });
         };
 
-    $("#sort tbody").sortable({
+    $("#gdgallery_sort tbody").sortable({
         helper: fixHelperModified,
         stop: updateIndex
     }).disableSelection();

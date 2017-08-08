@@ -29,6 +29,7 @@ if (in_array($view, array(0, 1))) {
 
 ?>
 <div class="gdgallery-gallery-container" id="gdgallery-container-<?= $id_gallery ?>" data-id="<?= $id_gallery ?>">
+    <h3><?= $gallery_data->name ?></h3>
     <?php \GDGallery\Helpers\View::render('frontend/view-' . $view . '.php', compact('gallery_data', 'images', 'options'));
     \GDGallery\Helpers\View::render('frontend/view-' . $view . '.css.php', compact('id_gallery', 'gallery_data', 'options'));
     ?>

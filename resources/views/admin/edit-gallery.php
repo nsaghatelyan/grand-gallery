@@ -82,7 +82,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                         <span class="spinner"></span>
 
                     </ul>
-                    <div id="gdgallery_gallery_style">
+                    <div id="gdgallery_gallery_style" style="display: none;">
                         <?php foreach ($gallery->getViewStyles() as $key => $view): ?>
                             <div class="gdgallery_view_item <?php if ($gallery_data->view_type == $key) echo "checked_view" ?>">
                                 <label>

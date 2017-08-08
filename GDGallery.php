@@ -6,6 +6,7 @@ use GDGallery\Models\Settings;
 use GDGallery\Controllers\Admin\AdminController;
 use GDGallery\Controllers\Frontend\FrontendController;
 use GDGallery\Controllers\Admin\AdminAssetsController;
+use GDGALLERY\Database;
 use GDGallery\Controllers\Admin\AjaxController as AdminAjax;
 use GDGallery\Controllers\Frontend\AjaxController as FrontAjax;
 
@@ -34,6 +35,9 @@ if (!class_exists('GDGallery')) :
          * @var array
          */
         private $migrationClasses;
+
+
+        private $uninstallClasses;
 
         /**
          * @var Settings
@@ -76,9 +80,20 @@ if (!class_exists('GDGallery')) :
                 'GDGallery\Database\Migrations\CreateImageTable',
                 'GDGallery\Database\Migrations\CreateSettingsTable'
             );
+
+            $this->uninstallClasses = 'GDGallery\Database\Uninstall';
             add_action('init', array($this, 'init'), 0);
-            register_uninstall_hook(__FILE__, array('GDGallery\Database\Uninstall', 'init'));
+
         }
+
+        /*public function dropTables()
+        {
+            if (method_exists($this->uninstallClasses, 'init')) {
+                call_user_func(array($this->uninstallClasses, 'init'));
+            } else {
+                throw new \Exception('Specified Uninstall class ' . $this->uninstallClasses . ' does not have "init" method');
+            }
+        }*/
 
         public function constants()
         {
@@ -106,7 +121,6 @@ if (!class_exists('GDGallery')) :
             $this->checkVersion();
 
             $this->settings = new Settings();
-
 
             if (defined('DOING_AJAX')) {
 
