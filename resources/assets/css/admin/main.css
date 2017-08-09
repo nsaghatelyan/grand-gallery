@@ -1241,6 +1241,7 @@ html .ui-button.ui-state-disabled:active {
     line-height: 17px;
     top: 15px;
     color: #454545 !important;
+    box-shadow: none !important;
 }
 
 .single_gallery_preview:hover {
@@ -1748,7 +1749,7 @@ ul.gdgallery_general_settings {
 .switch_gallery {
     display: flex;
     margin: 0px;
-    padding: 80px 10px 0 30px;
+    padding: 80px 190px 0 30px;
     background-color: #FFF;
     border-bottom: 2px solid #e9ebf3;
     margin-bottom: 40px;

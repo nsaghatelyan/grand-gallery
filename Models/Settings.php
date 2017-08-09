@@ -244,8 +244,7 @@ class Settings
         'arrows_margin_grid' => '50',
         'arrows_space_between_grid' => '20',
         'nav_position_grid' => 'center',
-        'nav_offset_greed' => '0',
-
+        'nav_offset_grid' => '0',
 
         /************* Slider ***********/
         'width_slider' => '900',
@@ -391,8 +390,41 @@ class Settings
 
     }
 
+    public function getMatchedOptions($view)
+    {
+        if ($this->options["show_title_" . $view] == 0) {
+            $gallery_options["tile_enable_textpanel"] = true;
+            $gallery_options["tile_textpanel_always_on"] = true;
+        } elseif ($this->options["show_title_" . $view] == 1) {
+            $gallery_options["tile_enable_textpanel"] = true;
+        }
+        $gallery_options["tile_textpanel_title_text_align"] = $this->options["title_position_" . $view];
+        $gallery_options["tile_textpanel_title_font_size"] = $this->options["title_size_" . $view];
+        $gallery_options["tile_textpanel_title_color"] = "#" . $this->options["title_color_" . $view];
+        $gallery_options["tile_textpanel_bg_color"] = "#" . $this->options["title_background_color_" . $view];
+        $gallery_options["tile_textpanel_bg_opacity"] = $this->options["title_background_opacity_" . $view] / 100;
+        $gallery_options["tile_enable_border"] = true;
+        $gallery_options["tile_border_width"] = $this->options["border_width_" . $view];
+        $gallery_options["tile_border_color"] = "#" . $this->options["border_color_" . $view];
+        $gallery_options["tile_border_radius"] = $this->options["border_radius_" . $view];
+        $gallery_options["tile_enable_overlay"] = $this->options["on_hover_overlay_" . $view];
+        $gallery_options["tile_enable_icons"] = $this->options["show_icons_" . $view];
+        $gallery_options["tile_enable_image_effect"] = true;
+        $gallery_options["tile_image_effect_type"] = $this->options["image_hover_effect_" . $view];
+        $gallery_options["tile_image_effect_reverse"] = $this->options["image_hover_effect_reverse_" . $view];
+        $gallery_options["tile_enable_shadow"] = $this->options["shadow_" . $view];
+        $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
+        $gallery_options["tile_as_link"] = $this->options["item_as_link_" . $view];
+        $gallery_options["tile_textpanel_appear_type"] = $this->options["title_appear_type_" . $view];
+        $gallery_options["tile_textpanel_position"] = $this->options["title_vertical_position_" . $view];
+        $gallery_options["tile_link_newpage"] = $this->options["link_new_tab_" . $view];
+
+        return $gallery_options;
+    }
+
     public function getLightboxOptions($lt)
     {
+        $gallery_options["lightbox_type"] = $lt;
         $gallery_options["lightbox_arrows_offset"] = (int)$this->options["arrows_offset_" . $lt];
         $gallery_options["lightbox_overlay_color"] = "#" . $this->options["overlay_color_" . $lt];
         $gallery_options["lightbox_overlay_opacity"] = $this->options["overlay_opacity_" . $lt] / 100;
@@ -423,6 +455,118 @@ class Settings
         $gallery_options["lightbox_textpanel_desc_font_size"] = $this->options["desc_font_size_" . $lt];
 
         return $gallery_options;
+    }
+
+
+    /*
+     * Unique options for Justified View
+     * */
+
+    public function getOptionsJustified()
+    {
+        $gallery_options["tiles_type"] = 'justified';
+        $gallery_options["tiles_justified_space_between"] = (int)$this->options["margin_justified"];
+
+        return $gallery_options;
+    }
+
+
+    /*
+     * Unique options for Tiles View
+     * */
+
+    public function getOptionsTiles()
+    {
+        $gallery_options["tiles_space_between_cols"] = (int)$this->options["margin_tiles"];
+        $gallery_options["tiles_col_width"] = (int)$this->options["col_width_tiles"];
+        $gallery_options["tiles_min_columns"] = $this->options["min_col_tiles"];
+
+        return $gallery_options;
+    }
+
+
+    /*
+     * Unique options for Carousel View
+     * */
+
+    public function getOptionsCarousel()
+    {
+        if ($this->options["show_background_carousel"] == 1) {
+            $gallery_options["gallery_background_color"] = "#" . $this->options["background_color_carousel"];
+        }
+
+        $gallery_options["carousel_space_between_tiles"] = (int)$this->options["margin_carousel"];
+        $gallery_options["tile_width"] = (int)$this->options["width_carousel"];
+        $gallery_options["tile_height"] = $this->options["height_carousel"];
+        $gallery_options["tile_enable_outline"] = false;
+        $gallery_options["theme_carousel_align"] = $this->options["position_carousel"];
+        $gallery_options["carousel_navigation_numtiles"] = (int)$this->options["nav_num_carousel"];
+        $gallery_options["carousel_scroll_duration"] = (int)$this->options["scroll_duration_carousel"];
+        $gallery_options["carousel_autoplay"] = $this->options["autoplay_carousel"];
+        $gallery_options["carousel_autoplay_timeout"] = $this->options["autoplay_timeout_carousel"];
+        $gallery_options["carousel_autoplay_direction"] = $this->options["autoplay_direction_carousel"];
+        $gallery_options["carousel_autoplay_pause_onhover"] = $this->options["autoplay_pause_hover_carousel"];
+        $gallery_options["theme_enable_navigation"] = $this->options["enable_nav_carousel"];
+        $gallery_options["theme_navigation_position"] = $this->options["nav_vertical_position_carousel"];
+        $gallery_options["theme_navigation_align"] = $this->options["nav_horisontal_position_carousel"];
+        $gallery_options["theme_navigation_enable_play"] = $this->options["paly_icon_carousel"];
+        $gallery_options["theme_space_between_arrows"] = $this->options["icon_space_carousel"];
+
+        return $gallery_options;
+    }
+
+
+    /*
+     * Unique options for Grid View
+     * */
+
+    public function getOptionsGrid()
+    {
+        $gallery_options["tile_width"] = (int)$this->options["width_grid"];
+        $gallery_options["tile_height"] = (int)$this->options["height_grid"];
+        $gallery_options["grid_space_between_cols"] = (int)$this->options["space_cols_grid"];
+        $gallery_options["grid_space_between_rows"] = (int)$this->options["space_rows_grid"];
+        $gallery_options["gallery_width"] = $this->options["gallery_width_grid"] . "%";
+        if ($this->options["gallery_bg_grid"] == 1) {
+            $gallery_options["gallery_background_color"] = "#" . $this->options["gallery_bg_color_grid"];
+        }
+        $gallery_options["theme_navigation_type"] = $this->options["nav_type_grid"];
+        $gallery_options["theme_bullets_margin_top"] = (int)$this->options["bullets_margin_grid"];
+        $gallery_options["theme_bullets_color"] = $this->options["bullets_color_grid"];
+        $gallery_options["bullets_space_between"] = (int)$this->options["bullets_space_between_grid"];
+        $gallery_options["theme_arrows_margin_top"] = (int)$this->options["arrows_margin_grid"];
+        $gallery_options["theme_space_between_arrows"] = (int)$this->options["arrows_space_between_grid"];
+        $gallery_options["theme_navigation_align"] = $this->options["nav_position_grid"];
+        $gallery_options["theme_navigation_offset_hor"] = (int)$this->options["nav_offset_grid"];
+        $gallery_options["grid_num_rows"] = (int)$this->options["num_rows_grid"];
+
+        return $gallery_options;
+    }
+
+    public function getOptionsByView($view)
+    {
+        $unique = array();
+        switch ($view) {
+            case "justified":
+                $unique = $this->getOptionsJustified();
+                break;
+            case "tiles":
+                $unique = $this->getOptionsTiles();
+                break;
+            case "carousel":
+                $unique = $this->getOptionsCarousel();
+                break;
+            case "grid":
+                $unique = $this->getOptionsGrid();
+                break;
+        }
+
+        $match = $this->getMatchedOptions($view);
+        $lightbox = $this->getLightboxOptions($this->options["lightbox_type_" . $view]);
+
+        $result = $unique + $match + $lightbox;
+
+        return $result;
     }
 
 }

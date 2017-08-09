@@ -1,16 +1,25 @@
 jQuery(document).ready(function () {
 
     jQuery(window).scroll(function () {
-        if (jQuery(this).scrollTop() >= 100) {
+        if (jQuery(this).scrollTop() >= 300) {
             if (jQuery(".settings-save-head").hasClass("settings-save-fixed") === false) {
                 jQuery(".settings-save-head").addClass("settings-save-fixed");
             }
+            $('.gdgallery_scrollup').fadeIn();
         }
         else {
             if (jQuery(".settings-save-head ").hasClass("settings-save-fixed")) {
                 jQuery(".settings-save-head").removeClass("settings-save-fixed");
             }
+            $('.gdgallery_scrollup').fadeOut();
         }
+    });
+
+    $('.gdgallery_scrollup').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
     });
 
     var doingAjax = false;

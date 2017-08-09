@@ -27,7 +27,6 @@ class Gallery extends Model
 
     private $Items;
 
-
     private $Gallery;
 
     private $View_style;
@@ -46,6 +45,7 @@ class Gallery extends Model
     {
 
         $this->setID($args["id_gallery"]);
+
         $this->setViewStyles();
 
         parent::__construct($args);

@@ -41,6 +41,7 @@
             </div>
         </form>
 
+        <div class="gdgallery_scrollup"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
     </div>
 </div>
 

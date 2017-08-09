@@ -1814,7 +1814,7 @@ class SettingsController
                 'section' => 'components_grid',
                 'help' => __('Navigation position', 'gdgallery')
             ),
-            'nav_offset_greed' => array(
+            'nav_offset_grid' => array(
                 'type' => 'number',
                 'label' => __('Navigation Offset', 'gdgallery'),
                 'section' => 'components_grid',

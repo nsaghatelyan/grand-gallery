@@ -67,9 +67,6 @@ if ($options["playlist_slider"] == 1) {
 
 $json = json_encode($gallery_options);
 
-//wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-slider.js", array('jquery'), false, true);
-//wp_enqueue_script("gdgalleryoneandothers", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-grid.js", array('jquery'), false, true);
-
 ?>
 
 

@@ -20,9 +20,7 @@ class ShortcodeController
             throw new \Exception('"id" parameter is required and must be not negative integer.');
         }
 
-
         do_action('gdgalleryShortcodeScripts', $attrs['id_gallery']);
-
 
         return self::show($attrs['id_gallery']);
     }
