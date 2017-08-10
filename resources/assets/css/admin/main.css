@@ -185,7 +185,7 @@ body {
 .gdgallery_nav li.active:after {
     content: '';
     /*background-color: #23c58a;*/
-    background-color: #5f7df5;
+    /*background-color: #5f7df5;*/
     display: block;
     height: 5px;
     border-radius: 2px;
@@ -1201,11 +1201,15 @@ html .ui-button.ui-state-disabled:active {
     padding: 0 .2em 0 0 !important;
 }
 
-.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+/*.ui-tabs .ui-tabs-nav li.ui-tabs-active {
     border-bottom: 4px solid #5f7df5 !important;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
+
+.ui-tabs.ui-tabs-vertical .ui-tabs-nav li:hover {
+    border-bottom: 4px solid #5f7df5 !important;
+}*/
 
 .ui-tabs .ui-tabs-nav li.ui-tabs-active a {
     color: #333333 !important;
@@ -1224,11 +1228,7 @@ html .ui-button.ui-state-disabled:active {
 
 .ui-tabs.ui-tabs-vertical .ui-tabs-nav li {
     margin: 0px !important;
-    top: 3px !important;
-}
-
-.ui-tabs.ui-tabs-vertical .ui-tabs-nav li:hover {
-    border-bottom: 4px solid #5f7df5 !important;
+    top: 3px;
 }
 
 .single_gallery_preview {
@@ -1244,9 +1244,55 @@ html .ui-button.ui-state-disabled:active {
     box-shadow: none !important;
 }
 
-.single_gallery_preview:hover {
-    border-bottom: 4px solid #5f7df5;
+.gdgallery_tabs {
+    position: relative;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
+
+.gdgallery_tabs:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.Tabs__tab {
+    float: left;
+    text-align: center;
+}
+
+.Tabs__tab:nth-child(2).gdgallery_active_Tab ~ .Tabs__presentation-slider {
+    left: 140px;
+}
+
+.Tabs__tab:nth-child(3).gdgallery_active_Tab ~ .Tabs__presentation-slider {
+    left: calc(143px * 2);
+}
+
+.Tabs__tab:nth-child(4).gdgallery_active_Tab ~ .Tabs__presentation-slider {
+    left: calc(140px * 3);
+}
+
+.Tabs__presentation-slider {
+    position: absolute !important;
+    top: 45px !important;
+    left: 0;
+    width: 135px;
+    height: 4px;
+    background-color: #4A66F4;
+    -webkit-transition: left .25s;
+    transition: left .25s;
+}
+
+.Tabs__presentation-slider:before {
+    background-color: #4A66F4;
+}
+
+/*.single_gallery_preview:hover {
+    border-bottom: 4px solid #5f7df5;
+}*/
 
 .ui-tabs.ui-tabs-vertical .ui-tabs-panel {
     float: left !important;

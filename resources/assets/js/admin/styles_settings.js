@@ -24,6 +24,8 @@ jQuery(document).ready(function () {
 
     var doingAjax = false;
     jQuery('#settings_form').on('submit', function (e) {
+
+
         e.preventDefault();
 
         if (doingAjax) return false;
@@ -36,7 +38,6 @@ jQuery(document).ready(function () {
                 formdata: formData
             };
 
-        console.log(formData);
 
         jQuery.ajax({
             url: ajaxurl,
@@ -55,6 +56,8 @@ jQuery(document).ready(function () {
         }).done(function (response) {
             if (response === 'ok') {
                 toastr.success('Saved Successfully');
+                FrameID = "test_frame";
+                document.getElementById(FrameID).contentDocument.location.reload(true);
             } else {
                 toastr.error('Error while saving');
             }

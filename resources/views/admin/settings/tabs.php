@@ -41,6 +41,9 @@
             </div>
         </form>
 
+        <div class="iframe_section">
+            <iframe id="test_frame" src="http://127.0.0.2:3000/?gdgallery_preview=1"></iframe>
+        </div>
         <div class="gdgallery_scrollup"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
     </div>
 </div>
@@ -49,3 +52,22 @@
 <script type="text/javascript">
     $("#settings_tab").tabs();
 </script>
+
+<style>
+    .ui-tabs-panel {
+        width: 35% !important;
+    }
+
+    .iframe_section {
+        width: 55%;
+        border: 1px solid;
+        position: fixed;
+        right: 0;
+        top: 14%;
+    }
+
+    .iframe_section iframe {
+        width: 100%;
+        height: 700px;
+    }
+</style>

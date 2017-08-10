@@ -30,6 +30,7 @@ if (in_array($gallery_data->view_type, array(0, 1))) {
 $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgallery_hidden";
 
 ?>
+
 <ul class="switch_gallery">
     <?php foreach ($list as $val): ?>
         <?php if ($val["id_gallery"] == $id): ?>
@@ -60,19 +61,20 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                 <div style="clear: both"></div>
                 <div class="settings-toogled-container">
 
-                    <ul>
-                        <li>
+                    <ul class="gdgallery_tabs">
+                        <li class="Tabs__tab gdgallery_active_Tab gdgallery_Tab">
                             <a href="#gdgallery_gallery_style"><?php _e('Gallery Style'); ?></a>
                         </li>
-                        <li>
+                        <li class="Tabs__tab gdgallery_Tab">
                             <a href="#gdgallery_general_settings"><?php _e('General Settings'); ?></a>
                         </li>
-                        <li>
+                        <li class="Tabs__tab gdgallery_Tab">
                             <a href="#gdgallery_custom_css"><?php _e('Custom CSS'); ?></a>
                         </li>
-                        <li>
+                        <li class="Tabs__tab gdgallery_Tab">
                             <a href="#gdgallery_get_shortcode"><?php _e('Get shortcode'); ?></a>
                         </li>
+                        <li class="Tabs__presentation-slider" role="presentation"></li>
                         <a href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"
                            class="single_gallery_preview" target="_blank"><?php _e('Preview Changes'); ?> <img
                                     src="<?= GDGALLERY_IMAGES_URL ?>icons/preview.png"></a>
@@ -230,6 +232,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
 
 <script>
+
+
     jQuery('#gdgallery_tabs')
         .tabs()
         .addClass('ui-tabs-vertical ui-helper-clearfix');

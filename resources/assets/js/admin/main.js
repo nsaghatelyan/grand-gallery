@@ -1,3 +1,18 @@
+var tabs = document.getElementsByClassName('gdgallery_Tab');
+
+Array.prototype.forEach.call(tabs, function (tab) {
+    tab.addEventListener('click', setActiveClass);
+});
+
+function setActiveClass(evt) {
+    Array.prototype.forEach.call(tabs, function (tab) {
+        tab.classList.remove('gdgallery_active_Tab');
+    });
+
+    evt.currentTarget.classList.add('gdgallery_active_Tab');
+}
+
+
 jQuery(function () {
     jQuery("#fields-list").sortable({
         connectWith: "div",
