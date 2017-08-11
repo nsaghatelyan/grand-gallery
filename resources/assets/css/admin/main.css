@@ -1282,6 +1282,7 @@ html .ui-button.ui-state-disabled:active {
     width: 135px;
     height: 4px;
     background-color: #4A66F4;
+    border-radius: 5px;
     -webkit-transition: left .25s;
     transition: left .25s;
 }

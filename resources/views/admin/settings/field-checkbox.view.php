@@ -32,7 +32,7 @@ if (isset($field['html_class']) && !empty($field['html_class'])) {
             </span>
        <?php endif;
        ?></span>
-    <input type="hidden" name="settings[<?php echo $fieldId; ?>]" value="false"/>
+    <input type="hidden" name="settings[<?php echo $fieldId; ?>]" <?= $class ?> value="false"/>
 
     <span class="switch">
         <input type="checkbox" name="settings[<?php echo $fieldId; ?>]" value="true" <?php checked(true, $value); ?> />

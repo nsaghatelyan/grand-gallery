@@ -234,9 +234,9 @@ class SettingsController
             ),
             'show_icons_justified' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Icons', 'gdgallery'),
+                'label' => __('Show Lightbox Icon', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Show Icons', 'gdgallery')
+                'help' => __('Show Lightbox Icon', 'gdgallery')
             ),
             'show_link_icon_justified' => array(
                 'type' => 'checkbox',
@@ -248,7 +248,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image as Link', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Image as Link (disable Lightbox)', 'gdgallery')
+                'help' => __('Image as Link (disable Lightbox)', 'gdgallery'),
             ),
             'link_new_tab_justified' => array(
                 'type' => 'checkbox',
@@ -629,9 +629,9 @@ class SettingsController
             ),
             'show_icons_tiles' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Icons', 'gdgallery'),
+                'label' => __('Show Lightbox Icon', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Show Icons', 'gdgallery')
+                'help' => __('Show Lightbox Icon', 'gdgallery')
             ),
             'show_link_icon_tiles' => array(
                 'type' => 'checkbox',
@@ -1046,9 +1046,9 @@ class SettingsController
             ),
             'show_icons_carousel' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Icons', 'gdgallery'),
+                'label' => __('Show Lightbox Icon', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Show Icons', 'gdgallery')
+                'help' => __('Show Lightbox Icon', 'gdgallery')
             ),
             'show_link_icon_carousel' => array(
                 'type' => 'checkbox',
@@ -1698,9 +1698,9 @@ class SettingsController
             ),
             'show_icons_grid' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Icons', 'gdgallery'),
+                'label' => __('Show Lightbox Icon', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Show Icons', 'gdgallery')
+                'help' => __('Show Lightbox Icon', 'gdgallery')
             ),
             'show_link_icon_grid' => array(
                 'type' => 'checkbox',

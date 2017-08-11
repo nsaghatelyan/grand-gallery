@@ -30,6 +30,7 @@
                     <?php foreach ($tabs as $key => $tab): ?>
                         <li><a href="#<?= $key ?>"><?= $tab["title"] ?></a></li>
                     <?php endforeach; ?>
+                    <a href="#" id="realtimepreview" data-enable="off">Real Time preview OFF</a>
                 </ul>
                 <?php foreach ($tabs as $id => $tab): ?>
                     <?php \GDGallery\Helpers\View::render('admin/settings/styles.php', compact('sections', 'id', 'fields')); ?>
@@ -42,7 +43,7 @@
         </form>
 
         <div class="iframe_section">
-            <iframe id="test_frame" src="http://127.0.0.2:3000/?gdgallery_preview=1"></iframe>
+            <iframe id="test_frame" src="http://127.0.0.2:3000/?gdgallery_preview=1#gdgallery-container-1"></iframe>
         </div>
         <div class="gdgallery_scrollup"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
     </div>
@@ -55,15 +56,21 @@
 
 <style>
     .ui-tabs-panel {
-        width: 35% !important;
+        width: auto;
+    }
+
+    #realtimepreview {
+        float: right;
+        margin-right: 20px;
     }
 
     .iframe_section {
+        display: none;
         width: 55%;
         border: 1px solid;
         position: fixed;
-        right: 0;
-        top: 14%;
+        right: 20px;
+        top: 43%;
     }
 
     .iframe_section iframe {
