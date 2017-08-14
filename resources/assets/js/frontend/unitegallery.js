@@ -11203,7 +11203,9 @@ function UGTileDesign() {
 
                     htmlAdd += "<a href='" + objItem.link + "'" + linkTarget + " class='ug-tile-icon ug-icon-link'></a>";
                 } else {
-                    htmlAdd += "<div class='ug-tile-icon ug-icon-link' style='display:none'></div>";
+                    if (objItem.link) {
+                        htmlAdd += "<div class='ug-tile-icon ug-icon-link' style='display:none'></div>";
+                    }
                 }
 
             }

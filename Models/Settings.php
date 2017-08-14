@@ -204,7 +204,7 @@ class Settings
         'enable_nav_carousel' => 'b:1;',
         'nav_vertical_position_carousel' => 'bottom',
         'nav_horisontal_position_carousel' => 'center',
-        'paly_icon_carousel' => 'b:1;',
+        'play_icon_carousel' => 'b:1;',
         'icon_space_carousel' => '20',
 
 
@@ -410,16 +410,17 @@ class Settings
         $gallery_options["tile_enable_overlay"] = $this->options["on_hover_overlay_" . $view];
         $gallery_options["tile_enable_image_effect"] = true;
         $gallery_options["tile_image_effect_type"] = $this->options["image_hover_effect_" . $view];
-        if ($this->options["image_hover_effect_reverse_" . $view] === true) {
-            $gallery_options["tile_image_effect_reverse"] = false;
-        } else {
-            $gallery_options["tile_image_effect_reverse"] = true;
-        }
+        $gallery_options["tile_image_effect_reverse"] = ($this->options["image_hover_effect_reverse_" . $view] === true) ? false : true;
         $gallery_options["tile_enable_shadow"] = $this->options["shadow_" . $view];
-        
-        $gallery_options["tile_enable_icons"] = $this->options["show_icons_" . $view];
-        $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
-        $gallery_options["tile_as_link"] = $this->options["item_as_link_" . $view];
+
+        if ($this->options["item_as_link_" . $view] == true) {
+            $gallery_options["tile_as_link"] = true;
+            $gallery_options["tile_enable_icons"] = ($this->options["show_link_icon_" . $view] == true) ? true : false;
+        } else {
+            $gallery_options["tile_as_link"] = false;
+            $gallery_options["tile_enable_icons"] = $this->options["show_icons_" . $view];
+            $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
+        }
 
         $gallery_options["tile_textpanel_appear_type"] = $this->options["title_appear_type_" . $view];
         $gallery_options["tile_textpanel_position"] = $this->options["title_vertical_position_" . $view];
@@ -515,7 +516,7 @@ class Settings
         $gallery_options["theme_enable_navigation"] = $this->options["enable_nav_carousel"];
         $gallery_options["theme_navigation_position"] = $this->options["nav_vertical_position_carousel"];
         $gallery_options["theme_navigation_align"] = $this->options["nav_horisontal_position_carousel"];
-        $gallery_options["theme_navigation_enable_play"] = $this->options["paly_icon_carousel"];
+        $gallery_options["theme_navigation_enable_play"] = $this->options["play_icon_carousel"];
         $gallery_options["theme_space_between_arrows"] = $this->options["icon_space_carousel"];
 
         return $gallery_options;

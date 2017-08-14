@@ -30,7 +30,7 @@
                     <?php foreach ($tabs as $key => $tab): ?>
                         <li><a href="#<?= $key ?>"><?= $tab["title"] ?></a></li>
                     <?php endforeach; ?>
-                    <a href="#" id="realtimepreview" data-enable="off">Real Time preview OFF</a>
+                    <!--                    <a href="#" id="realtimepreview" data-enable="off">Real Time preview OFF</a>-->
                 </ul>
                 <?php foreach ($tabs as $id => $tab): ?>
                     <?php \GDGallery\Helpers\View::render('admin/settings/styles.php', compact('sections', 'id', 'fields')); ?>
@@ -42,9 +42,10 @@
             </div>
         </form>
 
-        <div class="iframe_section">
+        <!--<div class="iframe_section">
             <iframe id="test_frame" src="http://127.0.0.2:3000/?gdgallery_preview=1#gdgallery-container-1"></iframe>
-        </div>
+        </div>-->
+
         <div class="gdgallery_scrollup"><i class="fa fa-arrow-up" aria-hidden="true"></i></div>
     </div>
 </div>

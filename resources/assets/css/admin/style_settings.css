@@ -411,11 +411,24 @@
     box-shadow: 0px 1px 5px #404040;
 }
 
-.disabled_option {
+/*.disabled_option {
     background: #e4e2e2;
+}*/
+
+.disabled_option .input-wrap, .disabled_option .slider {
+    cursor: no-drop;
 }
 
 .disabled_option .switch .slider {
-    background-color: #cccccc !important;
+    background-color: #e0e0e0 !important;
 }
 
+.disabled_option input:checked + .slider:before {
+    -webkit-transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    transform: translateX(0px);
+}
+
+.disabled_option .settings-label {
+    color: #ccc !important;
+}

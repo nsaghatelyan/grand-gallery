@@ -1,40 +1,59 @@
 jQuery(document).ready(function () {
-    var link = jQuery("#item_as_link_justified input[type=checkbox]");
-    disableFiled(link);
 
-    var switcher = jQuery("#realtimepreview").data("enable");
-    jQuery("#realtimepreview").click(function (e) {
-        e.preventDefault();
 
-        if (switcher == "off") {
-            switcher = "on";
-            jQuery(this).html("Real Time preview ON");
-            jQuery(".iframe_section").show();
-            jQuery(".ui-tabs-panel").css("width", "35%");
+    /* var switcher = jQuery("#realtimepreview").data("enable");
+     jQuery("#realtimepreview").click(function (e) {
+     e.preventDefault();
+
+     if (switcher == "off") {
+     switcher = "on";
+     jQuery(this).html("Real Time preview ON");
+     jQuery(".iframe_section").show();
+     jQuery(".ui-tabs-panel").css("width", "35%");
+     }
+     else {
+
+     switcher = "off";
+     jQuery(this).html("Real Time preview OFF");
+     jQuery(".iframe_section").hide();
+     jQuery(".ui-tabs-panel").css("width", "auto");
+     }
+     })*/
+
+
+    var link_j = jQuery("#item_as_link_justified input[type=checkbox]");
+    var link_t = jQuery("#item_as_link_tiles input[type=checkbox]");
+    var link_c = jQuery("#item_as_link_carousel input[type=checkbox]");
+    var link_g = jQuery("#item_as_link_grid input[type=checkbox]");
+    disFiled(link_j, "justified");
+    disFiled(link_t, "tiles");
+    disFiled(link_c, "carousel");
+    disFiled(link_g, "grid");
+    disableFiled(link_j, "justified");
+    disableFiled(link_t, "tiles");
+    disableFiled(link_c, "carousel");
+    disableFiled(link_g, "grid");
+
+
+    function disFiled(em, view) {
+        if (em.prop("checked") === true) {
+            jQuery("#show_icons_" + view).addClass("disabled_option");
         }
         else {
-
-            switcher = "off";
-            jQuery(this).html("Real Time preview OFF");
-            jQuery(".iframe_section").hide();
-            jQuery(".ui-tabs-panel").css("width", "auto");
+            jQuery("#show_icons_" + view).removeClass("disabled_option");
         }
-    })
+    }
 
-
-    jQuery("#item_as_link_justified input[type=checkbox]").change(function () {
-        disableFiled(this);
-    });
-
-    function disableFiled(em) {
-        if (em.checked) {
-            jQuery("#show_icons_justified").addClass("disabled_option");
-            jQuery("#show_icons_justified .slider").hide();
-        }
-        else {
-            jQuery("#show_icons_justified").removeClass("disabled_option");
-            jQuery("#show_icons_justified .slider").show();
-        }
+    function disableFiled(em, view) {
+        em.change(function () {
+            disFiled(em, view);
+            /*if (em.prop("checked") === true) {
+             jQuery("#show_icons_" + view).addClass("disabled_option");
+             }
+             else {
+             jQuery("#show_icons_" + view).removeClass("disabled_option");
+             }*/
+        })
     }
 
     jQuery(window).scroll(function () {
