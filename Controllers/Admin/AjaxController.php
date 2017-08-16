@@ -2,10 +2,8 @@
 
 namespace GDGALLERY\Controllers\Admin;
 
-use GDGALLERY\Models\Form;
 use GDGallery\Models\Gallery;
 use GDGallery\Models\Settings;
-use GDGALLERY\Models\Submission;
 
 /**
  * Class AjaxController

@@ -22,7 +22,8 @@ $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $Ga
 
 ?>
 <tr>
-    <td class="form-id"><input type="checkbox" class="item-checkbox" name="items[]" value="<?php echo $GalleryId; ?>">
+    <td class="form-id">
+        <?= $gallery->getId(); ?>
     </td>
     <td class="form-name"><a
                 href="<?php echo $EditUrl; ?>"><?php echo esc_html(stripslashes($gallery->getName())); ?></a></td>

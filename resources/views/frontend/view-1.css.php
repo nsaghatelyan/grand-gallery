@@ -59,6 +59,13 @@ echo "<style>";
                       border-color: #<?= $options["load_more_hover_border_color_tiles"]; ?> !important;
                   }
 
+<?= $container ?> .gdgallery_load_more_space button,
+<?= $container ?> .gdgallery_load_more_space button:hover,
+<?= $container ?> .gdgallery_load_more_space button:active,
+<?= $container ?> .gdgallery_load_more_space button:focus{
+  outline: none !important;
+}
+
 <?=  $gallery_data->custom_css; ?>
 
 <?= "</style>" ?>

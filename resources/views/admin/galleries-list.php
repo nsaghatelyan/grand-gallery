@@ -25,8 +25,8 @@ $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_galler
         <table class="widefat striped fixed forms_table">
             <thead>
             <tr>
-                <th scope="col" id="header-id" style="width:10px"><span><input type="checkbox"
-                                                                               id="select-all"></span></span></th>
+                <th scope="col" id="header-id" style="width:10px"><span><?php _e('ID', GDGALLERY_TEXT_DOMAIN); ?></span>
+                </th>
                 <th scope="col" id="header-name" style="width:85px">
                     <span><?php _e('Name', GDGALLERY_TEXT_DOMAIN); ?></span>
                 </th>
