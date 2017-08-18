@@ -155,3 +155,7 @@
     z-index: 20;
     top: -10px;
 }
+
+.update-nag {
+    display: none !important;
+}

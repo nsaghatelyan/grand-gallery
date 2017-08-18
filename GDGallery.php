@@ -6,7 +6,6 @@ use GDGallery\Models\Settings;
 use GDGallery\Controllers\Admin\AdminController;
 use GDGallery\Controllers\Frontend\FrontendController;
 use GDGallery\Controllers\Admin\AdminAssetsController;
-use GDGALLERY\Database;
 use GDGallery\Controllers\Admin\AjaxController as AdminAjax;
 use GDGallery\Controllers\Frontend\AjaxController as FrontAjax;
 
@@ -35,9 +34,6 @@ if (!class_exists('GDGallery')) :
          * @var array
          */
         private $migrationClasses;
-
-
-        private $uninstallClasses;
 
         /**
          * @var Settings
@@ -81,7 +77,6 @@ if (!class_exists('GDGallery')) :
                 'GDGallery\Database\Migrations\CreateSettingsTable'
             );
 
-            $this->uninstallClasses = 'GDGallery\Database\Uninstall';
             add_action('init', array($this, 'init'), 0);
 
         }
@@ -165,13 +160,11 @@ if (!class_exists('GDGallery')) :
         public function setDefaultGallerySettings()
         {
             $settings = new Settings();
-            $options = $settings->getOptions();
+            $default_settings = $settings->getDefaultOptions();
+            set_time_limit(100);
 
-            if (empty($options)) {
-                $default_settings = $settings->getDefaultOptions();
-                foreach ($default_settings as $key => $value) {
-                    $settings->setOption($key, $value);
-                }
+            foreach ($default_settings as $key => $value) {
+                $settings->setOption($key, $value);
             }
         }
 

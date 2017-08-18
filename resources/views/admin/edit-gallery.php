@@ -37,8 +37,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
             <li class='active_gallery' id='gdgallery_active'>
                 <a href="#" id="gdgallery_edit_name"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
-                <a href="<?= $val["url"] ?>" id="gallery_active_name"><?= $val["name"] ?></a>
-                <input type='text' name='edit_name' id='edit_name_input' value='<?= $val["name"] ?>'
+                <a href="<?= $val["url"] ?>" id="gallery_active_name"><?= stripslashes($val["name"]) ?></a>
+                <input type='text' name='edit_name' id='edit_name_input' value='<?= stripslashes($val["name"]) ?>'
                        class="gdgallery_hidden">
             </li>
         <?php else: ?>

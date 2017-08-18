@@ -11,7 +11,6 @@ global $wpdb;
 
             <div class="gdgallery-list-header">
                 <button id="save-form-button"><?php _e('Save'); ?></button>
-
             </div>
 
             <form id="grand-gallery">
@@ -26,7 +25,7 @@ global $wpdb;
 
                         <div class="setting-row">
                             <label class="switcher switch-checkbox" for="remove-tables-uninstall">Remove all data on
-                                plugin uninstall<input type="hidden" name="RemoveTablesUninstall" value="off"/><input
+                                plugin deactivation<input type="hidden" name="RemoveTablesUninstall" value="off"/><input
                                         type="checkbox"
                                         class="switch-checkbox" <?php checked('on', \GDGallery()->settings->getOption('RemoveTablesUninstall')) ?>
                                         name="RemoveTablesUninstall" id="remove-tables-uninstall"><span
