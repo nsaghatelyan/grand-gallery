@@ -4,7 +4,6 @@ namespace GDGallery\Helpers;
 
 use GDGallery\Helpers\View;
 use GDGallery\Models\Gallery;
-use GDGallery\Core\Admin\Listener;
 
 /**
  * Class SettingsPageBuilder

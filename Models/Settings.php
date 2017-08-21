@@ -422,6 +422,10 @@ class Settings
             $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
         }
 
+        if($this->options["item_as_link_" . $view] == false && $this->options["show_icons_" . $view] == false && $this->options["show_link_icon_" . $view] == true){
+
+        }
+
         $gallery_options["tile_textpanel_appear_type"] = $this->options["title_appear_type_" . $view];
         $gallery_options["tile_textpanel_position"] = $this->options["title_vertical_position_" . $view];
         $gallery_options["tile_link_newpage"] = $this->options["link_new_tab_" . $view];

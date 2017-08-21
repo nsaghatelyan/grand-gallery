@@ -26,7 +26,7 @@ class FrontendAssetsController
     {
         $gallery = new Gallery(array('id_gallery' => $GalleryId));
 
-        wp_enqueue_script("gdgalleryunite", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/unitegallery.min.js", array('jquery'), false, true);
+        wp_enqueue_script("gdgalleryunite", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/unitegallery.js", array('jquery'), false, true);
         wp_enqueue_script('gdgalleryFrontJs', \GDGallery()->pluginUrl() . '/resources/assets/js/frontend/main.js', array('jquery'), false, true);
 
 

@@ -11242,8 +11242,39 @@ function UGTileDesign() {
         }  //if icons enabled
         else {		//if the icons don't enabled, set the tile clickable
 
-            if (g_options.tile_enable_action == true)
-                objThumbWrapper.addClass("ug-tile-clickable");
+            if (g_options.tile_enable_action == true) {
+                //objThumbWrapper.addClass("ug-tile-clickable");
+
+                // changes begin here
+                var htmlAdd2 = "";
+                if (objItem.link && g_options.tile_show_link_icon == true) {
+
+                    if (g_options.tile_as_link == false) {
+                        var linkTarget = "";
+                        if (g_options.tile_link_newpage == true)
+                            linkTarget = " target='_blank'";
+                        htmlAdd2 += "<a href='" + objItem.link + "'" + linkTarget + " class='ug-tile-icon ug-icon-link'></a>";
+                    }
+                }
+                else {
+                    objThumbWrapper.addClass("ug-tile-clickable");
+                }
+
+                var toSaparateIcon = g_temp.isSaparateIcons;
+                if (toSaparateIcon == false && objItem.type != "image" && g_temp.isVideoplayIconAlwaysOn == true)
+                    toSaparateIcon = true;
+
+                if (toSaparateIcon)		//put the icons on the thumb
+                    var objOverlay = objThumbWrapper;
+                else
+                    var objOverlay = objThumbWrapper.children(".ug-thumb-overlay");
+
+                objOverlay.append(htmlAdd2);
+
+                // changes end here
+
+
+            }
 
         }
 

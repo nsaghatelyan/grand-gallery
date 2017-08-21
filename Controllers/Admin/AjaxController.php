@@ -1,6 +1,6 @@
 <?php
 
-namespace GDGALLERY\Controllers\Admin;
+namespace GDGallery\Controllers\Admin;
 
 use GDGallery\Models\Gallery;
 use GDGallery\Models\Settings;
@@ -45,6 +45,10 @@ class AjaxController
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
         $gallery_data_arr = array();
         parse_str($gallery_data, $gallery_data_arr);
+
+        if (isset($gallery_data_arr["items"])) {
+            unset($gallery_data_arr["items"]);
+        }
 
         $gallery_data_arr["custom_css"] = str_replace("#container", "#gdgallery_container", $gallery_data_arr["custom_css"]);
         $gallery_data_arr["custom_css"] = sanitize_text_field($gallery_data_arr["custom_css"]);

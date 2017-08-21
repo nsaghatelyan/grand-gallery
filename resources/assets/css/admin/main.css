@@ -1464,6 +1464,10 @@ html .ui-button.ui-state-disabled:active {
     flex-wrap: wrap;
 }
 
+.gdgallery_item {
+    cursor: move;
+}
+
 .gdgallery_items_list .gdgallery_item, .gdgallery_add_new {
     flex-basis: 10%;
     position: relative;
