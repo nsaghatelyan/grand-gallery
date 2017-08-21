@@ -510,6 +510,7 @@ img.ug-sepia-effect {
     position: absolute;
     top: 200px;
     left: 100px;
+    z-index: 3;
 }
 
 .ug-zoompanel .ug-zoompanel-button {
@@ -1054,6 +1055,7 @@ img.ug-sepia-effect {
     height: 17px;
     cursor: pointer;
     background-position: 0px 0px;
+    z-index: 3;
 }
 
 .ug-button-play.ug-skin-default.ug-button-hover {
@@ -1077,6 +1079,7 @@ img.ug-sepia-effect {
     height: 16px;
     cursor: pointer;
     background-position: 0px 0px;
+    z-index: 3;
 }
 
 .ug-button-fullscreen.ug-skin-default.ug-button-hover {

@@ -17,6 +17,8 @@ if (isset($field['html_class']) && !empty($field['html_class'])) {
     }
     $class = "class = '" . $class_name . "'";
 }
+
+$max = (isset($field["max"])) ? $field["max"] : "";
 ?>
 
 <label class="input-wrap">
@@ -32,6 +34,6 @@ if (isset($field['html_class']) && !empty($field['html_class'])) {
             </span>
         <?php endif;
         ?></span>
-    <input type="number" min="0" name="settings[<?php echo $fieldId; ?>]"
+    <input type="number" min="0" <?php echo 'max="' . $max . '"'; ?> name="settings[<?php echo $fieldId; ?>]"
            value="<?php echo $value; ?>" <?php echo $placeholder; ?> />
 </label>

@@ -21,14 +21,33 @@ jQuery(document).ready(function () {
      })*/
 
 
+    var load_type = jQuery(".show_loader .input-wrap select")
+    var load_color = jQuery("#loader_color_slider .input-wrap select");
+
+    // jQuery(".show_loader .input-wrap").append("<div  class='loader-" + load_color.val() + load_type.val() + "' style='position: absolute; right: 150px;'></div>");
+    showLoader(load_type, load_color);
+
+    function showLoader(type, color) {
+        jQuery(".show_loader .input-wrap").append("<div id='show_loader' style='position: absolute; right: 150px;'><div  class='loader-" + color.val() + type.val() + "' ></div></div>");
+        type.change(function () {
+            type = jQuery(this).val();
+            color = jQuery("#loader_color_slider .input-wrap select").val();
+            jQuery("#show_loader").empty();
+            jQuery(".show_loader .input-wrap #show_loader").append("<div  class='loader-" + color + type + "' ></div>");
+        });
+
+        color.change(function () {
+            color = jQuery(this).val();
+            type = jQuery(".show_loader .input-wrap select").val();
+            jQuery("#show_loader").empty();
+            jQuery(".show_loader .input-wrap #show_loader").append("<div  class='loader-" + color + type + "' ></div>");
+        });
+    }
+
     var link_j = jQuery("#item_as_link_justified input[type=checkbox]");
     var link_t = jQuery("#item_as_link_tiles input[type=checkbox]");
     var link_c = jQuery("#item_as_link_carousel input[type=checkbox]");
     var link_g = jQuery("#item_as_link_grid input[type=checkbox]");
-    disFiled(link_j, "justified");
-    disFiled(link_t, "tiles");
-    disFiled(link_c, "carousel");
-    disFiled(link_g, "grid");
     disableFiled(link_j, "justified");
     disableFiled(link_t, "tiles");
     disableFiled(link_c, "carousel");
@@ -45,14 +64,9 @@ jQuery(document).ready(function () {
     }
 
     function disableFiled(em, view) {
+        disFiled(em, view);
         em.change(function () {
             disFiled(em, view);
-            /*if (em.prop("checked") === true) {
-             jQuery("#show_icons_" + view).addClass("disabled_option");
-             }
-             else {
-             jQuery("#show_icons_" + view).removeClass("disabled_option");
-             }*/
         })
     }
 

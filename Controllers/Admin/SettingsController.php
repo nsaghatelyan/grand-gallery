@@ -1109,7 +1109,8 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Number Of Navigated Elements ', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Set number of elements to scroll when user clicks on next/prev button', 'gdgallery')
+                'help' => __('Set number of elements to scroll when user clicks on next/prev button', 'gdgallery'),
+                "max" => 5
             ),
             'scroll_duration_carousel' => array(
                 'type' => 'number',
@@ -1174,9 +1175,9 @@ class SettingsController
             ),
             'play_icon_carousel' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Play Icon', 'gdgallery'),
+                'label' => __('Show Play/Pause Icon', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Turn play icon on/off', 'gdgallery')
+                'help' => __('Turn play/pause icon on/off', 'gdgallery')
             ),
             'icon_space_carousel' => array(
                 'type' => 'number',
@@ -1262,7 +1263,8 @@ class SettingsController
                     '7' => __('type 7', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose loader type', 'gdgallery')
+                'help' => __('Choose loader type', 'gdgallery'),
+                'html_class' => array("show_loader")
             ),
             'loader_color_slider' => array(
                 'type' => 'select',

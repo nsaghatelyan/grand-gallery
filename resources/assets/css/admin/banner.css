@@ -156,6 +156,11 @@
     top: -10px;
 }
 
-.update-nag {
+.update-nag,
+.notice,
+.notice-success,
+.notice-alert,
+.notice-danger,
+.notice-warning {
     display: none !important;
 }
