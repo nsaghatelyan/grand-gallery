@@ -587,6 +587,22 @@ function gdgalleryAddItem(data, type) {
     });
 }
 
+function copyToClipboard(elementId) {
+    var aux = document.createElement("input");
+    var code = document.getElementById(elementId).innerHTML;
+    code = code.replace("&lt;", "<");
+    code = code.replace("&gt;", ">");
+    code = code.replace("<br>", "");
+    code = code.replace("<br>", "");
+    aux.setAttribute("value", code);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+
+    document.body.removeChild(aux);
+
+}
+
 
 
 

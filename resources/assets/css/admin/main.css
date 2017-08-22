@@ -1842,6 +1842,28 @@ ul.gdgallery_general_settings {
     margin-left: 5px;
 }
 
+.copy_shortcode {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.copy_shortcode,
+.copy_shortcode:hover,
+.copy_shortcode:active,
+.copy_shortcode:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.copy_shortcode:hover i {
+    color: #bf7e01;
+}
+
+.copy_shortcode i {
+    color: #da9001;
+}
+
 @media all and (max-width: 785px) {
     .gdgallery_select_all_items input[type=checkbox] {
         width: 16px;

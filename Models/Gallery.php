@@ -31,8 +31,6 @@ class Gallery extends Model
 
     private $View_style;
 
-    private $PostsPerPage;
-
     private $cache = array();
 
     private $DisplayTitle;
@@ -46,7 +44,7 @@ class Gallery extends Model
 
         $this->setID($args["id_gallery"]);
 
-        $this->setViewStyles();
+//        $this->setViewStyles();
 
         parent::__construct($args);
 
@@ -461,13 +459,9 @@ class Gallery extends Model
             array("Tiles", GDGALLERY_IMAGES_URL . "icons/view/tiles_gray.png"),
             array("Carousel", GDGALLERY_IMAGES_URL . "icons/view/carousel_gray.png"),
             array("Slider", GDGALLERY_IMAGES_URL . "icons/view/slider_gray.png"),
-            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid_gray.png"),
-            /*array("One and others", GDGALLERY_IMAGES_URL . "icons/view/slider_horizontal.png")
-             array("Container Popup", GDGALLERY_IMAGES_URL . "icons/view/popup.png"),
-             array("Collapse", GDGALLERY_IMAGES_URL . "icons/view/collapse.png"),
-             array("Timeline", GDGALLERY_IMAGES_URL . "icons/view/timeline.png"),
-             array("Masonry", GDGALLERY_IMAGES_URL . "icons/view/masonry.png")*/
+            array("Grid", GDGALLERY_IMAGES_URL . "icons/view/grid_gray.png")
         );
+
     }
 
     public

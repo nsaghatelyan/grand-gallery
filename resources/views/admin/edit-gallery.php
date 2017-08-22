@@ -8,6 +8,8 @@ use GDGallery\Controllers\Frontend\GalleryPreviewController as Preview;
 
 global $wpdb;
 
+$gallery->setViewStyles();
+
 $items = $gallery->getItems();
 
 $gallery_data = $gallery->getGallery();
@@ -48,7 +50,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
         <?php endif; ?>
     <?php endforeach; ?>
     <li class="add_gallery_li">
-        <a href="<?= $new_gallery_link ?>">ADD GALLERY <i class="fa fa-plus" aria-hidden="true"></i></a>
+        <a href="<?= $new_gallery_link ?>"><?= __('ADD GALLERY', 'gdgallery') ?> <i class="fa fa-plus"
+                                                                                    aria-hidden="true"></i></a>
     </li>
 </ul>
 <form action="admin.php?page=gdgallery&id=<?php echo $id; ?>&save_data_nonce=<?php echo $save_data_nonce; ?>"
@@ -63,22 +66,23 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
                     <ul class="gdgallery_tabs">
                         <li class="Tabs__tab gdgallery_active_Tab gdgallery_Tab">
-                            <a href="#gdgallery_gallery_style"><?php _e('Gallery Style'); ?></a>
+                            <a href="#gdgallery_gallery_style"><?php _e('Gallery Style', 'gdgallery'); ?></a>
                         </li>
                         <li class="Tabs__tab gdgallery_Tab">
-                            <a href="#gdgallery_general_settings"><?php _e('General Settings'); ?></a>
+                            <a href="#gdgallery_general_settings"><?php _e('General Settings', 'gdgallery'); ?></a>
                         </li>
                         <li class="Tabs__tab gdgallery_Tab">
-                            <a href="#gdgallery_custom_css"><?php _e('Custom CSS'); ?></a>
+                            <a href="#gdgallery_custom_css"><?php _e('Custom CSS', 'gdgallery'); ?></a>
                         </li>
                         <li class="Tabs__tab gdgallery_Tab">
-                            <a href="#gdgallery_get_shortcode"><?php _e('Get shortcode'); ?></a>
+                            <a href="#gdgallery_get_shortcode"><?php _e('Get shortcode', 'gdgallery'); ?></a>
                         </li>
                         <li class="Tabs__presentation-slider" role="presentation"></li>
-                        <a href="<?php echo \GDGallery\Controllers\Frontend\GalleryPreviewController::previewUrl($gallery->getId(), false); ?>"
-                           class="single_gallery_preview" target="_blank"><?php _e('Preview Changes'); ?> <img
+                        <a href="<?php echo Preview::previewUrl($gallery->getId(), false); ?>"
+                           class="single_gallery_preview" target="_blank"><?php _e('Preview Changes', 'gdgallery'); ?>
+                            <img
                                     src="<?= GDGALLERY_IMAGES_URL ?>icons/preview.png"></a>
-                        <input type="submit" value="Save"
+                        <input type="submit" value="<?= _e('Save', 'gdgallery'); ?>"
                                id="gdgallery-save-buttom"
                                class="gdgallery-save-buttom gdgallery-save-all">
                         <span class="spinner"></span>
@@ -108,21 +112,21 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                         </div>
                         <ul class="gdgallery_general_settings">
                             <li class="gdgallery_display_type_section <?= $display_opt ?>">
-                                <h4>Display Type</h4>
+                                <h4><?= _e('Display Type', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type">
                                     <option value="0" <?php if ($gallery_data->display_type == 0) echo "selected" ?>>
-                                        Show All
+                                        <?= _e('Show All', 'gdgallery'); ?>
                                     </option>
                                     <option value="1" <?php if ($gallery_data->display_type == 1) echo "selected" ?>>
-                                        Load more
+                                        <?= _e('Load more', 'gdgallery'); ?>
                                     </option>
                                     <option value="2" <?php if ($gallery_data->display_type == 2) echo "selected" ?>>
-                                        Pagination
+                                        <?= _e('Pagination', 'gdgallery'); ?>
                                     </option>
                                 </select>
                             </li>
                             <li class="gdgallery_items_per_page_section <?php if ($gallery_data->display_type == 0) echo "gdgallery_hidden" ?>  <?= $display_opt ?>">
-                                <h4>Items Per Page</h4>
+                                <h4>  <?= _e('Items Per Page', 'gdgallery'); ?></h4>
                                 <input type="number" min="0" max="100" name="gdgallery_items_per_page"
                                        id="gdgallery_items_per_page" class="gdgallery_items_per_page"
                                        value="<?= $gallery_data->items_per_page ?>">
@@ -147,24 +151,32 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                     <div id="gdgallery_get_shortcode">
                         <div class="gdgallery_shortcode_types">
                             <div class="gdgallery_example">
-                                <h3>Shortcode</h3>
-                                <p>Copy and paste this shortcode into your posts or pages.</p>
+                                <h3> <?= _e('Shortcode', 'gdgallery'); ?></h3>
+                                <p> <?= _e('Copy and paste this shortcode into your posts or pages.', 'gdgallery'); ?></p>
                                 <div class="gdgallery_highlighted">
-                                    [gdgallery_gallery id_gallery=<?= $id ?>]
+                                    <span id="gdgallery_editor_code">[gdgallery_gallery id_gallery=<?= $id ?>]</span>
+                                    <a href="#" onclick="copyToClipboard('gdgallery_editor_code')"
+                                       class="copy_shortcode" title="<?= _e('Copy shortecode', 'gdgallery'); ?>"><i
+                                                class="fa fa-files-o" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <div class="gdgallery_example">
-                                <h3>Page or Post</h3>
-                                <p>Insert it into an existing post with the icon</p>
+                                <h3><?= _e('Page or Post', 'gdgallery'); ?></h3>
+                                <p> <?= _e('Insert it into an existing post with the icon', 'gdgallery'); ?></p>
                                 <img src="<?= GDGALLERY_IMAGES_URL ?>page_editor.png">
                             </div>
                             <div class="gdgallery_example">
-                                <h3>PHP Code</h3>
-                                <p>Paste the PHP code into your template file</p>
+                                <h3> <?= _e('PHP Code', 'gdgallery'); ?></h3>
+                                <p> <?= _e('Paste the PHP code into your template file', 'gdgallery'); ?></p>
                                 <div class="gdgallery_highlighted">
+                                    <span id="gdgallery_php_code">
                                     &lt;?php <br>
                                     echo do_shortcode('[gdgallery_gallery id_gallery=<?= $id ?>]'); <br>
                                     ?&gt;
+                                    </span>
+                                    <a href="#" onclick="copyToClipboard('gdgallery_php_code')"
+                                       class="copy_shortcode" title="<?= _e('Copy PHP script', 'gdgallery'); ?>"><i
+                                                class="fa fa-files-o" aria-hidden="true"></i></a>
                                 </div>
                             </div>
 
@@ -175,26 +187,29 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
             <div class="gdgallery_items_section">
                 <?php if (!empty($items)) { ?>
                     <p class="gdgallery_select_all_items">
-                        <label for="gdgallery_select_all_items">Select All</label> <input type="checkbox"
-                                                                                          id="gdgallery_select_all_items"
-                                                                                          name="select_all_items"/>
+                        <label for="gdgallery_select_all_items"> <?= _e('Select All', 'gdgallery'); ?></label> <input
+                                type="checkbox"
+                                id="gdgallery_select_all_items"
+                                name="select_all_items"/>
                     </p>
-                    <a href="#" class="gdgallery_remove_selected_images">Remove selected items <i
+                    <a href="#"
+                       class="gdgallery_remove_selected_images">  <?= _e('Remove selected items', 'gdgallery'); ?> <i
                                 class="fa fa-times"
                                 aria-hidden="true"></i></a>
-                    <a href="#" class="gdgallery_edit_gallery_images">Quick edit <i class="fa fa-pencil"
-                                                                                    aria-hidden="true"></i></a>
+                    <a href="#" class="gdgallery_edit_gallery_images">  <?= _e('Quick edit', 'gdgallery'); ?> <i
+                                class="fa fa-pencil"
+                                aria-hidden="true"></i></a>
                 <?php } ?>
                 <div class="gdgallery_clearfix"></div>
 
                 <div class="gdgallery_items_list">
                     <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
                         <div class="gdgallery_add_new_plus"></div>
-                        <p>NEW IMAGE</p>
+                        <p>  <?= _e('NEW IMAGE', 'gdgallery'); ?></p>
                     </div>
                     <div class="gdgallery_add_new gdgallery_add_new_video">
                         <div class="gdgallery_add_new_plus"></div>
-                        <p>NEW VIDEO</p>
+                        <p> <?= _e('NEW VIDEO', 'gdgallery'); ?></p>
                     </div>
                     <?php
                     if (!empty($items)) {
