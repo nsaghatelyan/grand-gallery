@@ -50,6 +50,10 @@ class AjaxController
             unset($gallery_data_arr["items"]);
         }
 
+        if (isset($gallery_data_arr["select_all_items"])) {
+            unset($gallery_data_arr["select_all_items"]);
+        }
+
         $gallery_data_arr["custom_css"] = str_replace("#container", "#gdgallery_container", $gallery_data_arr["custom_css"]);
         $gallery_data_arr["custom_css"] = sanitize_text_field($gallery_data_arr["custom_css"]);
 

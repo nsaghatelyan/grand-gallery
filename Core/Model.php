@@ -98,6 +98,7 @@ abstract class Model
         return $wpdb->prefix . static::$itemsTableName;
     }
 
+
     /**
      * Prepare data to be saved to database
      *
