@@ -8,7 +8,6 @@ jQuery(document).ready(function () {
 
         var g_id = jQuery(this).data("id"),
             t = jQuery(this),
-            text = t.html(),
             general_data = {
                 action: "gdgallery_get_items",
                 id_gallery: g_id,
@@ -20,11 +19,13 @@ jQuery(document).ready(function () {
             url: ajaxurl,
             data: general_data,
             beforeSend: function () {
-                t.html("Loading...");
+                t.hide();
+                t.parent().find(".gdgallery_loading").show()
             },
             success: function (response) {
 
-                t.html(text);
+                t.show();
+                t.parent().find(".gdgallery_loading").hide();
                 loaded_items_count = loaded_items_count + items_per_page;
                 t.attr("data-count", loaded_items_count);
 

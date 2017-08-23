@@ -246,36 +246,3 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 
 
-<script>
-
-
-    jQuery('#gdgallery_tabs')
-        .tabs()
-        .addClass('ui-tabs-vertical ui-helper-clearfix');
-
-    jQuery(document).ready(function () {
-
-        var fixHelperModified2 = function (e, tr) {
-                var $originals = tr.children();
-                var $helper = tr.clone();
-                $helper.children().each(function (index) {
-                    jQuery(this).width($originals.eq(index).width())
-                });
-                return $helper;
-            },
-            updateIndex2 = function (e, ui) {
-                jQuery('.gdgallery_item').each(function (i) {
-                    jQuery(this).find("input[type=hidden]").val(i + 1);
-                });
-
-            };
-
-        jQuery(".gdgallery_items_list").sortable({
-            helper: fixHelperModified2,
-            stop: updateIndex2,
-            placeholder: 'gdgallery_item'
-        }).disableSelection();
-
-    });
-</script>
-

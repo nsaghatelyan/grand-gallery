@@ -387,6 +387,18 @@ class SettingsController
                 'section' => 'load_more_justified',
                 'help' => __('Set background color for load more button text on hover in HEXadecimal color system', 'gdgallery')
             ),
+            'load_more_loader_justified' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Loading Icon', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Turn loadin icon on/off', 'gdgallery')
+            ),
+            'load_more_loader_color_justified' => array(
+                'type' => 'color',
+                'label' => __('Loading Icon color', 'gdgallery'),
+                'section' => 'load_more_justified',
+                'help' => __('Set color for loading icon in HEXadecimal color system', 'gdgallery')
+            ),
 
 
             'pagination_position_justified' => array(
@@ -781,6 +793,18 @@ class SettingsController
                 'label' => __('On Hover Background Color', 'gdgallery'),
                 'section' => 'load_more_tiles',
                 'help' => __('Set background color for load more button text on hover in HEXadecimal color system', 'gdgallery')
+            ),
+            'load_more_loader_tiles' => array(
+                'type' => 'checkbox',
+                'label' => __('Show Loading Icon', 'gdgallery'),
+                'section' => 'load_more_tiles',
+                'help' => __('Turn loadin icon on/off', 'gdgallery')
+            ),
+            'load_more_loader_color_tiles' => array(
+                'type' => 'color',
+                'label' => __('Loading Icon color', 'gdgallery'),
+                'section' => 'load_more_tiles',
+                'help' => __('Set color for loading icon in HEXadecimal color system', 'gdgallery')
             ),
 
 

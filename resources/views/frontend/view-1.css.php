@@ -66,6 +66,10 @@ echo "<style>";
   outline: none !important;
 }
 
+<?= $container ?> .gdgallery_loading li{
+                      border: 3px solid #<?=$options["load_more_loader_color_tiles"]; ?> !important;
+                  }
+
 <?=  $gallery_data->custom_css; ?>
 
 <?= "</style>" ?>

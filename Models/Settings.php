@@ -88,6 +88,8 @@ class Settings
         'load_more_hover_color_justified' => '333333',
         'load_more_hover_background_color_justified' => 'FFFFFF',
         'load_more_hover_border_color_justified' => '333333',
+        'load_more_loader_justified' => 'b:1;',
+        'load_more_loader_color_justified' => '333333',
 
         'pagination_position_justified' => 'center',
         'pagination_font_size_justified' => '15',
@@ -147,6 +149,8 @@ class Settings
         'load_more_hover_color_tiles' => '333333',
         'load_more_hover_background_color_tiles' => 'FFFFFF',
         'load_more_hover_border_color_tiles' => '333333',
+        'load_more_loader_tiles' => 'b:1;',
+        'load_more_loader_color_tiles' => '333333',
 
         'pagination_position_tiles' => 'center',
         'pagination_font_size_tiles' => '15',
@@ -422,7 +426,7 @@ class Settings
             $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
         }
 
-        if($this->options["item_as_link_" . $view] == false && $this->options["show_icons_" . $view] == false && $this->options["show_link_icon_" . $view] == true){
+        if ($this->options["item_as_link_" . $view] == false && $this->options["show_icons_" . $view] == false && $this->options["show_link_icon_" . $view] == true) {
 
         }
 

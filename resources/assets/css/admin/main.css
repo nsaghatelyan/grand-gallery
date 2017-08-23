@@ -1698,7 +1698,7 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 }
 
 .quick_edit_table td {
-    padding: 5px;
+    padding: 10px 5px;
     border-bottom: 1px solid #ececec;
 }
 
@@ -1862,6 +1862,23 @@ ul.gdgallery_general_settings {
 
 .copy_shortcode i {
     color: #da9001;
+}
+
+#gdgallery_sort tr:hover td:last-child,
+#gdgallery_sort tr:active td:last-child {
+    background-image: url("../../images/icons/dragable.gif");
+    background-position: right top;
+    background-repeat: repeat-y;
+}
+
+#gdgallery-editimages-modal .images-save {
+    position: absolute;
+    right: 115px;
+}
+
+#gdgallery-editimages-modal .spinner {
+    position: absolute;
+    right: 75px;
 }
 
 @media all and (max-width: 785px) {

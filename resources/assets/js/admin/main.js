@@ -50,6 +50,9 @@ jQuery('input#select-all').on('change', function () {
 });
 
 jQuery(document).ready(function () {
+    jQuery('#gdgallery_tabs')
+        .tabs()
+        .addClass('ui-tabs-vertical ui-helper-clearfix');
 
     setTimeout(function () {
         jQuery("#gdgallery_gallery_style").show();
@@ -425,26 +428,52 @@ jQuery(document).ready(function () {
 });
 
 jQuery(document).ready(function ($) {
-    var fixHelperModified = function (e, tr) {
-            tr.css("background", "#f5f1f1");
+    var fixHelperModifiedList = function (e, tr) {
+            tr.css({"background": "#f5f1f1", "opacity": "0.8"});
             var $originals = tr.children();
             var $helper = tr.clone();
             $helper.children().each(function (index) {
                 $(this).width($originals.eq(index).width())
             });
-            tr.css("background", "#fff");
+            tr.css({"background": "#FFFFFF", "opacity": "1"});
             return $helper;
         },
-        updateIndex = function (e, ui) {
-
+        updateIndexList = function (e, ui) {
+            var last = jQuery(".ui-sortable .index").length;
             $('td.index', ui.item.parent()).each(function (i) {
-                $(this).find("input").val(i + 1);
+                $(this).find("input").val(--last);
             });
         };
 
     $("#gdgallery_sort tbody").sortable({
-        helper: fixHelperModified,
-        stop: updateIndex
+        helper: fixHelperModifiedList,
+        stop: updateIndexList
+    }).disableSelection();
+
+    var fixHelperModifiedGrid = function (e, tr) {
+            tr.css({"opacity": "0.8"});
+            tr.find(".gdgallery_item_title").hide();
+            var $originals = tr.children();
+            var $helper = tr.clone();
+            $helper.children().each(function (index) {
+                jQuery(this).width($originals.eq(index).width())
+            });
+            tr.css({"opacity": "1"});
+            tr.find(".gdgallery_item_title").show();
+            return $helper;
+        },
+        updateIndexGrid = function (e, ui) {
+            var last = jQuery(".gdgallery_item").length;
+            jQuery('.gdgallery_item').each(function (i) {
+                jQuery(this).find("input[type=hidden]").val(--last);
+            });
+
+        };
+
+    jQuery(".gdgallery_items_list").sortable({
+        helper: fixHelperModifiedGrid,
+        stop: updateIndexGrid,
+        placeholder: 'gdgallery_item'
     }).disableSelection();
 
     jQuery("#gdgallery_display_type").change(function () {

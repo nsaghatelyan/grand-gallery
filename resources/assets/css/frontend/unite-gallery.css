@@ -1370,3 +1370,142 @@ img.ug-sepia-effect {
     background-position: -72px 0px;
 }
 
+
+/*********  Load more loader implementation   *************/
+.gdgallery_loading {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 49%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 0;
+}
+
+.gdgallery_loading.gdgallery_reversed li {
+    -webkit-animation: LOADINGREV 1.3s infinite;
+    animation: LOADINGREV 1.3s infinite;
+}
+
+.gdgallery_loading.gdgallery_reversed li:nth-child(1n) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.gdgallery_loading.gdgallery_reversed li:nth-child(2n) {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.gdgallery_loading.gdgallery_reversed li:nth-child(3n) {
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.gdgallery_loading li {
+    height: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    margin: 0;
+    height: 15px;
+    width: 15px;
+    /*border: 3px solid #2b8ccd;*/
+    border-radius: 100%;
+    -webkit-transform: transformZ(0);
+    transform: transformZ(0);
+    -webkit-animation: LOADING 2s infinite;
+    animation: LOADING 2s infinite;
+}
+
+.gdgallery_loading li:nth-child(1n) {
+    left: -20px;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.gdgallery_loading li:nth-child(2n) {
+    left: 0;
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
+
+.gdgallery_loading li:nth-child(3n) {
+    left: 20px;
+    -webkit-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+@-webkit-keyframes LOADING {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #949494;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        background: white;
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a7a7a7;
+    }
+}
+
+@keyframes LOADING {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #949494;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        background: white;
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a7a7a7;
+    }
+}
+
+@-webkit-keyframes LOADINGREV {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a9a9a9;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        background: #d4d4d4;
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a7a7a7;
+    }
+}
+
+@keyframes LOADINGREV {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a9a9a9;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        background: #d4d4d4;
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background: #a7a7a7;
+    }
+}

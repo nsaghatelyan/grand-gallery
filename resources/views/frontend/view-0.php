@@ -41,7 +41,15 @@ if ($gallery_data->display_type == 2) {
     <div class="gdgallery_load_more_space">
         <button data-id="<?= $gallery_data->id_gallery ?>" data-count="<?= $gallery_data->items_per_page ?>"
                 class="gdgallery_load_more"><?= $options["load_more_text_justified"] ?>
+
         </button>
+        <?php if ($options["load_more_loader_justified"] == 1): ?>
+            <ul class="gdgallery_loading gdgallery_reversed" style="display: none;">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        <?php endif; ?>
     </div>
 <?php } ?>
 

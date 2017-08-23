@@ -5,7 +5,7 @@
 
             </div>
             <div class="-gdgallery-modal-header-info">
-                <h3>Add Video URL From Youtube or Vimeo</h3>
+                <h3><?= _e('Add Video URL From Youtube or Vimeo', 'gdgallery'); ?></h3>
             </div>
             <div class="-gdgallery-modal-close">
                 <i class="fa fa-close"></i>
@@ -18,25 +18,25 @@
                 <input type="hidden" name="gdgallery_id_gallery" value="<?= $id_gallery ?>">
                 <ul class="video_fields">
 
-                    <li><label for="gdgallery_video_url"> Video URL (Youtube or Vimeo):</label><br>
+                    <li><label for="gdgallery_video_url"><?= _e('Video URL (Youtube or Vimeo)', 'gdgallery'); ?> :</label><br>
                         <input type="text" id="gdgallery_video_url"
                                name="gdgallery_video_url"
                                value="" required>
                     </li>
 
-                    <li><label for="gdgallery_video_name"> Title:</label><br>
+                    <li><label for="gdgallery_video_name"> <?= _e('Title', 'gdgallery'); ?>:</label><br>
                         <input type="text" id="gdgallery_video_name"
                                name="gdgallery_video_name"
                                value="">
                     </li>
                     <li>
                         <label for="gdgallery_video_description">
-                            Description: </label><br>
+                            <?= _e('Description', 'gdgallery'); ?>: </label><br>
                         <input type="text" id="gdgallery_video_description"
                                name="gdgallery_video_description"
                                value=""></li>
                     <li>
-                        <label for="gdgallery_video_link"> Link:</label><br>
+                        <label for="gdgallery_video_link"> <?= _e('Link', 'gdgallery'); ?>:</label><br>
                         <input type="text" name="gdgallery_video_link"
                                id="gdgallery_video_link"
                                value=""></li>
@@ -52,7 +52,7 @@
 
                 </td>-->
                 <div class="video_save">
-                    <input type="submit" value="Save"
+                    <input type="submit" value="<?= _e('Save', 'gdgallery'); ?>"
                            id="gdgallery-add-video-buttom"
                            class="gdgallery-save-buttom">
                     <span class="spinner"></span>

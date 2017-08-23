@@ -138,7 +138,7 @@ class Gallery extends Model
         global $wpdb;
 
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->id_gallery);
+        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering DESC", $this->id_gallery);
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -161,7 +161,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC", $this->id_gallery);
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d", $this->id_gallery);
         return $wpdb->get_var($query);
     }
 
@@ -195,7 +195,7 @@ class Gallery extends Model
         }
         $start = $page * $num - $num;
 
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start . "," . $num, $this->id_gallery);
+        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering DESC LIMIT " . $start . "," . $num, $this->id_gallery);
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -390,6 +390,7 @@ class Gallery extends Model
     function AddGalleryImage($images, $id_gallery)
     {
         global $wpdb;
+        $last_image_order = $this->getItemsCount();
 
         foreach ($images as $img) {
             $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
@@ -397,7 +398,7 @@ class Gallery extends Model
                     "id_post" => intval($img["id"]),
                     "name" => esc_html($img["name"]),
                     'url' => esc_sql($img["url"]),
-                    "ordering" => 0,
+                    "ordering" => ++$last_image_order,
                     "target" => "_blank",
                     "type" => "image"
                 )
@@ -405,6 +406,7 @@ class Gallery extends Model
         }
         return static::$primaryKey;
     }
+
 
     public function EditGalleryThumbnail($data, $id_gallery, $id_image)
     {
@@ -431,6 +433,7 @@ class Gallery extends Model
         $type = parent::getVideoType($data["gdgallery_video_url"]);
         $video_id = parent::getVideoId($data["gdgallery_video_url"], $type);
         $url = $this->getVideoThumb($video_id, $type);
+        $last_image_order = $this->getItemsCount();
 
         if ($type === false) {
             $type = "image";
@@ -441,7 +444,7 @@ class Gallery extends Model
                 "name" => $data["gdgallery_video_name"],
                 "description" => $data["gdgallery_video_description"],
                 'url' => esc_url($url),
-                "ordering" => 0,
+                "ordering" => ++$last_image_order,
                 "link" => $data["gdgallery_video_link"],
                 "target" => $data["gdgallery_video_target"],
                 "type" => $type,

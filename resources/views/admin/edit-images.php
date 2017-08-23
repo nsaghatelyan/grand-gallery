@@ -7,10 +7,10 @@
 
                 </div>
                 <div class="-gdgallery-modal-header-info">
-                    <h3>Quick Edit - Images</h3>
+                    <h3> <?= _e('Quick Edit - Images', 'gdgallery'); ?></h3>
                 </div>
                 <span class="spinner"></span>
-                <input type="submit" value="Save"
+                <input type="submit" value="<?= _e('Save', 'gdgallery'); ?>"
                        id="gdgallery-save-buttom"
                        class="gdgallery-save-buttom images-save">
                 <div class="-gdgallery-modal-close">
@@ -33,17 +33,22 @@
                                 <td class="img_td">
                                     <img src="<?= $item->url ?>">
                                 </td>
-                                <td><label for="gdgallery_images_name[<?= $item->id_image ?>]"> Name:</label>
+                                <td>
+                                    <label for="gdgallery_images_name[<?= $item->id_image ?>]"> <?= _e('Name', 'gdgallery'); ?>
+                                        :</label>
                                     <input type="text" id="gdgallery_images_name[<?= $item->id_image ?>]"
                                            name="gdgallery_images_name[<?= $item->id_image ?>]"
                                            value="<?= $item->name ?>">
                                 </td>
                                 <td><label for="gdgallery_images_description[<?= $item->id_image ?>]">
-                                        Description: </label>
+                                        <?= _e('Description', 'gdgallery'); ?>
+                                        : </label>
                                     <input type="text" id="gdgallery_images_description[<?= $item->id_image ?>]"
                                            name="gdgallery_images_description[<?= $item->id_image ?>]"
                                            value="<?= $item->description ?>"></td>
-                                <td><label for="gdgallery_images_link[<?= $item->id_image ?>]"> Link:</label>
+                                <td>
+                                    <label for="gdgallery_images_link[<?= $item->id_image ?>]"><?= _e('Link', 'gdgallery'); ?>
+                                        :</label>
                                     <input type="text" name="gdgallery_images_link[<?= $item->id_image ?>]"
                                            id="gdgallery_images_link[<?= $item->id_image ?>]"
                                            value="<?= $item->link ?>">

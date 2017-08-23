@@ -78,6 +78,7 @@ if (!class_exists('GDGallery')) :
             );
 
             add_action('init', array($this, 'init'), 0);
+            add_action('widgets_init', array('GDGallery\Controllers\Widgets\WidgetsController', 'init'));
 
         }
 

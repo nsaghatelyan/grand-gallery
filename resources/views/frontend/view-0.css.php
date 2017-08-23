@@ -67,6 +67,11 @@ text-align: <?= $options["pagination_position_justified"]; ?> !important;
 }
 
 
+<?= $container ?> .gdgallery_loading li{
+                      border: 3px solid #<?=$options["load_more_loader_color_justified"]; ?> !important;
+                  }
+
+
                   <?=  $gallery_data->custom_css; ?>
 
 <?= "</style>" ?>
