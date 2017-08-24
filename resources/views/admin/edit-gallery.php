@@ -230,7 +230,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                     <div class="gdgallery_item_edit">
                                         <a href="<?php echo ($item->id_post != 0) ? admin_url() . "post.php?post=" . $item->id_post . "&action=edit&image-editor" : "#"; ?>"
                                            target="_blank" data-post-id="<?= $item->id_post ?>"
-                                           data-image-id="<?= $item->id_image ?>">EDIT</a>
+                                           data-image-id="<?= $item->id_image ?>"> <?= _e('EDIT', 'gdgallery'); ?></a>
                                     </div>
                                 </div>
                             </div>

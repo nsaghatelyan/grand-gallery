@@ -36,6 +36,7 @@ $galleries = \GDGallery\Models\Gallery::get();
 
 </style>
 <div id="gdgallery" style="display:none;">
+
     <?php
 
     $new_gallery_link = admin_url('admin.php?page=gdgallery&task=create_new_gallery');

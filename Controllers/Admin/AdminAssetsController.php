@@ -2,6 +2,8 @@
 
 namespace GDGallery\Controllers\Admin;
 
+use GDGallery;
+
 
 class AdminAssetsController
 {
@@ -17,7 +19,9 @@ class AdminAssetsController
     public static function adminStyles($hook)
     {
 
+
         if ($hook === \GDGallery()->Admin->Pages['main_page'] || $hook === \GDGallery()->Admin->Pages['styles'] || $hook === \GDGallery()->Admin->Pages['settings']) {
+
 
             wp_enqueue_style('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/css/jquery-ui.min.css');
 
@@ -55,6 +59,8 @@ class AdminAssetsController
      */
     public static function adminScripts($hook)
     {
+        wp_enqueue_script('jquery');
+
         wp_enqueue_script('jqueryUI', \GDGallery()->pluginUrl() . '/resources/assets/js/jquery-ui.min.js');
 
         wp_enqueue_script('gdgallerytoastrjs', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/toastr.min.js');
@@ -63,7 +69,6 @@ class AdminAssetsController
 
             wp_enqueue_media();
 
-            wp_enqueue_script('jquery');
 
             if (isset($_GET['task']) && $_GET['task'] == 'edit_gallery') {
                 wp_enqueue_script('gdgallery_modal', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/gdgallery_modal.js', array('jquery'), false, true);
@@ -81,7 +86,7 @@ class AdminAssetsController
         }
 
         if ($hook === \GDGallery()->Admin->Pages['styles']) {
-            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'gdgallerytoastrjs'), false, true);
+            wp_enqueue_script('gdgallery_styles', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/styles_settings.js', array('jquery', 'jqueryUI', 'gdgallerytoastrjs'), false, true);
             wp_enqueue_script('gdgallery_jscolor', \GDGallery()->pluginUrl() . '/resources/assets/js/admin/jscolor.js', array(), false, true);
         }
 
@@ -103,15 +108,6 @@ class AdminAssetsController
 
         wp_localize_script('gdgallerySettings', 'settingsSave', array(
             'nonce' => wp_create_nonce('gdgallery_save_plugin_settings'),
-        ));
-
-        wp_localize_script('gdgalleryAdminJs', 'field', array(
-            'removeNonce' => wp_create_nonce('gdgallery_remove_field'),
-            'duplicateNonce' => wp_create_nonce('gdgallery_duplicate_field'),
-            'saveNonce' => wp_create_nonce('gdgallery_save_field'),
-            'addOptionNonce' => wp_create_nonce('gdgallery_add_field_option'),
-            'removeOptionNonce' => wp_create_nonce('gdgallery_remove_field_option'),
-            'importOptionsNonce' => wp_create_nonce('gdgallery_import_options'),
         ));
 
     }
