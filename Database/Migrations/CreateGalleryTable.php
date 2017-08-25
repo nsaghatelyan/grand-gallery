@@ -20,6 +20,8 @@ class CreateGalleryTable
                 `name` varchar(255) NULL,
                 `description` text,
                 `ordering` int(11) NOT NULL,
+                `order_by` int(1) NOT NULL DEFAULT 0,
+                `sort_by` int(1) NOT NULL DEFAULT 0,
                 `display_type` int(1) NOT NULL DEFAULT 0,
                 `view_type` int(1) NOT NULL DEFAULT 0,
                 `position` ENUM('center','left','right') DEFAULT 'center',

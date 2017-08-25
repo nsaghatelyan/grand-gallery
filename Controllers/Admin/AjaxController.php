@@ -2,6 +2,7 @@
 
 namespace GDGallery\Controllers\Admin;
 
+use GDGallery\Debug;
 use GDGallery\Models\Gallery;
 use GDGallery\Models\Settings;
 
@@ -41,6 +42,7 @@ class AjaxController
         $gallery_id = absint($_REQUEST['gallery_id']);
 
         $gallery_data = str_replace("gdgallery_", "", $_REQUEST["formdata"]);
+
 
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
         $gallery_data_arr = array();

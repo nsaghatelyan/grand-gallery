@@ -27,8 +27,9 @@ class AjaxController
         $gallery = new Gallery(array("id_gallery" => $id_gallery));
 
         $total_count = $gallery->getItemsCount();
+        $order_inf = $gallery->getOrderInfo();
 
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering ASC LIMIT " . $start, $id_gallery);
+        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ". $order_inf["sort"] ." ". $order_inf["order"] ." LIMIT " . $start, $id_gallery);
         $items = $wpdb->get_results($query);
 
         $show_button = (count($items) < $total_count) ? 1 : 0;

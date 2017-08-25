@@ -439,9 +439,8 @@ jQuery(document).ready(function ($) {
             return $helper;
         },
         updateIndexList = function (e, ui) {
-            var last = jQuery(".ui-sortable .index").length;
             $('td.index', ui.item.parent()).each(function (i) {
-                $(this).find("input").val(--last);
+                $(this).find("input").val(i++);
             });
         };
 
@@ -463,9 +462,8 @@ jQuery(document).ready(function ($) {
             return $helper;
         },
         updateIndexGrid = function (e, ui) {
-            var last = jQuery(".gdgallery_item").length;
             jQuery('.gdgallery_item').each(function (i) {
-                jQuery(this).find("input[type=hidden]").val(--last);
+                jQuery(this).find("input[type=hidden]").val(i++);
             });
 
         };

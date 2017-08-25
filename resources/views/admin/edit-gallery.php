@@ -10,7 +10,7 @@ global $wpdb;
 
 $gallery->setViewStyles();
 
-$items = $gallery->getItems();
+$items = $gallery->getItems(true);
 
 $gallery_data = $gallery->getGallery();
 
@@ -130,6 +130,31 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 <input type="number" min="0" max="100" name="gdgallery_items_per_page"
                                        id="gdgallery_items_per_page" class="gdgallery_items_per_page"
                                        value="<?= $gallery_data->items_per_page ?>">
+                            </li>
+                            <li class="gdgallery_sorting_section">
+                                <h4><?= _e('Sort By', 'gdgallery'); ?></h4>
+                                <select name="gdgallery_sort_by" id="gdgallery_sorting">
+                                    <option value="0" <?php if ($gallery_data->sort_by == 0) echo "selected" ?>>
+                                        <?= _e('Custom Sorting', 'gdgallery'); ?>
+                                    </option>
+                                    <option value="1" <?php if ($gallery_data->sort_by == 1) echo "selected" ?>>
+                                        <?= _e('Alphabetical', 'gdgallery'); ?>
+                                    </option>
+                                    <option value="2" <?php if ($gallery_data->sort_by == 2) echo "selected" ?>>
+                                        <?= _e('Insert Date', 'gdgallery'); ?>
+                                    </option>
+                                </select>
+                            </li>
+                            <li class="gdgallery_ordering_section">
+                                <h4><?= _e('Order', 'gdgallery'); ?></h4>
+                                <select name="gdgallery_order_by" id="gdgallery_ordering">
+                                    <option value="0" <?php if ($gallery_data->order_by == 0) echo "selected" ?>>
+                                        <?= _e('Ascending', 'gdgallery'); ?>
+                                    </option>
+                                    <option value="1" <?php if ($gallery_data->order_by == 1) echo "selected" ?>>
+                                        <?= _e('Descending', 'gdgallery'); ?>
+                                    </option>
+                                </select>
                             </li>
 
                         </ul>

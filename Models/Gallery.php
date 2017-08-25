@@ -9,6 +9,7 @@
 namespace GDGallery\Models;
 
 use GDGallery\Core\Model;
+use GDGallery\Debug;
 use GDGallery\GDGallery;
 
 class Gallery extends Model
@@ -133,12 +134,17 @@ class Gallery extends Model
     /**
      * @return Field[]
      */
-    public function getItems()
+    public function getItems($is_admin = false)
     {
         global $wpdb;
 
+        $order_inf = $this->getOrderInfo();
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering DESC", $this->id_gallery);
+        if ($is_admin === true) {
+            $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC ", $this->id_gallery);
+        } else {
+            $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by " . $order_inf["sort"] . " " . $order_inf["order"], $this->id_gallery);
+        }
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -157,13 +163,6 @@ class Gallery extends Model
         return $this->Items;
     }
 
-    public function getItemsCount()
-    {
-        global $wpdb;
-
-        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d", $this->id_gallery);
-        return $wpdb->get_var($query);
-    }
 
     /**
      * @return Field[]
@@ -171,6 +170,8 @@ class Gallery extends Model
     public function getItemsPerPage($data)
     {
         global $wpdb;
+
+        $order_inf = $this->getOrderInfo();
 
         if ($data->items_per_page) {
             $num = $data->items_per_page;
@@ -195,7 +196,8 @@ class Gallery extends Model
         }
         $start = $page * $num - $num;
 
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by ordering DESC LIMIT " . $start . "," . $num, $this->id_gallery);
+        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by " . $order_inf["sort"] . " " . $order_inf["order"] . " LIMIT " . $start . "," . $num, $this->id_gallery);
+
         $items = $wpdb->get_results($query);
 
         foreach ($items as $key => $val) {
@@ -527,6 +529,53 @@ class Gallery extends Model
         }
 
         return $this->$key;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getOrderInfo()
+    {
+        $gallery_data = $this->getGallery();
+        switch ($gallery_data->sort_by) {
+            case 0:
+                $sort = "ordering";
+                break;
+            case 1:
+                $sort = "name";
+                break;
+            case 2:
+                $sort = "ctime";
+                break;
+            default:
+                $sort = "ordering";
+        }
+        switch ($gallery_data->order_by) {
+            case 0:
+                $order = "ASC";
+                break;
+            case 1:
+                $order = "DESC";
+                break;
+            default:
+                $order = "ASC";
+        }
+
+        return array("sort" => $sort, "order" => $order);
+
+    }
+
+
+    /**
+     * @return int
+     */
+    public function getItemsCount()
+    {
+        global $wpdb;
+
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d", $this->id_gallery);
+        return $wpdb->get_var($query);
     }
 
     /**
