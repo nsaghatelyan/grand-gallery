@@ -53,19 +53,7 @@
                                            id="gdgallery_images_link[<?= $item->id_image ?>]"
                                            value="<?= $item->link ?>">
                                 </td>
-                                <?php /* ?><td>
-                                    <label for="gdgallery_images_target[<?= $item->id_image ?>]"> Target:</label>
-                                    <select name="gdgallery_images_target[<?= $item->id_image ?>]"
-                                            id="gdgallery_images_target[<?= $item->id_image ?>]">
-                                        <option value="_blank" <?php if ($item->target == "_blank") echo "selected" ?>>
-                                            New Tab
-                                        </option>
-                                        <option value="_self" <?php if ($item->target == "_self") echo "selected" ?>>
-                                            Current Tab
-                                        </option>
-                                    </select>
-
-                                </td> <?php */ ?>
+                               
                             </tr>
                         <?php endforeach;
                     } ?>

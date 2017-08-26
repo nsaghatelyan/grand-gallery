@@ -9,11 +9,11 @@
 namespace GDGallery\Models;
 
 use GDGallery\Core\Model;
-use GDGallery\Debug;
-use GDGallery\GDGallery;
+use GDGallery\Core\Admin\Video;
 
 class Gallery extends Model
 {
+    use Video;
     protected static $tableName = 'gdgallerygalleries';
 
     protected static $itemsTableName = 'gdgalleryimages';
@@ -141,9 +141,9 @@ class Gallery extends Model
         $order_inf = $this->getOrderInfo();
 
         if ($is_admin === true) {
-            $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by ordering ASC ", $this->id_gallery);
+            $query = $wpdb->prepare("select * from `" . self::getItemsTableName() . "` where id_gallery=%d order by ordering ASC ", $this->id_gallery);
         } else {
-            $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d order by " . $order_inf["sort"] . " " . $order_inf["order"], $this->id_gallery);
+            $query = $wpdb->prepare("select * from `" . self::getItemsTableName() . "` where id_gallery=%d order by " . $order_inf["sort"] . " " . $order_inf["order"], $this->id_gallery);
         }
         $items = $wpdb->get_results($query);
 
@@ -196,7 +196,7 @@ class Gallery extends Model
         }
         $start = $page * $num - $num;
 
-        $query = $wpdb->prepare("SELECT * FROM " . $wpdb->prefix . "gdgalleryimages where id_gallery = '%d' order by " . $order_inf["sort"] . " " . $order_inf["order"] . " LIMIT " . $start . "," . $num, $this->id_gallery);
+        $query = $wpdb->prepare("SELECT * FROM " . self::getItemsTableName() . " where id_gallery = '%d' order by " . $order_inf["sort"] . " " . $order_inf["order"] . " LIMIT " . $start . "," . $num, $this->id_gallery);
 
         $items = $wpdb->get_results($query);
 
@@ -237,7 +237,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $wpdb->insert($wpdb->prefix . "gdgallerygalleries", $gallery);
+        $wpdb->insert(self::getTableName(), $gallery);
         $id_gallery = $wpdb->insert_id;
 
 //        $id_gallery = 12;
@@ -245,55 +245,19 @@ class Gallery extends Model
             $item->id_gallery = $id_gallery;
         });
         foreach ($items as $item) {
-            $wpdb->insert($wpdb->prefix . "gdgalleryimages", (array)$item);
+            $wpdb->insert(self::getItemsTableName(), (array)$item);
         }
 
         return $id_gallery;
     }
 
 
-    public function getVideoThumb($video_id, $type)
-    {
-        /*$default_thumbnail = null;
-        $thumbnails = array();
-        $result = array();
-
-        if (strpos($url, "youtube") !== false) {
-            $video_id = substr($url, -11);
-            $default_thumbnail = "https://img.youtube.com/vi/" . $video_id . "/0.jpg";
-            for ($i = 0; $i < 3; $i++) {
-                $thumbnails[] = "https://img.youtube.com/vi/" . $video_id . "/" . $i . ".jpg";
-            }
-        } elseif (strpos($url, "vimeo") !== false) {
-            $video_id = substr($url, -9);
-            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
-            $default_thumbnail = $hash[0]['thumbnail_medium'];
-        }
-
-        $result = array(
-            "default_thumb" => $default_thumbnail,
-            "thumbnails" => $thumbnails
-        );*/
-
-        $thumbnail = null;
-
-        if ($type == "youtube") {
-            $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/0.jpg";
-        } elseif ($type == "vimeo") {
-            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
-            $thumbnail = $hash[0]['thumbnail_medium'];
-        }
-
-        return $thumbnail;
-
-    }
-
     public
     function getGallery($duplicate = false)
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select * from `" . $wpdb->prefix . "gdgallerygalleries` where id_gallery=%d order by ordering", $this->id_gallery);
+        $query = $wpdb->prepare("select * from `" . self::getTableName() . "` where id_gallery=%d order by ordering", $this->id_gallery);
         $galleries = $wpdb->get_row($query);
 
         if (empty($galleries)) {
@@ -325,7 +289,7 @@ class Gallery extends Model
         global $wpdb;
         $list = array();
 
-        $query = "select `id_gallery`,`name` from `" . $wpdb->prefix . "gdgallerygalleries` order by ordering";
+        $query = "select `id_gallery`,`name` from `" . self::getTableName() . "` order by ordering";
         $galleries = $wpdb->get_results($query);
         foreach ($galleries as $val) {
             $EditUrl = admin_url('admin.php?page=gdgallery&task=edit_gallery&id=' . $val->id_gallery);
@@ -362,7 +326,7 @@ class Gallery extends Model
         foreach ($data as $key => $val) {
             if ($key != "id_gallery") {
                 foreach ($val as $k => $v) {
-                    $wpdb->update($wpdb->prefix . "gdgalleryimages", array($key => $v), array(static::$primaryKey => $data["id_gallery"], "id_image" => $k));
+                    $wpdb->update(self::getItemsTableName(), array($key => $v), array(static::$primaryKey => $data["id_gallery"], "id_image" => $k));
                 }
             }
         }
@@ -374,7 +338,7 @@ class Gallery extends Model
         global $wpdb;
 
         foreach ($arr as $key => $val) {
-            $wpdb->update($wpdb->prefix . "gdgalleryimages", array("ordering" => $val), array("id_image" => $key));
+            $wpdb->update(self::getItemsTableName(), array("ordering" => $val), array("id_image" => $key));
         }
     }
 
@@ -383,7 +347,7 @@ class Gallery extends Model
         global $wpdb;
 
         foreach ($data as $key => $val) {
-            $wpdb->delete($wpdb->prefix . "gdgalleryimages", array('id_image' => $val));
+            $wpdb->delete(self::getItemsTableName(), array('id_image' => $val));
         }
         return static::$primaryKey;
     }
@@ -395,12 +359,12 @@ class Gallery extends Model
         $last_image_order = $this->getItemsCount();
 
         foreach ($images as $img) {
-            $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
+            $wpdb->insert(self::getItemsTableName(), array(
                     "id_gallery" => $id_gallery,
                     "id_post" => intval($img["id"]),
                     "name" => esc_html($img["name"]),
                     'url' => esc_sql($img["url"]),
-                    "ordering" => ++$last_image_order,
+                    "ordering" => 0,
                     "target" => "_blank",
                     "type" => "image"
                 )
@@ -410,14 +374,14 @@ class Gallery extends Model
     }
 
 
-    public function EditGalleryThumbnail($data, $id_gallery, $id_image)
+    public function EditGalleryThumbnail($data, $id_image)
     {
         global $wpdb;
 
         $image = end($data);
 
         $result = $wpdb->update(
-            $wpdb->prefix . "gdgalleryimages",
+            self::getItemsTableName(),
             array("id_post" => $image["id"]),
             array("id_image" => $id_image)
         );
@@ -432,21 +396,21 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $type = parent::getVideoType($data["gdgallery_video_url"]);
-        $video_id = parent::getVideoId($data["gdgallery_video_url"], $type);
-        $url = $this->getVideoThumb($video_id, $type);
+        $type = self::getVideoType($data["gdgallery_video_url"]);
+        $video_id = self::getVideoId($data["gdgallery_video_url"], $type);
+        $url = self::getVideoThumb($video_id, $type);
         $last_image_order = $this->getItemsCount();
 
         if ($type === false) {
             $type = "image";
         }
 
-        $wpdb->insert($wpdb->prefix . "gdgalleryimages", array(
+        $wpdb->insert(self::getItemsTableName(), array(
                 "id_gallery" => $data["gdgallery_id_gallery"],
                 "name" => $data["gdgallery_video_name"],
                 "description" => $data["gdgallery_video_description"],
                 'url' => esc_url($url),
-                "ordering" => ++$last_image_order,
+                "ordering" => 0,
                 "link" => $data["gdgallery_video_link"],
                 "target" => $data["gdgallery_video_target"],
                 "type" => $type,
@@ -574,7 +538,7 @@ class Gallery extends Model
     {
         global $wpdb;
 
-        $query = $wpdb->prepare("select COUNT(*) AS count from `" . $wpdb->prefix . "gdgalleryimages` where id_gallery=%d", $this->id_gallery);
+        $query = $wpdb->prepare("select COUNT(*) AS count from `" . self::getItemsTableName() . "` where id_gallery=%d", $this->id_gallery);
         return $wpdb->get_var($query);
     }
 

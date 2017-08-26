@@ -9,8 +9,6 @@
 
 namespace GDGallery\Database;
 
-//use GDGallery;
-
 class Uninstall
 {
     public static function init()

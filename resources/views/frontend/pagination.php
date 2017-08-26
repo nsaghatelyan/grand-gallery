@@ -17,7 +17,6 @@ if (preg_match($pattern, $actual_link)) {
 $page = (isset($_GET["gdgallery-page"])) ? intval($_GET["gdgallery-page"]) : 1;
 
 $page_nav_type = $page_options["nav_type"];
-//$page_nav_type = 0;
 switch ($page_nav_type) {
     case 0:
         $navigation = array('<i class="fa fa-angle-double-left"></i>', "<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>", "<i class='fa fa-angle-double-right'></i>");

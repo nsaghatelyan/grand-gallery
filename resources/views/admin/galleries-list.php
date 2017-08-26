@@ -41,7 +41,6 @@ $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_galler
             <tbody>
             <?php
 
-            //            $paged = isset($_GET['paged']) ? $_GET['paged'] : 1;
 
             $galleries = \GDGallery\Models\Gallery::get();
             if (!empty($galleries)) {

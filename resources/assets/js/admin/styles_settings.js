@@ -1,24 +1,7 @@
 jQuery(document).ready(function ($) {
 
 
-    /* var switcher = jQuery("#realtimepreview").data("enable");
-     jQuery("#realtimepreview").click(function (e) {
-     e.preventDefault();
-
-     if (switcher == "off") {
-     switcher = "on";
-     jQuery(this).html("Real Time preview ON");
-     jQuery(".iframe_section").show();
-     jQuery(".ui-tabs-panel").css("width", "35%");
-     }
-     else {
-
-     switcher = "off";
-     jQuery(this).html("Real Time preview OFF");
-     jQuery(".iframe_section").hide();
-     jQuery(".ui-tabs-panel").css("width", "auto");
-     }
-     })*/
+    jQuery("#settings_tab").tabs();
 
 
     var load_type = jQuery(".show_loader .input-wrap select")

@@ -6,7 +6,6 @@ use GDGallery\Core\Admin\Listener;
 use GDGallery\Helpers\View;
 use GDGallery\Models\Gallery;
 
-//use GDGALLERY\Models\Gallery;
 
 class AdminController
 {

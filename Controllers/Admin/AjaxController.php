@@ -162,7 +162,7 @@ class AjaxController
         $gallery = new Gallery(array('id_gallery' => $gallery_id));
 
         $edited = null;
-        $edited = $gallery->EditGalleryThumbnail($gallery_data, $gallery_id, $image_id);
+        $edited = $gallery->EditGalleryThumbnail($gallery_data, $image_id);
 
         if ($edited == 1) {
             echo $edited;

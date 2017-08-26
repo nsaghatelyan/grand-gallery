@@ -5,10 +5,7 @@
  * @var $fields array()
  * @var $title string
  */
-
-
 ?>
-
 
 <div id="<?= $id ?>">
     <?php

@@ -24,11 +24,14 @@ global $wpdb;
                         </div>
 
                         <div class="setting-row">
-                            <label class="switcher switch-checkbox" for="remove-tables-uninstall">Remove all data on
-                                plugin deactivation<input type="hidden" name="RemoveTablesUninstall" value="off"/><input
-                                        type="checkbox"
-                                        class="switch-checkbox" <?php checked('on', \GDGallery()->settings->getOption('RemoveTablesUninstall')) ?>
-                                        name="RemoveTablesUninstall" id="remove-tables-uninstall"><span
+                            <label class="switcher switch-checkbox" for="remove-tables-uninstall"><?php _e('Remove all data on
+                                plugin deactivation', GDGALLERY_TEXT_DOMAIN); ?>
+                                <input type="hidden"
+                                       name="RemoveTablesUninstall"
+                                       value="off"/>
+                                <input type="checkbox"
+                                       class="switch-checkbox" <?php checked('on', \GDGallery()->settings->getOption('RemoveTablesUninstall')) ?>
+                                       name="RemoveTablesUninstall" id="remove-tables-uninstall"><span
                                         class="switch"></span></label>
                         </div>
                     </div>

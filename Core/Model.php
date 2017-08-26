@@ -3,6 +3,8 @@
 namespace GDGallery\Core;
 
 
+use GDGallery\Debug;
+
 abstract class Model
 {
 
@@ -15,12 +17,6 @@ abstract class Model
      */
     protected static $tableName;
 
-    /**
-     * Database items table name(without prefix)
-     *
-     * @var string
-     */
-    protected static $itemsTableName;
 
     /**
      * Primary Key for current model
@@ -85,17 +81,6 @@ abstract class Model
     {
         global $wpdb;
         return $wpdb->prefix . static::$tableName;
-    }
-
-    /**
-     * Returns items table name for current model
-     *
-     * @return string
-     */
-    public static function getItemsTableName()
-    {
-        global $wpdb;
-        return $wpdb->prefix . static::$itemsTableName;
     }
 
 
@@ -295,26 +280,5 @@ abstract class Model
         return static::$AllItemsCount;
     }
 
-    public static function getVideoType($url)
-    {
-        if (strpos($url, "youtube") !== false) {
-            return "youtube";
-        } elseif (strpos($url, "vimeo") !== false) {
-            return "vimeo";
-        }
 
-        return false;
-    }
-
-    public static function getVideoId($url, $type)
-    {
-        $video_id = null;
-        if ($type == "youtube") {
-            $video_id = substr($url, -11);
-        } elseif ($type == "vimeo") {
-            $video_id = substr($url, -9);
-        }
-
-        return $video_id;
-    }
 }

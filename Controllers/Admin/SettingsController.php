@@ -2141,8 +2141,7 @@ class SettingsController
         ));
 
         $builder->render();
-        //$options = $builder->getOptions();
-        // $this->setOption($options);
+
     }
 
     public function setOption($options)

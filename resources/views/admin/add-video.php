@@ -18,7 +18,8 @@
                 <input type="hidden" name="gdgallery_id_gallery" value="<?= $id_gallery ?>">
                 <ul class="video_fields">
 
-                    <li><label for="gdgallery_video_url"><?= _e('Video URL (Youtube or Vimeo)', 'gdgallery'); ?> :</label><br>
+                    <li><label for="gdgallery_video_url"><?= _e('Video URL (Youtube or Vimeo)', 'gdgallery'); ?>
+                            :</label><br>
                         <input type="text" id="gdgallery_video_url"
                                name="gdgallery_video_url"
                                value="" required>
@@ -42,15 +43,6 @@
                                value=""></li>
                 </ul>
 
-                <!--<td>
-                    <label for="gdgallery_video_target"> Target:</label>
-                    <select name="gdgallery_video_target"
-                            id="gdgallery_video_target">
-                        <option value="_blank">New Tab</option>
-                        <option value="_self">Current Tab</option>
-                    </select>
-
-                </td>-->
                 <div class="video_save">
                     <input type="submit" value="<?= _e('Save', 'gdgallery'); ?>"
                            id="gdgallery-add-video-buttom"

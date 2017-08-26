@@ -103,14 +103,6 @@ jQuery(document).ready(function () {
 
     var custom_uploader;
 
-    jQuery('.remove-image-container a').on('click', function () {
-        var galleryId = jQuery(this).data('gallery-id');
-        var imageId = jQuery(this).data('image-id');
-        var removeNonce = jQuery(this).data('nonce-value');
-        jQuery('#adminForm').attr('action', 'admin.php?page=galleries_huge_it_gallery&task=edit_cat&id=' + galleryId + '&removeslide=' + imageId + '&save_data_nonce=' + removeNonce);
-        galleryImgSubmitButton('apply');
-    });
-
     var _custom_media = true;
 
     jQuery('.gdgallery_add_new_image').click(function (e) {
@@ -219,21 +211,6 @@ jQuery(document).ready(function () {
         e.preventDefault();
         gdgalleryModalGallery.show('gdgallery-editimages-modal');
     });
-
-    function galleryImgSubmitButton(pressbutton) {
-        if (!document.getElementById('name').value) {
-            alert("Name is required.");
-            return;
-        }
-
-        if (!((jQuery('#huge_it_sl_effects').val() == 1) || (jQuery('#huge_it_sl_effects').val() == 3))) if (jQuery('#content_per_page').val() < 1) {
-            alert("Images Per Page must be greater than 0.");
-            return;
-        }
-
-        document.getElementById("adminForm").action = document.getElementById("adminForm").action + "&task=" + pressbutton;
-        document.getElementById("adminForm").submit();
-    }
 
 })
 
@@ -440,7 +417,7 @@ jQuery(document).ready(function ($) {
         },
         updateIndexList = function (e, ui) {
             $('td.index', ui.item.parent()).each(function (i) {
-                $(this).find("input").val(i++);
+                $(this).find("input").val(++i);
             });
         };
 
@@ -463,7 +440,7 @@ jQuery(document).ready(function ($) {
         },
         updateIndexGrid = function (e, ui) {
             jQuery('.gdgallery_item').each(function (i) {
-                jQuery(this).find("input[type=hidden]").val(i++);
+                jQuery(this).find("input[type=hidden]").val(++i);
             });
 
         };
