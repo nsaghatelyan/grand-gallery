@@ -18,10 +18,10 @@ class SettingsController
 
     private $options;
 
-    public function __construct()
-    {
-        $this->settingsFileds();
-    }
+    /* public function __construct()
+     {
+         $this->settingsFileds();
+     }*/
 
     public function settingsFileds()
     {

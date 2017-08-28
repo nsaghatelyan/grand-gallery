@@ -1407,13 +1407,13 @@ html .ui-button.ui-state-disabled:active {
     bottom: 8px;
 }
 
-#gdgallery_general_settings ul li:nth-child(even) {
+/*#gdgallery_general_settings ul li:nth-child(even) {
     margin-left: 1%;
 }
 
 #gdgallery_general_settings ul li:nth-child(odd) {
     margin-right: 1%;
-}
+}*/
 
 #gdgallery_custom_css textarea {
     width: 100%;
@@ -1785,6 +1785,7 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 ul.gdgallery_general_settings {
     display: flex !important;
     flex-wrap: wrap !important;
+    justify-content: space-between;
 }
 
 .quick_edit_table tr {

@@ -125,7 +125,7 @@ if (!class_exists('GDGallery')) :
             }
 
             if (is_admin()) {
-                $this->Admin = new AdminController();
+                $this->admin = new AdminController();
                 AdminAssetsController::init();
 
             } else {

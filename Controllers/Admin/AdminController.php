@@ -83,7 +83,7 @@ class AdminController
 
                     if (!isset($_GET['id'])) {
 
-                        \GDGallery()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
+                        \GDGallery()->admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
@@ -91,7 +91,7 @@ class AdminController
 
                     if (!$id) {
 
-                        \GDGallery()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
+                        \GDGallery()->admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
                     }
 
@@ -118,6 +118,7 @@ class AdminController
 
         $builder = new SettingsController();
 
+        $builder->settingsFileds();
     }
 
 
@@ -178,7 +179,7 @@ class AdminController
 
         if (!isset($_GET['id'])) {
 
-            \GDGallery()->Admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->admin->printError(__('Missing "id" parameter.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
@@ -186,13 +187,13 @@ class AdminController
 
         if (!$id) {
 
-            \GDGallery()->Admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->admin->printError(__('"id" parameter must be not negative integer.', GDGALLERY_TEXT_DOMAIN));
 
         }
 
         if (!isset($_GET['_wpnonce']) || !wp_verify_nonce($_GET['_wpnonce'], 'gdgallery_duplicate_gallery_' . $id)) {
 
-            \GDGallery()->Admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
+            \GDGallery()->admin->printError(__('Security check failed.', GDGALLERY_TEXT_DOMAIN));
 
         }
 

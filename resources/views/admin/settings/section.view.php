@@ -4,7 +4,7 @@
  * @var $section array
  * @var $fields array
  */
-\GDGallery()->Admin->Pages['styles']
+\GDGallery()->admin->Pages['styles']
 ?>
 
 <div class="settings-section-wrap" id="<?php echo $key ?>">

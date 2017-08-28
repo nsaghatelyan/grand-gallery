@@ -25,7 +25,6 @@ class Gallery extends Model
      */
     private $Name;
 
-
     private $Items;
 
     private $Gallery;
