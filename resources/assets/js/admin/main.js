@@ -227,7 +227,7 @@ jQuery(document).ready(function () {
             formData = form.serialize(),
             general_data = {
                 action: "gdgallery_save_gallery",
-                nonce: gallerySave.nonce,
+                nonce: gdgallery_save.nonce,
                 gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
                 gallery_name: jQuery("input[name=gdgallery_name]").val(),
                 formdata: formData
@@ -282,7 +282,7 @@ jQuery(document).ready(function () {
             formData = form.serialize(),
             general_data = {
                 action: "gdgallery_save_gallery_images",
-                nonce: gallerySave.nonce,
+                nonce: gdgallery_save.nonce,
                 gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
                 formdata: formData
             };
@@ -347,7 +347,7 @@ jQuery(document).ready(function () {
 
         general_data = {
             action: "gdgallery_remove_gallery_items",
-            nonce: gallerySave.nonce,
+            nonce: gdgallery_save.nonce,
             gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
             formdata: checked_items
         };
@@ -518,7 +518,7 @@ function gdgalleryEditThumbnail(data, id) {
 
     var general_data = {
         action: "gdgallery_edit_thumbnail",
-        nonce: gallerySave.nonce,
+        nonce: gdgallery_save.nonce,
         gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
         image_id: id,
         formdata: data
@@ -555,7 +555,7 @@ function gdgalleryAddItem(data, type) {
     }
     var general_data = {
         action: "gdgallery_add_gallery_" + type,
-        nonce: gallerySave.nonce,
+        nonce: gdgallery_save.nonce,
         gallery_id: jQuery("input[name=gdgallery_id_gallery]").val(),
         formdata: data
     };

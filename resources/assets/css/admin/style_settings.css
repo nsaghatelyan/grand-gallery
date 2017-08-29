@@ -192,9 +192,12 @@
 
 }
 
-.settings-field > label.input-wrap span.settings-label,
+.settings-field > label.input-wrap span.settings-label {
+    max-width: 60%;
+}
+
 .settings-field > label.input-wrap input {
-    max-width: 50%;
+    max-width: 40%;
 }
 
 .settings-field > label.input-wrap span.settings-label {

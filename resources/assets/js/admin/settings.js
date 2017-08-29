@@ -9,7 +9,7 @@ jQuery(document).ready(function () {
 
         var general_data = {
             action: "gdgallery_save_plugin_settings",
-            nonce: settingsSave.nonce,
+            nonce: gdgallery_settingsSave.nonce,
             formData: formData,
         };
 

@@ -97,15 +97,15 @@ class AdminAssetsController
     public static function localizeScripts()
     {
 
-        wp_localize_script('gdgalleryAdminJs', 'gallerySave', array(
+        wp_localize_script('gdgalleryAdminJs', 'gdgallery_save', array(
             'nonce' => wp_create_nonce('gdgallery_save_gallery'),
         ));
 
-        wp_localize_script('gdgalleryInlinePopup', 'inlinePopup', array(
+        wp_localize_script('gdgalleryInlinePopup', 'gdgallery_inlinePopup', array(
             'nonce' => wp_create_nonce('gdgallery_save_shortcode_options'),
         ));
 
-        wp_localize_script('gdgallerySettings', 'settingsSave', array(
+        wp_localize_script('gdgallerySettings', 'gdgallery_settingsSave', array(
             'nonce' => wp_create_nonce('gdgallery_save_plugin_settings'),
         ));
 
