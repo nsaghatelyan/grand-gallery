@@ -1507,7 +1507,7 @@ html .ui-button.ui-state-disabled:active {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-
+    min-height: 29px;
 }
 
 .gdgallery_items_list .gdgallery_item p i {
@@ -1637,6 +1637,10 @@ html .ui-button.ui-state-disabled:active {
     font-size: 16px;
     cursor: pointer;
 }
+
+/*.gdgallery_items_list .gdgallery_item:first-child {
+    margin-left: 367px;
+}*/
 
 /*** custom radio ***/
 
@@ -1785,7 +1789,6 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 ul.gdgallery_general_settings {
     display: flex !important;
     flex-wrap: wrap !important;
-    justify-content: space-between;
 }
 
 .quick_edit_table tr {
