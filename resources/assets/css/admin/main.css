@@ -1789,6 +1789,7 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 ul.gdgallery_general_settings {
     display: flex !important;
     flex-wrap: wrap !important;
+    justify-content: space-between;
 }
 
 .quick_edit_table tr {

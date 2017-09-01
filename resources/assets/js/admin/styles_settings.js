@@ -31,25 +31,34 @@ jQuery(document).ready(function ($) {
     var link_t = jQuery("#item_as_link_tiles input[type=checkbox]");
     var link_c = jQuery("#item_as_link_carousel input[type=checkbox]");
     var link_g = jQuery("#item_as_link_grid input[type=checkbox]");
-    disableFiled(link_j, "justified");
-    disableFiled(link_t, "tiles");
-    disableFiled(link_c, "carousel");
-    disableFiled(link_g, "grid");
+    disableFiled(link_j, ["#show_icons_justified"], true);
+    disableFiled(link_t, ["#show_icons_tiles"], true);
+    disableFiled(link_c, ["#show_icons_carousel"], true);
+    disableFiled(link_g, ["#show_icons_grid"], true);
+    var zoom = jQuery("#zoom_slider input[type=checkbox]");
+    disableFiled(zoom, ["#zoom_panel_slider", "#zoom_horisontal_panel_position_slider", "#zoom_vertical_panel_position_slider"], false);
 
 
-    function disFiled(em, view) {
-        if (em.prop("checked") === true) {
-            jQuery("#show_icons_" + view).addClass("disabled_option");
+    function disFiled(em, view, cond) {
+        if (em.prop("checked") === cond) {
+            jQuery(view).each(function (index, val) {
+                jQuery(val).addClass("disabled_option");
+                jQuery(val).find("select").prop("disabled", true);
+            });
+
         }
         else {
-            jQuery("#show_icons_" + view).removeClass("disabled_option");
+            jQuery(view).each(function (index, val) {
+                jQuery(val).removeClass("disabled_option");
+                jQuery(val).find("select").prop("disabled", false);
+            });
         }
     }
 
-    function disableFiled(em, view) {
-        disFiled(em, view);
+    function disableFiled(em, view, cond) {
+        disFiled(em, view, cond);
         em.change(function () {
-            disFiled(em, view);
+            disFiled(em, view, cond);
         })
     }
 

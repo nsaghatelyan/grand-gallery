@@ -418,12 +418,22 @@
     background: #e4e2e2;
 }*/
 
-.disabled_option .input-wrap, .disabled_option .slider {
+.disabled_option .input-wrap,
+.disabled_option .slider,
+.disabled_option select {
     cursor: no-drop;
+}
+
+.disabled_option select{
+
 }
 
 .disabled_option .switch .slider {
     background-color: #e0e0e0 !important;
+}
+
+.disabled_option select {
+    background-color: #e8e8e8;
 }
 
 .disabled_option input:checked + .slider:before {

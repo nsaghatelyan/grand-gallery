@@ -1236,6 +1236,12 @@ class SettingsController
                 'section' => 'element_style_slider',
                 'help' => __('Set autoplay timeout in miliseconds', 'gdgallery')
             ),
+            'transition_speed_slider' => array(
+                'type' => 'number',
+                'label' => __('Appearence Speed (ms)', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Set appearence speed in miliseconds', 'gdgallery')
+            ),
             'pause_on_hover_slider' => array(
                 'type' => 'checkbox',
                 'label' => __('Pause On Hover', 'gdgallery'),
@@ -1262,18 +1268,8 @@ class SettingsController
                 'section' => 'element_style_slider',
                 'help' => __('Choose how to image appear', 'gdgallery')
             ),
-            'transition_speed_slider' => array(
-                'type' => 'number',
-                'label' => __('Appearence Speed (ms)', 'gdgallery'),
-                'section' => 'element_style_slider',
-                'help' => __('Set appearence speed in miliseconds', 'gdgallery')
-            ),
-            'zoom_slider' => array(
-                'type' => 'checkbox',
-                'label' => __('Control Zoom', 'gdgallery'),
-                'section' => 'element_style_slider',
-                'help' => __('Choose whether to turn zoom control on/off', 'gdgallery')
-            ),
+
+
             'loader_type_slider' => array(
                 'type' => 'select',
                 'label' => __('Loader Type', 'gdgallery'),
@@ -1423,6 +1419,12 @@ class SettingsController
                 ),
                 'section' => 'element_style_slider',
                 'help' => __('Choose fullscreen button position', 'gdgallery')
+            ),
+            'zoom_slider' => array(
+                'type' => 'checkbox',
+                'label' => __('Control Zoom', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Choose whether to turn zoom control on/off', 'gdgallery')
             ),
             'zoom_panel_slider' => array(
                 'type' => 'checkbox',

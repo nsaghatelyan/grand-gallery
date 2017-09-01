@@ -15,7 +15,7 @@ $gallery_options["gallery_pause_on_mouseover"] = $options["pause_on_hover_slider
 $gallery_options["slider_scale_mode"] = $options["scale_mode_slider"];
 $gallery_options["slider_transition"] = $options["transition_slider"];
 $gallery_options["slider_transition_speed"] = (int)$options["transition_speed_slider"];
-$gallery_options["slider_control_zoom"] = $options["zoom_slider"];
+
 $gallery_options["slider_loader_type"] = (int)$options["loader_type_slider"];
 $gallery_options["slider_loader_color"] = $options["loader_color_slider"];
 $gallery_options["slider_enable_bullets"] = $options["bullets_slider"];
@@ -32,7 +32,12 @@ $gallery_options["slider_play_button_align_vert"] = $options["play_vertical_posi
 $gallery_options["slider_enable_fullscreen_button"] = $options["fullscreen_slider"];
 $gallery_options["slider_fullscreen_button_align_hor"] = $options["fullscreen_horisontal_position_slider"];
 $gallery_options["slider_fullscreen_button_align_vert"] = $options["fullscreen_vertical_position_slider"];
-$gallery_options["slider_enable_zoom_panel"] = $options["zoom_panel_slider"];
+$gallery_options["slider_control_zoom"] = $options["zoom_slider"];
+if ($options["zoom_slider"] == 1) {
+    $gallery_options["slider_enable_zoom_panel"] = $options["zoom_panel_slider"];
+} else {
+    $gallery_options["slider_enable_zoom_panel"] = false;
+}
 $gallery_options["slider_zoompanel_align_hor"] = $options["zoom_horisontal_panel_position_slider"];
 $gallery_options["slider_zoompanel_align_vert"] = $options["zoom_vertical_panel_position_slider"];
 $gallery_options["slider_controls_always_on"] = $options["controls_always_on_slider"];
@@ -64,6 +69,20 @@ if ($options["playlist_slider"] == 1) {
 } else {
     wp_enqueue_script("gdgalleryslider", \GDGallery()->pluginUrl() . "/resources/assets/js/frontend/ug-theme-slider.js", array('jquery'), false, true);
 }
+
+
+$gallery_options["slider_progress_indicator_offset_hor"] = 5;
+$gallery_options["slider_progress_indicator_offset_vert"] = 5;
+
+$gallery_options["slider_play_button_offset_hor"] = 60;
+$gallery_options["slider_play_button_offset_vert"] = 8;
+
+$gallery_options["slider_fullscreen_button_offset_hor"] = 37;
+$gallery_options["slider_fullscreen_button_offset_vert"] = 9;
+
+$gallery_options["slider_zoompanel_offset_hor"] = 12;
+$gallery_options["slider_zoompanel_offset_vert"] = 40;
+
 
 $json = json_encode($gallery_options);
 
