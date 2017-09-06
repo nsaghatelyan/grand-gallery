@@ -1864,6 +1864,12 @@ class SettingsController
                 'section' => 'wide_lightbox',
                 'help' => __('Set overlay opacity in percentage', 'gdgallery')
             ),
+            'top_panel_bg_color_wide' => array(
+                'type' => 'color',
+                'label' => __('Top Panel Background Color', 'gdgallery'),
+                'section' => 'wide_lightbox',
+                'help' => __('Set top panel background color in HEXadecimal color system', 'gdgallery')
+            ),
             'top_panel_opacity_wide' => array(
                 'type' => 'number',
                 'label' => __('Top Panel Opacity (%)', 'gdgallery'),
@@ -2011,12 +2017,6 @@ class SettingsController
                 'label' => __('Overlay Opacity (%)', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Set overlay opacity in percentage', 'gdgallery')
-            ),
-            'top_panel_opacity_compact' => array(
-                'type' => 'number',
-                'label' => __('Top Panel Opacity (%)', 'gdgallery'),
-                'section' => 'compact_lightbox',
-                'help' => __('Set top panel opacity in percentage', 'gdgallery')
             ),
             'show_numbers_compact' => array(
                 'type' => 'checkbox',

@@ -304,6 +304,7 @@ class Settings
         'arrows_offset_wide' => '0',
         'overlay_color_wide' => '000000',
         'overlay_opacity_wide' => '100',
+        'top_panel_bg_color_wide' => '000000',
         'top_panel_opacity_wide' => '100',
         'show_numbers_wide' => 'b:1;',
         'number_size_wide' => '15',
@@ -330,7 +331,6 @@ class Settings
         'arrows_offset_compact' => '0',
         'overlay_color_compact' => '000000',
         'overlay_opacity_compact' => '50',
-        'top_panel_opacity_compact' => '0',
         'show_numbers_compact' => 'b:1;',
         'number_size_compact' => '15',
         'number_color_compact' => 'FFFFFF',
@@ -426,10 +426,6 @@ class Settings
             $gallery_options["tile_show_link_icon"] = $this->options["show_link_icon_" . $view];
         }
 
-        if ($this->options["item_as_link_" . $view] == false && $this->options["show_icons_" . $view] == false && $this->options["show_link_icon_" . $view] == true) {
-
-        }
-
         $gallery_options["tile_textpanel_appear_type"] = $this->options["title_appear_type_" . $view];
         $gallery_options["tile_textpanel_position"] = $this->options["title_vertical_position_" . $view];
         $gallery_options["tile_link_newpage"] = $this->options["link_new_tab_" . $view];
@@ -443,7 +439,9 @@ class Settings
         $gallery_options["lightbox_arrows_offset"] = (int)$this->options["arrows_offset_" . $lt];
         $gallery_options["lightbox_overlay_color"] = "#" . $this->options["overlay_color_" . $lt];
         $gallery_options["lightbox_overlay_opacity"] = $this->options["overlay_opacity_" . $lt] / 100;
-        $gallery_options["lightbox_top_panel_opacity"] = $this->options["top_panel_opacity_" . $lt] / 100;
+        if ($lt != "compact") {
+            $gallery_options["lightbox_top_panel_opacity"] = $this->options["top_panel_opacity_" . $lt] / 100;
+        }
         $gallery_options["lightbox_show_numbers"] = $this->options["show_numbers_" . $lt];
         $gallery_options["lightbox_numbers_size"] = $this->options["number_size_" . $lt];
         $gallery_options["lightbox_numbers_color"] = "#" . $this->options["number_color_" . $lt];
