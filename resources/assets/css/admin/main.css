@@ -1582,6 +1582,7 @@ html .ui-button.ui-state-disabled:active {
 
 .gdgallery_add_new_video {
     background-color: #556ce4;
+    left: 184px;
 }
 
 .gdgallery_add_new_video:hover,
@@ -1636,6 +1637,9 @@ html .ui-button.ui-state-disabled:active {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    z-index: 9999;
+    margin-top: 4px;
+    position: absolute;
 }
 
 /*.gdgallery_items_list .gdgallery_item:first-child {
@@ -1884,6 +1888,11 @@ ul.gdgallery_general_settings {
 #gdgallery-editimages-modal .spinner {
     position: absolute;
     right: 75px;
+}
+
+.empty_space {
+    margin-right: 365px;
+    width: 0px;
 }
 
 @media all and (max-width: 785px) {

@@ -226,15 +226,18 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 aria-hidden="true"></i></a>
                 <?php } ?>
                 <div class="gdgallery_clearfix"></div>
+                <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
+                    <div class="gdgallery_add_new_plus"></div>
+                    <p>  <?= _e('NEW IMAGE', 'gdgallery'); ?></p>
+                </div>
+                <div class="gdgallery_add_new gdgallery_add_new_video">
+                    <div class="gdgallery_add_new_plus"></div>
+                    <p> <?= _e('NEW VIDEO', 'gdgallery'); ?></p>
+                </div>
 
                 <div class="gdgallery_items_list">
-                    <div class="gdgallery_add_new gdgallery_add_new_image" id="_unique_name_button">
-                        <div class="gdgallery_add_new_plus"></div>
-                        <p>  <?= _e('NEW IMAGE', 'gdgallery'); ?></p>
-                    </div>
-                    <div class="gdgallery_add_new gdgallery_add_new_video">
-                        <div class="gdgallery_add_new_plus"></div>
-                        <p> <?= _e('NEW VIDEO', 'gdgallery'); ?></p>
+                    <div class="empty_space">
+                        
                     </div>
                     <?php
                     if (!empty($items)) {
