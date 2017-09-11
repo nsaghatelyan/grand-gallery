@@ -442,7 +442,6 @@ jQuery(document).ready(function ($) {
             jQuery('.gdgallery_item').each(function (i) {
                 jQuery(this).find("input[type=hidden]").val(++i);
             });
-
         };
 
     jQuery(".gdgallery_items_list").sortable({

@@ -193,7 +193,6 @@ function UGTheme_grid() {
      * set gallery html elements
      */
     function setHtml() {
-
         //add html elements
         g_objWrapper.addClass("ug-theme-grid");
 
@@ -204,7 +203,6 @@ function UGTheme_grid() {
         //set slider html
         if (g_objSlider)
             g_objSlider.setHtml();
-
     }
 
 

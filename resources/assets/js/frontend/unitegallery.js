@@ -11184,6 +11184,8 @@ function UGTileDesign() {
 
         if (g_options.tile_enable_icons) {
 
+
+
             //add zoom icon
             if (g_options.tile_as_link == false && g_options.tile_enable_action == true) {
                 var iconPlayClass = "ug-button-play ug-icon-zoom";
@@ -11242,8 +11244,6 @@ function UGTileDesign() {
         }  //if icons enabled
         else {		//if the icons don't enabled, set the tile clickable
 
-            // if (g_options.tile_enable_action == true) {
-            //objThumbWrapper.addClass("ug-tile-clickable");
 
             // changes begin here
             var htmlAdd2 = "";
@@ -11253,7 +11253,7 @@ function UGTileDesign() {
                     var linkTarget = "";
                     if (g_options.tile_link_newpage == true)
                         linkTarget = " target='_blank'";
-                    htmlAdd2 += "<a href='" + objItem.link + "'" + linkTarget + " class='ug-tile-icon ug-icon-link'></a>";
+                    htmlAdd2 += "<a href='" + objItem.link + "'" + linkTarget + " class='ug-tile-icon ug-icon-link ug-icon-link-hide'></a>";
                 }
             }
             else {
@@ -11273,8 +11273,6 @@ function UGTileDesign() {
 
             // changes end here
 
-
-            // }
 
         }
 
@@ -15617,6 +15615,9 @@ function UGTextPanel() {
      * set new panel height
      */
     function setHeight(height, animateHeight) {
+        if (height <= 20) {
+            height = 0;
+        }
 
         if (!animateHeight)
             var animateHeight = false;
@@ -15870,6 +15871,7 @@ function UGTextPanel() {
         if (g_objBG) {
             g_objBG.width(panelWidth);
             g_objBG.height(panelHeight);
+
         }
 
         //set textwrapper size and position
