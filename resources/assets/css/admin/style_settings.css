@@ -306,11 +306,11 @@
 .settings-field > label.input-wrap input[type="url"],
 .settings-field > label.input-wrap input[type="text"],
 .settings-field > label.input-wrap input[type="email"] {
-    width: 120px;
+    width: 100px;
 }
 
 .settings-field > label.input-wrap input[type="number"] {
-    width: 60px;
+    width: 100px;
 }
 
 .settings-field .switch {
@@ -424,7 +424,7 @@
     cursor: no-drop;
 }
 
-.disabled_option select{
+.disabled_option select {
 
 }
 

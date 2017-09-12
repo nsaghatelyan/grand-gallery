@@ -237,14 +237,13 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 
                 <div class="gdgallery_items_list">
                     <div class="empty_space">
-                        
+
                     </div>
                     <?php
                     if (!empty($items)) {
                         foreach ($items as $item):
                             $icon = ($item->type == "youtube") ? "fa-youtube-play" : (($item->type == "vimeo") ? "fa-vimeo" : "fa-picture-o");
                             ?>
-
                             <div class="gdgallery_item" style="background-image: url('<?= $item->url ?>');">
                                 <input type="hidden"
                                        name="gdgallery_ordering[<?= $item->id_image ?>]"
