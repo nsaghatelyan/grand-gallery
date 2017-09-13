@@ -1637,7 +1637,7 @@ html .ui-button.ui-state-disabled:active {
     color: #fff;
     font-size: 16px;
     cursor: pointer;
-    z-index: 9999;
+    z-index: 9;
     margin-top: 4px;
     position: absolute;
 }

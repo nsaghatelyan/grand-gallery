@@ -31,6 +31,14 @@ class AjaxController
 
         $query = $wpdb->prepare("SELECT * FROM " . $gallery::getItemsTableName() . " where id_gallery = '%d' order by " . $order_inf["sort"] . " " . $order_inf["order"] . " LIMIT " . $start, $id_gallery);
         $items = $wpdb->get_results($query);
+        foreach ($items as $key => $val) {
+            if ($val->id_post != 0) {
+                $post = get_post($val->id_post);
+                $items[$key]->url = wp_get_attachment_url($post->ID);
+//                $items[$key]->name = $post->post_title;
+                $items[$key]->name = $val->name;
+            }
+        }
 
 
         $show_button = (count($items) < $total_count) ? 1 : 0;
