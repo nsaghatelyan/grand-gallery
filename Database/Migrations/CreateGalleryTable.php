@@ -19,7 +19,7 @@ class CreateGalleryTable
                 `id_gallery` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                 `name` varchar(255) NULL,
                 `description` text,
-                `ordering` int(11) NOT NULL,
+                `ordering` int(11) NOT NULL DEFAULT 0,
                 `order_by` int(1) NOT NULL DEFAULT 0,
                 `sort_by` int(1) NOT NULL DEFAULT 0,
                 `display_type` int(1) NOT NULL DEFAULT 0,
@@ -32,5 +32,13 @@ class CreateGalleryTable
                 PRIMARY KEY (id_gallery)
             ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci "
         );
+
+        /* $new_gallery = $wpdb->insert($wpdb->prefix . "gdgallerygalleries", array("name" => "My First test Gallery"));
+         $default_images = array();
+         for($i=1; $i < 14; $i++){
+             $default_images[] = GDGALLERY_IMAGES_URL."project".$i.".jpg";
+         }
+
+         \GDGallery\Debug::trace($new_gallery);*/
     }
 }

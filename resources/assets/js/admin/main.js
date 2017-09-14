@@ -220,6 +220,7 @@ jQuery(document).ready(function () {
     jQuery('#gdgallery_images_form').on('submit', function (e) {
         e.preventDefault();
 
+
         if (doingAjax) return false;
 
         var form = jQuery('#gdgallery_images_form'),
@@ -248,8 +249,10 @@ jQuery(document).ready(function () {
             doingAjax = false;
             submitBtn.removeAttr("disabled");
             submitBtn.parent().find(".spinner").css("visibility", "hidden");
+
         }).done(function (response) {
             if (response == 1) {
+
                 toastr.success('Saved Successfully');
             } else {
                 toastr.error('Error while saving');
@@ -304,6 +307,7 @@ jQuery(document).ready(function () {
                 submitBtn.parent().find(".spinner").css("visibility", "hidden");
             }).done(function (response) {
                 if (response == 1) {
+                    gdgalleryModalGallery.hide("gdgallery-editimages-modal");
                     toastr.success('Saved Successfully');
                 } else {
                     toastr.error('Error while saving');
@@ -444,11 +448,11 @@ jQuery(document).ready(function ($) {
             });
         };
 
-    jQuery(".gdgallery_items_list").sortable({
-        helper: fixHelperModifiedGrid,
-        stop: updateIndexGrid,
-        placeholder: 'gdgallery_item'
-    }).disableSelection();
+    /* jQuery(".gdgallery_items_list").sortable({
+     helper: fixHelperModifiedGrid,
+     stop: updateIndexGrid,
+     placeholder: 'gdgallery_item'
+     }).disableSelection();*/
 
     jQuery("#gdgallery_display_type").change(function () {
         if (jQuery(this).val() == 0) {

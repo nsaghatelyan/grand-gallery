@@ -30,12 +30,12 @@ $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_galler
                 <th scope="col" id="header-name" style="width:85px">
                     <span><?php _e('Name', GDGALLERY_TEXT_DOMAIN); ?></span>
                 </th>
-                <th scope="col" id="header-fields" style="width:85px">
+                <th scope="col" id="header-fields" style="width:55px">
                     <span><?php _e('Items', GDGALLERY_TEXT_DOMAIN); ?></span></th>
 
-                <th scope="col" id="header-shortcode" style="width:85px">
+                <th scope="col" id="header-shortcode" style="width:115px">
                     <span><?php _e('Shortcode', GDGALLERY_TEXT_DOMAIN); ?></span></th>
-                <th style="width:60px"><?php _e('Actions', GDGALLERY_TEXT_DOMAIN); ?></th>
+                <th style="width:35px"><?php _e('Actions', GDGALLERY_TEXT_DOMAIN); ?></th>
             </tr>
             </thead>
             <tbody>

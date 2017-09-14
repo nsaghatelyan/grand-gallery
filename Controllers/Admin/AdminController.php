@@ -51,7 +51,7 @@ class AdminController
             'mainPage'
         ));
 
-        $this->Pages['styles'] = add_submenu_page('gdgallery', __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), __('Themes / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
+        $this->Pages['styles'] = add_submenu_page('gdgallery', __('Views / Styles', GDGALLERY_TEXT_DOMAIN), __('Views / Styles', GDGALLERY_TEXT_DOMAIN), 'manage_options', 'gdgallery_styles', array(
             $this,
             'stylesPage'
         ));
@@ -242,7 +242,7 @@ class AdminController
 
         $gallery = new Gallery();
 
-        $gallery = $gallery->setName('New Created Gallery')->save();
+        $gallery = $gallery->setName('')->save();
 
         /**
          * after the gallery is created we need to redirect user to the edit page

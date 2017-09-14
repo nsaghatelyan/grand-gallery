@@ -105,14 +105,15 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                     <div id="gdgallery_general_settings">
                         <div class="gallery_title_div">
                             <input type="text" id="gallery_name" name="gdgallery_name"
-                                   value="<?php echo $gallery->getName(); ?>">
+                                   value="<?php if ($gallery->getName() != "(no title)") echo $gallery->getName(); ?>"
+                                   placeholder="<?= _e('Name Your Gallery', 'gdgallery'); ?>">
                             <input type="hidden" id="gdgallery_id_gallery" name="gdgallery_id_gallery"
                                    value="<?php echo $id ?>">
 
                         </div>
                         <ul class="gdgallery_general_settings">
                             <li class="gdgallery_display_type_section <?= $display_opt ?>">
-                                <h4><?= _e('Display Type', 'gdgallery'); ?></h4>
+                                <h4><?= _e('Content Display Type', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type">
                                     <option value="0" <?php if ($gallery_data->display_type == 0) echo "selected" ?>>
                                         <?= _e('Show All', 'gdgallery'); ?>
@@ -132,7 +133,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                        value="<?= $gallery_data->items_per_page ?>">
                             </li>
                             <li class="gdgallery_sorting_section">
-                                <h4><?= _e('Sort By', 'gdgallery'); ?></h4>
+                                <h4><?= _e('', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_sort_by" id="gdgallery_sorting">
                                     <option value="0" <?php if ($gallery_data->sort_by == 0) echo "selected" ?>>
                                         <?= _e('Custom Sorting', 'gdgallery'); ?>
@@ -146,7 +147,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 </select>
                             </li>
                             <li class="gdgallery_ordering_section">
-                                <h4><?= _e('Order', 'gdgallery'); ?></h4>
+                                <h4><?= _e('Image order', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_order_by" id="gdgallery_ordering">
                                     <option value="0" <?php if ($gallery_data->order_by == 0) echo "selected" ?>>
                                         <?= _e('Ascending', 'gdgallery'); ?>
@@ -186,13 +187,13 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 </div>
                             </div>
                             <div class="gdgallery_example">
-                                <h3><?= _e('Page or Post', 'gdgallery'); ?></h3>
-                                <p> <?= _e('Insert it into an existing post with the icon', 'gdgallery'); ?></p>
+                                <h3><?= _e('Post and/or Page', 'gdgallery'); ?></h3>
+                                <p> <?= _e('Insert regular shortcode to post/page using this icon', 'gdgallery'); ?></p>
                                 <img src="<?= GDGALLERY_IMAGES_URL ?>page_editor.png">
                             </div>
                             <div class="gdgallery_example">
-                                <h3> <?= _e('PHP Code', 'gdgallery'); ?></h3>
-                                <p> <?= _e('Paste the PHP code into your template file', 'gdgallery'); ?></p>
+                                <h3> <?= _e('PHP Shortcode', 'gdgallery'); ?></h3>
+                                <p> <?= _e('Paste the PHP Shortcode into your template file', 'gdgallery'); ?></p>
                                 <div class="gdgallery_highlighted">
                                     <span id="gdgallery_php_code">
                                     &lt;?php <br>
@@ -271,5 +272,251 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
 </form>
 <?php \GDGallery\Helpers\View::render('admin/add-video.php', array('id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
+<style>
+
+
+    .list-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 140px;
+        width: 240px;
+    }
+
+    .item-content {
+        height: 100%;
+        border: 0px solid rgba(123, 123, 123, 0.498039);
+        border-radius: 4px;
+        color: rgb(153, 153, 153);
+        line-height: 140px;
+        padding-left: 32px;
+        font-size: 24px;
+        font-weight: 400;
+        background-color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+    }
+
+
+</style>
+
+<section class="container">
+
+    <div class="list-item" id="alpha">
+        <div class="item-content">
+            <span class="order">1</span> Alpha
+        </div>
+    </div>
+
+    <div class="list-item" id="bravo">
+        <div class="item-content">
+            <span class="order">2</span> Bravo
+        </div>
+    </div>
+
+    <div class="list-item" id="charlie">
+        <div class="item-content">
+            <span class="order">3</span> Charlie
+        </div>
+    </div>
+
+    <div class="list-item" id="delta">
+        <div class="item-content">
+            <span class="order">4</span> Delta
+        </div>
+    </div>
+
+    <div class="list-item" id="echo">
+        <div class="item-content">
+            <span class="order">5</span> Echo
+        </div>
+    </div>
+
+    <div class="list-item" id="foxtrot">
+        <div class="item-content">
+            <span class="order">6</span> Foxtrot
+        </div>
+    </div>
+
+    <div class="list-item" id="gulf">
+        <div class="item-content">
+            <span class="order">7</span> Gulf
+        </div>
+    </div>
+
+    <div class="list-item" id="hotel">
+        <div class="item-content">
+            <span class="order">8</span> Hotel
+        </div>
+    </div>
+
+    <div class="list-item" id="india">
+        <div class="item-content">
+            <span class="order">9</span> India
+        </div>
+    </div>
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/utils/Draggable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/plugins/CSSPlugin.min.js"></script>
+
+<script type="text/javascript">
+    // List version
+    // https://codepen.io/osublake/pen/jrqjdy/
+
+    var rowSize = 150;
+    var colSize = 250;
+    var totalRows = 3;
+    var totalCols = 3;
+
+    var cells = [];
+
+    // Map cell locations to array
+    for (var row = 0; row < totalRows; row++) {
+        for (var col = 0; col < totalCols; col++) {
+            cells.push({
+                row: row,
+                col: col,
+                x: col * colSize,
+                y: row * rowSize
+            });
+        }
+    }
+
+    var container = document.querySelector(".container");
+    var listItems = Array.from(document.querySelectorAll(".list-item")); // Array of elements
+    var sortables = listItems.map(Sortable); // Array of sortables
+    var total = sortables.length;
+
+    TweenLite.to(container, 0.5, {autoAlpha: 1});
+
+    function changeIndex(item, to, sameRow, sameCol) {
+
+        // Check if adjacent to new position
+        if ((sameRow && !sameCol) || (!sameRow && sameCol)) {
+
+            // Swap positions in array
+            var temp = sortables[to];
+            sortables[to] = item;
+            sortables[item.index] = temp;
+
+        } else {
+
+            // Change position in array
+            arrayMove(sortables, item.index, to);
+        }
+
+        // Simple, but not optimized way to change element's position in DOM. Not always necessary.
+        sortables.forEach(sortable = > container.appendChild(sortable.element)
+    )
+        ;
+
+        // Set index for each sortable
+        sortables.forEach((sortable, index) = > sortable.setIndex(index)
+    )
+        ;
+    }
+
+    function Sortable(element, index) {
+
+        var content = element.querySelector(".item-content");
+        var order = element.querySelector(".order");
+
+        var animation = TweenLite.to(content, 0.3, {
+            boxShadow: "rgba(0,0,0,0.2) 0px 16px 32px 0px",
+            force3D: true,
+            scale: 1.1,
+            paused: true
+        });
+
+        var dragger = new Draggable(element, {
+            onDragStart: downAction,
+            onRelease: upAction,
+            onDrag: dragAction,
+            cursor: "inherit"
+        });
+
+        var position = element._gsTransform;
+
+        // Public properties and methods
+        var sortable = {
+            cell: cells[index],
+            dragger: dragger,
+            element: element,
+            index: index,
+            setIndex: setIndex
+        };
+
+        TweenLite.set(element, {
+            x: sortable.cell.x,
+            y: sortable.cell.y,
+        });
+
+        function setIndex(index) {
+
+            var cell = cells[index];
+            var dirty = position.x !== cell.x || position.y !== cell.y;
+
+            sortable.cell = cell;
+            sortable.index = index;
+            order.textContent = index + 1;
+
+            // Don't layout if you're dragging
+            if (!dragger.isDragging && dirty) layout();
+        }
+
+        function downAction() {
+            animation.play();
+            this.update();
+        }
+
+        function dragAction() {
+
+            var col = clamp(Math.round(this.x / colSize), 0, totalCols - 1);
+            var row = clamp(Math.round(this.y / rowSize), 0, totalRows - 1);
+
+            var cell = sortable.cell;
+            var sameCol = col === cell.col;
+            var sameRow = row === cell.row;
+
+            // Check if position has changed
+            if (!sameRow || !sameCol) {
+
+                // Calculate the new index
+                var index = totalCols * row + col;
+
+                // Update the model
+                changeIndex(sortable, index, sameRow, sameCol);
+            }
+        }
+
+        function upAction() {
+            animation.reverse();
+            layout();
+        }
+
+        function layout() {
+            TweenLite.to(element, 0.3, {
+                x: sortable.cell.x,
+                y: sortable.cell.y
+            });
+        }
+
+        return sortable;
+    }
+
+    // Changes an elements's position in array
+    function arrayMove(array, from, to) {
+        array.splice(to, 0, array.splice(from, 1)[0]);
+    }
+
+    // Clamps a value to a min/max
+    function clamp(value, a, b) {
+        return value < a ? a : (value > b ? b : value);
+    }
+
+
+</script>
 
 
