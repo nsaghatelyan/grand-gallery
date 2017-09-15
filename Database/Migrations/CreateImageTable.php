@@ -21,7 +21,7 @@ class CreateImageTable
                 `id_post` int(11) UNSIGNED  NULL DEFAULT 0,
                 `name` varchar(255) NULL,
                 `description` text,
-                `ordering` int(11) NOT NULL,
+                `ordering` int(11) NOT NULL DEFAULT 0,
                 `link` varchar(255) NULL,
                 `url` varchar(255) NOT NULL,
                 `target` ENUM('_blank','_self','_top','_parent') DEFAULT '_blank',

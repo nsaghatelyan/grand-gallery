@@ -162,19 +162,19 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Title Font Size', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Choose title font size in px', 'gdgallery')
+                'help' => __('Set title font size in px', 'gdgallery')
             ),
             'title_color_justified' => array(
                 'type' => 'color',
                 'label' => __('Title Color', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Choose title color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set title color in HEXadecimal color system', 'gdgallery')
             ),
             'title_background_color_justified' => array(
                 'type' => 'color',
                 'label' => __('Title Background Color', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Choose title background color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set title background color in HEXadecimal color system', 'gdgallery')
             ),
             'title_background_opacity_justified' => array(
                 'type' => 'number',
@@ -184,27 +184,27 @@ class SettingsController
             ),
             'margin_justified' => array(
                 'type' => 'number',
-                'label' => __('Image Element Margin', 'gdgallery'),
+                'label' => __('Image Margin', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Set image element margin in px', 'gdgallery')
+                'help' => __('Set image margin in px', 'gdgallery')
             ),
             'border_width_justified' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Width', 'gdgallery'),
+                'label' => __('Image Border Width', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Set image element border width in px', 'gdgallery')
+                'help' => __('Set image border width in px', 'gdgallery')
             ),
             'border_color_justified' => array(
                 'type' => 'color',
-                'label' => __('Image Element Border Color', 'gdgallery'),
+                'label' => __('Image Border Color', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Set image element border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image border color in HEXadecimal color system', 'gdgallery')
             ),
             'border_radius_justified' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Radius', 'gdgallery'),
+                'label' => __('Image Border Radius', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Set image element border radius in px', 'gdgallery')
+                'help' => __('Set image border radius in px', 'gdgallery')
             ),
 
             'show_icons_justified' => array(
@@ -258,7 +258,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Element Shadow', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Turn image element shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image element shadow on/off', 'gdgallery')
             ),
 
 
@@ -293,7 +293,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Font Size', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Set load more font size in px', 'gdgallery')
+                'help' => __('Set load more text font size in px', 'gdgallery')
             ),
             'load_more_vertical_padding_justified' => array(
                 'type' => 'number',
@@ -311,7 +311,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Border Width', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Set load more border width in px', 'gdgallery')
+                'help' => __('Set load more button border width in px', 'gdgallery')
             ),
             'load_more_border_radius_justified' => array(
                 'type' => 'number',
@@ -354,7 +354,7 @@ class SettingsController
                 'type' => 'color',
                 'label' => __('On Hover Border Color', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Set load more button on hover border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set load more button border on hover color in HEXadecimal color system', 'gdgallery')
             ),
             'load_more_hover_color_justified' => array(
                 'type' => 'color',
@@ -372,7 +372,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Show Loading Icon', 'gdgallery'),
                 'section' => 'load_more_justified',
-                'help' => __('Turn loadin icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn loading icon on/off', 'gdgallery')
             ),
             'load_more_loader_color_justified' => array(
                 'type' => 'color',
@@ -427,7 +427,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Border Radius', 'gdgallery'),
                 'section' => 'pagination_justified',
-                'help' => __('Set radius value in px', 'gdgallery')
+                'help' => __('Set border radius value in px', 'gdgallery')
             ),
             'pagination_border_color_justified' => array(
                 'type' => 'color',
@@ -458,13 +458,13 @@ class SettingsController
                     'serif' => __('serif', 'gdgallery'),
                 ),
                 'section' => 'pagination_justified',
-                'help' => __('Set pagination element font type', 'gdgallery')
+                'help' => __('Choose pagination element font type', 'gdgallery')
             ),
             'pagination_hover_border_color_justified' => array(
                 'type' => 'color',
                 'label' => __('On Hover Border Color', 'gdgallery'),
                 'section' => 'pagination_justified',
-                'help' => __('Set pagination element border color on hover', 'gdgallery')
+                'help' => __('Set pagination element border on hover color', 'gdgallery')
             ),
             'pagination_hover_color_justified' => array(
                 'type' => 'color',
@@ -476,7 +476,7 @@ class SettingsController
                 'type' => 'color',
                 'label' => __('On Hover Background Color', 'gdgallery'),
                 'section' => 'pagination_justified',
-                'help' => __('Set pagination element background color on hover', 'gdgallery')
+                'help' => __('Set pagination element on hover background color', 'gdgallery')
             ),
             'pagination_nav_type_justified' => array(
                 'type' => 'select',
@@ -558,13 +558,13 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Title Font Size', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Choose title font size in px', 'gdgallery')
+                'help' => __('Set title font size in px', 'gdgallery')
             ),
             'title_color_tiles' => array(
                 'type' => 'color',
                 'label' => __('Title Color', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Choose title color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set title color in HEXadecimal color system', 'gdgallery')
             ),
             'title_background_color_tiles' => array(
                 'type' => 'color',
@@ -580,9 +580,9 @@ class SettingsController
             ),
             'margin_tiles' => array(
                 'type' => 'number',
-                'label' => __('Image Element Margin', 'gdgallery'),
+                'label' => __('Image Margin', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Set image element margin in px', 'gdgallery')
+                'help' => __('Set image margin in px', 'gdgallery')
             ),
             'col_width_tiles' => array(
                 'type' => 'number',
@@ -594,25 +594,25 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Minimal Columns', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Set minimal column count', 'gdgallery')
+                'help' => __('Set minimal column number', 'gdgallery')
             ),
             'border_width_tiles' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Width', 'gdgallery'),
+                'label' => __('Image Border Width', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Set image element border width in px', 'gdgallery')
+                'help' => __('Set image border width in px', 'gdgallery')
             ),
             'border_color_tiles' => array(
                 'type' => 'color',
-                'label' => __('Image Element Border Color', 'gdgallery'),
+                'label' => __('Image Border Color', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Set image element border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image border color in HEXadecimal color system', 'gdgallery')
             ),
             'border_radius_tiles' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Radius', 'gdgallery'),
+                'label' => __('Image Border Radius', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Set image element border radius in px', 'gdgallery')
+                'help' => __('Set image border radius in px', 'gdgallery')
             ),
 
             'show_icons_tiles' => array(
@@ -666,7 +666,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Element Shadow', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Turn image element shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image element shadow on/off', 'gdgallery')
             ),
 
 
@@ -701,7 +701,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Font Size', 'gdgallery'),
                 'section' => 'load_more_tiles',
-                'help' => __('Set load more font size in px', 'gdgallery')
+                'help' => __('Set load more text font size in px', 'gdgallery')
             ),
             'load_more_vertical_padding_tiles' => array(
                 'type' => 'number',
@@ -719,7 +719,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Border Width', 'gdgallery'),
                 'section' => 'load_more_tiles',
-                'help' => __('Set load more border width in px', 'gdgallery')
+                'help' => __('Set load more button border width in px', 'gdgallery')
             ),
             'load_more_border_radius_tiles' => array(
                 'type' => 'number',
@@ -762,7 +762,7 @@ class SettingsController
                 'type' => 'color',
                 'label' => __('On Hover Border Color', 'gdgallery'),
                 'section' => 'load_more_tiles',
-                'help' => __('Set load more button on hover border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set load more button border on hover color in HEXadecimal color system', 'gdgallery')
             ),
             'load_more_hover_color_tiles' => array(
                 'type' => 'color',
@@ -780,7 +780,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Show Loading Icon', 'gdgallery'),
                 'section' => 'load_more_tiles',
-                'help' => __('Turn loadin icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn loading icon on/off', 'gdgallery')
             ),
             'load_more_loader_color_tiles' => array(
                 'type' => 'color',
@@ -835,7 +835,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Border Radius', 'gdgallery'),
                 'section' => 'pagination_tiles',
-                'help' => __('Set radius value in px', 'gdgallery')
+                'help' => __('Set border radius value in px', 'gdgallery')
             ),
             'pagination_border_color_tiles' => array(
                 'type' => 'color',
@@ -866,13 +866,13 @@ class SettingsController
                     'serif' => __('serif', 'gdgallery'),
                 ),
                 'section' => 'pagination_tiles',
-                'help' => __('Set pagination element font type', 'gdgallery')
+                'help' => __('Choose pagination element font type', 'gdgallery')
             ),
             'pagination_hover_border_color_tiles' => array(
                 'type' => 'color',
                 'label' => __('On Hover Border Color', 'gdgallery'),
                 'section' => 'pagination_tiles',
-                'help' => __('Set pagination element border color on hover', 'gdgallery')
+                'help' => __('Set pagination element border on hover color', 'gdgallery')
             ),
             'pagination_hover_color_tiles' => array(
                 'type' => 'color',
@@ -965,7 +965,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Title Font Size', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Choose title font size in px', 'gdgallery')
+                'help' => __('Set title font size in px', 'gdgallery')
             ),
             'title_color_carousel' => array(
                 'type' => 'color',
@@ -977,7 +977,7 @@ class SettingsController
                 'type' => 'color',
                 'label' => __('Title Background Color', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Choose title background color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set title background color in HEXadecimal color system', 'gdgallery')
             ),
             'title_background_opacity_carousel' => array(
                 'type' => 'number',
@@ -987,9 +987,9 @@ class SettingsController
             ),
             'margin_carousel' => array(
                 'type' => 'number',
-                'label' => __('Image Element Margin', 'gdgallery'),
+                'label' => __('Image Margin', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Set image element margin in px', 'gdgallery')
+                'help' => __('Set image margin in px', 'gdgallery')
             ),
             'width_carousel' => array(
                 'type' => 'number',
@@ -1024,25 +1024,25 @@ class SettingsController
                 'type' => 'color',
                 'label' => __('Background Color', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Choose carousel background color', 'gdgallery')
+                'help' => __('Set carousel background color', 'gdgallery')
             ),
             'border_width_carousel' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Width', 'gdgallery'),
+                'label' => __('Image Border Width', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Set image element border width in px', 'gdgallery')
+                'help' => __('Set image border width in px', 'gdgallery')
             ),
             'border_color_carousel' => array(
                 'type' => 'color',
-                'label' => __('Image Element Border Color', 'gdgallery'),
+                'label' => __('Image Border Color', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Set image element border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image border color in HEXadecimal color system', 'gdgallery')
             ),
             'border_radius_carousel' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Radius', 'gdgallery'),
+                'label' => __('Image Border Radius', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Set image element border radius in px', 'gdgallery')
+                'help' => __('Set element border radius in px', 'gdgallery')
             ),
 
             'show_icons_carousel' => array(
@@ -1096,7 +1096,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Element Shadow', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Turn image element shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image element shadow on/off', 'gdgallery')
             ),
 
 
@@ -1120,26 +1120,26 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Number Of Navigated Elements ', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Set number of elements to scroll when user clicks on next/prev button', 'gdgallery'),
+                'help' => __('Set number of elements to scroll after clicking on next/prev button', 'gdgallery'),
                 "max" => 5
             ),
             'scroll_duration_carousel' => array(
                 'type' => 'number',
-                'label' => __('Duration Of Scrolling (ms)', 'gdgallery'),
+                'label' => __('Scrolling Duration (ms)', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Set carousel scrolling duration in miliseconds', 'gdgallery')
+                'help' => __('Set scrolling duration in ms', 'gdgallery')
             ),
             'autoplay_carousel' => array(
                 'type' => 'checkbox',
                 'label' => __('Autoplay', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Turn autoplay on/off', 'gdgallery')
+                'help' => __('Choose whether to turn autoplay on/off', 'gdgallery')
             ),
             'autoplay_timeout_carousel' => array(
                 'type' => 'number',
                 'label' => __('Autoplay Timeout (ms)', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Set autoplay timeout in miliseconds', 'gdgallery')
+                'help' => __('Set autoplay timeout in ms', 'gdgallery')
             ),
             'autoplay_direction_carousel' => array(
                 'type' => 'select',
@@ -1155,13 +1155,13 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Autoplay Pause On Hover', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Turn autoplay pause on hover on/off', 'gdgallery')
+                'help' => __('Choose whether to turn autoplay pause on hover on/off', 'gdgallery')
             ),
             'enable_nav_carousel' => array(
                 'type' => 'checkbox',
                 'label' => __('Enable Navigation', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Turn navigation on/off', 'gdgallery')
+                'help' => __('Choose whether to turn navigation on/off', 'gdgallery')
             ),
             'nav_vertical_position_carousel' => array(
                 'type' => 'select',
@@ -1171,7 +1171,7 @@ class SettingsController
                     'bottom' => __('Bottom', 'gdgallery')
                 ),
                 'section' => 'components_carousel',
-                'help' => __('Choose navigation position', 'gdgallery')
+                'help' => __('Choose navigation vertical position', 'gdgallery')
             ),
             'nav_horisontal_position_carousel' => array(
                 'type' => 'select',
@@ -1182,19 +1182,19 @@ class SettingsController
                     'right' => __('Right', 'gdgallery')
                 ),
                 'section' => 'components_carousel',
-                'help' => __('Choose navigation position', 'gdgallery')
+                'help' => __('Choose navigation horizontal position', 'gdgallery')
             ),
             'play_icon_carousel' => array(
                 'type' => 'checkbox',
-                'label' => __('Show Play/Pause Icon', 'gdgallery'),
+                'label' => __('Play/Pause Icon', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Turn play/pause icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn play/pause icon on/off', 'gdgallery')
             ),
             'icon_space_carousel' => array(
                 'type' => 'number',
                 'label' => __('Space Between Icons', 'gdgallery'),
                 'section' => 'components_carousel',
-                'help' => __('Set space between icons', 'gdgallery')
+                'help' => __('Set space between icons in px', 'gdgallery')
             ),
 
 
@@ -1215,19 +1215,19 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Autoplay', 'gdgallery'),
                 'section' => 'element_style_slider',
-                'help' => __('Turn autoplay on/off', 'gdgallery')
+                'help' => __('Choose whether to turn autoplay on/off', 'gdgallery')
             ),
             'play_interval_slider' => array(
                 'type' => 'number',
                 'label' => __('Autoplay Timeout (ms)', 'gdgallery'),
                 'section' => 'element_style_slider',
-                'help' => __('Set autoplay timeout in miliseconds', 'gdgallery')
+                'help' => __('Set autoplay timeout in ms', 'gdgallery')
             ),
             'transition_speed_slider' => array(
                 'type' => 'number',
-                'label' => __('Autoplay Timeout (ms)', 'gdgallery'),
+                'label' => __('Autoplay Speed (ms)', 'gdgallery'),
                 'section' => 'element_style_slider',
-                'help' => __('Set appearence speed in miliseconds', 'gdgallery')
+                'help' => __('Set autoplay speed in ms', 'gdgallery')
             ),
             'pause_on_hover_slider' => array(
                 'type' => 'checkbox',
@@ -1243,7 +1243,7 @@ class SettingsController
                     'fill' => __('Fill', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose image scale mode', 'gdgallery')
+                'help' => __('Choose image behavior type', 'gdgallery')
             ),
             'transition_slider' => array(
                 'type' => 'select',
@@ -1253,7 +1253,7 @@ class SettingsController
                     'fade' => __('Fade', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose how to image appear', 'gdgallery')
+                'help' => __('Choose image effect type', 'gdgallery')
             ),
 
 
@@ -1270,7 +1270,7 @@ class SettingsController
                     '7' => __('type 7', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose loader type', 'gdgallery'),
+                'help' => __('Choose loading type', 'gdgallery'),
                 'html_class' => array("show_loader")
             ),
             'loader_color_slider' => array(
@@ -1281,7 +1281,7 @@ class SettingsController
                     'black' => __('black', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose loader color', 'gdgallery')
+                'help' => __('Choose loading color', 'gdgallery')
             ),
             'bullets_slider' => array(
                 'type' => 'checkbox',
@@ -1298,7 +1298,7 @@ class SettingsController
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'components_slider',
-                'help' => __('Choose bullets position', 'gdgallery')
+                'help' => __('Choose bullets horizontal position', 'gdgallery')
             ),
             'bullets_vertical_position_slider' => array(
                 'type' => 'select',
@@ -1308,7 +1308,7 @@ class SettingsController
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
                 'section' => 'components_slider',
-                'help' => __('Choose bullets position', 'gdgallery')
+                'help' => __('Choose bullets vertical position', 'gdgallery')
             ),
             'arrows_slider' => array(
                 'type' => 'checkbox',
@@ -1367,24 +1367,24 @@ class SettingsController
             ),
             'play_horizontal_position_slider' => array(
                 'type' => 'select',
-                'label' => __('Play Button Horizontal Position', 'gdgallery'),
+                'label' => __('Play/Pause Button Horizontal Position', 'gdgallery'),
                 'options' => array(
                     'left' => __('Left', 'gdgallery'),
                     'center' => __('Center', 'gdgallery'),
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'components_slider',
-                'help' => __('Choose play/pause button position', 'gdgallery')
+                'help' => __('Choose play/pause button horizontal position', 'gdgallery')
             ),
             'play_vertical_position_slider' => array(
                 'type' => 'select',
-                'label' => __('Play Button Vertical Position', 'gdgallery'),
+                'label' => __('Play/Pause Button Vertical Position', 'gdgallery'),
                 'options' => array(
                     'top' => __('Top', 'gdgallery'),
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
                 'section' => 'components_slider',
-                'help' => __('Choose play/pause button position', 'gdgallery')
+                'help' => __('Choose play/pause button vertical position', 'gdgallery')
             ),
             'fullscreen_slider' => array(
                 'type' => 'checkbox',
@@ -1401,7 +1401,7 @@ class SettingsController
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose fullscreen button position', 'gdgallery')
+                'help' => __('Choose fullscreen icon horizontal position', 'gdgallery')
             ),
             'fullscreen_vertical_position_slider' => array(
                 'type' => 'select',
@@ -1411,7 +1411,7 @@ class SettingsController
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose fullscreen button position', 'gdgallery')
+                'help' => __('Choose fullscreen icon vertical position', 'gdgallery')
             ),
             'zoom_slider' => array(
                 'type' => 'checkbox',
@@ -1423,7 +1423,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Zoom Panel', 'gdgallery'),
                 'section' => 'element_style_slider',
-                'help' => __('Choose whether to turn zoom panel on/off', 'gdgallery')
+                'help' => __('Choose whether to turn zoom control on/off', 'gdgallery')
             ),
             'zoom_horisontal_panel_position_slider' => array(
                 'type' => 'select',
@@ -1434,7 +1434,7 @@ class SettingsController
                     'right' => __('Right', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose zoom panel position', 'gdgallery')
+                'help' => __('Choose zoom panel horizontal position', 'gdgallery')
             ),
             'zoom_vertical_panel_position_slider' => array(
                 'type' => 'select',
@@ -1444,7 +1444,7 @@ class SettingsController
                     'bottom' => __('Bottom', 'gdgallery'),
                 ),
                 'section' => 'element_style_slider',
-                'help' => __('Choose zoom panel position', 'gdgallery')
+                'help' => __('Choose zoom panel vertical position', 'gdgallery')
             ),
 
             'video_play_type_slider' => array(
@@ -1511,12 +1511,6 @@ class SettingsController
                 'section' => 'element_style_slider',
                 'help' => __('Choose whether to turn text panel background on/off', 'gdgallery')
             ),
-            'carousel_slider' => array(
-                'type' => 'checkbox',
-                'label' => __('Gallery Loop', 'gdgallery'),
-                'section' => 'element_style_slider',
-                'help' => __('If turned on than last image goes to first image', 'gdgallery')
-            ),
             'text_panel_bg_color_slider' => array(
                 'type' => 'color',
                 'label' => __('Text Panel background Color', 'gdgallery'),
@@ -1528,6 +1522,12 @@ class SettingsController
                 'label' => __('Text Panel background Opacity (%)', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set Text Panel background Opacity in percentage', 'gdgallery')
+            ),
+            'carousel_slider' => array(
+                'type' => 'checkbox',
+                'label' => __('Gallery Loop', 'gdgallery'),
+                'section' => 'element_style_slider',
+                'help' => __('Choose whether to turn the gallery loop on/off', 'gdgallery')
             ),
             'playlist_slider' => array(
                 'type' => 'checkbox',
@@ -1549,13 +1549,13 @@ class SettingsController
             ),
             'thumb_width_slider' => array(
                 'type' => 'number',
-                'label' => __('Thumbnail width', 'gdgallery'),
+                'label' => __('Thumbnails width', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set playlist thumbnails width in px', 'gdgallery')
             ),
             'thumb_height_slider' => array(
                 'type' => 'number',
-                'label' => __('Thumbnail Height', 'gdgallery'),
+                'label' => __('Thumbnails Height', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set playlist thumbnails height in px', 'gdgallery')
             ),
@@ -1570,21 +1570,21 @@ class SettingsController
             /********************  Grid options  ***********************/
             'width_grid' => array(
                 'type' => 'number',
-                'label' => __('Element Width', 'gdgallery'),
+                'label' => __('Image Width', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Choose Element width in px', 'gdgallery')
+                'help' => __('Choose image width in px', 'gdgallery')
             ),
             'height_grid' => array(
                 'type' => 'number',
-                'label' => __('Element Height', 'gdgallery'),
+                'label' => __('Image Height', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Choose element height in px', 'gdgallery')
+                'help' => __('Choose image height in px', 'gdgallery')
             ),
             'num_rows_grid' => array(
                 'type' => 'number',
                 'label' => __('Gallery Rows Quantity', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set gallery rows quantity', 'gdgallery')
+                'help' => __('Set space between rows in px', 'gdgallery')
             ),
             'space_cols_grid' => array(
                 'type' => 'number',
@@ -1596,19 +1596,20 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Space Between Rows', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set space between rows', 'gdgallery')
+                'help' => __('Set space between rows in px', 'gdgallery')
             ),
             'gallery_width_grid' => array(
                 'type' => 'number',
                 'label' => __('Container Width (%)', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set gallery width in percentage', 'gdgallery')
+                'help' => __('Set container width in percentage', 'gdgallery'),
+                'max' => '100'
             ),
             'gallery_bg_grid' => array(
                 'type' => 'checkbox',
                 'label' => __('Gallery Background', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Choose whether to turn gallery background', 'gdgallery')
+                'help' => __('Choose whether to turn gallery background on/off', 'gdgallery')
             ),
             'gallery_bg_color_grid' => array(
                 'type' => 'color',
@@ -1637,7 +1638,7 @@ class SettingsController
                     'right' => __('Right', 'gdgallery')
                 ),
                 'section' => 'element_style_grid',
-                'help' => __('Choose title position', 'gdgallery')
+                'help' => __('Choose title horizontal position', 'gdgallery')
             ),
             'title_vertical_position_grid' => array(
                 'type' => 'select',
@@ -1647,7 +1648,7 @@ class SettingsController
                     'inside_bottom' => __('Bottom', 'gdgallery'),
                 ),
                 'section' => 'element_style_grid',
-                'help' => __('Choose title position', 'gdgallery')
+                'help' => __('Choose title vertical position', 'gdgallery')
             ),
             'title_appear_type_grid' => array(
                 'type' => 'select',
@@ -1663,13 +1664,13 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Title Font Size', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Choose title font size in px', 'gdgallery')
+                'help' => __('set title font size in px', 'gdgallery')
             ),
             'title_color_grid' => array(
                 'type' => 'color',
                 'label' => __('Title Color', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Choose title color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set title color in HEXadecimal color system', 'gdgallery')
             ),
             'title_background_color_grid' => array(
                 'type' => 'color',
@@ -1685,21 +1686,21 @@ class SettingsController
             ),
             'border_width_grid' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Width', 'gdgallery'),
+                'label' => __('Image Border Width', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set image element border width in px', 'gdgallery')
+                'help' => __('Set image border width in px', 'gdgallery')
             ),
             'border_color_grid' => array(
                 'type' => 'color',
-                'label' => __('Image Element Border Color', 'gdgallery'),
+                'label' => __('Image Border Color', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set image element border color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image border color in HEXadecimal color system', 'gdgallery')
             ),
             'border_radius_grid' => array(
                 'type' => 'number',
-                'label' => __('Image Element Border Radius', 'gdgallery'),
+                'label' => __('Image Border Radius', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Set image element border radius in px', 'gdgallery')
+                'help' => __('Set image border radius in px', 'gdgallery')
             ),
 
             'show_icons_grid' => array(
@@ -1753,7 +1754,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Element Shadow', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Turn image element shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image element shadow on/off', 'gdgallery')
             ),
             'lightbox_type_grid' => array(
                 'type' => 'select',
@@ -1790,13 +1791,13 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Navigation Offset', 'gdgallery'),
                 'section' => 'components_grid',
-                'help' => __('Navigation Offset', 'gdgallery')
+                'help' => __('Navigation Offset in px', 'gdgallery')
             ),
             'bullets_margin_grid' => array(
                 'type' => 'number',
                 'label' => __('Bullets Margin from Top', 'gdgallery'),
                 'section' => 'components_grid',
-                'help' => __('Set bullets margin in px', 'gdgallery')
+                'help' => __('Set bullets margin from the top in px', 'gdgallery')
             ),
             'bullets_color_grid' => array(
                 'type' => 'select',
@@ -1821,7 +1822,7 @@ class SettingsController
                 'type' => 'number',
                 'label' => __('Arrows margin from Top', 'gdgallery'),
                 'section' => 'components_grid',
-                'help' => __('Set arrows margin in px', 'gdgallery')
+                'help' => __('Set arrows margin from the top in px', 'gdgallery')
             ),
             'arrows_space_between_grid' => array(
                 'type' => 'number',
@@ -1865,21 +1866,21 @@ class SettingsController
             ),
             'show_numbers_wide' => array(
                 'type' => 'checkbox',
-                'label' => __('Numbers', 'gdgallery'),
+                'label' => __('Image Count', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn numbers on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image count on/off', 'gdgallery')
             ),
             'number_size_wide' => array(
                 'type' => 'number',
-                'label' => __('Number Size', 'gdgallery'),
+                'label' => __('Image Count Text Size', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Set number font size in px', 'gdgallery')
+                'help' => __('Set image count text font size in px', 'gdgallery')
             ),
             'number_color_wide' => array(
                 'type' => 'color',
-                'label' => __('Number Color', 'gdgallery'),
+                'label' => __('Image Count Text Color', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Set number color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image count text color in in HEXadecimal color system', 'gdgallery')
             ),
             'image_border_width_wide' => array(
                 'type' => 'number',
@@ -1903,36 +1904,36 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Shadow', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn image shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image shadow on/off', 'gdgallery')
             ),
             'swipe_control_wide' => array(
                 'type' => 'checkbox',
-                'label' => __('Image Swipe Control', 'gdgallery'),
+                'label' => __('Image Swipe', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn image swipe control on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Image Swipe on/off', 'gdgallery')
             ),
             'zoom_control_wide' => array(
                 'type' => 'checkbox',
-                'label' => __('Image Zoom Control', 'gdgallery'),
+                'label' => __('Image Zoom', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn image zoom control on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image zoom on/off', 'gdgallery')
             ),
 
             'show_text_panel_wide' => array(
                 'type' => 'checkbox',
                 'label' => __('Text panel', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn text panel on/off', 'gdgallery')
+                'help' => __('Choose whether to turn text panel on/off', 'gdgallery')
             ),
             'texpanel_paddind_vert_wide' => array(
                 'type' => 'number',
-                'label' => __('Textpanel Vertical Padding', 'gdgallery'),
+                'label' => __('Text panel Vertical Padding', 'gdgallery'),
                 'section' => 'wide_lightbox',
                 'help' => __('Set text panel vertical padding in px', 'gdgallery')
             ),
             'texpanel_paddind_hor_wide' => array(
                 'type' => 'number',
-                'label' => __('Textpanel Horizontal Padding', 'gdgallery'),
+                'label' => __('Text panel Horizontal Padding', 'gdgallery'),
                 'section' => 'wide_lightbox',
                 'help' => __('Set text panel horizontal padding in px', 'gdgallery')
             ),
@@ -1940,7 +1941,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __(' Title', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn title on/off', 'gdgallery')
+                'help' => __('Choose whether to turn title on/off', 'gdgallery')
             ),
             'title_color_wide' => array(
                 'type' => 'color',
@@ -1958,7 +1959,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Description', 'gdgallery'),
                 'section' => 'wide_lightbox',
-                'help' => __('Turn description on/off', 'gdgallery')
+                'help' => __('Choose whether to turn description on/off', 'gdgallery')
             ),
             'desc_color_wide' => array(
                 'type' => 'color',
@@ -2006,21 +2007,21 @@ class SettingsController
             ),
             'show_numbers_compact' => array(
                 'type' => 'checkbox',
-                'label' => __('Numbers', 'gdgallery'),
+                'label' => __('Image Count', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn numbers on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image count on/off', 'gdgallery')
             ),
             'number_size_compact' => array(
                 'type' => 'number',
-                'label' => __('Number Size', 'gdgallery'),
+                'label' => __('Image Count Text Size', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Set number font size in px', 'gdgallery')
+                'help' => __('Set image count text font size in px', 'gdgallery')
             ),
             'number_color_compact' => array(
                 'type' => 'color',
-                'label' => __('Number Color', 'gdgallery'),
+                'label' => __('Image Count Text Color', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Set number color in HEXadecimal color system', 'gdgallery')
+                'help' => __('Set image count text color in in HEXadecimal color system', 'gdgallery')
             ),
             'image_border_width_compact' => array(
                 'type' => 'number',
@@ -2044,36 +2045,36 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Image Shadow', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn image shadow on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image shadow on/off', 'gdgallery')
             ),
             'swipe_control_compact' => array(
                 'type' => 'checkbox',
-                'label' => __('Image Swipe Control', 'gdgallery'),
+                'label' => __('Image Swipe', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn image swipe control on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Image Swipe on/off', 'gdgallery')
             ),
             'zoom_control_compact' => array(
                 'type' => 'checkbox',
-                'label' => __('Image Zoom Control', 'gdgallery'),
+                'label' => __('Image Zoom', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn image zoom control on/off', 'gdgallery')
+                'help' => __('Choose whether to turn image zoom on/off', 'gdgallery')
             ),
 
             'show_text_panel_compact' => array(
                 'type' => 'checkbox',
                 'label' => __('Text panel', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn text panel on/off', 'gdgallery')
+                'help' => __('Choose whether to turn text panel on/off', 'gdgallery')
             ),
             'texpanel_paddind_vert_compact' => array(
                 'type' => 'number',
-                'label' => __('Textpanel Vertical Padding', 'gdgallery'),
+                'label' => __('Text panel Vertical Padding', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Set text panel vertical padding in px', 'gdgallery')
             ),
             'texpanel_paddind_hor_compact' => array(
                 'type' => 'number',
-                'label' => __('Textpanel Horizontal Padding', 'gdgallery'),
+                'label' => __('Text panel Horizontal Padding', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Set text panel horizontal padding in px', 'gdgallery')
             ),
@@ -2081,7 +2082,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __(' Title', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn title on/off', 'gdgallery')
+                'help' => __('Choose whether to turn title on/off', 'gdgallery')
             ),
             'title_color_compact' => array(
                 'type' => 'color',
@@ -2099,7 +2100,7 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Description', 'gdgallery'),
                 'section' => 'compact_lightbox',
-                'help' => __('Turn description on/off', 'gdgallery')
+                'help' => __('Choose whether to turn description on/off', 'gdgallery')
             ),
             'desc_color_compact' => array(
                 'type' => 'color',

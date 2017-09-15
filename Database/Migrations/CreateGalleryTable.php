@@ -33,12 +33,5 @@ class CreateGalleryTable
             ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci "
         );
 
-        /* $new_gallery = $wpdb->insert($wpdb->prefix . "gdgallerygalleries", array("name" => "My First test Gallery"));
-         $default_images = array();
-         for($i=1; $i < 14; $i++){
-             $default_images[] = GDGALLERY_IMAGES_URL."project".$i.".jpg";
-         }
-
-         \GDGallery\Debug::trace($new_gallery);*/
     }
 }

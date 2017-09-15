@@ -35,4 +35,6 @@ function GDGallery()
 
 $GLOBALS['GDGallery'] = GDGallery();
 
+register_deactivation_hook(__FILE__, array('GDGallery\Database\Uninstall', 'init'));
+
 

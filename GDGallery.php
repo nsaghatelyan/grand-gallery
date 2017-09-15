@@ -74,7 +74,8 @@ if (!class_exists('GDGallery')) :
             $this->migrationClasses = array(
                 'GDGallery\Database\Migrations\CreateGalleryTable',
                 'GDGallery\Database\Migrations\CreateImageTable',
-                'GDGallery\Database\Migrations\CreateSettingsTable'
+                'GDGallery\Database\Migrations\CreateSettingsTable',
+                'GDGallery\Database\Migrations\CreateDefaultGallery'
             );
 
             add_action('init', array($this, 'init'), 0);

@@ -408,12 +408,12 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
         }
 
         // Simple, but not optimized way to change element's position in DOM. Not always necessary.
-        sortables.forEach(sortable = > container.appendChild(sortable.element)
+        sortables.forEach(sortable => container.appendChild(sortable.element)
     )
         ;
 
         // Set index for each sortable
-        sortables.forEach((sortable, index) = > sortable.setIndex(index)
+        sortables.forEach((sortable, index) => sortable.setIndex(index)
     )
         ;
     }
