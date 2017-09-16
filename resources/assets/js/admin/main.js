@@ -448,11 +448,11 @@ jQuery(document).ready(function ($) {
             });
         };
 
-    /* jQuery(".gdgallery_items_list").sortable({
-     helper: fixHelperModifiedGrid,
-     stop: updateIndexGrid,
-     placeholder: 'gdgallery_item'
-     }).disableSelection();*/
+    jQuery(".gdgallery_items_list").sortable({
+        helper: fixHelperModifiedGrid,
+        stop: updateIndexGrid,
+        placeholder: 'gdgallery_item'
+    }).disableSelection();
 
     jQuery("#gdgallery_display_type").change(function () {
         if (jQuery(this).val() == 0) {
