@@ -111,7 +111,7 @@
 .settings-section-heading {
     position: relative;
     padding: 24px 24px 0 24px;
-    margin: 24px 0 35px 0;
+    margin: 24px 0 0px 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -170,6 +170,7 @@
 .settings-section-content {
     display: none;
     padding: 15px;
+    position: relative;
 }
 
 .settings-section-wrap.active .settings-section-content {
@@ -511,4 +512,15 @@
     background-image: url('../../images/components/loader-black7.gif');
 }
 
+/*for disabled section add <div class="settings_disable_layer"></div> into .settings-section-content */
+
+.settings_disable_layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(204, 204, 204, 0.67);
+    z-index: 9;
+    left: 0;
+    top: 0px;
+}
 

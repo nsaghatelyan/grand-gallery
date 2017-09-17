@@ -2370,7 +2370,9 @@ var g_ugFunctions = new UGFunctions();
         return r.settings.adjustOldDeltas && "mousewheel" === e.type && t % 120 === 0
     }
 
-    var o, l, s = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"], a = "onwheel" in document || document.documentMode >= 9 ? ["wheel"] : ["mousewheel", "DomMouseScroll", "MozMousePixelScroll"], h = Array.prototype.slice;
+    var o, l, s = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"],
+        a = "onwheel" in document || document.documentMode >= 9 ? ["wheel"] : ["mousewheel", "DomMouseScroll", "MozMousePixelScroll"],
+        h = Array.prototype.slice;
     if (e.event.fixHooks)for (var u = s.length; u;)e.event.fixHooks[s[--u]] = e.event.mouseHooks;
     var r = e.event.special.mousewheel = {
         version: "3.1.9", setup: function () {
@@ -2407,7 +2409,8 @@ var g_ugFunctions = new UGFunctions();
     }
 })(function ($) {
     $.easing["jswing"] = $.easing["swing"];
-    var pow = Math.pow, sqrt = Math.sqrt, sin = Math.sin, cos = Math.cos, PI = Math.PI, c1 = 1.70158, c2 = c1 * 1.525, c3 = c1 + 1, c4 = 2 * PI / 3, c5 = 2 * PI / 4.5;
+    var pow = Math.pow, sqrt = Math.sqrt, sin = Math.sin, cos = Math.cos, PI = Math.PI, c1 = 1.70158, c2 = c1 * 1.525,
+        c3 = c1 + 1, c4 = 2 * PI / 3, c5 = 2 * PI / 4.5;
 
     function bounceOut(x) {
         var n1 = 7.5625, d1 = 2.75;
@@ -2509,46 +2512,48 @@ var g_ugFunctions = new UGFunctions();
         return t = (t + 1) % 1, 1 > 6 * t ? r + (n - r) * t * 6 : 1 > 2 * t ? n : 2 > 3 * t ? r + (n - r) * (2 / 3 - t) * 6 : r
     }
 
-    var a, s = "backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor", i = /^([\-+])=\s*(\d+\.?\d*)/, u = [{
-        re: /rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
-        parse: function (r) {
-            return [r[1], r[2], r[3], r[4]]
-        }
-    }, {
-        re: /rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
-        parse: function (r) {
-            return [2.55 * r[1], 2.55 * r[2], 2.55 * r[3], r[4]]
-        }
-    }, {
-        re: /#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})/, parse: function (r) {
-            return [parseInt(r[1], 16), parseInt(r[2], 16), parseInt(r[3], 16)]
-        }
-    }, {
-        re: /#([a-f0-9])([a-f0-9])([a-f0-9])/, parse: function (r) {
-            return [parseInt(r[1] + r[1], 16), parseInt(r[2] + r[2], 16), parseInt(r[3] + r[3], 16)]
-        }
-    }, {
-        re: /hsla?\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
-        space: "hsla",
-        parse: function (r) {
-            return [r[1], r[2] / 100, r[3] / 100, r[4]]
-        }
-    }], l = r.Color = function (n, t, e, o) {
-        return new r.Color.fn.parse(n, t, e, o)
-    }, c = {
-        rgba: {props: {red: {idx: 0, type: "byte"}, green: {idx: 1, type: "byte"}, blue: {idx: 2, type: "byte"}}},
-        hsla: {
-            props: {
-                hue: {idx: 0, type: "degrees"},
-                saturation: {idx: 1, type: "percent"},
-                lightness: {idx: 2, type: "percent"}
+    var a,
+        s = "backgroundColor borderBottomColor borderLeftColor borderRightColor borderTopColor color columnRuleColor outlineColor textDecorationColor textEmphasisColor",
+        i = /^([\-+])=\s*(\d+\.?\d*)/, u = [{
+            re: /rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
+            parse: function (r) {
+                return [r[1], r[2], r[3], r[4]]
             }
-        }
-    }, f = {
-        "byte": {floor: !0, max: 255},
-        percent: {max: 1},
-        degrees: {mod: 360, floor: !0}
-    }, p = l.support = {}, d = r("<p>")[0], h = r.each;
+        }, {
+            re: /rgba?\(\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
+            parse: function (r) {
+                return [2.55 * r[1], 2.55 * r[2], 2.55 * r[3], r[4]]
+            }
+        }, {
+            re: /#([a-f0-9]{2})([a-f0-9]{2})([a-f0-9]{2})/, parse: function (r) {
+                return [parseInt(r[1], 16), parseInt(r[2], 16), parseInt(r[3], 16)]
+            }
+        }, {
+            re: /#([a-f0-9])([a-f0-9])([a-f0-9])/, parse: function (r) {
+                return [parseInt(r[1] + r[1], 16), parseInt(r[2] + r[2], 16), parseInt(r[3] + r[3], 16)]
+            }
+        }, {
+            re: /hsla?\(\s*(\d+(?:\.\d+)?)\s*,\s*(\d+(?:\.\d+)?)\%\s*,\s*(\d+(?:\.\d+)?)\%\s*(?:,\s*(\d?(?:\.\d+)?)\s*)?\)/,
+            space: "hsla",
+            parse: function (r) {
+                return [r[1], r[2] / 100, r[3] / 100, r[4]]
+            }
+        }], l = r.Color = function (n, t, e, o) {
+            return new r.Color.fn.parse(n, t, e, o)
+        }, c = {
+            rgba: {props: {red: {idx: 0, type: "byte"}, green: {idx: 1, type: "byte"}, blue: {idx: 2, type: "byte"}}},
+            hsla: {
+                props: {
+                    hue: {idx: 0, type: "degrees"},
+                    saturation: {idx: 1, type: "percent"},
+                    lightness: {idx: 2, type: "percent"}
+                }
+            }
+        }, f = {
+            "byte": {floor: !0, max: 255},
+            percent: {max: 1},
+            degrees: {mod: 360, floor: !0}
+        }, p = l.support = {}, d = r("<p>")[0], h = r.each;
     d.style.cssText = "background-color:rgba(1,1,1,.5)", p.rgba = d.style.backgroundColor.indexOf("rgba") > -1, h(c, function (r, n) {
         n.cache = "_" + r, n.props.alpha = {idx: 3, type: "percent", def: 1}
     }), l.fn = r.extend(l.prototype, {
@@ -2557,19 +2562,19 @@ var g_ugFunctions = new UGFunctions();
             (o.jquery || o.nodeType) && (o = r(o).css(s), s = n);
             var f = this, p = r.type(o), d = this._rgba = [];
             return s !== n && (o = [o, s, i, u], p = "array"), "string" === p ? this.parse(e(o) || a._default) : "array" === p ? (h(c.rgba.props, function (r, n) {
-                        d[n.idx] = t(o[n.idx], n)
-                    }), this) : "object" === p ? (o instanceof l ? h(c, function (r, n) {
-                                o[n.cache] && (f[n.cache] = o[n.cache].slice())
-                            }) : h(c, function (n, e) {
-                                var a = e.cache;
-                                h(e.props, function (r, n) {
-                                    if (!f[a] && e.to) {
-                                        if ("alpha" === r || null == o[r])return;
-                                        f[a] = e.to(f._rgba)
-                                    }
-                                    f[a][n.idx] = t(o[r], n, !0)
-                                }), f[a] && r.inArray(null, f[a].slice(0, 3)) < 0 && (f[a][3] = 1, e.from && (f._rgba = e.from(f[a])))
-                            }), this) : void 0
+                d[n.idx] = t(o[n.idx], n)
+            }), this) : "object" === p ? (o instanceof l ? h(c, function (r, n) {
+                o[n.cache] && (f[n.cache] = o[n.cache].slice())
+            }) : h(c, function (n, e) {
+                var a = e.cache;
+                h(e.props, function (r, n) {
+                    if (!f[a] && e.to) {
+                        if ("alpha" === r || null == o[r])return;
+                        f[a] = e.to(f._rgba)
+                    }
+                    f[a][n.idx] = t(o[r], n, !0)
+                }), f[a] && r.inArray(null, f[a].slice(0, 3)) < 0 && (f[a][3] = 1, e.from && (f._rgba = e.from(f[a])))
+            }), this) : void 0
         }, is: function (r) {
             var n = l(r), t = !0, e = this;
             return h(c, function (r, o) {
@@ -2584,7 +2589,8 @@ var g_ugFunctions = new UGFunctions();
                 n[e.cache] && r.push(t)
             }), r.pop()
         }, transition: function (r, n) {
-            var e = l(r), o = e._space(), a = c[o], s = 0 === this.alpha() ? l("transparent") : this, i = s[a.cache] || a.to(s._rgba), u = i.slice();
+            var e = l(r), o = e._space(), a = c[o], s = 0 === this.alpha() ? l("transparent") : this,
+                i = s[a.cache] || a.to(s._rgba), u = i.slice();
             return e = e[a.cache], h(a.props, function (r, o) {
                 var a = o.idx, s = i[a], l = e[a], c = f[o.type] || {};
                 null !== l && (null === s ? u[a] = l : (c.mod && (l - s > c.mod / 2 ? s += c.mod : s - l > c.mod / 2 && (s -= c.mod)), u[a] = t((l - s) * n + s, o)))
@@ -2615,7 +2621,8 @@ var g_ugFunctions = new UGFunctions();
         }
     }), l.fn.parse.prototype = l.fn, c.hsla.to = function (r) {
         if (null == r[0] || null == r[1] || null == r[2])return [null, null, null, r[3]];
-        var n, t, e = r[0] / 255, o = r[1] / 255, a = r[2] / 255, s = r[3], i = Math.max(e, o, a), u = Math.min(e, o, a), l = i - u, c = i + u, f = .5 * c;
+        var n, t, e = r[0] / 255, o = r[1] / 255, a = r[2] / 255, s = r[3], i = Math.max(e, o, a),
+            u = Math.min(e, o, a), l = i - u, c = i + u, f = .5 * c;
         return n = u === i ? 0 : e === i ? 60 * (o - a) / l + 360 : o === i ? 60 * (a - e) / l + 120 : 60 * (e - o) / l + 240, t = 0 === l ? 0 : .5 >= f ? l / c : l / (2 - c), [Math.round(n) % 360, t, f, null == s ? 1 : s]
     }, c.hsla.from = function (r) {
         if (null == r[0] || null == r[1] || null == r[2])return [null, null, null, r[3]];
@@ -12813,7 +12820,8 @@ function UGSlider() {
     var g_gallery = new UniteGalleryMain(), g_objGallery, g_objWrapper, g_objThumbs;
     //the video arrows is independent arrows that is not sitting on the controls
     var g_objSlider, g_objInner, g_objSlide1, g_objSlide2, g_objSlide3, g_objArrowLeft, g_objArrowRight;
-    var g_objTouchSlider, g_objZoomSlider, g_objZoomPanel, g_objButtonPlay = null, g_objButtonFullscreen = null, g_objBullets = null;
+    var g_objTouchSlider, g_objZoomSlider, g_objZoomPanel, g_objButtonPlay = null, g_objButtonFullscreen = null,
+        g_objBullets = null;
     var g_objVideoPlayer = new UGVideoPlayer(), g_optionsPrefix;
     var g_functions = new UGFunctions(), g_objProgress = null, g_objTextPanel = null;
 

@@ -23,6 +23,7 @@
         </div>
     </div>
     <div class="settings-section-content">
+
         <?php
         foreach ($fields as $fieldId => $field):
             if ($field['section'] == $key):

@@ -1460,8 +1460,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .gdgallery_items_list {
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
 }
 
 .gdgallery_item {
@@ -1469,7 +1469,7 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .gdgallery_items_list .gdgallery_item, .gdgallery_add_new {
-    flex-basis: 10%;
+    /*flex-basis: 10%;*/
     position: relative;
     margin: 0 15px 15px 0;
     border-radius: 3px;
@@ -1498,6 +1498,7 @@ html .ui-button.ui-state-disabled:active {
 .gdgallery_items_list .gdgallery_item p {
     position: absolute;
     bottom: 0;
+    left:0;
     width: 100%;
     background: rgba(47, 53, 76, 0.88);
     color: #fff;
@@ -1522,6 +1523,7 @@ html .ui-button.ui-state-disabled:active {
     background: rgba(0, 0, 0, 0.7);
     position: absolute !important;
     top: 0;
+    left:0;
     width: 100%;
     height: 100%;
     padding: 10px;
@@ -1891,7 +1893,7 @@ ul.gdgallery_general_settings {
 }
 
 .empty_space {
-    margin-right: 368px;
+    margin-right: 330px;
     width: 0px;
 }
 

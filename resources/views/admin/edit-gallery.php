@@ -236,16 +236,16 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                     <p> <?= _e('NEW VIDEO', 'gdgallery'); ?></p>
                 </div>
 
-                <div class="gdgallery_items_list">
-                    <div class="empty_space">
+                <ul class="gdgallery_items_list">
+                    <li class="empty_space">
 
-                    </div>
+                    </li>
                     <?php
                     if (!empty($items)) {
                         foreach ($items as $item):
                             $icon = ($item->type == "youtube") ? "fa-youtube-play" : (($item->type == "vimeo") ? "fa-vimeo" : "fa-picture-o");
                             ?>
-                            <div class="gdgallery_item" style="background-image: url('<?= $item->url ?>');">
+                            <li class="gdgallery_item" style="background-image: url('<?= $item->url ?>');">
                                 <input type="hidden"
                                        name="gdgallery_ordering[<?= $item->id_image ?>]"
                                        value="<?= $item->ordering ?>">
@@ -261,16 +261,17 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                            data-image-id="<?= $item->id_image ?>"> <?= _e('EDIT', 'gdgallery'); ?></a>
                                     </div>
                                 </div>
-                            </div>
+                            </li>
                         <?php endforeach;
                     } else {
                         echo "No items in this gallery";
                     } ?>
-                </div>
+                </ul>
             </div>
         </div>
 </form>
 <?php \GDGallery\Helpers\View::render('admin/add-video.php', array('id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
 <?php \GDGallery\Helpers\View::render('admin/edit-images.php', array('items' => $items, 'id_gallery' => $id, "save_data_nonce" => $save_data_nonce)); ?>
+
 
 
