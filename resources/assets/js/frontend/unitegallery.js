@@ -11264,7 +11264,7 @@ function UGTileDesign() {
                 }
             }
             else {
-                objThumbWrapper.addClass("ug-tile-clickable");
+                //objThumbWrapper.addClass("ug-tile-clickable");
             }
 
             var toSaparateIcon = g_temp.isSaparateIcons;

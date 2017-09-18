@@ -438,7 +438,7 @@ jQuery(document).ready(function ($) {
             $helper.children().each(function (index) {
                 jQuery(this).width($originals.eq(index).width())
             });
-            tr.css({"opacity": "1"});
+            tr.css({"opacity": "1", "margin-left": "2px"});
             tr.find(".gdgallery_item_title").show();
             return $helper;
         },

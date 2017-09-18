@@ -209,9 +209,9 @@ class SettingsController
 
             'show_icons_justified' => array(
                 'type' => 'checkbox',
-                'label' => __('Lightbox Icon', 'gdgallery'),
+                'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Turn Lightbox icon on/off', 'gdgallery')
+                'help' => __('Turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_justified' => array(
                 'type' => 'checkbox',
@@ -617,9 +617,9 @@ class SettingsController
 
             'show_icons_tiles' => array(
                 'type' => 'checkbox',
-                'label' => __('Lightbox Icon', 'gdgallery'),
+                'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Turn Lightbox icon on/off', 'gdgallery')
+                'help' => __('Turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_tiles' => array(
                 'type' => 'checkbox',
@@ -1047,9 +1047,9 @@ class SettingsController
 
             'show_icons_carousel' => array(
                 'type' => 'checkbox',
-                'label' => __('Lightbox Icon', 'gdgallery'),
+                'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Turn Lightbox icon on/off', 'gdgallery')
+                'help' => __('Turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_carousel' => array(
                 'type' => 'checkbox',
@@ -1705,9 +1705,9 @@ class SettingsController
 
             'show_icons_grid' => array(
                 'type' => 'checkbox',
-                'label' => __('Lightbox Icon', 'gdgallery'),
+                'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Turn Lightbox icon on/off', 'gdgallery')
+                'help' => __('Turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_grid' => array(
                 'type' => 'checkbox',
