@@ -376,7 +376,7 @@ class SettingsController
             ),
             'load_more_loader_color_justified' => array(
                 'type' => 'color',
-                'label' => __('Loading Icon color', 'gdgallery'),
+                'label' => __('Loading Icon Color', 'gdgallery'),
                 'section' => 'load_more_justified',
                 'help' => __('Set color for loading icon in HEXadecimal color system', 'gdgallery')
             ),
@@ -784,7 +784,7 @@ class SettingsController
             ),
             'load_more_loader_color_tiles' => array(
                 'type' => 'color',
-                'label' => __('Loading Icon color', 'gdgallery'),
+                'label' => __('Loading Icon Color', 'gdgallery'),
                 'section' => 'load_more_tiles',
                 'help' => __('Set color for loading icon in HEXadecimal color system', 'gdgallery')
             ),
@@ -1512,13 +1512,13 @@ class SettingsController
             ),
             'text_panel_bg_color_slider' => array(
                 'type' => 'color',
-                'label' => __('Text Panel background Color', 'gdgallery'),
+                'label' => __('Text Panel Background Color', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set text panel background color in HEXadecimal color system', 'gdgallery')
             ),
             'text_panel_bg_opacity_slider' => array(
                 'type' => 'number',
-                'label' => __('Text Panel background Opacity (%)', 'gdgallery'),
+                'label' => __('Text Panel Background Opacity (%)', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set Text Panel background Opacity in percentage', 'gdgallery')
             ),
@@ -1548,7 +1548,7 @@ class SettingsController
             ),
             'thumb_width_slider' => array(
                 'type' => 'number',
-                'label' => __('Thumbnails width', 'gdgallery'),
+                'label' => __('Thumbnails Width', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set playlist thumbnails width in px', 'gdgallery')
             ),
@@ -1560,7 +1560,7 @@ class SettingsController
             ),
             'playlist_bg_slider' => array(
                 'type' => 'color',
-                'label' => __('Playlist background color', 'gdgallery'),
+                'label' => __('Playlist Background color', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set playlist background color in HEXadecimal color system', 'gdgallery')
             ),
@@ -1800,7 +1800,7 @@ class SettingsController
             ),
             'bullets_color_grid' => array(
                 'type' => 'select',
-                'label' => __('Bullets color', 'gdgallery'),
+                'label' => __('Bullets Color', 'gdgallery'),
                 'options' => array(
                     'gray' => __('Gray', 'gdgallery'),
                     'blue' => __('Blue', 'gdgallery'),
@@ -1819,7 +1819,7 @@ class SettingsController
             ),
             'arrows_margin_grid' => array(
                 'type' => 'number',
-                'label' => __('Arrows margin from Top', 'gdgallery'),
+                'label' => __('Arrows Margin From Top', 'gdgallery'),
                 'section' => 'components_grid',
                 'help' => __('Set arrows margin from the top in px', 'gdgallery')
             ),
@@ -1920,19 +1920,19 @@ class SettingsController
 
             'show_text_panel_wide' => array(
                 'type' => 'checkbox',
-                'label' => __('Text panel', 'gdgallery'),
+                'label' => __('Text Panel', 'gdgallery'),
                 'section' => 'wide_lightbox',
                 'help' => __('Choose whether to turn text panel on/off', 'gdgallery')
             ),
             'texpanel_paddind_vert_wide' => array(
                 'type' => 'number',
-                'label' => __('Text panel Vertical Padding', 'gdgallery'),
+                'label' => __('Text Panel Vertical Padding', 'gdgallery'),
                 'section' => 'wide_lightbox',
                 'help' => __('Set text panel vertical padding in px', 'gdgallery')
             ),
             'texpanel_paddind_hor_wide' => array(
                 'type' => 'number',
-                'label' => __('Text panel Horizontal Padding', 'gdgallery'),
+                'label' => __('Text Panel Horizontal Padding', 'gdgallery'),
                 'section' => 'wide_lightbox',
                 'help' => __('Set text panel horizontal padding in px', 'gdgallery')
             ),
@@ -2061,19 +2061,19 @@ class SettingsController
 
             'show_text_panel_compact' => array(
                 'type' => 'checkbox',
-                'label' => __('Text panel', 'gdgallery'),
+                'label' => __('Text Panel', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Choose whether to turn text panel on/off', 'gdgallery')
             ),
             'texpanel_paddind_vert_compact' => array(
                 'type' => 'number',
-                'label' => __('Text panel Vertical Padding', 'gdgallery'),
+                'label' => __('Text Panel Vertical Padding', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Set text panel vertical padding in px', 'gdgallery')
             ),
             'texpanel_paddind_hor_compact' => array(
                 'type' => 'number',
-                'label' => __('Text panel Horizontal Padding', 'gdgallery'),
+                'label' => __('Text Panel Horizontal Padding', 'gdgallery'),
                 'section' => 'compact_lightbox',
                 'help' => __('Set text panel horizontal padding in px', 'gdgallery')
             ),
