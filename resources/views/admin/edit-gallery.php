@@ -133,7 +133,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                        value="<?= $gallery_data->items_per_page ?>">
                             </li>
                             <li class="gdgallery_sorting_section">
-                                <h4><?= _e('', 'gdgallery'); ?></h4>
+                                <h4><?= _e('Image Sorting', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_sort_by" id="gdgallery_sorting">
                                     <option value="0" <?php if ($gallery_data->sort_by == 0) echo "selected" ?>>
                                         <?= _e('Custom Sorting', 'gdgallery'); ?>

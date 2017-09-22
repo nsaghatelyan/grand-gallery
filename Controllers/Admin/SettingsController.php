@@ -211,13 +211,13 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Turn Lightbox on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_justified' => array(
                 'type' => 'checkbox',
                 'label' => __('URL Icon', 'gdgallery'),
                 'section' => 'element_style_justified',
-                'help' => __('Turn URL icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn URL icon on/off', 'gdgallery')
             ),
             'item_as_link_justified' => array(
                 'type' => 'checkbox',
@@ -619,13 +619,13 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Turn Lightbox on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_tiles' => array(
                 'type' => 'checkbox',
                 'label' => __('URL Icon', 'gdgallery'),
                 'section' => 'element_style_tiles',
-                'help' => __('Turn URL icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn URL icon on/off', 'gdgallery')
             ),
             'item_as_link_tiles' => array(
                 'type' => 'checkbox',
@@ -1044,18 +1044,17 @@ class SettingsController
                 'section' => 'element_style_carousel',
                 'help' => __('Set element border radius in px', 'gdgallery')
             ),
-
             'show_icons_carousel' => array(
                 'type' => 'checkbox',
                 'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Turn Lightbox on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_carousel' => array(
                 'type' => 'checkbox',
                 'label' => __('URL Icon', 'gdgallery'),
                 'section' => 'element_style_carousel',
-                'help' => __('Turn URL icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn URL icon on/off', 'gdgallery')
             ),
             'item_as_link_carousel' => array(
                 'type' => 'checkbox',
@@ -1707,13 +1706,13 @@ class SettingsController
                 'type' => 'checkbox',
                 'label' => __('Lightbox', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Turn Lightbox on/off', 'gdgallery')
+                'help' => __('Choose whether to turn Lightbox on/off', 'gdgallery')
             ),
             'show_link_icon_grid' => array(
                 'type' => 'checkbox',
                 'label' => __('URL Icon', 'gdgallery'),
                 'section' => 'element_style_grid',
-                'help' => __('Turn URL icon on/off', 'gdgallery')
+                'help' => __('Choose whether to turn URL icon on/off', 'gdgallery')
             ),
             'item_as_link_grid' => array(
                 'type' => 'checkbox',
