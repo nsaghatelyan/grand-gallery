@@ -3,17 +3,19 @@
  * Plugin Name: Grand Gallery
  * Author: GrandWP
  * Description: Easy to use Gallery Plugin
- * Version: 1.0.0
+ * Version: 10.0
  * Domain Path: /languages
  * Text Domain: gdgallery
  */
 
-error_reporting(E_ALL);
 
 if (!defined('ABSPATH')) {
     exit();
 }
 
+if (get_option("gdgallery_removetablesuninstall") == "on") {
+    register_uninstall_hook(__FILE__, array('GDGallery\Database\Uninstall', 'run'));
+}
 
 require 'autoload.php';
 
@@ -35,6 +37,5 @@ function GDGallery()
 
 $GLOBALS['GDGallery'] = GDGallery();
 
-register_deactivation_hook(__FILE__, array('GDGallery\Database\Uninstall', 'init'));
 
 

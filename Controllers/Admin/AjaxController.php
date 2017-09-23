@@ -229,7 +229,8 @@ class AjaxController
         $settings_data = $_REQUEST['formData'];
 
         foreach ($settings_data as $input) {
-            $saved[] = \GDGallery()->settings->setOption($input['name'], $input['value']);
+//            $saved[] = \GDGallery()->settings->setOption($input['name'], $input['value']);
+            $saved[] = update_option($input["name"], $input["value"]);
         }
 
         if (!empty($saved)) {
