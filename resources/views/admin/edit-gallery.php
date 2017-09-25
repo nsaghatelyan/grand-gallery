@@ -22,7 +22,6 @@ $new_gallery_link = wp_nonce_url($new_gallery_link, 'gdgallery_create_new_galler
 
 $id = $gallery->getId();
 
-
 $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 
 if (in_array($gallery_data->view_type, array(0, 1))) {
@@ -139,10 +138,10 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                         <?= _e('Custom Sorting', 'gdgallery'); ?>
                                     </option>
                                     <option value="1" <?php if ($gallery_data->sort_by == 1) echo "selected" ?>>
-                                        <?= _e('Alphabetical', 'gdgallery'); ?>
+                                        <?= _e('Numeric / Alphabetical', 'gdgallery'); ?>
                                     </option>
                                     <option value="2" <?php if ($gallery_data->sort_by == 2) echo "selected" ?>>
-                                        <?= _e('Insert Date', 'gdgallery'); ?>
+                                        <?= _e('Upload Date', 'gdgallery'); ?>
                                     </option>
                                 </select>
                             </li>
@@ -180,7 +179,8 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 <h3> <?= _e('Shortcode', 'gdgallery'); ?></h3>
                                 <p> <?= _e('Copy and paste this shortcode into your posts or pages.', 'gdgallery'); ?></p>
                                 <div class="gdgallery_highlighted">
-                                    <span id="gdgallery_editor_code">[gdgallery_gallery id_gallery=<?= $id ?>]</span>
+                                    <span id="gdgallery_editor_code">[gdgallery_gallery id_gallery="<?= $id ?>"]</span>
+
                                     <a href="#" onclick="copyToClipboard('gdgallery_editor_code')"
                                        class="copy_shortcode" title="<?= _e('Copy shortecode', 'gdgallery'); ?>"><i
                                                 class="fa fa-files-o" aria-hidden="true"></i></a>
@@ -197,7 +197,7 @@ $display_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : "gdgalle
                                 <div class="gdgallery_highlighted">
                                     <span id="gdgallery_php_code">
                                     &lt;?php <br>
-                                    echo do_shortcode('[gdgallery_gallery id_gallery=<?= $id ?>]'); <br>
+                                    echo do_shortcode('[gdgallery_gallery id_gallery="<?= $id ?>"]'); <br>
                                     ?&gt;
                                     </span>
                                     <a href="#" onclick="copyToClipboard('gdgallery_php_code')"

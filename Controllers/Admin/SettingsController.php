@@ -1560,7 +1560,7 @@ class SettingsController
             ),
             'playlist_bg_slider' => array(
                 'type' => 'color',
-                'label' => __('Playlist Background color', 'gdgallery'),
+                'label' => __('Playlist Background Color', 'gdgallery'),
                 'section' => 'element_style_slider',
                 'help' => __('Set playlist background color in HEXadecimal color system', 'gdgallery')
             ),

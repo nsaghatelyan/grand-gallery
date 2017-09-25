@@ -18,7 +18,7 @@
                         <p><?php _e('The option is switched OFF by default.', GDGALLERY_TEXT_DOMAIN); ?></p>
                         <label class="switcher switch-checkbox" for="remove-tables-uninstall">
                             <div class="three-fourth">
-                                <?php _e('Turn the option ON before uninstalling the plugin, if you want to remove all plugin related data (settings/images/videos)', GDGALLERY_TEXT_DOMAIN); ?>
+                                <?php _e('Turn the option ON before uninstalling the plugin, if you want to remove all plugin related data (Database tables)', GDGALLERY_TEXT_DOMAIN); ?>
                             </div>
                             <div class="one-fourth">
                                 <input type="hidden"

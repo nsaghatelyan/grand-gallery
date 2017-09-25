@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Grand Gallery
  * Author: GrandWP
- * Description: Easy to use Gallery Plugin
+ * Description: GrandWP Photo Gallery plugin is a great tool for adding unlimited images/videos to your website
  * Version: 10.0
  * Domain Path: /languages
  * Text Domain: gdgallery
