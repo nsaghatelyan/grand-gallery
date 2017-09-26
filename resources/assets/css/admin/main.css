@@ -71,6 +71,18 @@ body {
     /*background-color: #23c58a;*/
     /*background-color: #5f7df5;*/
     background-color: #23282d;
+
+}
+
+.gdgallery_header a,
+.gdgallery_header a:hover,
+.gdgallery_header a:active,
+.gdgallery_header a:focus,
+.gdgallery_content a,
+.gdgallery_content a:hover,
+.gdgallery_content a:active,
+.gdgallery_content a:focus {
+    box-shadow: none !important;
 }
 
 .gdgallery_header span {
