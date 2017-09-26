@@ -791,83 +791,11 @@ span.cancel {
     content: url('../../images/icons/eye-hover.png');
 }
 
-.gdicon.gdicon-text:before {
-    content: url('../../images/icons/text.png');
-}
-
-.gdicon.gdicon-email:before {
-    content: url('../../images/icons/email.png');
-}
-
-.gdicon.gdicon-number:before {
-    content: url('../../images/icons/number.png');
-}
-
-.gdicon.gdicon-imageselect:before {
-    content: url('../../images/icons/imageselect.png');
-}
-
-.gdicon.gdicon-textarea:before {
-    content: url('../../images/icons/message.png');
-}
-
-.gdicon.gdicon-checkbox:before {
-    content: url('../../images/icons/checkbox.png');
-}
-
-.gdicon.gdicon-radio:before {
-    content: url('../../images/icons/radio.png');
-}
-
-.gdicon.gdicon-html:before {
-    content: url('../../images/icons/html.png');
-}
-
-.gdicon.gdicon-date:before {
-    content: url('../../images/icons/date.png');
-}
-
-.gdicon.gdicon-map:before {
-    content: url('../../images/icons/city.png');
-}
-
-.gdicon.gdicon-selectbox:before {
-    content: url('../../images/icons/selectbox.png');
-}
-
-.gdicon.gdicon-recaptcha:before {
-    content: url('../../images/icons/recaptcha.png');
-}
-
-.gdicon.gdicon-captcha:before {
-    content: url('../../images/icons/recaptcha.png');
-}
-
 .gdicon.gdicon-logo:before {
     content: url('../../images/icons/logo.png');
     position: absolute;
     z-index: 20;
     top: -10px;
-}
-
-.gdicon.gdicon-phone:before {
-    content: url('../../images/icons/phone.png');
-}
-
-.gdicon.gdicon-address:before {
-    content: url('../../images/icons/address.png');
-}
-
-.gdicon.gdicon-upload:before {
-    content: url('../../images/icons/upload.png');
-}
-
-.gdicon.gdicon-buttons:before {
-    content: url('../../images/icons/buttons.png');
-}
-
-.gdicon.gdicon-password:before {
-    content: url('../../images/icons/password.png');
 }
 
 /*checkbox style*/
