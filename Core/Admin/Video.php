@@ -2,6 +2,8 @@
 
 namespace GDGallery\Core\Admin;
 
+use GDGallery\GDGallery;
+
 trait Video
 {
     public static function getVideoType($url)
@@ -22,7 +24,11 @@ trait Video
             $video_id = substr($url, -11);
         } elseif ($type == "vimeo") {
             $video_id = substr($url, -9);
+            if (strpos($video_id, '/') !== false) {
+                $video_id = str_replace("/", "", $video_id);
+            }
         }
+
 
         return $video_id;
     }
