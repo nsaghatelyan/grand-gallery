@@ -433,6 +433,7 @@ jQuery(document).ready(function ($) {
     var fixHelperModifiedGrid = function (e, tr) {
             tr.css({"opacity": "0.8"});
             tr.find(".gdgallery_item_title").hide();
+            tr.find(".gdgallery_item_overlay").hide();
             var $originals = tr.children();
             var $helper = tr.clone();
             $helper.children().each(function (index) {
@@ -440,6 +441,7 @@ jQuery(document).ready(function ($) {
             });
             tr.css({"opacity": "1", "margin-left": "2px"});
             tr.find(".gdgallery_item_title").show();
+            tr.find(".gdgallery_item_overlay").show();
             return $helper;
         },
         updateIndexGrid = function (e, ui) {
@@ -500,7 +502,7 @@ jQuery(document).ready(function ($) {
         jQuery("#gdgallery_edit_name").parent().find("#gallery_active_name").show();
         jQuery("#gdgallery_edit_name").show();
     });
-    $('#gdgallery_edit_name').click(function (event) {
+    $('#gdgallery_edit_name, #gdgallery_active').click(function (event) {
         event.stopPropagation();
     });
 

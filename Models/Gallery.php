@@ -9,11 +9,9 @@
 namespace GDGallery\Models;
 
 use GDGallery\Core\Model;
-use GDGallery\Core\Admin\Video;
 
 class Gallery extends Model
 {
-    use Video;
     protected static $tableName = 'gdgallerygalleries';
 
     protected static $itemsTableName = 'gdgalleryimages';
@@ -42,7 +40,9 @@ class Gallery extends Model
     public function __construct($args = array())
     {
 
-        $this->setID($args["id_gallery"]);
+        if (isset($args["id_gallery"])) {
+            $this->setID($args["id_gallery"]);
+        }
 
 //        $this->setViewStyles();
 
@@ -569,6 +569,49 @@ class Gallery extends Model
         $this->$key = $value;
 
         return (bool)$saved;
+    }
+
+    public static function getVideoType($url)
+    {
+        if (strpos($url, "youtube") !== false || strpos($url, "youtu.be") !== false) {
+            return "youtube";
+        } elseif (strpos($url, "vimeo") !== false) {
+            return "vimeo";
+        }
+
+        return false;
+    }
+
+    public static function getVideoId($url, $type)
+    {
+        $video_id = null;
+        if ($type == "youtube") {
+            $video_id = substr($url, -11);
+        } elseif ($type == "vimeo") {
+            $video_id = substr($url, -9);
+            if (strpos($video_id, '/') !== false) {
+                $video_id = str_replace("/", "", $video_id);
+            }
+        }
+
+
+        return $video_id;
+    }
+
+    public static function getVideoThumb($video_id, $type)
+    {
+
+        $thumbnail = null;
+
+        if ($type == "youtube") {
+            $thumbnail = "https://img.youtube.com/vi/" . $video_id . "/0.jpg";
+        } elseif ($type == "vimeo") {
+            $hash = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$video_id.php"));
+            $thumbnail = $hash[0]['thumbnail_medium'];
+        }
+
+        return $thumbnail;
+
     }
 
 }

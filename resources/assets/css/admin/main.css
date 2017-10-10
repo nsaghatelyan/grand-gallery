@@ -1667,14 +1667,14 @@ label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
 }
 
 .gdgallery_edit_gallery_images {
-    float: right;
+    float: left;
     right: 0px;
     padding: 6px 10px 6px 10px;
     margin: 13px 0 0px 15px;
     background: #fff;
     color: #545454;
     text-decoration: none;
-    box-shadow: 0px 0px 3px #b7b7b7;
+    box-shadow: 0px 0px 4px #8e8e8e;
 }
 
 .gdgallery_remove_selected_images {
@@ -1784,6 +1784,11 @@ ul.gdgallery_general_settings {
     padding: 8px 15px;
 }
 
+#gallery_active_name {
+    cursor: default;
+    pointer-events: none;
+}
+
 .ui-widget-content {
     background-color: #f3f4f8;
 }
@@ -1837,11 +1842,33 @@ ul.gdgallery_general_settings {
     width: 0px;
 }
 
+@media all and (max-width: 626px) {
+    .empty_space {
+        margin-top: 120px;
+    }
+
+    .gdgallery_php_shortcode {
+        display: none;
+    }
+}
+
 @media all and (max-width: 785px) {
     .gdgallery_select_all_items input[type=checkbox] {
         width: 16px;
         height: 16px;
         margin-top: 0px !important;
+    }
+
+    .gdgallery_tabs li.gdgallery_Tab {
+        width: 100%;
+    }
+
+    .Tabs__presentation-slider {
+        display: none !important;
+    }
+
+    .gdgallery_tabs li.gdgallery_active_Tab {
+        border-bottom: 4px solid #4A66F4 !important;
     }
 }
 
@@ -1862,6 +1889,10 @@ ul.gdgallery_general_settings {
 @media all and (max-width: 1400px) {
     div.field-block {
         width: 450px;
+    }
+
+    .ui-tabs.ui-tabs-vertical .ui-tabs-panel .gdgallery_view_item {
+        width: 20% !important;
     }
 }
 

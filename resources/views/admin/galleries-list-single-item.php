@@ -29,7 +29,8 @@ $DuplicateUrl = wp_nonce_url($DuplicateUrl, 'gdgallery_duplicate_gallery_' . $Ga
                 href="<?php echo $EditUrl; ?>"><?php echo esc_html(stripslashes($gallery->getName())); ?></a></td>
     <td class="form-fields"><?php echo count($gallery->getItems());; ?></td>
     <td class="form-shortcode">[gdgallery_gallery id_gallery="<?php echo $GalleryId; ?>"]<br>
-        &lt;?php echo do_shortcode('[gdgallery_gallery id_gallery=<?php echo $GalleryId; ?>]'); ?&gt;
+        <span class="gdgallery_php_shortcode">&lt;?php echo do_shortcode('[gdgallery_gallery id_gallery=<?php echo $GalleryId; ?>
+            ]'); ?&gt;</span>
     </td>
     <td class="form-actions">
         <a class="gdgallery_edit_form" href="<?php echo $EditUrl; ?>"><i class="gdicon gdicon-setting"

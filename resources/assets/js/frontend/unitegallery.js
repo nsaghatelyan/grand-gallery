@@ -2272,7 +2272,7 @@ function UGFunctions() {
         if (typeof arr != "object")
             return (arr);
 
-        for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);
+        for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x) ;
         return arr;
     }
 
@@ -2373,13 +2373,13 @@ var g_ugFunctions = new UGFunctions();
     var o, l, s = ["wheel", "mousewheel", "DOMMouseScroll", "MozMousePixelScroll"],
         a = "onwheel" in document || document.documentMode >= 9 ? ["wheel"] : ["mousewheel", "DomMouseScroll", "MozMousePixelScroll"],
         h = Array.prototype.slice;
-    if (e.event.fixHooks)for (var u = s.length; u;)e.event.fixHooks[s[--u]] = e.event.mouseHooks;
+    if (e.event.fixHooks) for (var u = s.length; u;) e.event.fixHooks[s[--u]] = e.event.mouseHooks;
     var r = e.event.special.mousewheel = {
         version: "3.1.9", setup: function () {
-            if (this.addEventListener)for (var n = a.length; n;)this.addEventListener(a[--n], t, !1); else this.onmousewheel = t;
+            if (this.addEventListener) for (var n = a.length; n;) this.addEventListener(a[--n], t, !1); else this.onmousewheel = t;
             e.data(this, "mousewheel-line-height", r.getLineHeight(this)), e.data(this, "mousewheel-page-height", r.getPageHeight(this))
         }, teardown: function () {
-            if (this.removeEventListener)for (var e = a.length; e;)this.removeEventListener(a[--e], t, !1); else this.onmousewheel = null
+            if (this.removeEventListener) for (var e = a.length; e;) this.removeEventListener(a[--e], t, !1); else this.onmousewheel = null
         }, getLineHeight: function (t) {
             return parseInt(e(t)["offsetParent" in e.fn ? "offsetParent" : "parent"]().css("fontSize"), 10)
         }, getPageHeight: function (t) {
@@ -2495,6 +2495,7 @@ var g_ugFunctions = new UGFunctions();
 !function (r, n) {
     if (typeof r.cssHooks == "undefined")		//error protection
         return (false);
+
     function t(r, n, t) {
         var e = f[n.type] || {};
         return null == r ? t || !n.def ? null : n.def : (r = e.floor ? ~~r : parseFloat(r), isNaN(r) ? n.def : e.mod ? (r + e.mod) % e.mod : 0 > r ? 0 : e.max < r ? e.max : r)
@@ -2558,7 +2559,7 @@ var g_ugFunctions = new UGFunctions();
         n.cache = "_" + r, n.props.alpha = {idx: 3, type: "percent", def: 1}
     }), l.fn = r.extend(l.prototype, {
         parse: function (o, s, i, u) {
-            if (o === n)return this._rgba = [null, null, null, null], this;
+            if (o === n) return this._rgba = [null, null, null, null], this;
             (o.jquery || o.nodeType) && (o = r(o).css(s), s = n);
             var f = this, p = r.type(o), d = this._rgba = [];
             return s !== n && (o = [o, s, i, u], p = "array"), "string" === p ? this.parse(e(o) || a._default) : "array" === p ? (h(c.rgba.props, function (r, n) {
@@ -2569,7 +2570,7 @@ var g_ugFunctions = new UGFunctions();
                 var a = e.cache;
                 h(e.props, function (r, n) {
                     if (!f[a] && e.to) {
-                        if ("alpha" === r || null == o[r])return;
+                        if ("alpha" === r || null == o[r]) return;
                         f[a] = e.to(f._rgba)
                     }
                     f[a][n.idx] = t(o[r], n, !0)
@@ -2596,7 +2597,7 @@ var g_ugFunctions = new UGFunctions();
                 null !== l && (null === s ? u[a] = l : (c.mod && (l - s > c.mod / 2 ? s += c.mod : s - l > c.mod / 2 && (s -= c.mod)), u[a] = t((l - s) * n + s, o)))
             }), this[o](u)
         }, blend: function (n) {
-            if (1 === this._rgba[3])return this;
+            if (1 === this._rgba[3]) return this;
             var t = this._rgba.slice(), e = t.pop(), o = l(n)._rgba;
             return l(r.map(t, function (r, n) {
                 return (1 - e) * o[n] + e * r
@@ -2620,18 +2621,18 @@ var g_ugFunctions = new UGFunctions();
             return 0 === this._rgba[3] ? "transparent" : this.toRgbaString()
         }
     }), l.fn.parse.prototype = l.fn, c.hsla.to = function (r) {
-        if (null == r[0] || null == r[1] || null == r[2])return [null, null, null, r[3]];
+        if (null == r[0] || null == r[1] || null == r[2]) return [null, null, null, r[3]];
         var n, t, e = r[0] / 255, o = r[1] / 255, a = r[2] / 255, s = r[3], i = Math.max(e, o, a),
             u = Math.min(e, o, a), l = i - u, c = i + u, f = .5 * c;
         return n = u === i ? 0 : e === i ? 60 * (o - a) / l + 360 : o === i ? 60 * (a - e) / l + 120 : 60 * (e - o) / l + 240, t = 0 === l ? 0 : .5 >= f ? l / c : l / (2 - c), [Math.round(n) % 360, t, f, null == s ? 1 : s]
     }, c.hsla.from = function (r) {
-        if (null == r[0] || null == r[1] || null == r[2])return [null, null, null, r[3]];
+        if (null == r[0] || null == r[1] || null == r[2]) return [null, null, null, r[3]];
         var n = r[0] / 360, t = r[1], e = r[2], a = r[3], s = .5 >= e ? e * (1 + t) : e + t - e * t, i = 2 * e - s;
         return [Math.round(255 * o(i, s, n + 1 / 3)), Math.round(255 * o(i, s, n)), Math.round(255 * o(i, s, n - 1 / 3)), a]
     }, h(c, function (e, o) {
         var a = o.props, s = o.cache, u = o.to, c = o.from;
         l.fn[e] = function (e) {
-            if (u && !this[s] && (this[s] = u(this._rgba)), e === n)return this[s].slice();
+            if (u && !this[s] && (this[s] = u(this._rgba)), e === n) return this[s].slice();
             var o, i = r.type(e), f = "array" === i || "object" === i ? e : arguments, p = this[s].slice();
             return h(a, function (r, n) {
                 var e = f["object" === i ? r : n.idx];
@@ -2651,7 +2652,7 @@ var g_ugFunctions = new UGFunctions();
                     var a, s, i = "";
                     if ("transparent" !== o && ("string" !== r.type(o) || (a = e(o)))) {
                         if (o = l(a || o), !p.rgba && 1 !== o._rgba[3]) {
-                            for (s = "backgroundColor" === t ? n.parentNode : n; ("" === i || "transparent" === i) && s && s.style;)try {
+                            for (s = "backgroundColor" === t ? n.parentNode : n; ("" === i || "transparent" === i) && s && s.style;) try {
                                 i = r.css(s, "backgroundColor"), s = s.parentNode
                             } catch (u) {
                             }
@@ -12955,7 +12956,7 @@ function UGSlider() {
         slider_zoompanel_mobilehide: false,		     //hide the zoom panel on mobile
 
         slider_controls_always_on: false,				//true,false - controls are always on, false - show only on mouseover
-        slider_controls_appear_ontap: true,			//true,false - appear controls on tap event on touch devices
+        slider_controls_appear_ontap: false,			//true,false - appear controls on tap event on touch devices
         slider_controls_appear_duration: 300,			//the duration of appearing controls
 
         slider_enable_text_panel: true,				//true,false - enable the text panel
@@ -17344,6 +17345,7 @@ function UGTouchSliderControl() {
 
 
 }
+
 /**
  * touch thumbs control class
  * addon to strip gallery
@@ -18174,6 +18176,7 @@ function UGZoomSliderControl() {
         zoomCurrentImage("back");
     }
 }
+
 /** -------------- Wistia API ---------------------*/
 
 function UGWistiaAPI() {
@@ -23159,7 +23162,7 @@ function UGLightbox() {
 
         //don't hide the arrows if mouse inside image
         if (g_temp.isArrowsOnHoverMode == true && isForce === false) {
-            if (isMouseInsideImage() == true);
+            if (isMouseInsideImage() == true) ;
             return (true);
         }
 

@@ -256,7 +256,7 @@ abstract class Model
 
 
         /* Return actual objects */
-        $ItemObjs = [];
+        $ItemObjs = array();
         if (null !== $items) {
             foreach ($items as $item) {
                 $ItemObjs[$item[$primaryKey]] = new static(array($primaryKey => $item[$primaryKey]));

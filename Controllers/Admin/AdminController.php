@@ -2,14 +2,12 @@
 
 namespace GDGallery\Controllers\Admin;
 
-use GDGallery\Core\Admin\Listener;
 use GDGallery\Helpers\View;
 use GDGallery\Models\Gallery;
 
 
 class AdminController
 {
-    use Listener;
     /**
      * Array of pages in admin
      *
@@ -35,6 +33,11 @@ class AdminController
 
     }
 
+
+    public static function isRequest($page, $task, $method = 'GET')
+    {
+        return ($_SERVER['REQUEST_METHOD'] === $method && isset($_GET['page']) && $_GET['page'] === $page && isset($_GET['task']) && $_GET['task'] === $task);
+    }
 
     /**
      * Add admin menu pages
