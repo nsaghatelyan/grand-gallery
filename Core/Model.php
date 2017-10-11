@@ -280,5 +280,18 @@ abstract class Model
         return static::$AllItemsCount;
     }
 
+    public static function isset_table_column($table_name, $column_name)
+    {
+        global $wpdb;
+        $columns = $wpdb->get_results("SHOW COLUMNS FROM  " . $table_name, ARRAY_A);
+        foreach ($columns as $column) {
+            if ($column['Field'] == $column_name) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 
 }

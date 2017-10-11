@@ -465,17 +465,26 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    jQuery("#gdgallery_show_title").change(function () {
+        if (!jQuery(this).is(':checked')) {
+            jQuery(".gdgallery_title_position_section").addClass("gdgallery_hidden");
+        }
+        else {
+            jQuery(".gdgallery_title_position_section").removeClass("gdgallery_hidden");
+        }
+    });
+
     jQuery("input[name=gdgallery_view_type]").change(function () {
         var grid_arr = ['0', '1'];
         if (jQuery.inArray(jQuery(this).val(), grid_arr) !== -1) {
             jQuery(".gdgallery_display_type_section").removeClass("gdgallery_hidden");
-            jQuery(".gdgallery_items_per_page_section").removeClass("gdgallery_hidden");
-            jQuery(".gdgallery_hover_effect_section").removeClass("gdgallery_hidden");
+            if (jQuery(".gdgallery_display_type_section").val() !== 0) {
+                jQuery(".gdgallery_items_per_page_section").removeClass("gdgallery_hidden");
+            }
         }
         else {
             jQuery(".gdgallery_display_type_section").addClass("gdgallery_hidden");
             jQuery(".gdgallery_items_per_page_section").addClass("gdgallery_hidden");
-            jQuery(".gdgallery_hover_effect_section").addClass("gdgallery_hidden");
         }
     });
 

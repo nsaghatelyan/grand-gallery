@@ -59,6 +59,8 @@ class AjaxController
         $gallery_data_arr["custom_css"] = str_replace("#container", "#gdgallery_container", $gallery_data_arr["custom_css"]);
         $gallery_data_arr["custom_css"] = sanitize_text_field($gallery_data_arr["custom_css"]);
 
+        $gallery_data_arr["show_title"] = (isset($gallery_data_arr["show_title"])) ? 1 : 0;
+
         $ordering = (isset($gallery_data_arr["ordering"])) ? $gallery_data_arr["ordering"] : array();
         unset($gallery_data_arr["ordering"]);
 

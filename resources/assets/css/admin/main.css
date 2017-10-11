@@ -1842,6 +1842,11 @@ ul.gdgallery_general_settings {
     width: 0px;
 }
 
+.gdgallery_general_settings li input[type=checkbox] {
+    position: relative;
+    top: 6px;
+}
+
 @media all and (max-width: 626px) {
     .empty_space {
         margin-top: 120px;
@@ -1919,5 +1924,11 @@ ul.gdgallery_general_settings {
     div.type-block, div.type-block:nth-child(3n+1) {
         width: 100%;
         margin-right: 0;
+    }
+}
+
+@media all and (max-width: 768px) {
+    #gdgallery_general_settings ul li {
+        flex-basis: 100%;
     }
 }

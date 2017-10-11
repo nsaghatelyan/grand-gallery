@@ -1,4 +1,5 @@
 <?php
+
 namespace GDGallery;
 
 use GDGallery\Models\Gallery;
@@ -20,7 +21,7 @@ if (!class_exists('GDGallery')) :
          * Version of plugin
          * @var string
          */
-        public $version = "1.0.0";
+        public $version = "10.0";
 
         /**
          * Instance of AdminController to manage admin
