@@ -31,7 +31,7 @@ if (in_array($view, array(0, 1))) {
 
 <div class="gdgallery-gallery-container" id="gdgallery-container-<?= $id_gallery ?>" data-id="<?= $id_gallery ?>">
     <?php
-    if ($gallery_data->show_title == 1) {
+    if (isset($gallery_data->show_title) && $gallery_data->show_title == 1) {
         echo "<h3 class='gdgallery_title_h3' style='text-align: " . $gallery_data->position . ";'>" . $gallery_data->name . "</h3>";
     }
     \GDGallery\Helpers\View::render('frontend/view-' . $view . '.php', compact('gallery_data', 'images', 'options'));

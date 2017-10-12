@@ -27,7 +27,7 @@ $save_data_nonce = wp_create_nonce('gdgallery_nonce_save_data' . $id);
 
 $hidden_class = "gdgallery_hidden";
 $display_type_opt = (in_array($gallery_data->view_type, array(0, 1))) ? "" : $hidden_class;
-$show_title_opt = ($gallery_data->show_title == 1) ? "" : $hidden_class;
+$show_title_opt = (isset($gallery_data->show_title) && $gallery_data->show_title == 1) ? "" : $hidden_class;
 
 
 ?>
@@ -111,25 +111,27 @@ $show_title_opt = ($gallery_data->show_title == 1) ? "" : $hidden_class;
 
                         </div>
                         <ul class="gdgallery_general_settings">
-                            <li class="gdgallery_show_title_section">
-                                <h4><?= _e('Show Gallery Title', 'gdgallery'); ?></h4>
-                                <input type="checkbox" id="gdgallery_show_title"
-                                       name="gdgallery_show_title" <?php if ($gallery_data->show_title == 1) echo "checked"; ?>>
-                            </li>
-                            <li class="gdgallery_title_position_section <?php echo $show_title_opt; ?>">
-                                <h4><?= _e('Gallery Title Position', 'gdgallery'); ?></h4>
-                                <select name="gdgallery_position" id="gdgallery_position">
-                                    <option value="left" <?php if ($gallery_data->position == 'left') echo "selected" ?>>
-                                        <?= _e('Left', 'gdgallery'); ?>
-                                    </option>
-                                    <option value="center" <?php if ($gallery_data->position == 'center') echo "selected" ?>>
-                                        <?= _e('Center', 'gdgallery'); ?>
-                                    </option>
-                                    <option value="right" <?php if ($gallery_data->position == 'right') echo "selected" ?>>
-                                        <?= _e('Right', 'gdgallery'); ?>
-                                    </option>
-                                </select>
-                            </li>
+                            <?php if (isset($gallery_data->show_title)) { ?>
+                                <li class="gdgallery_show_title_section">
+                                    <h4><?= _e('Show Gallery Title', 'gdgallery'); ?></h4>
+                                    <input type="checkbox" id="gdgallery_show_title"
+                                           name="gdgallery_show_title" <?php if ($gallery_data->show_title == 1) echo "checked"; ?>>
+                                </li>
+                                <li class="gdgallery_title_position_section <?php echo $show_title_opt; ?>">
+                                    <h4><?= _e('Gallery Title Position', 'gdgallery'); ?></h4>
+                                    <select name="gdgallery_position" id="gdgallery_position">
+                                        <option value="left" <?php if ($gallery_data->position == 'left') echo "selected" ?>>
+                                            <?= _e('Left', 'gdgallery'); ?>
+                                        </option>
+                                        <option value="center" <?php if ($gallery_data->position == 'center') echo "selected" ?>>
+                                            <?= _e('Center', 'gdgallery'); ?>
+                                        </option>
+                                        <option value="right" <?php if ($gallery_data->position == 'right') echo "selected" ?>>
+                                            <?= _e('Right', 'gdgallery'); ?>
+                                        </option>
+                                    </select>
+                                </li>
+                            <?php } ?>
                             <li class="gdgallery_display_type_section <?= $display_type_opt ?>">
                                 <h4><?= _e('Content Display Type', 'gdgallery'); ?></h4>
                                 <select name="gdgallery_display_type" id="gdgallery_display_type">
